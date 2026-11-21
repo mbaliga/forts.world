@@ -1,0 +1,48 @@
+# Norman Castle of Gioia del Colle
+
+> Italy · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `norman-castle-of-gioia-del-colle-q3662983` |
+| Coordinates | 40.80026, 16.92327 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/40.80026/16.92327)) |
+| Wikidata | [Q3662983](https://www.wikidata.org/wiki/Q3662983) (CC0) |
+| Wikidata class | castle |
+| Types | castle\|Museum of the Italian Ministry of Culture\|Category:Hohenstaufen castles in Southern Italy\|archaeological museum |
+| Administrative area | Gioia del Colle |
+| Inception | 0900 |
+| Designations | Italian national heritage |
+| Wikipedia language editions | 6 |
+| OSM `historic` | castle |
+| OSM `website` | https://museipuglia.cultura.gov.it/musei/museo-archeologico-nazionale-e-castello-di-gioia-del-colle/ |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 355 elements (outline 1, marker 2, road 234, zone 2, building 115, wall 1).
+
+Evidence: documented 0, mapped 355, inferred 0, derived 0; heights documented 0, inferred 0, unknown 116.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:relation/6234912 historic=castle Q3662983 2 m from ledger point
+- origin moved 2 m from the ledger point to the outline centroid
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/40.80026/16.92327) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=castle; castle\|Museum of the Italian Ministry of Culture\|Category:Hohenstaufen castles in Southern Italy\|archaeological museum; sitelinks=6; wikidata:Q3662983 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 355 elements); data/traces/norman-castle-of-gioia-del-colle-q3662983.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/italy.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

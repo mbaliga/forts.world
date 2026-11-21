@@ -1,0 +1,53 @@
+# Arco do Rosário
+
+> Portugal · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `arco-do-rosario-q23005918` |
+| Coordinates | 38.7101, -9.13 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/38.7101/-9.13)) |
+| Wikidata | [Q23005918](https://www.wikidata.org/wiki/Q23005918) (CC0) |
+| Wikidata class | fortification |
+| Types | city gate |
+| Administrative area | Santa Maria Maior |
+| Wikipedia language editions | 2 |
+| OSM `historic` | castle |
+| OSM `castle_type` | palace |
+| OSM `description` | Mandado construir a partir de 1907, no local do antigo Palácio do Marquês de Angeja, destruído pelo terramoto de 1755, a propriedade foi partilhada pelos "brasileiros" João António e Augusto Vítor dos Santos... |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 323 elements (outline 1, marker 11, road 220, building 375, retaining-wall 14, wall 14, water 7, zone 5, coastline 1).
+
+Evidence: documented 0, mapped 323, inferred 0, derived 3; heights documented 53, inferred 0, unknown 95.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:way/98618250 historic=castle Q53881282 54 m from ledger point
+- present-day buildings capped: kept the 120 nearest the outline centre of 375 mapped (trace size budget); the rest of the town is not drawn
+- roads capped: kept the 150 longest of 220 mapped (trace size budget); minor lanes are not drawn
+- origin moved 53 m from the ledger point to the outline centroid
+- sea-0: DEM check ok {"cells":18,"medianInside":0,"medianOutside":15.6}
+- sea-1: DEM check ok {"cells":6,"medianInside":0.1,"medianOutside":15.1}
+- sea-2: DEM check ok {"cells":14,"medianInside":0,"medianOutside":15.6}
+- 8 mapped path(s) meet closed wall lines (candidate openings for T2; not drawn)
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/38.7101/-9.13) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=fortification; city gate; sitelinks=2; wikidata:Q23005918 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 323 elements); data/traces/arco-do-rosario-q23005918.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/portugal.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

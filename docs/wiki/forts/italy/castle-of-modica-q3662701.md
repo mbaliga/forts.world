@@ -1,0 +1,50 @@
+# Castle of Modica
+
+> Italy · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `castle-of-modica-q3662701` |
+| Coordinates | 36.86193, 14.76172 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/36.86193/14.76172)) |
+| Wikidata | [Q3662701](https://www.wikidata.org/wiki/Q3662701) (CC0) |
+| Wikidata class | castle |
+| Types | castle |
+| Administrative area | Modica |
+| Designations | Italian national heritage |
+| Wikipedia language editions | 2 |
+| OSM `historic` | castle |
+| OSM `castle_type` | fortress |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 292 elements (outline 1, road 177, waterway 2, building 257, retaining-wall 146, wall 51, cliff 11).
+
+Evidence: documented 0, mapped 292, inferred 0, derived 0; heights documented 0, inferred 0, unknown 201.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:way/420556068 historic=castle Q3662701 13 m from ledger point
+- pruned to the outline plus 150 m: 645 -> 423 elements
+- present-day buildings capped: kept the 60 nearest the outline centre of 161 mapped (trace size budget); the rest of the town is not drawn
+- roads capped: kept the 80 longest of 110 mapped (trace size budget); minor lanes are not drawn
+- origin moved 12 m from the ledger point to the centre of the mapped site
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/36.86193/14.76172) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=castle; castle; sitelinks=2; wikidata:Q3662701 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 292 elements); data/traces/castle-of-modica-q3662701.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/italy.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

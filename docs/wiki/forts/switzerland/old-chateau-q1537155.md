@@ -1,0 +1,45 @@
+# old château
+
+> Switzerland · evidence: **T1 (location-only)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `old-chateau-q1537155` |
+| Coordinates | 46.80869, 7.47183 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/46.80869/7.47183)) |
+| Wikidata | [Q1537155](https://www.wikidata.org/wiki/Q1537155) (CC0) |
+| Wikidata class | castle |
+| Types | castle\|château\|built structure |
+| Administrative area | Riggisberg |
+| Inception | 1700 |
+| Designations | class B Swiss cultural property of regional significance |
+| Wikipedia language editions | 4 |
+
+## What the model contains
+
+Tier **T1**, status `location-only`, 139 elements (marker 1, road 54, waterway 13, water 1, building 69, wall 1).
+
+Evidence: documented 0, mapped 139, inferred 0, derived 0; heights documented 1, inferred 0, unknown 69.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: no closed historic=* way/relation found; location-only scene
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/46.80869/7.47183) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=castle; castle\|château\|built structure; sitelinks=4; wikidata:Q1537155 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (location-only, 139 elements); data/traces/old-chateau-q1537155.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/switzerland.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

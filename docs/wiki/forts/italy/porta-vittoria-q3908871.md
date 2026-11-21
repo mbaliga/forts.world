@@ -1,0 +1,48 @@
+# Porta Vittoria
+
+> Italy · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `porta-vittoria-q3908871` |
+| Coordinates | 45.43581, 11.00172 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/45.43581/11.00172)) |
+| Wikidata | [Q3908871](https://www.wikidata.org/wiki/Q3908871) (CC0) |
+| Wikidata class | fortification |
+| Types | city gate |
+| Administrative area | Verona |
+| Designations | Italian national heritage |
+| Wikipedia language editions | 2 |
+| OSM `historic` | ruins |
+| OSM `description` | Il tempio di Giove lustrale si trovava presso Porta Borsari. Nel 1932 fu demolito e i resti lapidei furono usati per ricostruirlo parzialmente qui. |
+| OSM `ruins` | temple |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 275 elements (outline 1, marker 1, road 153, zone 12, waterway 1, water 1, wall 7, building 99).
+
+Evidence: documented 0, mapped 275, inferred 0, derived 0; heights documented 7, inferred 0, unknown 99.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:way/138922321 historic=ruins Q30880873 55 m from ledger point
+- origin moved 57 m from the ledger point to the centre of the mapped site
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/45.43581/11.00172) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=fortification; city gate; sitelinks=2; wikidata:Q3908871 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 275 elements); data/traces/porta-vittoria-q3908871.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/italy.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

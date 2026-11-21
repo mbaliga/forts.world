@@ -1,0 +1,49 @@
+# Carchuna Fort
+
+> Spain · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `carchuna-fort-q43136013` |
+| Coordinates | 36.69598, -3.43539 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/36.69598/-3.43539)) |
+| Wikidata | [Q43136013](https://www.wikidata.org/wiki/Q43136013) (CC0) |
+| Wikidata class | castle |
+| Types | castle\|fortification\|castle |
+| Administrative area | Motril |
+| Inception | 1766 |
+| Designations | bien de interés cultural |
+| Wikipedia language editions | 2 |
+| OSM `historic` | castle |
+| OSM `castle_type` | fortification |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 43 elements (outline 1, road 13, coastline 1, building 26, wall 1, water 1).
+
+Evidence: documented 0, mapped 43, inferred 0, derived 1; heights documented 0, inferred 0, unknown 27.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:way/551450243 historic=castle Q43136013 8 m from ledger point
+- origin moved 8 m from the ledger point to the centre of the mapped site
+- sea-0: DEM check ok {"cells":124,"medianInside":0,"medianOutside":1.1}
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/36.69598/-3.43539) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=castle; castle\|fortification\|castle; sitelinks=2; wikidata:Q43136013 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 43 elements); data/traces/carchuna-fort-q43136013.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/spain.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

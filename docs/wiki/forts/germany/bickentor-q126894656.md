@@ -1,0 +1,49 @@
+# Bickentor
+
+> Germany · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `bickentor-q126894656` |
+| Coordinates | 48.05949, 8.46228 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/48.05949/8.46228)) |
+| Wikidata | [Q126894656](https://www.wikidata.org/wiki/Q126894656) (CC0) |
+| Wikidata class | fortification |
+| Types | city gate |
+| Administrative area | Villingen |
+| Inception | 1260 |
+| Wikipedia language editions | 1 |
+| OSM `historic` | yes |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 346 elements (outline 1, marker 14, road 273, waterway 14, zone 19, wall 27, building 446, water 1).
+
+Evidence: documented 0, mapped 346, inferred 0, derived 0; heights documented 24, inferred 0, unknown 123.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:way/33651557 historic=yes Q1435164 142 m from ledger point
+- present-day buildings capped: kept the 120 nearest the outline centre of 446 mapped (trace size budget); the rest of the town is not drawn
+- roads capped: kept the 150 longest of 273 mapped (trace size budget); minor lanes are not drawn
+- origin moved 143 m from the ledger point to the centre of the mapped site
+- 7 mapped path(s) meet closed wall lines (candidate openings for T2; not drawn)
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/48.05949/8.46228) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=fortification; city gate; sitelinks=1; wikidata:Q126894656 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 346 elements); data/traces/bickentor-q126894656.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/germany.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

@@ -1,0 +1,50 @@
+# Cultural heritage D-2-7438-0383 in Landshut
+
+> Germany · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `cultural-heritage-d-2-7438-0383-in-landshut-q98364568` |
+| Coordinates | 48.53418, 12.1534 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/48.53418/12.1534)) |
+| Wikidata | [Q98364568](https://www.wikidata.org/wiki/Q98364568) (CC0) |
+| Wikidata class | fort |
+| Types | fortification\|city walls |
+| Administrative area | Landshut |
+| Designations | archaeological heritage monument in Bavaria |
+| Wikipedia language editions | 0 |
+| OSM `historic` | castle |
+| OSM `castle_type` | stately |
+| OSM `heritage` | 4 |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 303 elements (outline 1, marker 2, waterway 7, road 162, building 383, wall 17, zone 5, water 1).
+
+Evidence: documented 0, mapped 303, inferred 0, derived 0; heights documented 46, inferred 0, unknown 91.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:relation/1502873 historic=castle Q2327993 296 m from ledger point
+- present-day buildings capped: kept the 120 nearest the outline centre of 383 mapped (trace size budget); the rest of the town is not drawn
+- roads capped: kept the 150 longest of 162 mapped (trace size budget); minor lanes are not drawn
+- origin moved 296 m from the ledger point to the centre of the mapped site
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/48.53418/12.1534) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=fort; fortification\|city walls; sitelinks=0; wikidata:Q98364568 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 303 elements); data/traces/cultural-heritage-d-2-7438-0383-in-landshut-q98364568.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/germany.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

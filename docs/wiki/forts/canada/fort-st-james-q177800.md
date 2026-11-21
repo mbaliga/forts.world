@@ -1,0 +1,46 @@
+# Fort St. James
+
+> Canada · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `fort-st-james-q177800` |
+| Coordinates | 54.4403, -124.25575 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/54.4403/-124.25575)) |
+| Wikidata | [Q177800](https://www.wikidata.org/wiki/Q177800) (CC0) |
+| Wikidata class | fort |
+| Types | fort\|district municipality |
+| Administrative area | Regional District of Bulkley-Nechako |
+| Inception | 1806 |
+| Wikipedia language editions | 11 |
+| OSM `historic` | fort |
+
+## What the model contains
+
+Tier **T1**, status `outline-only`, 162 elements (outline 1, road 57, building 104).
+
+Evidence: documented 0, mapped 162, inferred 0, derived 0; heights documented 0, inferred 0, unknown 104.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:way/221226896 historic=fort Q177800 43 m from ledger point
+- origin moved 38 m from the ledger point to the outline centroid
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/54.4403/-124.25575) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=fort; fort\|district municipality; sitelinks=11; wikidata:Q177800 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline-only, 162 elements); data/traces/fort-st-james-q177800.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/canada.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

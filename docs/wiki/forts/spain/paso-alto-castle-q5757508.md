@@ -1,0 +1,51 @@
+# Paso Alto Castle
+
+> Spain · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `paso-alto-castle-q5757508` |
+| Coordinates | 28.48081, -16.24108 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/28.48081/-16.24108)) |
+| Wikidata | [Q5757508](https://www.wikidata.org/wiki/Q5757508) (CC0) |
+| Wikidata class | castle |
+| Types | castle\|fortress\|castle\|monument |
+| Administrative area | Santa Cruz de Tenerife |
+| Designations | bien de interés cultural |
+| Wikipedia language editions | 2 |
+| OSM `historic` | castle |
+| OSM `castle_type` | fortress |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 85 elements (outline 1, road 32, coastline 5, wall 5, waterway 2, building 37, water 3).
+
+Evidence: documented 0, mapped 85, inferred 0, derived 3; heights documented 2, inferred 0, unknown 40.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:relation/1317220 historic=castle Q5757508 12 m from ledger point
+- origin moved 13 m from the ledger point to the centre of the mapped site
+- sea-0: DEM check ok {"cells":3,"medianInside":-0.1,"medianOutside":18.3}
+- sea-1: DEM check ok {"cells":88,"medianInside":0,"medianOutside":21.7}
+- sea-2: DEM check failed {"cells":0,"medianInside":null,"medianOutside":18.1}
+- 2 DEM cells below -3 m (bathymetry) clamped to -3 m
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/28.48081/-16.24108) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=castle; castle\|fortress\|castle\|monument; sitelinks=2; wikidata:Q5757508 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 85 elements); data/traces/paso-alto-castle-q5757508.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/spain.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

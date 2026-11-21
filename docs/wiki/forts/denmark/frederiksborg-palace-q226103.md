@@ -1,0 +1,49 @@
+# Frederiksborg Palace
+
+> Denmark · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `frederiksborg-palace-q226103` |
+| Coordinates | 55.93505, 12.30123 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/55.93505/12.30123)) |
+| Wikidata | [Q226103](https://www.wikidata.org/wiki/Q226103) (CC0) |
+| Wikidata class | castle |
+| Types | castle\|palace\|museum\|château |
+| Administrative area | Hillerød Municipality |
+| Inception | 1560 |
+| Designations | monument on Kulturstyrelsen register |
+| Wikipedia language editions | 35 |
+| OSM `historic` | castle |
+| OSM `castle_type` | palace |
+| OSM `website` | https://www.slke.dk/ejendomme/drift-af-slotte-og-haver/liste-over-ejendomme/frederiksborg-slot/ |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 106 elements (outline 1, marker 1, road 58, zone 4, waterway 9, building 12, water 5, wall 16).
+
+Evidence: documented 0, mapped 106, inferred 0, derived 0; heights documented 22, inferred 0, unknown 6.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:relation/5711987 historic=castle Q226103 7 m from ledger point
+- origin moved 12 m from the ledger point to the outline centroid
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/55.93505/12.30123) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=castle; castle\|palace\|museum\|château; sitelinks=35; wikidata:Q226103 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 106 elements); data/traces/frederiksborg-palace-q226103.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/denmark.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

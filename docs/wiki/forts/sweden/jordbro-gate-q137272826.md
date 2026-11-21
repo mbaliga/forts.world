@@ -1,0 +1,54 @@
+# Jordbro gate
+
+> Sweden · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `jordbro-gate-q137272826` |
+| Coordinates | 56.66167, 16.36417 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/56.66167/16.36417)) |
+| Wikidata | [Q137272826](https://www.wikidata.org/wiki/Q137272826) (CC0) |
+| Wikidata class | fortification |
+| Types | city gate |
+| Administrative area | Kalmar Municipality |
+| Wikipedia language editions | 1 |
+| OSM `historic` | castle |
+| OSM `website` | https://www.kalmarslott.se/ |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 63 elements (outline 1, coastline 6, road 38, wall 10, building 4, zone 1, water 3).
+
+Evidence: documented 0, mapped 63, inferred 0, derived 3; heights documented 3, inferred 0, unknown 11.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:relation/1331955 historic=castle Q648226 671 m from ledger point
+- island ring (1876 m2) cut out of sea-0
+- island ring (27362 m2) cut out of sea-0
+- island ring (1656 m2) cut out of sea-0
+- origin moved 670 m from the ledger point to the outline centroid
+- sea-0: DEM check ok {"cells":363,"medianInside":2.8,"medianOutside":5.4}
+- sea-1: DEM check failed {"cells":439,"medianInside":3.4,"medianOutside":1.2}
+- sea-2: DEM check ok {"cells":298,"medianInside":2.3,"medianOutside":8}
+- 1 DEM cells below -3 m (bathymetry) clamped to -3 m
+- 27 mapped path(s) meet closed wall lines (candidate openings for T2; not drawn)
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/56.66167/16.36417) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=fortification; city gate; sitelinks=1; wikidata:Q137272826 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 63 elements); data/traces/jordbro-gate-q137272826.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/sweden.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)
