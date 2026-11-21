@@ -1,0 +1,10 @@
+{
+ "id": "derawar",
+ "lat": 28.766,
+ "lon": 71.334,
+ "radiusM": 900,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:31:07.118Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

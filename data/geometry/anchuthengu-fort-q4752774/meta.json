@@ -1,0 +1,10 @@
+{
+ "id": "anchuthengu-fort-q4752774",
+ "lat": 8.662675,
+ "lon": 76.764486,
+ "radiusM": 500,
+ "osm": true,
+ "tiles": 2,
+ "fetched": "2026-11-14T18:31:05.116Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

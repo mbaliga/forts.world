@@ -1,0 +1,10 @@
+{
+ "id": "konda-reddy-fort-q17986877",
+ "lat": 15.833738,
+ "lon": 78.048622,
+ "radiusM": 1000,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-11T03:56:26.266Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

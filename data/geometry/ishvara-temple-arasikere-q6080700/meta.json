@@ -1,0 +1,10 @@
+{
+ "id": "ishvara-temple-arasikere-q6080700",
+ "lat": 13.318111,
+ "lon": 76.260389,
+ "radiusM": 400,
+ "osm": true,
+ "tiles": 2,
+ "fetched": "2026-11-14T18:32:48.441Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

@@ -1,0 +1,10 @@
+{
+ "id": "alamparai-fort-q468734",
+ "lat": 12.2659,
+ "lon": 80.0101,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:32:03.910Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

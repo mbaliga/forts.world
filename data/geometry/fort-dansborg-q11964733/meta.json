@@ -1,0 +1,10 @@
+{
+ "id": "fort-dansborg-q11964733",
+ "lat": 11.0246,
+ "lon": 79.8558,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-16T23:03:33.596Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

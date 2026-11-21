@@ -1,0 +1,10 @@
+{
+ "id": "bidar",
+ "lat": 17.9219,
+ "lon": 77.5236,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-14T18:43:44.774Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

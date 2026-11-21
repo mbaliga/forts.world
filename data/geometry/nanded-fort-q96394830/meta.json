@@ -1,0 +1,10 @@
+{
+ "id": "nanded-fort-q96394830",
+ "lat": 19.14172,
+ "lon": 77.324825,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:25:41.776Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

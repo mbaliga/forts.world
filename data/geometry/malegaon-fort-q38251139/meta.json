@@ -1,0 +1,10 @@
+{
+ "id": "malegaon-fort-q38251139",
+ "lat": 20.545389,
+ "lon": 74.529889,
+ "radiusM": 1000,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-11T03:51:14.850Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

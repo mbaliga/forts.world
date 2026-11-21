@@ -1,0 +1,10 @@
+{
+ "id": "dindigul",
+ "lat": 10.360556,
+ "lon": 77.963056,
+ "radiusM": 1000,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-14T18:28:16.251Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

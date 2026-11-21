@@ -1,0 +1,10 @@
+{
+ "id": "jiran-ki-gadhi-q97101316",
+ "lat": 24.307778,
+ "lon": 74.889167,
+ "radiusM": 600,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:28:56.725Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

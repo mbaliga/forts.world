@@ -1,0 +1,10 @@
+{
+ "id": "parola-fort-q97142808",
+ "lat": 20.877222,
+ "lon": 75.115833,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:31:43.317Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

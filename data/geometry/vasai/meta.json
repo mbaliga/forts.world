@@ -1,0 +1,10 @@
+{
+ "id": "vasai",
+ "lat": 19.33,
+ "lon": 72.815,
+ "radiusM": 1500,
+ "osm": true,
+ "tiles": 16,
+ "fetched": "2026-11-11T03:51:34.890Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

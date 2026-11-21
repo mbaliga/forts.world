@@ -1,0 +1,10 @@
+{
+ "id": "madakasira-bastion-and-gateway-q17278418",
+ "lat": 13.939657,
+ "lon": 77.267203,
+ "radiusM": 1000,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-11T04:12:09.189Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

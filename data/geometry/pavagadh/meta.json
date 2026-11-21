@@ -1,0 +1,10 @@
+{
+ "id": "pavagadh",
+ "lat": 22.484444,
+ "lon": 73.515556,
+ "radiusM": 1800,
+ "osm": true,
+ "tiles": 20,
+ "fetched": "2026-11-18T22:09:51.898Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

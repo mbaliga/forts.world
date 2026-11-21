@@ -1,0 +1,19 @@
+{
+ "site_id": "historic-city-of-ahmadabad-q5472448",
+ "items": [
+  {
+   "file": "File:Ahmedabad (Baedeker, 1914).jpg",
+   "role": "plan",
+   "status": "error: download 429",
+   "licence": "Public domain",
+   "licence_source": "data/plans/search/historic-city-of-ahmadabad-q5472448.json (Wikimedia Commons metadata; backfilled 2026-11-21)"
+  },
+  {
+   "file": "File:Ahmedabad 1855.jpg",
+   "role": "plan",
+   "status": "error: download 429",
+   "licence": "Public domain",
+   "licence_source": "data/plans/search/historic-city-of-ahmadabad-q5472448.json (Wikimedia Commons metadata; backfilled 2026-11-21)"
+  }
+ ]
+}

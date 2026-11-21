@@ -1,0 +1,10 @@
+{
+ "id": "the-kachari-ruins-q7743925",
+ "lat": 25.903611,
+ "lon": 93.740278,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-14T18:46:14.311Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

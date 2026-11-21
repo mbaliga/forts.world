@@ -1,0 +1,12 @@
+{
+ "id": "jata-shankar-fort-q97945616",
+ "lat": 23.823056,
+ "lon": 79.449167,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:42:30.704Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs",
+ "osmRefetched": "2026-11-18T10:27:47.391Z",
+ "osmRefetchNote": "first fetch (2026-11-14T18:42:30.704Z) returned no OSM data; OSM re-fetched with the same query and radius, terrain tiles unchanged"
+}

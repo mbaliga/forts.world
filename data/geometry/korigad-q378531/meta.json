@@ -1,0 +1,12 @@
+{
+ "id": "korigad-q378531",
+ "lat": 18.620278,
+ "lon": 73.386111,
+ "radiusM": 600,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:32:57.283Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs",
+ "osmRefetched": "2026-11-18T10:27:49.003Z",
+ "osmRefetchNote": "first fetch (2026-11-14T18:32:57.283Z) returned no OSM data; OSM re-fetched with the same query and radius, terrain tiles unchanged"
+}

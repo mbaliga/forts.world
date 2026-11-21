@@ -1,0 +1,10 @@
+{
+ "id": "chandragiri",
+ "lat": 13.582528,
+ "lon": 79.304786,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-14T18:33:41.369Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

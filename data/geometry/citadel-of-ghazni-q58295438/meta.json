@@ -1,0 +1,10 @@
+{
+ "id": "citadel-of-ghazni-q58295438",
+ "lat": 33.549167,
+ "lon": 68.423333,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 16,
+ "fetched": "2026-11-18T03:50:55.736Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

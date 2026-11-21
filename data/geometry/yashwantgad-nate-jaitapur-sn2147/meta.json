@@ -1,0 +1,10 @@
+{
+ "id": "yashwantgad-nate-jaitapur-sn2147",
+ "lat": 16.631062,
+ "lon": 73.356786,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:25:52.359Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

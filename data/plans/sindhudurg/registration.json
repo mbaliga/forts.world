@@ -1,0 +1,40 @@
+{
+ "site_id": "sindhudurg",
+ "plan": "'View and plan of Sinderdroo or Melundy, on the Malabar coast' (survey by Co. John Watson, 1765; engraved P. Begbie; publ. A. Dalrymple, 25 July 1774; BnF Gallica btv1b532583381 via Wikimedia Commons, public domain; catalogue SIN-02)",
+ "file": "View_and_plan_of_Sinderdroo_or_Melundy_on_the_Malabar_coast_-_by_Co._John_Watson_1765_View_and_plan_engraved_by_P._Begbie_the_writing_c._by_W._Witchurch_-_btv1b532583381.jpg",
+ "pixel_frame": "2x enlargement of the native crop (1450,3850)-(2350,4400) of the 4110x5340 scan; x right, y down. The fort is about 530 native pixels across: this is a hydrographic chart, not a fort plan.",
+ "method": "similarity transform from the traced wall outline (39 vertices read by eye, checked by overlay) to the OSM islet coastline (way 19804981, 291 vertices; local metres, x east, y north). Fitted by maximising polygon overlap (IoU) over scale 0.35-1.30, rotation 0-360 deg, shift +-60 m, then refined. The only free choice was the outline; no interior feature was used.",
+ "fit": {
+  "m_per_px_2x": 0.68,
+  "m_per_native_px": 1.36,
+  "rotation_deg": 269,
+  "dx_m": 2,
+  "dy_m": 2,
+  "iou": 0.913,
+  "result": "one clear peak: IoU 0.91 at 269 deg; the best orientation more than 30 deg away scores 0.56 (at 90 deg, the 180-degree flip of an elongated shape). The chart is rotated about 90 deg from north-up"
+ },
+ "validation_not_in_fit": [
+  {
+   "feature": "OSM fort-wall fragment (way 426199526)",
+   "offset_m": "0-11 from the plan wall line"
+  },
+  {
+   "feature": "printed scale bar",
+   "result": "1 nautical mile = about 1261 native px = 1.47 m/px against 1.36 m/px fitted (8% difference)"
+  },
+  {
+   "feature": "enclosed area",
+   "result": "traced outline 19.0 ha; OSM island 19.2 ha; written sources 48 acres (19.4 ha)"
+  },
+  {
+   "feature": "plan blocks against OSM buildings",
+   "offset_m": "A1 12, A2 32, B3 33, B4 33, S1 72, S2 61 (nearest mapped building): only A1 is corroborated"
+  }
+ ],
+ "stated_accuracy_m": {
+  "wall_line": 30,
+  "blocks_and_cavalier": 40
+ },
+ "not_traced": "about 30 small blocks and houses and the trees drawn inside; bastion bumps on the wall (too ambiguous to count); the sea approaches, soundings and Rajacoote/Pudendroo; any gate",
+ "traced_by": "visual reading of crops; pixel coordinates are in tools/trace/curation/sindhudurg.mjs"
+}

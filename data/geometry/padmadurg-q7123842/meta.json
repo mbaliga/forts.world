@@ -1,0 +1,10 @@
+{
+ "id": "padmadurg-q7123842",
+ "lat": 18.322135,
+ "lon": 72.932755,
+ "radiusM": 700,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-11T04:04:57.181Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

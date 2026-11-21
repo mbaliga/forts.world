@@ -1,0 +1,10 @@
+{
+ "id": "shergarh-fort-q97119184",
+ "lat": 24.827778,
+ "lon": 83.728056,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:32:19.824Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

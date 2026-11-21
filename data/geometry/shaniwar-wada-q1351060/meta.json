@@ -1,0 +1,10 @@
+{
+ "id": "shaniwar-wada-q1351060",
+ "lat": 18.519167,
+ "lon": 73.855278,
+ "radiusM": 900,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:32:00.601Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

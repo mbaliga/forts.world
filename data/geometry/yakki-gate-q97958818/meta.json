@@ -1,0 +1,10 @@
+{
+ "id": "yakki-gate-q97958818",
+ "lat": 31.583333,
+ "lon": 74.327778,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-18T03:51:30.284Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

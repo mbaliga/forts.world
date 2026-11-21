@@ -1,0 +1,10 @@
+{
+ "id": "yagavi-sn1032",
+ "lat": 0,
+ "lon": 0,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-11T03:53:54.318Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

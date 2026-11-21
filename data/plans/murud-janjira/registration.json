@@ -1,0 +1,19 @@
+{
+ "site_id": "murud-janjira",
+ "plan": "Inset 'Gingerah Fort' on 'Plan and view of Gingerah, commonly called Donda Rajapore' (A. Werner; publ. A. Dalrymple, June 1771; BnF Gallica btv1b85931692, via Wikimedia Commons, public domain)",
+ "file": "Plan_and_view_of_Gingerah_commonly_called_Donda_Rajapore_on_the_Malabar_coast_in_Lat._18_.16_N._-_by_A._Werner_publ._by_A._Dalrymple_engraved_by_P._Begbie_-_btv1b85931692.jpg",
+ "pixel_frame": "native crop of the 4288x5592 scan at offset (2610, 3337); x right, y down",
+ "method": "similarity transform (scale, rotation, translation) from plan pixels to OSM local metres (x east, y north; origin = centroid of the OSM outline way 330556777). Fitted by maximising overlap (IoU) between the plan island silhouette and the OSM outline polygon; no interior feature was used in the fit.",
+ "fit": { "m_per_px": 0.265, "rotation_deg": 269, "dx_m": -17, "dy_m": 8, "plan_centroid_px": [512.218, 878.995], "iou": 0.884 },
+ "validation_not_in_fit": [
+  { "feature": "palace (OSM building-5)", "offset_m": 3 },
+  { "feature": "citadel (OSM building-6)", "offset_m": 9 },
+  { "feature": "two tanks (OSM water-3, water-4)", "offset_m": "12-15" },
+  { "feature": "magazine 'd' against the citadel footprint", "offset_m": 9 }
+ ],
+ "stated_accuracy_m": 15,
+ "scale_discrepancy": "The printed scale bar (1000 ft = 877 px) gives 0.3475 m/px; the outline fit gives 0.265 m/px, a 24% difference. The engraving's island is drawn larger than the bar says. The fit (which agrees with OSM on independent features) is used; the plan is not a reliable metric source beyond +-15 m.",
+ "gate_snapping": "Plan gate positions are snapped to the nearest point of the OSM wall line (distances recorded in each element's note).",
+ "not_traced": "about 80 small house blocks; the sea approaches and soundings; plan bastion count is 18 against 19 in the written sources",
+ "traced_by": "visual reading of crops; bastion centres, gates, mosque and magazine pixel coordinates are in tools/trace/curation/murud-janjira.mjs"
+}

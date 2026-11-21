@@ -1,0 +1,10 @@
+{
+ "id": "wari-bateshwar-fort-city-sn3785",
+ "lat": 24.092919,
+ "lon": 90.825326,
+ "radiusM": 1500,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-11T04:08:28.634Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

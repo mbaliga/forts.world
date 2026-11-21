@@ -1,0 +1,47 @@
+{
+ "site_id": "galle",
+ "items": [
+  {
+   "file": "File:AMH-4546-NA Map of the fort at Gale.jpg",
+   "role": "plan",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/AMH-4546-NA_Map_of_the_fort_at_Gale.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "page": "https://commons.wikimedia.org/wiki/File%3AAMH-4546-NA_Map_of_the_fort_at_Gale.jpg",
+   "licence": "Public domain",
+   "licence_url": "",
+   "author": "Carel Frederik Reimer",
+   "credit": "This is an image from the Atlas of Mutual Heritage and the Nationaal Archief, the Dutch National Archives.\nThe metadata of this file is public domain under a Creative Commons Public Domain Dedication (CC-ZERO). This permission has been archived as ticket #2014051410008887",
+   "date": "1790date QS:P571,+1790-00-00T00:00:00Z/9",
+   "description": "According to the Leupe catalogue (NA), the original title reads: Plan van de Vesting Gale.\nHalfway down the left-hand side: No. 6 in a different handwriting.\nNotes on reverse: No. 6 Gale / 585 [stamped in bold on a small label].\n\nKey: 1-32",
+   "width": 2015,
+   "height": 2400,
+   "bytes": 982371,
+   "mime": "image/jpeg",
+   "sha1": "dd147148bfa8450c3669068ffb35ad59003b02f2",
+   "retrieved": "2026-11-18",
+   "saved": "AMH-4546-NA_Map_of_the_fort_at_Gale.jpg",
+   "sha256": "a7220d63355f2cae7d16a9ef4e92306638f11bd18a965efec0f22e5e46bd77ba",
+   "status": "downloaded"
+  },
+  {
+   "file": "File:AMH-6706-NA Map of the fort at Galle.jpg",
+   "role": "plan",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/AMH-6706-NA_Map_of_the_fort_at_Galle.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "page": "https://commons.wikimedia.org/wiki/File%3AAMH-6706-NA_Map_of_the_fort_at_Galle.jpg",
+   "licence": "Public domain",
+   "licence_url": "",
+   "author": "A. Johannes (land surveyor / mapmaker)",
+   "credit": "This is an image from the Atlas of Mutual Heritage and the Nationaal Archief, the Dutch National Archives.\nThe metadata of this file is public domain under a Creative Commons Public Domain Dedication (CC-ZERO). This permission has been archived as ticket #2014051410008887",
+   "date": "1784date QS:P571,+1784-00-00T00:00:00Z/9",
+   "description": "Title in the Leupe catalogue (National Archives): Plan van Gale.\nBears the stamp: Depot des Cart. Pl. et Journ. de la Marine.\n\nNotes on reverse: No. 12 [inscribed on a small label] / Gale. Plan van Johannes 1784. / 578 [printed in bold on a small label].",
+   "width": 2400,
+   "height": 1909,
+   "bytes": 325642,
+   "mime": "image/jpeg",
+   "sha1": "a0f1a883602dbde71dc57128dfec5daff973081d",
+   "retrieved": "2026-11-18",
+   "saved": "AMH-6706-NA_Map_of_the_fort_at_Galle.jpg",
+   "sha256": "d01238a638b927572a55eb6c94c7eb2986fea0a5cc28de81e6f44dfe0554899c",
+   "status": "downloaded"
+  }
+ ]
+}

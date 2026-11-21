@@ -1,0 +1,10 @@
+{
+ "id": "indor-fort-q140571223",
+ "lat": 28.084722,
+ "lon": 76.946944,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-16T23:03:49.969Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

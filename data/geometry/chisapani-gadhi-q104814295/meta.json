@@ -1,0 +1,10 @@
+{
+ "id": "chisapani-gadhi-q104814295",
+ "lat": 27.558333,
+ "lon": 85.1375,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-18T03:51:02.390Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

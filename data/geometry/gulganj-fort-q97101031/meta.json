@@ -1,0 +1,10 @@
+{
+ "id": "gulganj-fort-q97101031",
+ "lat": 24.699167,
+ "lon": 79.374722,
+ "radiusM": 700,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:43:40.559Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

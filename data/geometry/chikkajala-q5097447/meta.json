@@ -1,0 +1,10 @@
+{
+ "id": "chikkajala-q5097447",
+ "lat": 13.170457,
+ "lon": 77.632883,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-16T23:03:08.022Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

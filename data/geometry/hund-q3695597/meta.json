@@ -1,0 +1,10 @@
+{
+ "id": "hund-q3695597",
+ "lat": 34.016667,
+ "lon": 72.433333,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 16,
+ "fetched": "2026-11-18T03:51:00.679Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

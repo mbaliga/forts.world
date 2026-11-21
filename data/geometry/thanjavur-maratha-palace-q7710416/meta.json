@@ -1,0 +1,10 @@
+{
+ "id": "thanjavur-maratha-palace-q7710416",
+ "lat": 10.791333,
+ "lon": 79.136244,
+ "radiusM": 500,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-11T04:04:01.085Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

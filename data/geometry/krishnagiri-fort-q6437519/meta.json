@@ -1,0 +1,10 @@
+{
+ "id": "krishnagiri-fort-q6437519",
+ "lat": 12.537721,
+ "lon": 78.214638,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:34:58.022Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

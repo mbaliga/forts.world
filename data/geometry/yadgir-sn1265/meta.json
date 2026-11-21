@@ -1,0 +1,10 @@
+{
+ "id": "yadgir-sn1265",
+ "lat": 16.765482,
+ "lon": 77.140043,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-18T04:11:34.002Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

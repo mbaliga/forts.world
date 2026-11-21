@@ -1,0 +1,10 @@
+{
+ "id": "churangarh-fort-q97147394",
+ "lat": 20.416667,
+ "lon": 85.75,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-16T23:03:14.411Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

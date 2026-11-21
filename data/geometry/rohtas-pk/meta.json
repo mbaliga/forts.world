@@ -1,0 +1,10 @@
+{
+ "id": "rohtas-pk",
+ "lat": 32.964,
+ "lon": 73.577,
+ "radiusM": 1500,
+ "osm": true,
+ "tiles": 16,
+ "fetched": "2026-11-18T22:18:00.831Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

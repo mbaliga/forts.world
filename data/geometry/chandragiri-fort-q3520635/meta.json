@@ -1,0 +1,10 @@
+{
+ "id": "chandragiri-fort-q3520635",
+ "lat": 12.469444,
+ "lon": 75.00325,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-11T03:56:03.420Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

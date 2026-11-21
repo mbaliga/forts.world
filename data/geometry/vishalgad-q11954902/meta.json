@@ -1,0 +1,10 @@
+{
+ "id": "vishalgad-q11954902",
+ "lat": 16.8667,
+ "lon": 73.8333,
+ "radiusM": 1000,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:28:00.994Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

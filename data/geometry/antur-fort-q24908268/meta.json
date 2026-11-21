@@ -1,0 +1,10 @@
+{
+ "id": "antur-fort-q24908268",
+ "lat": 20.427345,
+ "lon": 75.236017,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:33:38.373Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

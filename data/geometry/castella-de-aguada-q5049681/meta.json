@@ -1,0 +1,10 @@
+{
+ "id": "castella-de-aguada-q5049681",
+ "lat": 19.04177,
+ "lon": 72.81858,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:32:36.550Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

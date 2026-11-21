@@ -1,0 +1,10 @@
+{
+ "id": "orchha",
+ "lat": 25.350556,
+ "lon": 78.644167,
+ "radiusM": 1500,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-11T03:54:13.327Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

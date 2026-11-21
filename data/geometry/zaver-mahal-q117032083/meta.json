@@ -1,0 +1,10 @@
+{
+ "id": "zaver-mahal-q117032083",
+ "lat": 18.938357,
+ "lon": 72.824659,
+ "radiusM": 500,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:24:27.268Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

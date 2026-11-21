@@ -1,0 +1,10 @@
+{
+ "id": "herat-citadel",
+ "lat": 34.345833,
+ "lon": 62.188611,
+ "radiusM": 600,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:38:33.763Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

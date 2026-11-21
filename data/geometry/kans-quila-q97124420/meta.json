@@ -1,0 +1,10 @@
+{
+ "id": "kans-quila-q97124420",
+ "lat": 27.507778,
+ "lon": 77.682222,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:36:34.165Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

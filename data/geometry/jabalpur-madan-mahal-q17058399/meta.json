@@ -1,0 +1,10 @@
+{
+ "id": "jabalpur-madan-mahal-q17058399",
+ "lat": 23.148322,
+ "lon": 79.901573,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:34:16.518Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

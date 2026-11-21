@@ -1,0 +1,47 @@
+{
+ "site_id": "qutb-complex-q1074330",
+ "items": [
+  {
+   "file": "File:Plan of Qutb Complex Delhi India.jpg",
+   "role": "plan",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Plan_of_Qutb_Complex_Delhi_India.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "page": "https://commons.wikimedia.org/wiki/File%3APlan_of_Qutb_Complex_Delhi_India.jpg",
+   "licence": "No restrictions",
+   "licence_url": "https://www.flickr.com/commons/usage/",
+   "author": "Internet Archive Book Images",
+   "credit": "Image from page 371 of \"A handbook for travellers in India, Burma, and Ceylon .\" (1911)",
+   "date": "1911",
+   "description": "Identifier: handbooktravelle00john\nTitle: A handbook for travellers in India, Burma, and Ceylon .\nYear: 1911 (1910s)\nAuthors:  John Murray (Firm)\nSubjects:  India -- Guidebooks Burma -- Guidebooks Sri Lanka -- Guidebooks\nPublisher:  London : J. Murray Calcutta : Thacker, Spink, &amp; Co.\nContributing Library:  University of California Libraries\nDigitizing Sponsor:  MSN\nView Book Page: Book Viewer\n",
+   "width": 1492,
+   "height": 2040,
+   "bytes": 288374,
+   "mime": "image/jpeg",
+   "sha1": "81785d3b3b4c672e7ff21e7ae0b8a7100edebf37",
+   "retrieved": "2026-11-18",
+   "saved": "Plan_of_Qutb_Complex_Delhi_India.jpg",
+   "sha256": "b8fb2124557c83961b571f1d5be507bcbb14771137433b0ff18a946d7a079fbc",
+   "status": "downloaded"
+  },
+  {
+   "file": "File:1872 sketch of the plan of Qutb Minar and its ruins complex.jpg",
+   "role": "plan",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/1872_sketch_of_the_plan_of_Qutb_Minar_and_its_ruins_complex.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "page": "https://commons.wikimedia.org/wiki/File%3A1872_sketch_of_the_plan_of_Qutb_Minar_and_its_ruins_complex.jpg",
+   "licence": "Public domain",
+   "licence_url": "",
+   "author": "Henry Hardy Cole (1843-1916), Published in 1872",
+   "credit": "https://archive.org/stream/architectureofan00cole#page/n7/mode/2up",
+   "date": "2017-11-20 09:48:52",
+   "description": "Henry Cole's book page 25.\nThe complex is now a UNESCO world heritage site.",
+   "width": 2008,
+   "height": 1244,
+   "bytes": 259045,
+   "mime": "image/jpeg",
+   "sha1": "e6555838c3336f8bac79de07fab5eeb97de17203",
+   "retrieved": "2026-11-18",
+   "saved": "1872_sketch_of_the_plan_of_Qutb_Minar_and_its_ruins_complex.jpg",
+   "sha256": "27565d992a4a18de21a72ae9e643e4a3ac059b080fd79643720353064974b28e",
+   "status": "downloaded"
+  }
+ ]
+}

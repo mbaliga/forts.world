@@ -1,0 +1,10 @@
+{
+ "id": "ghosalegad-fort-q24950067",
+ "lat": 18.364069,
+ "lon": 73.091156,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:30:02.737Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

@@ -1,0 +1,10 @@
+{
+ "id": "islam-garh-fort-q97014618",
+ "lat": 27.855,
+ "lon": 70.807778,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-18T03:50:57.764Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

@@ -1,0 +1,10 @@
+{
+ "id": "ek-khamba-mahal-q97946384",
+ "lat": 22.340767,
+ "lon": 75.39555,
+ "radiusM": 400,
+ "osm": false,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:36:07.480Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

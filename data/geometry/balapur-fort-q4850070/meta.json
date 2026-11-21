@@ -1,0 +1,10 @@
+{
+ "id": "balapur-fort-q4850070",
+ "lat": 20.670256,
+ "lon": 76.773697,
+ "radiusM": 500,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:33:08.880Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

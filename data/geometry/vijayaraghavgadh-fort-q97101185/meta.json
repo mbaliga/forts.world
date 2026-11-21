@@ -1,0 +1,10 @@
+{
+ "id": "vijayaraghavgadh-fort-q97101185",
+ "lat": 23.989444,
+ "lon": 80.605556,
+ "radiusM": 1000,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:25:07.086Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

@@ -1,0 +1,10 @@
+{
+ "id": "birwadi-fort-q24943477",
+ "lat": 18.424461,
+ "lon": 73.041311,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:37:14.747Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

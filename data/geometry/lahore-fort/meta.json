@@ -1,0 +1,10 @@
+{
+ "id": "lahore-fort",
+ "lat": 31.590278,
+ "lon": 74.309722,
+ "radiusM": 1000,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-11T03:48:54.140Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

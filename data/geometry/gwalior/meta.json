@@ -1,0 +1,10 @@
+{
+ "id": "gwalior",
+ "lat": 26.23,
+ "lon": 78.169,
+ "radiusM": 2400,
+ "osm": true,
+ "tiles": 30,
+ "fetched": "2026-11-04T03:56:16.830Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

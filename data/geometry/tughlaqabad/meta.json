@@ -1,0 +1,10 @@
+{
+ "id": "tughlaqabad",
+ "lat": 28.514614,
+ "lon": 77.259971,
+ "radiusM": 2000,
+ "osm": true,
+ "tiles": 25,
+ "fetched": "2026-11-11T03:56:04.795Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

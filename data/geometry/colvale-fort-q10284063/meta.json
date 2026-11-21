@@ -1,0 +1,10 @@
+{
+ "id": "colvale-fort-q10284063",
+ "lat": 15.619722,
+ "lon": 73.829722,
+ "radiusM": 500,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:45:20.293Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

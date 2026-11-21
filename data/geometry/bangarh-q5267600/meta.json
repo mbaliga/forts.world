@@ -1,0 +1,10 @@
+{
+ "id": "bangarh-q5267600",
+ "lat": 25.413317,
+ "lon": 88.530319,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-16T23:02:56.044Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

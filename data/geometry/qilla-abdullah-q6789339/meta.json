@@ -1,0 +1,10 @@
+{
+ "id": "qilla-abdullah-q6789339",
+ "lat": 30.701389,
+ "lon": 68.359722,
+ "radiusM": 500,
+ "osm": false,
+ "tiles": 4,
+ "fetched": "2026-11-11T04:03:18.673Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

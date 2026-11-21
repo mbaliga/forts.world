@@ -1,0 +1,10 @@
+{
+ "id": "mahim-fort-q3633207",
+ "lat": 19.039848,
+ "lon": 72.837768,
+ "radiusM": 600,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-11T03:53:23.027Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

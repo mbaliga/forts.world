@@ -1,0 +1,10 @@
+{
+ "id": "qila-mubarak-patiala",
+ "lat": 30.324187,
+ "lon": 76.403083,
+ "radiusM": 500,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:37:32.435Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

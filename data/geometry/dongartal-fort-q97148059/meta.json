@@ -1,0 +1,10 @@
+{
+ "id": "dongartal-fort-q97148059",
+ "lat": 21.604113,
+ "lon": 79.348868,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-16T23:03:28.460Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

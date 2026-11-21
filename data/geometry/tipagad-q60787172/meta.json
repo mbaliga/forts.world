@@ -1,0 +1,10 @@
+{
+ "id": "tipagad-q60787172",
+ "lat": 20.489833,
+ "lon": 80.528931,
+ "radiusM": 600,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:29:40.575Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

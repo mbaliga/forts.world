@@ -1,0 +1,10 @@
+{
+ "id": "munger-fort-q12062183",
+ "lat": 25.3803,
+ "lon": 86.4658,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-14T18:43:10.073Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

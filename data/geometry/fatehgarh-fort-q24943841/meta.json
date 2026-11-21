@@ -1,0 +1,12 @@
+{
+ "id": "fatehgarh-fort-q24943841",
+ "lat": 26.13207,
+ "lon": 75.02699,
+ "radiusM": 600,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:41:12.838Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs",
+ "osmRefetched": "2026-11-18T10:27:40.568Z",
+ "osmRefetchNote": "first fetch (2026-11-14T18:41:12.838Z) returned no OSM data; OSM re-fetched with the same query and radius, terrain tiles unchanged"
+}

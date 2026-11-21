@@ -1,0 +1,10 @@
+{
+ "id": "rasalgad-q24950082",
+ "lat": 17.764747,
+ "lon": 73.511555,
+ "radiusM": 500,
+ "osm": true,
+ "tiles": 2,
+ "fetched": "2026-11-14T18:34:50.736Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

@@ -1,0 +1,10 @@
+{
+ "id": "hajiganj",
+ "lat": 23.63341,
+ "lon": 90.51284,
+ "radiusM": 700,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-11T03:55:44.299Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

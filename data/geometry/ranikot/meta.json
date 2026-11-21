@@ -1,0 +1,10 @@
+{
+ "id": "ranikot",
+ "lat": 25.883056,
+ "lon": 67.932222,
+ "radiusM": 1000,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-11T04:15:01.879Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}
