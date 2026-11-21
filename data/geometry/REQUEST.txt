@@ -1,0 +1,12 @@
+pavagadh:1800,rohtas-pk:1500,amer:900,takht-i-bahi-q117623:400,bhadra-fort-q3544561:300,gagron:600,sirkap-q1340954:700,dharmarajika-stupa-q5269314:500,shalamar-gardens-q499527:500,jantar-mantar-q508634:350
+sigiriya:1500
+nanded-fort-q96394830:800,phillaur-fort-q56236008:600,rajgad:1500,salher:1200,tipagad-q60787172:600,vijaygarh-fort-q97692160:800,anchuthengu-fort-q4752774:500,gawilghur-fort-q932562:1500,kothaligad-q6433988:700,lakhpat-fort-q98871090:600
+nagardhan-fort-q97340396:1000
+chomu-fort-q97119534:600,chanki-fort-q18916065:600,citadel-of-ghazni-q58295438:600,chisapani-gadhi-q104814295:500,chokkanatha-nayak-palace-q5104236:400,herat-citadel:600,chaiturgarh-fort-q5068137:800,chaugan-fort-q97101217:500,churangarh-fort-q97147394:600,colvale-fort-q10284063:500
+jalore-fort-q98915208:800,kishangarh-fort-jaisalmer-q140478848:700,madhavagadh-fort-q97101388:700,rabdentse-q1244570:700,surat-castle-q28153959:700,avchitgad-q4827896:700,ballal-dhipi-q56380554:700,chandrapur-fort-wall-q97147923:1500,dongartal-fort-q97148059:700,gulganj-fort-q97101031:700
+humayun-s-tomb-q189648:800,jabalpur-madan-mahal-q17058399:800,krishnagiri-fort-q6437519:800,naukot-fort-q30594659:800,khetri-fort-q110749731:800,kans-quila-q97124420:800,birwadi-fort-q24943477:800,baghsar-fort-q4841911:800,chandragad-q13117071:800,fort-emmanuel-q18355920:800
+akhnoor-fort-q15178737:900,chandragiri:1200,kandhar-nanded:800,narnala-fort-x-ambar-mahal-q97158988:1300,golconda:1800
+fort-dansborg-q11964733:300,ishvara-temple-arasikere-q6080700:400,lohagarh:1000,obelisk-monuments-and-fort-walls-near-the-breach-q97440985:500,rasalgad-q24950082:500,uparkot:600,yameshwar-temple-q3517635:400,ajaigarh:1200,durg-mandalgarh-q140982232:1000,ganjam-fort-q60398686:600
+pathri-fort-q97142894:700,raisen:1200,sabalgarh-fort-q12455517:700,akola-fort-q4701516:700,bharatgad-q55605342:700,chikkajala-q5097447:700,dhar-durg-q97101060:700,gohad-fort-q5577562:700,kurumbera-fort-q6447400:700,madhugiri-fort-q97441101:700
+ghosalegad-fort-q24950067:800,jalpaiguri-rajbati-q67009688:900,moti-mahal-q98927684:900,parola-fort-q97142808:800,shergarh-fort-q97119184:800,royal-palace-of-kandy-q3273212:900,antur-fort-q24908268:800,chandraketugarh-q5071385:800,firoz-shah-palace-complex-q5452165:900,kanthkot-fort-q13218267:800
+umred-fort-q97142824:1200,talagad-q19807538:1500,raichur:2200

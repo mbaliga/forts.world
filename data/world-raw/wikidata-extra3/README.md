@@ -1,0 +1,3 @@
+# wikidata-extra3
+
+World Heritage items (P757) whose English label or description calls them fortified (fort, fortress, fortified, citadel, castle, walled, kasbah, ksar, rampart, stronghold) and that the class pull (wikidata/, wikidata-extra*/) did not hold, fetched 2026-11-18 from the Wikidata Query Service (CC0). Serial sites (one record for many places), parks, gardens, churches without fortification, city-wide records and records already in the table under another item (Elvas Fortress, Castelgrande, Fortress of Baku, Cetățuia and Blidaru) were left out by hand. Same row format as wikidata/.

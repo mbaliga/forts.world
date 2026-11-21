@@ -1,0 +1,10 @@
+{
+ "id": "garh-doul-q17053389",
+ "lat": 26.646111,
+ "lon": 92.755278,
+ "radiusM": 900,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:30:51.549Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

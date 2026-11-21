@@ -1,0 +1,47 @@
+# Fort San Pedro
+
+> Philippines · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `fort-san-pedro-q1472845` |
+| Coordinates | 10.29253, 123.90586 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/10.29253/123.90586)) |
+| Wikidata | [Q1472845](https://www.wikidata.org/wiki/Q1472845) (CC0) |
+| Wikidata class | fort |
+| Types | fort\|military museum |
+| Administrative area | Cebu City |
+| Inception | 1565 |
+| Wikipedia language editions | 12 |
+| OSM `historic` | fort |
+
+## What the model contains
+
+Tier **T1**, status `outline-only`, 255 elements (outline 1, marker 23, road 128, coastline 2, building 92, zone 5, retaining-wall 3, water 1).
+
+Evidence: documented 0, mapped 255, inferred 0, derived 1; heights documented 7, inferred 0, unknown 88.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:relation/4674040 historic=fort 4 m from ledger point
+- origin moved 9 m from the ledger point to the outline centroid
+- sea-0: DEM check ok {"cells":362,"medianInside":3.4,"medianOutside":5.5}
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/10.29253/123.90586) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=fort; fort\|military museum; sitelinks=12; wikidata:Q1472845 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline-only, 255 elements); data/traces/fort-san-pedro-q1472845.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/philippines.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

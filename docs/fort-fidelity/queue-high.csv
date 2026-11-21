@@ -1,0 +1,456 @@
+order,site_id,name,type,country,region,significance_rank,ledger_batch,ledger_status,tier_reached,evidence_state
+1,agra-fort,Agra Fort,fort,India,Uttar Pradesh,1,20,todo,,untouched
+2,fatehpur-sikri,Fatehpur Sikri,fort,India,Uttar Pradesh,2,21,todo,,untouched
+3,pavagadh,Champaner-Pavagadh,fort,India,Gujarat,3,11,todo,,untouched
+4,rani-ki-vav,Rani ki Vav,stepwell,India,Gujarat,4,29,todo,,untouched
+5,amer,Amer,fort,India,Rajasthan,5,18,todo,,untouched
+6,rohtas-pk,Rohtas Fort,fort,Pakistan,Punjab,6,18,todo,,untouched
+7,sigiriya,Sigiriya,fort,Sri Lanka,Central,7,4,todo,,untouched
+8,kumbhalgarh,Kumbhalgarh,fort,India,Rajasthan,8,3,todo,,untouched
+9,chittorgarh,Chittorgarh,fort,India,Rajasthan,9,2,todo,,untouched
+10,lahore-fort,Lahore Fort (Shahi Qila),fort,Pakistan,Punjab,10,18,todo,,untouched
+11,hampi-q26732,Hampi,fort,India,Vijayanagara District,11,29,todo,,untouched
+12,nalanda-mahavihara-q216243,Nalanda Mahavihara,monastery-university,India,Nalanda,12,29,todo,,untouched
+13,jaisalmer,Jaisalmer,fort,India,Rajasthan,13,2,todo,,untouched
+14,ranthambore,Ranthambore,fort,India,Rajasthan,14,27,todo,,untouched
+15,ajanta-caves-q184427,Ajanta Caves,temple,India,Aurangabad district,15,29,todo,,untouched
+16,bhadra-fort-q3544561,Bhadra Fort,fort,India,Ahmedabad Municipal Corporation,16,29,todo,,untouched
+17,ellora-caves-q189616,Ellora Caves,archaeological-site,India,Aurangabad district,17,30,todo,,untouched
+18,humayun-s-tomb-q189648,Humayun's Tomb,tomb,India,Jangpura tehsil,18,30,todo,,untouched
+19,jantar-mantar-q508634,Jantar Mantar,fort,India,Jaipur,19,30,todo,,untouched
+20,red-fort-q45957,Red Fort,fort,India,Chandni Chowk tehsil,20,30,todo,,untouched
+21,taj-mahal-q9141,Taj Mahal,tomb,India,Uttar Pradesh,21,30,todo,,untouched
+22,bhimbetka-rock-shelters-q331603,Bhimbetka rock shelters,archaeological-site,India,Raisen district,22,31,todo,,untouched
+23,pattadakal,Pattadakal monument group,temple,India,Karnataka,23,31,todo,,untouched
+24,elephanta-caves-q649384,Elephanta Caves,other-heritage,India,Raigad district,24,31,todo,,untouched
+25,gagron,Gagron,fort,India,Rajasthan,25,26,todo,,untouched
+26,sanchi-q181123,Sanchi,other-heritage,India,Raisen district,26,31,todo,,untouched
+27,dholavira-q9468,Dholavira,archaeological-site,India,Bhachau Taluka,27,31,todo,,untouched
+28,great-bath-mohenjo-daro-q3346415,"Great Bath, Mohenjo-daro",ancient-city,Pakistan,Sindh,28,32,todo,,untouched
+29,royal-thai-monastery-lumbini-nepal-q13020937,Royal Thai Monastery Lumbini Nepal,monastery-university,Nepal,Nepal,29,32,todo,,untouched
+30,site-q305044,पहाडपुर,monastery-university,Bangladesh,Badalgachhi Upazila,30,32,todo,,untouched
+31,buddhas-of-bamiyan-q484458,Buddhas of Bamiyan,archaeological-site,Afghanistan,Bamyan Province,31,32,todo,,untouched
+32,mahabodhi-temple-q4513,Mahabodhi Temple,temple,India,Bodh Gaya,32,32,todo,,untouched
+33,minaret-of-jam-q192981,Minaret of Jam,archaeological-site,Afghanistan,Shahrak District,33,33,todo,,untouched
+34,royal-palace-of-kandy-q3273212,Royal Palace of Kandy,palace,Sri Lanka,Kandy,34,33,todo,,untouched
+35,sarnath-q324394,Sarnath,monastery-university,India,Varanasi district,35,33,todo,,untouched
+36,ramappa-temple-q3380656,Ramappa Temple,temple,India,Mulugu district,36,33,todo,,untouched
+37,qutb-complex-q1074330,Qutb complex,other-heritage,India,Mehrauli tehsil,37,33,todo,,untouched
+38,convocation-hall-university-of-mumbai-q97149899,"Convocation Hall, University of Mumbai",fort,India,Mumbai City district,38,34,todo,,untouched
+39,polonnaruwa-q394443,Polonnaruwa,ancient-city,Sri Lanka,North Central Province,43,35,todo,,untouched
+40,galle,Galle Fort,fort,Sri Lanka,Southern,50,8,todo,,untouched
+41,shalamar-gardens-q499527,Shalamar Gardens,fort,Pakistan,Lahore,54,37,todo,,untouched
+42,takht-i-bahi-q117623,Takht-i-Bahi,fort,Pakistan,Takht Bhai Tehsil,55,37,todo,,untouched
+43,boudhanath-q889902,Boudhanath,temple,Nepal,Kathmandu,56,37,todo,,untouched
+44,great-living-chola-temples-q695229,Great Living Chola Temples,temple,India,Tamil Nadu,59,38,todo,,untouched
+45,pashupatinath-temple-q380384,Pashupatinath Temple,temple,Nepal,Kathmandu,60,38,todo,,untouched
+46,santiniketan-q1026431,Santiniketan,other-heritage,India,Bolpur,64,39,todo,,untouched
+47,dambulla-cave-temple-q45690,Dambulla cave temple,temple,Sri Lanka,Matale District,71,40,todo,,untouched
+48,chaturbhuj-temple-khajuraho-q5087986,"Chaturbhuj Temple, Khajuraho",temple,India,Chhatarpur district,76,41,todo,,untouched
+49,changu-narayan-temple-q1062150,Changu Narayan Temple,temple,Nepal,Bhaktapur District,85,43,todo,,untouched
+50,group-of-monuments-at-mahabalipuram-q3522747,Group of monuments at Mahabalipuram,temple,India,"Tamil Nadu State, Chingleput District",90,44,todo,,untouched
+51,sirkap-q1340954,Sirkap,archaeological-site,Pakistan,Punjab,93,44,todo,,untouched
+52,churches-and-convents-of-goa-q15726428,Churches and Convents of Goa,other-heritage,India,Goa,95,45,todo,,untouched
+53,dharmarajika-stupa-q5269314,Dharmarajika Stupa,archaeological-site,Pakistan,Taxila Cantonment,97,45,todo,,untouched
+54,historic-city-of-ahmadabad-q5472448,Historic City of Ahmadabad,other-heritage,India,Ahmedabad,102,46,todo,,untouched
+55,jandial-q28163477,Jandial,temple,Pakistan,Taxila,105,47,todo,,untouched
+56,taxila-jaulian-q82076030,Taxila - Jaulian,temple,Pakistan,Taxila,108,47,todo,,untouched
+57,bhir-mound-q854989,Bhir Mound,archaeological-site,Pakistan,Punjab,109,47,todo,,untouched
+58,mohra-muradu-q938223,Mohra Muradu,temple,Pakistan,Punjab,110,48,todo,,untouched
+59,giri-complex-of-monuments-q66134819,Giri complex of monuments,tomb,Pakistan,Islamabad capital territory,114,48,todo,,untouched
+60,khanpur-cave-q66134639,Khanpur Cave,archaeological-site,Pakistan,,117,49,todo,,untouched
+61,sirsukh-q938289,Sirsukh,archaeological-site,Pakistan,Punjab,121,50,todo,,untouched
+62,historical-monuments-at-makli-thatta-q10332177,"Historical Monuments at Makli, Thatta",other-heritage,Pakistan,Thatta District,132,52,todo,,untouched
+63,mehrangarh,Mehrangarh,fort,India,Rajasthan,183,3,todo,,untouched
+64,raigad,Raigad,fort,India,Maharashtra,185,15,todo,,untouched
+65,gwalior,Gwalior,fort,India,Madhya Pradesh,186,1,todo,T1,untouched
+66,kalinjar,Kalinjar,fort,India,Uttar Pradesh,193,21,todo,,untouched
+67,purana-qila,"Purana Qila, Delhi",fort,India,Delhi,204,11,todo,,untouched
+68,shivneri,Shivneri,fort,India,Maharashtra,205,16,todo,,untouched
+69,nahargarh,Nahargarh,fort,India,Rajasthan,206,27,todo,,untouched
+70,tughlaqabad,Tughlaqabad,fort,India,Delhi,207,22,todo,,untouched
+71,murud-janjira,Murud-Janjira,fort,India,Maharashtra,208,2,todo,,untouched
+72,qila-mubarak-bathinda,"Qila Mubarak, Bathinda",fort,India,Punjab,209,18,todo,,untouched
+73,allahabad-fort,Allahabad Fort,fort,India,Uttar Pradesh,210,20,todo,,untouched
+74,bidar,Bidar,fort,India,Karnataka,211,22,todo,,untouched
+75,gingee,Gingee,fort,India,Tamil Nadu,212,3,todo,,untouched
+76,rajgad,Rajgad,fort,India,Maharashtra,213,15,todo,,untouched
+77,rohtasgarh,Rohtasgarh,fort,India,Bihar,214,10,todo,,untouched
+78,sindhudurg,Sindhudurg,fort,India,Maharashtra,215,2,todo,,untouched
+79,st-angelo,St Angelo’s Fort,fort,India,Kerala,216,24,todo,,untouched
+80,vasai,Vasai (Bassein) Fort,fort,India,Maharashtra,217,16,todo,,untouched
+81,bekal,Bekal,fort,India,Kerala,218,23,todo,,untouched
+82,lohagad,Lohagad,fort,India,Maharashtra,219,25,todo,,untouched
+83,asirgarh,Asirgarh,fort,India,Madhya Pradesh,220,13,todo,,untouched
+84,aguada,"Fort Aguada, Goa",fort,India,Goa,221,1,needs-plan,T1,needs-plan
+85,kangra,Kangra,fort,India,Himachal Pradesh,222,12,todo,,untouched
+86,panhala,Panhala,fort,India,Maharashtra,223,14,todo,,untouched
+87,daulatabad,Daulatabad (Devagiri),fort,India,Maharashtra,224,2,todo,,untouched
+88,sinhagad,Sinhagad (Kondhana),fort,India,Maharashtra,226,16,todo,,untouched
+89,vellore,Vellore,fort,India,Tamil Nadu,227,28,todo,,untouched
+90,warangal,Warangal Fort,fort,India,Telangana,228,20,todo,,untouched
+91,orchha,Orchha,fort,India,Madhya Pradesh,229,14,todo,,untouched
+92,torna,Torna (Prachandagad),fort,India,Maharashtra,230,16,todo,,untouched
+93,lohagarh,"Lohagarh, Bharatpur",fort,India,Rajasthan,231,27,todo,,untouched
+94,salimgarh,"Salimgarh, Delhi",fort,India,Delhi,232,11,todo,,untouched
+95,chapora,Chapora,fort,India,Goa,233,1,needs-plan,T1,needs-plan
+96,derawar,Derawar,fort,Pakistan,Punjab (Cholistan),234,7,todo,,untouched
+97,dindigul,Dindigul,fort,India,Tamil Nadu,235,19,todo,,untouched
+98,diu,Diu Fort,fort,India,Dadra and Nagar Haveli and Daman and Diu,236,10,todo,,untouched
+99,palakkad,Palakkad (Tipu's Fort),fort,India,Kerala,237,24,todo,,untouched
+100,udgir,Udgir,fort,India,Maharashtra,238,26,todo,,untouched
+101,barabati,"Barabati, Cuttack",fort,India,Odisha,240,17,todo,,untouched
+102,gulbarga,Gulbarga (Kalaburagi),fort,India,Karnataka,241,22,todo,,untouched
+103,jhansi,Jhansi,fort,India,Uttar Pradesh,242,21,todo,,untouched
+104,kareng-ghar,"Kareng Ghar, Garhgaon",fort,India,Assam,243,10,todo,,untouched
+105,kondapalli,Kondapalli,fort,India,Andhra Pradesh,244,9,todo,,untouched
+106,naldurg,Naldurg,fort,India,Maharashtra,245,25,todo,,untouched
+107,vijaydurg,Vijaydurg,fort,India,Maharashtra,247,26,todo,,untouched
+108,bhatner,"Bhatner, Hanumangarh",fort,India,Rajasthan,248,19,todo,,untouched
+109,chanderi,Chanderi,fort,India,Madhya Pradesh,249,13,todo,,untouched
+110,harappa-q185562,Harappa,archaeological-site,Pakistan,Sahiwal District,250,66,todo,,untouched
+111,korlai,Korlai,fort,India,Maharashtra,252,25,todo,,untouched
+112,narwar,Narwar,fort,India,Madhya Pradesh,253,14,todo,,untouched
+113,parenda,Parenda,fort,India,Maharashtra,254,25,todo,,untouched
+114,raichur,Raichur,fort,India,Karnataka,255,23,todo,,untouched
+115,cabo-de-rama,"Cabo de Rama, Goa",fort,India,Goa,256,1,needs-plan,T1,needs-plan
+116,chunar,Chunar,fort,India,Uttar Pradesh,257,21,todo,,untouched
+117,gooty,Gooty,fort,India,Andhra Pradesh,258,9,todo,,untouched
+118,kandhar-nanded,Kandhar,fort,India,Maharashtra,259,24,todo,,untouched
+119,lalbagh,"Lalbagh Fort, Dhaka",fort,Bangladesh,Dhaka,260,11,todo,,untouched
+120,ranikot,Ranikot,fort,Pakistan,Sindh,261,8,todo,,untouched
+121,thirumayam,Thirumayam,fort,India,Tamil Nadu,263,28,todo,,untouched
+122,bahu,"Bahu Fort, Jammu",fort,India,Jammu and Kashmir,264,12,todo,,untouched
+123,hari-parbat,"Hari Parbat, Srinagar",fort,India,Jammu and Kashmir,265,12,todo,,untouched
+124,reis-magos,Reis Magos,fort,India,Goa,267,1,needs-plan,T1,needs-plan
+125,chandragiri,Chandragiri,fort,India,Andhra Pradesh,268,8,todo,,untouched
+126,chitradurga,Chitradurga,fort,India,Karnataka,269,22,todo,,untouched
+127,gandikota,Gandikota,fort,India,Andhra Pradesh,270,9,todo,,untouched
+128,golconda,Golconda,fort,India,Telangana,271,3,todo,,untouched
+129,mehrgarh-q242148,Mehrgarh,archaeological-site,Pakistan,Dhadar,272,66,todo,,untouched
+130,penukonda,Penukonda,fort,India,Andhra Pradesh,273,9,todo,,untouched
+131,raisen,Raisen,fort,India,Madhya Pradesh,274,14,todo,,untouched
+132,attock,Attock Fort,fort,Pakistan,Punjab,279,17,todo,,untouched
+133,baltit,"Baltit Fort, Hunza",fort,Pakistan,Gilgit-Baltistan,281,5,todo,,untouched
+134,khanderi,Khanderi,fort,India,Maharashtra,290,24,todo,,untouched
+135,pratapgad,Pratapgad,fort,India,Maharashtra,292,15,todo,,untouched
+136,bhangarh-fort-q15061692,Bhangarh Fort,fort,India,Alwar district,294,69,todo,,untouched
+137,nuwakot,Nuwakot Durbar,fort,Nepal,Bagmati,297,4,todo,,untouched
+138,salher,Salher,fort,India,Maharashtra,299,15,todo,,untouched
+139,kot-diji,Kot Diji Fort,fort,Pakistan,Sindh,303,7,todo,,untouched
+140,shaniwar-wada-q1351060,Shaniwar Wada,fort,India,Pune,304,70,todo,,untouched
+141,revdanda,Revdanda (Chaul),fort,India,Maharashtra,310,25,todo,,untouched
+142,gorkha,Gorkha Durbar,fort,Nepal,Gandaki,314,4,todo,,untouched
+143,nagarjunakonda-q749108,Nagarjunakonda,fort,India,Guntur district,317,73,todo,,untouched
+144,rabdentse-q1244570,Rabdentse,fort,India,Gyalshing district,323,74,todo,,untouched
+145,mahim-fort-q3633207,Mahim Fort,fort,India,Mumbai City district,328,75,todo,,untouched
+146,pallipuram-fort-q3595357,Pallipuram Fort,fort,India,Kerala,330,75,todo,,untouched
+147,akhnoor-fort-q15178737,Akhnoor Fort,fort,India,Akhnoor,331,75,todo,,untouched
+148,arnala-fort-q3778583,Arnala Fort,fort,India,Palghar district,332,75,todo,,untouched
+149,bhismaknagar-ruins-q18177128,Bhismaknagar ruins,fort,India,Lower Dibang Valley district,333,76,todo,,untouched
+150,chandragiri-fort-q3520635,Chandragiri Fort,fort,India,Kerala,335,76,todo,,untouched
+151,gawilghur-fort-q932562,Gawilghur Fort,fort,India,Amravati district,336,76,todo,,untouched
+152,siri-fort-q12069185,Siri Fort,fort,India,South Delhi district,345,78,todo,,untouched
+153,feroz-shah-kotla-q1187568,Feroz Shah Kotla,fort,India,Jangpura tehsil,351,79,todo,,untouched
+154,st-thomas-fort-q7595554,St Thomas Fort,fort,India,Kerala,355,80,todo,,untouched
+155,anchuthengu-fort-q4752774,Anchuthengu Fort,fort,India,Thiruvananthapuram district,359,81,todo,,untouched
+156,castella-de-aguada-q5049681,Castella de Aguada,fort,India,Mumbai Suburban district,361,81,todo,,untouched
+157,chandraketugarh-q5071385,Chandraketugarh,fort,India,Deganga community development block,363,82,todo,,untouched
+158,devanahalli-fort-q5266481,Devanahalli Fort,fort,India,Bengaluru Urban district,367,82,todo,,untouched
+159,konda-reddy-fort-q17986877,Konda Reddy Fort,fort,India,Kurnool district,368,83,todo,,untouched
+160,riwa-fort-q7338999,Riwa Fort,fort,India,Mumbai City district,370,83,todo,,untouched
+161,thirumalai-nayakkar-mahal-q3536592,Thirumalai Nayakkar Mahal,palace,India,Madurai district,374,84,todo,,untouched
+162,akola-fort-q4701516,Akola Fort,fort,India,Akola district,376,84,todo,,untouched
+163,bala-hisar-peshawar,"Bala Hisar, Peshawar",fort,Pakistan,Khyber Pakhtunkhwa,379,6,todo,,untouched
+164,buxa-fort-q5003231,Buxa Fort,fort,India,Kalchini community development block,380,85,todo,,untouched
+165,chikkajala-q5097447,Chikkajala,fort,India,Bengaluru Urban district,381,85,todo,,untouched
+166,mahuli-fort-q97309169,Mahuli Fort,fort,India,Thane district,387,86,todo,,untouched
+167,visapur-fort-q14238582,Visapur Fort,fort,India,Pune district,395,88,todo,,untouched
+168,attur-fort-q15193894,Attur Fort,fort,India,Salem district,400,89,todo,,untouched
+169,ghosalegad-fort-q24950067,Ghosalegad Fort,fort,India,Raigad district,403,89,todo,,untouched
+170,janaki-mandir-q3161830,Janaki Mandir,temple,Nepal,Janakpurdham,406,90,todo,,untouched
+171,narnala-fort-x-ambar-mahal-q97158988,Narnala Fort: x. Ambar Mahal,palace,India,Akola district,413,91,todo,,untouched
+172,raibania-fort-q7283696,Raibania Fort,fort,India,Balasore district,415,92,todo,,untouched
+173,ramnagar-fort-q17085981,Ramnagar Fort,fort,India,Udhampur district,416,92,todo,,untouched
+174,tellicherry-fort-q3523380,Tellicherry Fort,fort,India,Kerala,419,92,todo,,untouched
+175,thanjavur-maratha-palace-q7710416,Thanjavur Maratha Palace,fort,India,Thanjavur district,420,93,todo,,untouched
+176,vattakottai-fort-q7917189,Vattakottai Fort,fort,India,Kanniyakumari district,423,93,todo,,untouched
+177,alamparai-fort-q468734,Alamparai Fort,fort,India,Chengalpattu district,424,93,todo,,untouched
+178,antur-fort-q24908268,Antur Fort,fort,India,Kannad taluka,425,94,todo,,untouched
+179,avchitgad-q4827896,Avchitgad,fort,India,Raigad district,427,94,todo,,untouched
+180,bangarh-q5267600,Bangarh,fort,India,Gangarampur,428,94,todo,,untouched
+181,chandravalli-q5071474,Chandravalli,fort,India,Chitradurga,430,95,todo,,untouched
+182,deeg-palace-q5249990,Deeg Palace,palace,India,Deeg,433,95,todo,,untouched
+183,kothaligad-q6433988,Kothaligad,fort,India,Raigad district,439,96,todo,,untouched
+184,krishnagiri-fort-q6437519,Krishnagiri Fort,fort,India,Krishnagiri district,440,97,todo,,untouched
+185,mahur-fort-q96391538,Mahur Fort,fort,India,Nanded district,444,97,todo,,untouched
+186,malegaon-fort-q38251139,Malegaon Fort,fort,India,Nashik district,445,98,todo,,untouched
+187,mughal-serai-q6932157,Mughal Serai,fort,India,Ludhiana district,447,98,todo,,untouched
+188,namakkal-fort-q15260872,Namakkal Fort,fort,India,Namakkal district,448,98,todo,,untouched
+189,new-palace-kolhapur-q7503478,"New Palace, Kolhapur",palace,India,Kolhapur,450,99,todo,,untouched
+190,shergarh-fort-q97119184,Shergarh Fort,fort,India,Rohtas district,457,100,todo,,untouched
+191,talagad-q19807538,Talagad,fort,India,Raigad district,460,101,todo,,untouched
+192,timangarh-fort-q7804561,Timangarh Fort,fort,India,Karauli district,462,101,todo,,untouched
+193,balapur-fort-q4850070,Balapur Fort,fort,India,Akola district,474,103,todo,,untouched
+194,ballal-dhipi-q56380554,Ballal Dhipi,fort,India,Nabadwip community development block,476,104,todo,,untouched
+195,bharatgad-q55605342,Bharatgad,fort,India,Sindhudurg district,478,104,todo,,untouched
+196,birwadi-fort-q24943477,Birwadi Fort,fort,India,Raigad district,480,105,todo,,untouched
+197,firoz-shah-palace-complex-q5452165,Firoz Shah palace complex,palace,India,Hisar district,483,105,todo,,untouched
+198,garh-doul-q17053389,Garh Doul,fort,India,Sonitpur district,484,105,todo,,untouched
+199,gohad-fort-q5577562,Gohad Fort,fort,India,Bhind district,485,106,todo,,untouched
+200,jabalpur-madan-mahal-q17058399,Jabalpur Madan Mahal,palace,India,Jabalpur district,489,106,todo,,untouched
+201,jagjivanpur-q6122662,Jagjivanpur,fort,India,Habibpur community development block,490,107,todo,,untouched
+202,kanthkot-fort-q13218267,Kanthkot Fort,fort,India,Bhachau Taluka,491,107,todo,,untouched
+203,korigad-q378531,Korigad,fort,India,Pune district,493,107,todo,,untouched
+204,kurumbera-fort-q6447400,Kurumbera Fort,fort,India,Keshiari community development block,495,108,todo,,untouched
+205,madikeri-fort-q6727744,Madikeri Fort,fort,India,Kodagu district,496,108,todo,,untouched
+206,manjarabad-fort-q24951959,Manjarabad Fort,fort,India,Hassan district,497,108,todo,,untouched
+207,munger-fort-q12062183,Munger Fort,fort,India,Munger,498,108,todo,,untouched
+208,padmadurg-q7123842,Padmadurg,fort,India,Raigad district,501,109,todo,,untouched
+209,pandu-rajar-dhibi-q7130757,Pandu Rajar Dhibi,fort,India,Ausgram II community development block,502,109,todo,,untouched
+210,phillaur-fort-q56236008,Phillaur Fort,fort,India,Jalandhar District,503,109,todo,,untouched
+211,rajagiri-fort-q7285614,Rajagiri Fort,fort,India,Viluppuram district,505,110,todo,,untouched
+212,sabalgarh-fort-q12455517,Sabalgarh Fort,fort,India,Morena district,508,110,todo,,untouched
+213,shey-monastery-q4521832,Shey Monastery,palace,India,Leh district,510,111,todo,,untouched
+214,shirgaon-fort-q6493909,Shirgaon Fort,fort,India,Thane district,511,111,todo,,untouched
+215,surat-castle-q28153959,Surat Castle,fort,India,Gujarat,515,112,todo,,untouched
+216,chandragad-q13117071,Chandragad,fort,India,Raigad district,525,114,todo,,untouched
+217,datia-palace-q5227654,Datia Palace,palace,India,Datia district,526,114,todo,,untouched
+218,manora-fort-q13646574,Manora Fort,fort,India,Thanjavur district,547,118,todo,,untouched
+219,moti-mahal-q98927684,Moti Mahal,palace,India,Mandla district,548,118,todo,,untouched
+220,ranjankudi-fort-q12066895,Ranjankudi Fort,fort,India,Perambalur district,555,120,todo,,untouched
+221,rasalgad-q24950082,Rasalgad,fort,India,Ratnagiri district,556,120,todo,,untouched
+222,ratnagiri-fort-q113560234,Ratnagiri Fort,fort,India,Sri Sathya Sai district,557,120,todo,,untouched
+223,shahi-qila-q7461611,Shahi Qila,fort,India,Jaunpur district,559,120,todo,,untouched
+224,surgad-q20584360,Surgad,fort,India,Raigad district,563,121,todo,,untouched
+225,the-kachari-ruins-q7743925,The Kachari Ruins,fort,India,Dimapur district,565,122,todo,,untouched
+226,vairagad-fort-q60786586,Vairagad Fort,fort,India,Gadchiroli district,568,122,todo,,untouched
+227,adoni-fort-q17986860,Adoni Fort,fort,India,Kurnool district,570,123,todo,,untouched
+228,agroha-mound-q4694244,Agroha Mound,fort,India,Hisar district,572,123,todo,,untouched
+229,ausa-fort-q20639861,Ausa Fort,fort,India,Latur district,577,124,todo,,untouched
+230,budhanilkantha-temple-q1001415,Budhanilkantha Temple,temple,Nepal,Budhanilkantha,585,126,todo,,untouched
+231,fort-sadras-cemetery-q97479671,Fort Sadras Cemetery,fort,India,Sadras,590,127,todo,,untouched
+232,garh-palace-jhalawar-q130857616,"Garh Palace, Jhalawar",fort,India,Jhalawar district,592,127,todo,,untouched
+233,gulganj-fort-q97101031,Gulganj Fort,fort,India,Chhatarpur district,594,127,todo,,untouched
+234,kans-quila-q97124420,Kans Quila,fort,India,Mathura,606,130,todo,,untouched
+235,nagaur-fort-q97119606,Nagaur Fort,fort,India,Nagaur district,618,132,todo,,untouched
+236,nanded-fort-q96394830,Nanded Fort,fort,India,Nanded district,619,132,todo,,untouched
+237,rajgarh-fort-q97119406,Rajgarh Fort,fort,India,Alwar district,625,134,todo,,untouched
+238,rajpat-q56425578,Rajpat,fort,India,Dinhata I community development block,627,134,todo,,untouched
+239,rayakottai-fort-q97481100,Rayakottai Fort,fort,India,Krishnagiri district,629,134,todo,,untouched
+240,thiagadurgam-fort-q31379708,Thiagadurgam Fort,fort,India,Kallakurichi district,644,137,todo,,untouched
+241,adilabad-fort-q41651989,Adilabad Fort,fort,India,South East Delhi district,657,140,todo,,untouched
+242,ancient-mound-at-jajmau-q97124178,Ancient mound at Jajmau,fort,India,Kanpur Nagar District,660,141,todo,,untouched
+243,bardi-fort-q97101432,Bardi Fort,fort,India,Singrauli district,667,142,todo,,untouched
+244,bellamkonda-fort-q97016557,Bellamkonda Fort,fort,India,Guntur district,668,142,todo,,untouched
+245,bhudargarh-q97340184,Bhudargarh,fort,India,Kolhapur district,671,143,todo,,untouched
+246,chandrapur-fort-wall-q97147923,Chandrapur Fort Wall,fort,India,Chandrapur,673,143,todo,,untouched
+247,devra-ka-kila-q97100898,Devra ka Kila,fort,India,Chhatarpur district,681,145,todo,,untouched
+248,dhar-durg-q97101060,Dhar Durg,fort,India,Dhar district,682,145,todo,,untouched
+249,dongartal-fort-q97148059,Dongartal Fort,fort,India,Nagpur district,684,145,todo,,untouched
+250,excavated-site-in-chandor-q56458970,Excavated site in Chandor,fort,India,South Goa District,686,146,todo,,untouched
+251,fatehgarh-fort-q24943841,Fatehgarh Fort,fort,India,Ajmer district,687,146,todo,,untouched
+252,fort-q97945579,Fort,fort,India,Bhind district,689,146,todo,,untouched
+253,fort-dhamoni-q97946007,Fort Dhamoni,fort,India,Sagar district,690,147,todo,,untouched
+254,ganjam-fort-q60398686,Ganjam  Fort,fort,India,Ganjam district,691,147,todo,,untouched
+255,ghudsal-sheopur-fort-q97101425,Ghudsal Sheopur Fort,fort,India,Sheopur district,693,147,todo,,untouched
+256,great-tank-palace-and-harem-sarkhej-roza-q87788262,"Great Tank, Palace and Harem, Sarkhej Roza",palace,India,Ahmedabad district,695,148,todo,,untouched
+257,gurramkonda-mahal-q17284856,Gurramkonda Mahal,palace,India,Gurramkonda mandal,698,148,todo,,untouched
+258,hajiganj,Hajiganj Fort,fort,Bangladesh,Narayanganj,700,17,todo,,untouched
+259,hingalajgadh-durg-q97101204,Hingalajgadh Durg,fort,India,Mandsaur district,701,149,todo,,untouched
+260,khetri-fort-q110749731,Khetri Fort,fort,India,Jhunjhunu district,712,151,todo,,untouched
+261,kishangarh-fort-jaisalmer-q140478848,Kishangarh Fort Jaisalmer,fort,India,Jaisalmer district,713,151,todo,,untouched
+262,lakhpat-fort-q98871090,Lakhpat Fort,fort,India,Kutch district,717,152,todo,,untouched
+263,madhavagadh-fort-q97101388,Madhavagadh Fort,fort,India,Satna district,726,154,todo,,untouched
+264,madhugiri-fort-q97441101,Madhugiri Fort,fort,India,Tumkur district,727,154,todo,,untouched
+265,modpar-fort-q98871210,Modpar Fort,fort,India,Devbhumi Dwarka district,731,155,todo,,untouched
+266,nagardhan-fort-q97340396,Nagardhan Fort,fort,India,Nagpur district,733,155,todo,,untouched
+267,nizamat-fort-south-gate-q56380249,Nizamat Fort South Gate,fort,India,Murshidabad,739,156,todo,,untouched
+268,north-eastern-corner-of-the-outer-rampart-of-the-q97481267,North Eastern Corner Of The Outer Rampart Of The Old Fort At Arcot,fort,India,Ranipet district,740,156,todo,,untouched
+269,old-fort-and-temples-lanji-q116878170,"Old fort and temples, Lanji",fort,India,Balaghat district,741,157,todo,,untouched
+270,pauni-fort-bhandara-q97147875,"Pauni Fort, Bhandara",fort,India,Bhandara district,744,157,todo,,untouched
+271,pavagadh-fort-and-temples-q63323097,Pavagadh fort and temples,fort,India,Halol Taluka,745,157,todo,,untouched
+272,pratapagiri-fort-q97143063,Pratapagiri Fort,fort,India,Karimnagar district,746,158,todo,,untouched
+273,raja-vishal-ka-garh-q19343066,Raja Vishal ka Garh,fort,India,Vaishali district,747,158,todo,,untouched
+274,rangna-fort-q97142815,Rangna Fort,fort,India,Kolhapur district,750,158,todo,,untouched
+275,ratanpur-fort-q19633176,Ratanpur Fort,fort,India,Bilaspur district,753,159,todo,,untouched
+276,ruins-of-kattabomman-fort-q97144558,Ruins of Kattabomman Fort,fort,India,Thoothukudi district,754,159,todo,,untouched
+277,shergarh-fort-q97119488,Shergarh Fort,fort,India,Dholpur district,762,161,todo,,untouched
+278,shergarh-ka-kila-atru-q141120377,Shergarh Ka Kila Atru,fort,India,Baran district,763,161,todo,,untouched
+279,siddavatam-fort-q17351089,Siddavatam Fort,fort,India,YSR  Kadapa district,764,161,todo,,untouched
+280,siwana-fort-q97119434,Siwana Fort,fort,India,Siwana,767,162,todo,,untouched
+281,tipagad-q60787172,Tipagad,fort,India,Gadchiroli district,771,163,todo,,untouched
+282,udayagiri-fort-q18170624,Udayagiri Fort,fort,India,Udayagiri,776,164,todo,,untouched
+283,vijayaraghavgadh-fort-q97101185,Vijayaraghavgadh Fort,fort,India,Katni district,779,164,todo,,untouched
+284,vijaygarh-fort-q97692160,Vijaygarh Fort,fort,India,Sonbhadra district,780,164,todo,,untouched
+285,zanana-mahal-mandore-q140685051,Zanana Mahal Mandore,palace,India,Jodhpur district,782,165,todo,,untouched
+286,aadegaon-fort-q97101439,Aadegaon Fort,fort,India,Seoni district,783,165,todo,,untouched
+287,amin-ancient-mound-q59633533,Amin Ancient Mound,fort,India,Kurukshetra district,788,166,todo,,untouched
+288,ankai-tankai-fort-q97142876,Ankai- Tankai Fort,fort,India,Nashik district,790,166,todo,,untouched
+289,baradari-batala-q56404144,Baradari Batala,fort,India,Gurdaspur district,794,167,todo,,untouched
+290,buxar-mound-q18913471,Buxar Mound,fort,India,Buxar district,802,169,todo,,untouched
+291,chanki-fort-q18916065,Chanki Fort,fort,India,West Champaran district,803,169,todo,,untouched
+292,chomu-fort-q97119534,Chomu Fort,fort,India,Jaipur district,808,170,todo,,untouched
+293,darbargadh-halwad-q63347645,"Darbargadh, Halwad",palace,India,Halvad Taluka,810,170,todo,,untouched
+294,darbargarh-sihor-q62780505,"Darbargarh, Sihor",palace,India,Sihor Taluka,811,171,todo,,untouched
+295,dharur-fort-q97142771,Dharur Fort,fort,India,Beed district,816,172,todo,,untouched
+296,durg-mandalgarh-q140982232,Durg Mandalgarh,fort,India,Bhilwara district,818,172,todo,,untouched
+297,fort-q97147915,Fort,fort,India,Chandrapur district,821,173,todo,,untouched
+298,fort-deori-kalan-q97946005,Fort Deori Kalan,fort,India,Sagar district,822,173,todo,,untouched
+299,fort-of-fatehpur-q97119623,Fort of Fatehpur,fort,India,Sikar district,823,173,todo,,untouched
+300,fort-of-kushalgadh-q97101171,Fort of Kushalgadh,fort,India,Indore district,824,173,todo,,untouched
+301,fort-wall-q97147912,Fort Wall,fort,India,Chandrapur district,825,173,todo,,untouched
+302,indor-fort-q140571223,Indor Fort,fort,India,Alwar district,829,174,todo,,untouched
+303,jalore-fort-q98915208,Jalore Fort,fort,India,Jalore district,830,174,todo,,untouched
+304,jata-shankar-fort-q97945616,Jata Shankar Fort,fort,India,Damoh district,832,175,todo,,untouched
+305,jiran-ki-gadhi-q97101316,Jiran Ki Gadhi,fort,India,Neemuch district,834,175,todo,,untouched
+306,kelwara-fort-q141120051,Kelwara Fort,fort,India,Baran district,840,176,todo,,untouched
+307,kharda-fort-q97142727,Kharda Fort,fort,India,Ahilyanagar district,842,177,todo,,untouched
+308,madakasira-bastion-and-gateway-q17278418,Madakasira Bastion and Gateway,fort,India,Madakasira mandal,847,178,todo,,untouched
+309,mahu-mahal-q140698520,Mahu mahal,palace,India,Jhalawar district,850,178,todo,,untouched
+310,malhar-fort-q19633051,Malhar Fort,fort,India,Bilaspur district,851,179,todo,,untouched
+311,manjhi-ruins-q19343058,Manjhi Ruins,fort,India,Saran District,855,179,todo,,untouched
+312,palamau-fort-q134543326,Palamau Fort,fort,India,Alberto Tomba,863,181,todo,,untouched
+313,parola-fort-q97142808,Parola Fort,fort,India,Jalgaon district,866,182,todo,,untouched
+314,pathri-fort-q97142894,Pathri Fort,fort,India,Parbhani district,867,182,todo,,untouched
+315,rahatgarh-fort-moti-mahal-q98245740,Rahatgarh Fort: Moti Mahal,palace,India,Sagar district,869,182,todo,,untouched
+316,ruins-of-baradari-q41475053,Ruins of Baradari,fort,India,Sahebganj district,874,183,todo,,untouched
+317,sanodha-fort-q97101385,Sanodha Fort,fort,India,Sagar district,877,184,todo,,untouched
+318,satgarh-fort-q97946025,Satgarh Fort,fort,India,Sagar district,879,184,todo,,untouched
+319,sirohi-fort-q140620868,Sirohi Fort,fort,India,Sirohi district,881,185,todo,,untouched
+320,sojat-durg-q140621072,Sojat Durg,fort,India,Pali district,882,185,todo,,untouched
+321,thakur-chaman-singh-ki-gadhi-q97101197,Thakur Chaman Singh ki Gadhi,fort,India,Mandsaur district,889,186,todo,,untouched
+322,the-fortification-wall-q97119604,The Fortification wall,fort,India,Kota district,890,186,todo,,untouched
+323,umred-fort-q97142824,Umred Fort,fort,India,Nagpur district,895,187,todo,,untouched
+324,veerabhadra-temple-in-hangal-fort-q97440590,Veerabhadra temple in Hangal Fort,fort,India,Haveri district,899,188,todo,,untouched
+325,banbhore-q491993,Banbhore,archaeological-site,Pakistan,Thatta District,1164,241,todo,,untouched
+326,makwanpur,Makwanpur Gadhi,fort,Nepal,Bagmati,2504,3,todo,,untouched
+327,mahasthangarh-q3085127,Mahasthangarh,fort,Bangladesh,Bogura District,3178,644,todo,,untouched
+328,ranigat-q7293050,Ranigat,fort,Pakistan,Buner District,3179,644,todo,,untouched
+329,tomb-of-shah-rukn-e-alam-q15983527,Tomb of Shah Rukn-e-Alam,tomb,Pakistan,Multan,3180,644,todo,,untouched
+330,mattancherry-palace-q1267941,Mattancherry Palace,palace,India,Kerala,3192,644,todo,,untouched
+331,maya-devi-temple-q15238480,Maya Devi Temple,temple,Nepal,Lumbini,3193,645,todo,,untouched
+332,sheesh-mahal-q7492519,Sheesh Mahal,palace,Pakistan,Lahore,3210,645,todo,,untouched
+333,fort-emmanuel-q18355920,Fort Emmanuel,fort,India,Kerala,3211,645,todo,,untouched
+334,tomb-of-jahangir-q1678536,Tomb of Jahangir,tomb,Pakistan,Lahore,3212,646,todo,,untouched
+335,bajrayogini-temple-q4848945,Bajrayogini Temple,temple,Nepal,Kathmandu District,3233,646,todo,,untouched
+336,dhakeshwari-temple-q1207526,Dhakeshwari Temple,temple,Bangladesh,Dhaka,3237,647,todo,,untouched
+337,chanhu-daro-q1062208,Chāñhu-daro,archaeological-site,Pakistan,Sindh,3243,648,todo,,untouched
+338,madh-fort-q1883317,Madh Fort,fort,India,Mumbai Suburban district,3250,649,todo,,untouched
+339,buddha-dhatu-jadi-q4984151,Buddha Dhatu Jadi,temple,Bangladesh,Bandarban,3253,650,todo,,untouched
+340,manakamana-temple-q2385286,Manakamana Temple,temple,Nepal,Manakamana,3256,650,todo,,untouched
+341,alorna-fort-q10283773,Alorna Fort,fort,India,Pernem taluk,3260,651,todo,,untouched
+342,corjuem-fort-q5170732,Corjuem Fort,fort,India,Aldona,3261,651,todo,,untouched
+343,fort-anjediva-q5470736,Fort Anjediva,fort,India,Karwar,3263,652,todo,,untouched
+344,fort-st-anthony-of-simbor-q5472072,Fort St. Anthony of Simbor,fort,India,Diu district,3264,652,todo,,untouched
+345,noor-mahal-q2512526,Noor Mahal,palace,Pakistan,Bahawalpur,3268,653,todo,,untouched
+346,sharada-peeth-q3765487,Sharada Peeth,temple,Pakistan,Sharda,3269,653,todo,,untouched
+347,dronagiri-fort-q24950049,Dronagiri Fort द्रौणपुर रियासत,fort,India,Raigad district,3273,654,todo,,untouched
+348,kantajew-temple-q3347158,Kantajew Temple,temple,Bangladesh,Dinajpur District,3274,654,todo,,untouched
+349,pushkalavati-q625407,Pushkalavati,archaeological-site,Pakistan,Charsadda District,3276,654,todo,,untouched
+350,rachol-fort-q10283882,Rachol Fort,fort,India,Salcete taluk,3277,655,todo,,untouched
+351,tomb-of-allama-iqbal-q7818633,Tomb of Allama Iqbal,tomb,Pakistan,Lahore,3279,655,todo,,untouched
+352,mormugao-fort-q10283625,Mormugão Fort,fort,India,Mormugao,3284,656,todo,,untouched
+353,chandranath-temple-q857380,Chandranath Temple,temple,Bangladesh,Chittagong,3304,660,todo,,untouched
+354,delhi-gate-q2027173,Delhi Gate,fort,Pakistan,Lahore,3305,660,todo,,untouched
+355,fort-nanuz-q10283821,Fort Nanuz,fort,India,Valpoi,3306,660,todo,,untouched
+356,jalpaiguri-rajbati-q67009688,Jalpaiguri rajbati,palace,India,Jalpaiguri,3310,661,todo,,untouched
+357,khaplu-palace-q14655881,Khaplu Palace,palace,Pakistan,Khaplu,3312,662,todo,,untouched
+358,nyatapola-temple-q1513892,Nyatapola Temple,temple,Nepal,Bhaktapur,3314,662,todo,,untouched
+359,tomb-of-asif-khan-q17026167,Tomb of Asif Khan,tomb,Pakistan,Shahdara Bagh,3319,663,todo,,untouched
+360,kasthamandap-q6374805,Kasthamandap,temple,Nepal,Kathmandu,3325,664,todo,,untouched
+361,lakda-ni-haveli-vadnagar-q137048861,"Lakda ni haveli, Vadnagar",fort,India,Gujarat,3326,664,todo,,untouched
+362,raja-sumer-singh-qila-q137439380,Raja Sumer Singh Qila,fort,India,Uttar Pradesh,3332,666,todo,,untouched
+363,skardu-fort-q1438714,Skardu Fort,fort,Pakistan,Skardu,3335,666,todo,,untouched
+364,umarkot-fort-q7881165,Umarkot Fort,fort,Pakistan,Umerkot,3337,667,todo,,untouched
+365,gadhimai-q5516371,Gadhimai,temple,Nepal,Mahagadhimai Municipality,3342,668,todo,,untouched
+366,gori-temple-q60045535,Gori Temple,temple,Pakistan,Nagarparkar Tehsil,3343,668,todo,,untouched
+367,kashmiri-gate-q6374456,Kashmiri Gate,fort,Pakistan,Lahore,3345,668,todo,,untouched
+368,nausharo-q2039702,Nausharo,archaeological-site,Pakistan,,3349,669,todo,,untouched
+369,prahladpuri-temple-multan-q7237726,"Prahladpuri Temple, Multan",temple,Pakistan,Punjab,3350,669,todo,,untouched
+370,ramkot-fort-q3429082,Ramkot Fort,fort,Pakistan,Mirpur District,3351,669,todo,,untouched
+371,tal-barahi-temple-q16172918,Tal Barahi Temple,temple,Nepal,Kaski District,3353,670,todo,,untouched
+372,bibi-pak-daman-q4903032,Bibi Pak Daman,tomb,Pakistan,,3365,672,todo,,untouched
+373,chatteshwari-temple-q5087951,Chatteshwari Temple,temple,Bangladesh,Chattogram District,3368,673,todo,,untouched
+374,gorkhatri-q5586577,Gorkhatri,fort,Pakistan,Peshawar,3373,674,todo,,untouched
+375,gurdwara-nanak-shahi-q5619975,Gurdwara Nanak Shahi,temple,Bangladesh,Dhaka,3375,674,todo,,untouched
+376,kargah-buddha-q18126603,Kargah Buddha,archaeological-site,Pakistan,Gilgit Tehsil,3377,675,todo,,untouched
+377,mankiala-stupa-q25379332,Mankiala Stupa,temple,Pakistan,Mankiala,3380,675,todo,,untouched
+378,pancha-ratna-govinda-temple-q19895047,Pancha Ratna Govinda Temple,temple,Bangladesh,Puthia Upazila,3384,676,todo,,untouched
+379,adinath-temple-q3250234,Adinath Temple,temple,Bangladesh,,3396,678,todo,,untouched
+380,baghsar-fort-q4841911,Baghsar Fort,fort,Pakistan,,3403,680,todo,,untouched
+381,bhati-gate-q4901406,Bhati Gate,fort,Pakistan,Lahore,3414,682,todo,,untouched
+382,bijnot-fort-q30624443,Bijnot Fort,fort,Pakistan,Bahawalpur District,3417,683,todo,,untouched
+383,chitta-gate-q42376567,Chitta Gate,fort,Pakistan,Lahore,3420,683,todo,,untouched
+384,kal-bhairab-temple-q62495,Kal Bhairab Temple,temple,Bangladesh,Brahmanbaria District,3455,690,todo,,untouched
+385,lohari-gate-q3694727,Lohari Gate,fort,Pakistan,Lahore,3475,694,todo,,untouched
+386,roshnai-gate-q7368849,Roshnai Gate,fort,Pakistan,Lahore,3524,704,todo,,untouched
+387,sheikhupura-fort-q18357797,Sheikhupura Fort,fort,Pakistan,Punjab,3533,706,todo,,untouched
+388,hiranya-varna-mahavihar-q5769439,Hiranya Varna Mahavihar,temple,Nepal,,3578,715,todo,,untouched
+389,rawat-fort-q7296947,Rawat Fort,fort,Pakistan,"Rawat, Murree",3586,716,todo,,untouched
+390,chandeshwari-temple-q5071024,Chandeshwari temple,temple,Nepal,Kavrepalanchok District,3596,718,todo,,untouched
+391,jal-binayak-temple-q13181210,Jal Binayak Temple,temple,Nepal,Kathmandu District,3600,719,todo,,untouched
+392,karya-binayak-temple-q21129901,Karya Binayak Temple,temple,Nepal,Kathmandu District,3601,719,todo,,untouched
+393,naukot-fort-q30594659,Naukot Fort,fort,Pakistan,Mithi Taluka,3603,720,todo,,untouched
+394,palanchok-bhagawati-temple-q7126679,Palanchok Bhagawati Temple,temple,Nepal,Panchkhal,3604,720,todo,,untouched
+395,rasuwa-fort-q13185283,Rasuwa Fort,fort,Nepal,Rasuwa District,3605,720,todo,,untouched
+396,sankata-temple-q15747268,Sankata Temple,temple,Nepal,Kathmandu,3607,721,todo,,untouched
+397,shairanwala-gate-q7462484,Shairanwala Gate,fort,Pakistan,Lahore,3608,721,todo,,untouched
+398,shigar-fort-q14762111,Shigar Fort,fort,Pakistan,Shigar,3609,721,todo,,untouched
+399,supa-deurali-temple-q19713918,Supa Deurali Temple,temple,Nepal,Sandhikharka,3610,721,todo,,untouched
+400,taleju-temple-q83776242,Taleju Temple,temple,Nepal,Kathmandu,3612,722,todo,,untouched
+401,jamal-garhi-q6127550,Jamal Garhi,archaeological-site,Pakistan,,3618,723,todo,,untouched
+402,kot-bala-q6433728,Kot Bala,archaeological-site,Pakistan,,3631,725,todo,,untouched
+403,temple-of-chandrabati-q31724448,Temple of Chandrabati,temple,Bangladesh,Kishoreganj Sadar Upazila,3638,727,todo,,untouched
+404,tomb-of-ali-mardan-khan-q19898660,tomb of Ali Mardan Khan,tomb,Pakistan,Lahore,3639,727,todo,,untouched
+405,bhairavnath-temple-q854699,Bhairavnath temple,temple,Nepal,,3641,727,todo,,untouched
+406,chittagong-buddhist-monastery-q13057814,Chittagong Buddhist Monastery,temple,Bangladesh,Chittagong,3643,728,todo,,untouched
+407,darbar-mahal-q46996855,Darbar Mahal,palace,Pakistan,Bahawalpur,3644,728,todo,,untouched
+408,rath-temple-puthia-q26937168,"Rath temple, Puthia",temple,Bangladesh,,3651,729,todo,,untouched
+409,rin-sri-sri-jayakali-mother-temple-q113501392,Rin Sri Sri Jayakali Mother Temple,temple,Bangladesh,Natore District,3652,730,todo,,untouched
+410,shilu-mahadev-temple-q82281675,Shilu Mahadev Temple,temple,Nepal,Bhaktapur,3655,730,todo,,untouched
+411,tomb-of-mian-ghulam-kalhoro-q18394709,tomb of Mian Ghulam Kalhoro,tomb,Pakistan,Hyderabad,3657,731,todo,,untouched
+412,amarnaryan-temple-q109321229,Amarnaryan Temple,temple,Nepal,Tansen,3659,731,todo,,untouched
+413,kelidighat-q25620569,Kelidighat,temple,Nepal,Syangja District,3671,733,todo,,untouched
+414,nandana-fort-q6963180,Nandana Fort,fort,Pakistan,Chakwal District,3673,734,todo,,untouched
+415,pacco-qillo-q7121890,Pacco Qillo,fort,Pakistan,Hyderabad,3676,734,todo,,untouched
+416,rama-zadi-temple-q70317033,Rama Zadi Temple,temple,Bangladesh,Bandarban District,3679,735,todo,,untouched
+417,ramghatdham-q29418925,Ramghatdham,temple,Nepal,Syangja District,3680,735,todo,,untouched
+418,islam-garh-fort-q97014618,Islam Garh Fort,fort,Pakistan,Rahim Yar Khan District,3688,737,todo,,untouched
+419,kalan-kot-q134174784,Kalan Kot,fort,Pakistan,Sindh,3692,738,todo,,untouched
+420,liglig-q6546674,Liglig,fort,Nepal,Gandaki Province,3700,739,todo,,untouched
+421,mir-garh-fort-q134550089,Mir Garh Fort,fort,Pakistan,Punjab,3701,739,todo,,untouched
+422,multan-fort-q6934350,Multan Fort,fort,Pakistan,Multan,3702,740,todo,,untouched
+423,sher-garhi-palace-q7494618,Sher Garhi Palace,palace,India,Srinagar,3705,740,todo,,untouched
+424,thul-mir-rukan-q51670280,Thul Mir Rukan,temple,Pakistan,Shaheed Benazirabad District,3711,741,todo,,untouched
+425,tomb-of-shah-jamal-q7818642,Tomb of Shah Jamal,tomb,Pakistan,Lahore,3712,742,todo,,untouched
+426,gulzar-mahal-q96380008,Gulzar Mahal,palace,Pakistan,Bahawalpur,3723,744,todo,,untouched
+427,hund-q3695597,Hund,fort,Pakistan,Swabi District,3725,744,todo,,untouched
+428,jangalbari-fort-q27211962,Jangalbari Fort,fort,Bangladesh,Dhaka Division,3726,744,todo,,untouched
+429,tomb-of-jani-khan-q18211159,Tomb of Jani Khan,tomb,Pakistan,Baghbanpura,3740,747,todo,,untouched
+430,chokkanatha-nayak-palace-q5104236,Chokkanatha Nayak Palace,palace,India,Tamil Nadu,3747,749,todo,,untouched
+431,govindgarh-palace-q96419127,Govindgarh Palace,palace,India,Madhya Pradesh,3753,750,todo,,untouched
+432,juna-mahal-dungarpur-q128997733,"Juna Mahal, Dungarpur",palace,India,Dungarpur district,3759,751,todo,,untouched
+433,kodungallur-kovilakam-q16134983,Kodungallur Kovilakam,palace,India,Kerala,3762,752,todo,,untouched
+434,sainik-school-kapurthala-q7400506,"Sainik School, Kapurthala",palace,India,Kapurthala,3775,754,todo,,untouched
+435,tomb-of-shah-ali-akbar-q6794057,tomb of Shah Ali Akbar,tomb,Pakistan,Multan,3788,757,todo,,untouched
+436,chisapani-gadhi-q104814295,Chisapani Gadhi,fort,Nepal,Bagmati Province,3801,759,todo,,untouched
+437,egarasindhur-fort-q25586763,Egarasindhur Fort,fort,Bangladesh,Dhaka Division,3805,760,todo,,untouched
+438,hariharpur-gadhi-q109905441,Hariharpur Gadhi,fort,Nepal,Bagmati Province,3812,762,todo,,untouched
+439,quetta-fort-q18210857,Quetta Fort,fort,Pakistan,Quetta,3837,767,todo,,untouched
+440,akbari-gate-q97958974,Akbari Gate,fort,Pakistan,Lahore,3859,771,todo,,untouched
+441,fort-of-raja-gera-q105811384,Fort of Raja-Gera,fort,Pakistan,Swat District,3875,774,todo,,untouched
+442,jit-gadhi-q109593804,Jit Gadhi,fort,Nepal,Butwal,3884,776,todo,,untouched
+443,samadhi-of-bhai-vasti-ram-q137739251,Samadhi of Bhai Vasti Ram,tomb,Pakistan,Lahore,3928,785,todo,,untouched
+444,tomri-sahib-temple-q138803783,Tomri Sahib Temple,temple,Pakistan,,3949,789,todo,,untouched
+445,upardanggadhi-q109658342,Upardanggadhi,fort,Nepal,Chitwan District,3950,789,todo,,untouched
+446,din-garh-fort-w507000840,Din Garh Fort,fort,Pakistan,Punjab,3982,796,todo,,untouched
+447,fort-w341729852,Fort,fort,Nepal,Bagmati Province,3985,796,todo,,untouched
+448,jam-garh-fort-r21780665,Jam Garh Fort,fort,Pakistan,Punjab,3996,798,todo,,untouched
+449,khair-garh-fort-w507001593,Khair Garh Fort,fort,Pakistan,Punjab,4002,800,todo,,untouched
+450,khan-garh-fort-w507003604,Khan Garh Fort,fort,Pakistan,Punjab,4003,800,todo,,untouched
+451,kharan-qilla-w422539953,Kharan Qilla,fort,Pakistan,Balochistan,4004,800,todo,,untouched
+452,marot-fort-w506998382,Marot Fort,fort,Pakistan,Punjab,4012,802,todo,,untouched
+453,mauj-garh-fort-w507009581,Mauj Garh Fort,fort,Pakistan,Punjab,4014,802,todo,,untouched
+454,nawan-kot-fort-w507002227,Nawan Kot Fort,fort,Pakistan,Punjab,4018,803,todo,,untouched
+455,suryagadhi-fort-w645971231,SuryaGadhi Fort,fort,Nepal,Bagmati Province,4052,810,todo,,untouched

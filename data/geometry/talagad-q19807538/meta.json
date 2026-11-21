@@ -1,0 +1,10 @@
+{
+ "id": "talagad-q19807538",
+ "lat": 18.292475,
+ "lon": 73.135553,
+ "radiusM": 1500,
+ "osm": true,
+ "tiles": 16,
+ "fetched": "2026-11-14T18:30:17.993Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

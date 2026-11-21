@@ -1,0 +1,10 @@
+{
+ "id": "nalknad-palace-q6960926",
+ "lat": 12.243,
+ "lon": 75.701611,
+ "radiusM": 500,
+ "osm": true,
+ "tiles": 2,
+ "fetched": "2026-11-14T18:36:56.880Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

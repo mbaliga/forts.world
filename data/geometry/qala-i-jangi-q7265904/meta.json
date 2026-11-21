@@ -1,0 +1,10 @@
+{
+ "id": "qala-i-jangi-q7265904",
+ "lat": 36.666667,
+ "lon": 66.983333,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 16,
+ "fetched": "2026-11-18T03:50:56.165Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

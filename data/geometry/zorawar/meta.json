@@ -1,0 +1,12 @@
+{
+ "id": "zorawar",
+ "lat": 34.16,
+ "lon": 77.58,
+ "radiusM": 600,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:30:58.320Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs",
+ "osmRefetched": "2026-11-18T10:28:08.415Z",
+ "osmRefetchNote": "first fetch (2026-11-14T18:30:58.320Z) returned no OSM data; OSM re-fetched with the same query and radius, terrain tiles unchanged"
+}

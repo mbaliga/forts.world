@@ -1,0 +1,10 @@
+{
+ "id": "chandraketugarh-q5071385",
+ "lat": 22.68115,
+ "lon": 88.68988,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:34:17.553Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

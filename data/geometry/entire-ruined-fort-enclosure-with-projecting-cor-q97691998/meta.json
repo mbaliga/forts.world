@@ -1,0 +1,10 @@
+{
+ "id": "entire-ruined-fort-enclosure-with-projecting-cor-q97691998",
+ "lat": 25.571032,
+ "lon": 83.285309,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:31:49.054Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

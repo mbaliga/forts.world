@@ -1,0 +1,26 @@
+{
+ "site_id": "pavagadh",
+ "items": [
+  {
+   "file": "File:Pavagadh plan 1847 by J Ramsay.jpg",
+   "role": "plan",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/5/58/Pavagadh_plan_1847_by_J_Ramsay.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "page": "https://commons.wikimedia.org/wiki/File%3APavagadh_plan_1847_by_J_Ramsay.jpg",
+   "licence": "No restrictions",
+   "licence_url": "https://www.flickr.com/commons/usage/",
+   "author": "The British Library",
+   "credit": "This file is from the Mechanical Curator collection, a set of over 1 million images scanned from out-of-copyright books and released to Flickr Commons by the British Library in London, England. \n View image on Flickr \n View all images from book \n\n View catalogue entry for book.",
+   "date": "2013-12-06 16:54",
+   "description": "Pavagadh plan 1847 by J Ramsay (Pavagadh, Gujarat, India)",
+   "width": 1829,
+   "height": 1246,
+   "bytes": 1581518,
+   "mime": "image/jpeg",
+   "sha1": "af9bd3510cdc5ecc13edaedc3242c9bf23429cce",
+   "retrieved": "2026-11-18",
+   "saved": "Pavagadh_plan_1847_by_J_Ramsay.jpg",
+   "sha256": "a467e7994837bbbd2831b229d645eb503e94b295e7d9405653ac60e3457cc116",
+   "status": "downloaded"
+  }
+ ]
+}

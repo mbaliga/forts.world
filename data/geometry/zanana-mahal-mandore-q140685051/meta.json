@@ -1,0 +1,10 @@
+{
+ "id": "zanana-mahal-mandore-q140685051",
+ "lat": 26.353056,
+ "lon": 73.032778,
+ "radiusM": 500,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:40:17.022Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

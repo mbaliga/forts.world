@@ -1,0 +1,52 @@
+# Palace Kasepuhan
+
+> Indonesia · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `palace-kasepuhan-q399336` |
+| Coordinates | -6.72759, 108.57197 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/-6.72759/108.57197)) |
+| Wikidata | [Q399336](https://www.wikidata.org/wiki/Q399336) (CC0) |
+| Wikidata class | castle |
+| Types | castle\|palace\|palace\|kraton |
+| Administrative area | Cirebon |
+| Inception | 1529 |
+| Wikipedia language editions | 9 |
+| OSM `historic` | castle |
+| OSM `castle_type` | palace |
+| OSM `description` | Keraton Kasepuhan adalah keraton termegah dan paling terawat di Cirebon. Makna di setiap sudut arsitektur keraton ini pun terkenal paling bersejarah. Halaman depan keraton ini dikelilingi tembok bata merah dan terdapat pendopo di dalamnya |
+| OSM `website` | https://keraton-kasepuhan.com |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 313 elements (outline 1, marker 8, road 182, building 1820, waterway 2, wall 12, water 9, zone 11).
+
+Evidence: documented 0, mapped 313, inferred 0, derived 0; heights documented 6, inferred 0, unknown 126.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:way/564833583 historic=castle Q399336 64 m from ledger point
+- present-day buildings capped: kept the 120 nearest the outline centre of 1820 mapped (trace size budget); the rest of the town is not drawn
+- roads capped: kept the 150 longest of 182 mapped (trace size budget); minor lanes are not drawn
+- origin moved 60 m from the ledger point to the outline centroid
+- 4 mapped path(s) meet closed wall lines (candidate openings for T2; not drawn)
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/-6.72759/108.57197) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=castle; castle\|palace\|palace\|kraton; sitelinks=9; wikidata:Q399336 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 313 elements); data/traces/palace-kasepuhan-q399336.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/indonesia.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

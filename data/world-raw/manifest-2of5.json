@@ -1,0 +1,14 @@
+{
+ "fetched": "2026-11-18T08:16:10.234Z",
+ "shard": "2/5",
+ "sources": {
+  "enrich": {
+   "ok": true,
+   "queries": 1,
+   "rows": 249
+  }
+ },
+ "warnings": [],
+ "failed": [],
+ "countries": []
+}

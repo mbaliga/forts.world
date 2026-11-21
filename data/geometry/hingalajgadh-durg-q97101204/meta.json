@@ -1,0 +1,12 @@
+{
+ "id": "hingalajgadh-durg-q97101204",
+ "lat": 24.667222,
+ "lon": 75.786667,
+ "radiusM": 700,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:43:19.748Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs",
+ "osmRefetched": "2026-11-18T10:27:46.409Z",
+ "osmRefetchNote": "first fetch (2026-11-14T18:43:19.748Z) returned no OSM data; OSM re-fetched with the same query and radius, terrain tiles unchanged"
+}

@@ -1,0 +1,10 @@
+{
+ "id": "shalamar-gardens-q499527",
+ "lat": 31.585833,
+ "lon": 74.381944,
+ "radiusM": 500,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-18T22:31:34.963Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

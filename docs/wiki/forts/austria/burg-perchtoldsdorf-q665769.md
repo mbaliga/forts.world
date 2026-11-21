@@ -1,0 +1,48 @@
+# Burg Perchtoldsdorf
+
+> Austria · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `burg-perchtoldsdorf-q665769` |
+| Coordinates | 48.11974, 16.26417 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/48.11974/16.26417)) |
+| Wikidata | [Q665769](https://www.wikidata.org/wiki/Q665769) (CC0) |
+| Wikidata class | castle |
+| Types | castle |
+| Administrative area | Perchtoldsdorf |
+| Designations | Listed objects in Austria |
+| Wikipedia language editions | 7 |
+| OSM `historic` | castle |
+| OSM `castle_type` | defensive |
+| OSM `website` | https://www.burg-perchtoldsdorf.at/ |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 332 elements (outline 1, marker 22, road 155, building 131, water 1, wall 14, zone 3, waterway 1, retaining-wall 4).
+
+Evidence: documented 0, mapped 332, inferred 0, derived 0; heights documented 60, inferred 0, unknown 89.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:way/51811799 historic=castle Q665769 5 m from ledger point
+- origin moved 5 m from the ledger point to the outline centroid
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/48.11974/16.26417) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=castle; castle; sitelinks=7; wikidata:Q665769 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 332 elements); data/traces/burg-perchtoldsdorf-q665769.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/austria.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

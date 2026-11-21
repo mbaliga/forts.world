@@ -1,0 +1,10 @@
+{
+ "id": "kangra",
+ "lat": 32.087556,
+ "lon": 76.256278,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:36:18.524Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

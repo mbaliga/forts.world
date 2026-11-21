@@ -1,0 +1,47 @@
+# Ca la Pruna - Culture Museum
+
+> Spain · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `ca-la-pruna-culture-museum-q18003367` |
+| Coordinates | 41.9705, 3.14446 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/41.9705/3.14446)) |
+| Wikidata | [Q18003367](https://www.wikidata.org/wiki/Q18003367) (CC0) |
+| Wikidata class | fort |
+| Types | masia\|fortified house |
+| Administrative area | Pals |
+| Designations | Cultural Asset part of the cultural heritage of Catalonia |
+| Wikipedia language editions | 4 |
+| OSM `historic` | yes |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 256 elements (outline 1, road 93, building 278, wall 41, waterway 1).
+
+Evidence: documented 0, mapped 256, inferred 0, derived 0; heights documented 0, inferred 0, unknown 161.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:way/662255115 historic=yes 150 m from ledger point
+- present-day buildings capped: kept the 120 nearest the outline centre of 278 mapped (trace size budget); the rest of the town is not drawn
+- origin moved 149 m from the ledger point to the outline centroid
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/41.9705/3.14446) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=fort; masia\|fortified house; sitelinks=4; wikidata:Q18003367 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 256 elements); data/traces/ca-la-pruna-culture-museum-q18003367.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/spain.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

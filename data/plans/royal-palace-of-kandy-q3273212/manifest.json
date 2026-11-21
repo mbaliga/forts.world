@@ -1,0 +1,26 @@
+{
+ "site_id": "royal-palace-of-kandy-q3273212",
+ "items": [
+  {
+   "file": "File:Kandy DaladaMaligawa-new plan1929.jpg",
+   "role": "plan",
+   "status": "error: download 429",
+   "licence": "Public domain",
+   "licence_source": "data/plans/search/royal-palace-of-kandy-q3273212.json (Wikimedia Commons metadata; backfilled 2026-11-21)"
+  },
+  {
+   "file": "File:AMH-7097-KB Map of Candia with the royal residence.jpg",
+   "role": "plan",
+   "status": "error: download 429",
+   "licence": "Public domain",
+   "licence_source": "data/plans/search/royal-palace-of-kandy-q3273212.json (Wikimedia Commons metadata; backfilled 2026-11-21)"
+  },
+  {
+   "file": "File:AMH-6597-NA Map of the royal palaceat Candia.jpg",
+   "role": "plan",
+   "status": "error: download 429",
+   "licence": "Public domain",
+   "licence_source": "data/plans/search/royal-palace-of-kandy-q3273212.json (Wikimedia Commons metadata; backfilled 2026-11-21)"
+  }
+ ]
+}

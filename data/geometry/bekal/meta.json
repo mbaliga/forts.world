@@ -1,0 +1,10 @@
+{
+ "id": "bekal",
+ "lat": 12.3926,
+ "lon": 75.033,
+ "radiusM": 1000,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:36:35.749Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

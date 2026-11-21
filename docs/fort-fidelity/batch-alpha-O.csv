@@ -1,0 +1,11 @@
+seq,letter,site_id,name,region,country,significance_rank,ledger_batch,radius_m
+1,P,pathri-fort-q97142894,Pathri Fort,Parbhani district,India,867,182,700
+2,R,raisen,Raisen,Madhya Pradesh,India,274,14,1200
+3,S,sabalgarh-fort-q12455517,Sabalgarh Fort,Morena district,India,508,110,700
+4,A,akola-fort-q4701516,Akola Fort,Akola district,India,376,84,700
+5,B,bharatgad-q55605342,Bharatgad,Sindhudurg district,India,478,104,700
+6,C,chikkajala-q5097447,Chikkajala,Bengaluru Urban district,India,381,85,700
+7,D,dhar-durg-q97101060,Dhar Durg,Dhar district,India,682,145,700
+8,G,gohad-fort-q5577562,Gohad Fort,Bhind district,India,485,106,700
+9,K,kurumbera-fort-q6447400,Kurumbera Fort,Keshiari community development block,India,495,108,700
+10,M,madhugiri-fort-q97441101,Madhugiri Fort,Tumkur district,India,727,154,700

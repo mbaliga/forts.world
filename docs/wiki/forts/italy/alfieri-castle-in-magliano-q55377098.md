@@ -1,0 +1,46 @@
+# Alfieri Castle in Magliano
+
+> Italy · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `alfieri-castle-in-magliano-q55377098` |
+| Coordinates | 44.76696, 8.06846 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/44.76696/8.06846)) |
+| Wikidata | [Q55377098](https://www.wikidata.org/wiki/Q55377098) (CC0) |
+| Wikidata class | castle |
+| Types | castle |
+| Administrative area | Magliano Alfieri |
+| Designations | Italian national heritage |
+| Wikipedia language editions | 1 |
+| OSM `historic` | castle |
+
+## What the model contains
+
+Tier **T1**, status `outline-only`, 206 elements (outline 1, marker 1, road 40, building 164).
+
+Evidence: documented 0, mapped 206, inferred 0, derived 0; heights documented 0, inferred 0, unknown 164.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:way/383547004 historic=castle 18 m from ledger point
+- origin moved 17 m from the ledger point to the centre of the mapped site
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/44.76696/8.06846) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=castle; castle; sitelinks=1; wikidata:Q55377098 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline-only, 206 elements); data/traces/alfieri-castle-in-magliano-q55377098.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/italy.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

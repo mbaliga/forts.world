@@ -1,0 +1,10 @@
+{
+ "id": "vijaygarh-fort-q97692160",
+ "lat": 24.577291,
+ "lon": 83.181413,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:30:20.351Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

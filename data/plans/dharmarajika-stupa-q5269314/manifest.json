@@ -1,0 +1,33 @@
+{
+ "site_id": "dharmarajika-stupa-q5269314",
+ "items": [
+  {
+   "file": "File:Dharmarajika Stupa plan.jpg",
+   "role": "plan",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Dharmarajika_Stupa_plan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "page": "https://commons.wikimedia.org/wiki/File%3ADharmarajika_Stupa_plan.jpg",
+   "licence": "Public domain",
+   "licence_url": "",
+   "author": "Marshall, John Hubert, Sir, 1876-1958",
+   "credit": "A guide to Taxila\n\nPublication date 1918",
+   "date": "1918-01-01",
+   "description": "Dharmarajika Stupa plan",
+   "width": 2515,
+   "height": 1950,
+   "bytes": 558359,
+   "mime": "image/jpeg",
+   "sha1": "0ed4b7b0df9f7413f4dc8d01242248d03c347b51",
+   "retrieved": "2026-11-18",
+   "saved": "Dharmarajika_Stupa_plan.jpg",
+   "sha256": "409169124ffa783777805d44c977de18010c3674eca61de00ad5c4ff88caa36d",
+   "status": "downloaded"
+  },
+  {
+   "file": "File:Taxila map.jpg",
+   "role": "plan",
+   "status": "error: download 429",
+   "licence": "Public domain",
+   "licence_source": "data/plans/search/dharmarajika-stupa-q5269314.json (Wikimedia Commons metadata; backfilled 2026-11-21)"
+  }
+ ]
+}

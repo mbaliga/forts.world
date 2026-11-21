@@ -1,0 +1,10 @@
+{
+ "id": "avchitgad-q4827896",
+ "lat": 18.475,
+ "lon": 73.118333,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-16T23:02:50.378Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

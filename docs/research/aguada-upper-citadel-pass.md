@@ -1,0 +1,39 @@
+# Aguada: mapped upper citadel, not the full fortress
+
+The previous scene used a generated oval and arbitrary garrison building, inflated by a scale factor. The present-day upper works instead use [OpenStreetMap relation 6411420](https://www.openstreetmap.org/relation/6411420), v10, outer ways 430917627 and 156468754, and the approximate footprint of the [old lighthouse](https://www.openstreetmap.org/way/156468581), v5, tagged 7 m high. © OpenStreetMap contributors, ODbL. The trace includes a narrow projection and is a map, not a measured wall survey. The simplified tower is a placeholder, not a reconstruction of its architectural detail.
+
+[Goa Tourism](https://goa-tourism.com/fort/fort-aguada/) describes an upper citadel with three bastions, a dry moat, cistern, and lower fortification and dates the old lighthouse to 1864. [Heritage of Portuguese Influence](https://hpip.org/en/heritage/details/1396) describes the larger peninsula defences and explains that the citadel ditch may be later than the initial works. Neither supports projecting the current outline unchanged into 1620, so the earlier generic period scene has been withdrawn.
+
+The plateau is a flat placeholder at 63 m, based on one 90 m OpenTopodata SRTM sample near 15.492, 73.774; three nearby samples give 71, 51 and 65 m. This resolution cannot resolve the fort's built surfaces or moat. The gate is an approximate opening near mapped footways, not a surveyed gate; walls, grades and tower appearance need documentation. The sea, headland, counterscarp and moat, cistern, lower fort, harbour, connecting walls, settlements and surroundings are not reconstructed. No claim of complete or verified geometry is made.
+
+## Provisional landward ditch and bridge
+
+A dry ditch on the landward sides and a narrow bridge at the entrance are documented by [Goa Tourism](https://goa-tourism.com/fort/fort-aguada/) and in [2009 field observations](https://stax.strath.ac.uk/downloads/4x51hj22k?locale=fr), pp. 45–48. A [photograph of the ASI heritage marker](https://www.hmdb.org/m.asp?m=216919) transcribes a reported 6.5 m width and 5.2 m depth. These are not a registered ditch survey, and the field observations say its width varies. The model approximates a landward ditch using offsets from the mapped citadel wall, with an illustrative 5.2 m relative depth. Its trace, width and floor are inferred; it does not reproduce the surveyed counterscarp. An approximate bridge follows the mapped entrance footway; its profile, fabric, exact dimensions and dates require verification. The earlier statement that no moat is represented is superseded, but all other limitations above remain.
+
+The outer OSM relation 6411419 includes an additional mapped boundary: its attribution as an outer ditch edge is not established and it was not used as one. Navigation graph checks connect points immediately inside and outside the approximate bridge; this is not visual or historical verification.
+
+## ASI Goa Circle record and discrepancies
+
+The [ASI Goa Circle account](https://asigoacircle.wordpress.com/173-2/) describes the cistern as a rectangular roof over an underground chamber with five divisions and 16 rock-cut supports. It includes an aerial image marking the tank, but the image has not yet been registered to the local coordinate system. The new cistern information point is therefore only a general location; the roof, interior and approach remain unmodeled.
+
+ASI reports the circular lighthouse as 10 m high and 12 m in diameter, while OSM tags the mapped footprint's height as 7 m. The scene uses the ASI height and the mapped roughly 12 m footprint for a simplified straight-sided mass; the real taper, openings, stairs and detailed top remain to be reconstructed. Goa Tourism gives 1864 for the lighthouse, whereas ASI says the exact construction date is unknown and suggests an earlier origin. The differing claims are retained for further research; the scene is present-day only. This supersedes the earlier 7 m mass and the unqualified 1864 statement above.
+
+## Headland terrain and shoreline
+
+The flat surrounding square is replaced by 121 samples of [SRTM30 elevation via OpenTopodata](https://www.opentopodata.org/datasets/srtm/), retrieved 1 November 2026 at 44 m spacing over approximately 440 × 440 m. The present mapped shoreline follows OpenStreetMap ways [430895607](https://www.openstreetmap.org/way/430895607) and [1259472909](https://www.openstreetmap.org/way/1259472909), © OpenStreetMap contributors, ODbL. The shoreline polygon closes outside the local scene. A flat approximate courtyard at 63 m is retained to support the existing citadel and ditch; it is not a measured fort platform. SRTM provides only broad terrain and cannot resolve walls, terraces, paths, the cliff profile or bathymetry. The surrounding lower fort, harbour, settlement and the much larger peninsula remain outside this scene, and there is no historical shoreline or dated terrain reconstruction. This supersedes the earlier statement that no sea or local headland terrain is represented, not the other limitations.
+
+
+## Additional mapped walls and modern lighthouse
+
+The present scene adds three distinct mapped wall ways around and south of the upper citadel: [430917629](https://www.openstreetmap.org/way/430917629), [430893995](https://www.openstreetmap.org/way/430893995) and [889912615](https://www.openstreetmap.org/way/889912615). © OpenStreetMap contributors, ODbL. Their displayed heights and thicknesses are illustrative. Their precise role, dates, openings and relationship to the lower fort need a registered architectural survey; they do not reconstruct the whole connecting system.
+
+The present [mapped modern lighthouse footprint](https://www.openstreetmap.org/way/156468582) is shown as a simple 18 m mass, using the height in the [DGLL modern lighthouse ledger](https://www.dgll.nic.in/sites/default/files/2022-12/Master%20Ledger%20Goa%2004.pdf). The ledger coordinate, 15°29.32′N, 73°46.20′E, lies about 460 m from that OSM footprint; these positions are unresolved, and neither is a surveyed control in this model. DGLL says the modern light was commissioned in 1976. Its real external details and site buildings are not reconstructed.
+
+For the *old* lighthouse DGLL's [historical account](https://www.dgll.nic.in/DGLL-light-house-location/about-goa/aguada-lighthouse-and-dgps-station) reports 16 m and 1864; ASI's account reports 10 m and says the date is uncertain, while the OSM footprint carries a 7 m height tag. The 10 m model is only a provisional depiction pending measurement; this conflict supersedes any earlier implication that the height is settled. The broad lower fort, harbour, connecting routes and shared peninsula remain incomplete.
+
+
+## Lower complex in the same local scene
+
+The [present Aguada Port and Jail Complex relation 6411430](https://www.openstreetmap.org/relation/6411430) is shown as a site outline in the same geographic frame as the upper citadel, along with three unnamed mapped building footprints and part of the present [Aguada Jail Road](https://www.openstreetmap.org/way/430919251). © OpenStreetMap contributors, ODbL. The building masses use generic 4 m heights; their uses, construction dates, architectural details and relationship to original fort walls are unverified. The mapped site is the present museum boundary, not a historical fortification plan.
+
+The elevation baseline has been extended to 234 SRTM30 samples at 40 m spacing, retrieved 1 November 2026. It remains too coarse to resolve stairs, walls, access paths or terraces. The coastline now extends along the mapped lower-complex edge. Navigation testing finds that the lower site **cannot yet be reached** from the upper-fort spawn; the connection, real entrance and terrain need further work. The shared scene is a geographic starting point, not a connected playable route or a complete reconstruction of the lower fort and harbour.

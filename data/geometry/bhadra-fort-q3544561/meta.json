@@ -1,0 +1,10 @@
+{
+ "id": "bhadra-fort-q3544561",
+ "lat": 23.023611,
+ "lon": 72.581111,
+ "radiusM": 300,
+ "osm": true,
+ "tiles": 1,
+ "fetched": "2026-11-18T22:20:17.426Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

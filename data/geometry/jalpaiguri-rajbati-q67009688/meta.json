@@ -1,0 +1,10 @@
+{
+ "id": "jalpaiguri-rajbati-q67009688",
+ "lat": 26.539873,
+ "lon": 88.7185,
+ "radiusM": 900,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:30:37.376Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

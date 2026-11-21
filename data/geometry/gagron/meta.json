@@ -1,0 +1,10 @@
+{
+ "id": "gagron",
+ "lat": 24.628,
+ "lon": 76.183,
+ "radiusM": 600,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-18T22:24:05.566Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

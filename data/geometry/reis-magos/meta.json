@@ -1,0 +1,10 @@
+{
+ "id": "reis-magos",
+ "lat": 15.4965,
+ "lon": 73.80913,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-02T02:24:46.145Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

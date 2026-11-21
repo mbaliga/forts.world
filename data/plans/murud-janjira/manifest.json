@@ -1,0 +1,47 @@
+{
+ "site_id": "murud-janjira",
+ "items": [
+  {
+   "file": "File:Plan and view of Gingerah, commonly called Donda Rajapore on the Malabar coast in Lat. 18°.16'N. - by A. Werner ; publ. by A. Dalrymple ; engraved by P. Begbie - btv1b85931692.jpg",
+   "role": "plan",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Plan_and_view_of_Gingerah%2C_commonly_called_Donda_Rajapore_on_the_Malabar_coast_in_Lat._18%C2%B0.16%27N._-_by_A._Werner_%3B_publ._by_A._Dalrymple_%3B_engraved_by_P._Begbie_-_btv1b85931692.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "page": "https://commons.wikimedia.org/wiki/File%3APlan_and_view_of_Gingerah%2C_commonly_called_Donda_Rajapore_on_the_Malabar_coast_in_Lat._18%C2%B0.16'N._-_by_A._Werner_%3B_publ._by_A._Dalrymple_%3B_engraved_by_P._Begbie_-_btv1b85931692.jpg",
+   "licence": "Public domain",
+   "licence_url": "",
+   "author": "Werner, A. (17..-18..? ; cartographe). Fonction indéterminée\nBegbie, P. (17..-17..? ; graveur). Fonction indéterminée\n\nDalrymple, Alexander (1737-1808). Éditeur scientifique",
+   "credit": "Bibliothèque nationale de France",
+   "date": "1774date QS:P571,+1774-00-00T00:00:00Z/9",
+   "description": "Sujet : Janjira -- Côtes\nJanjira -- Fort -- Plans\nJanjira -- Fort -- Vues panoramiques\nConserah, Île de -- Fortifications -- Plans\nAppartient à l’ensemble documentaire : AnvilMF\nCouverture : Inde\nLangue : anglais\n\nÉditeur : A. Dalrymple",
+   "width": 4288,
+   "height": 5592,
+   "bytes": 3855995,
+   "mime": "image/jpeg",
+   "sha1": "96d8dc72f158a534ef0fd6c70b0138dab18ea315",
+   "retrieved": "2026-11-18",
+   "saved": "Plan_and_view_of_Gingerah_commonly_called_Donda_Rajapore_on_the_Malabar_coast_in_Lat._18_.16_N._-_by_A._Werner_publ._by_A._Dalrymple_engraved_by_P._Begbie_-_btv1b85931692.jpg",
+   "sha256": "ce2c6a810c88ea8a0e739bc2fdd31da968182d476cf179bf4c67e65e2f24e2ea",
+   "status": "downloaded"
+  },
+  {
+   "file": "File:Plan and view of Gingerah, commonly called Donda Rajapore on the Malabar coast in Lat. 18°.16'N. - by A. Werner ; engrav'd by P. Begbie - btv1b53258353m.jpg",
+   "role": "plan",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/9/95/Plan_and_view_of_Gingerah%2C_commonly_called_Donda_Rajapore_on_the_Malabar_coast_in_Lat._18%C2%B0.16%27N._-_by_A._Werner_%3B_engrav%27d_by_P._Begbie_-_btv1b53258353m.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "page": "https://commons.wikimedia.org/wiki/File%3APlan_and_view_of_Gingerah%2C_commonly_called_Donda_Rajapore_on_the_Malabar_coast_in_Lat._18%C2%B0.16'N._-_by_A._Werner_%3B_engrav'd_by_P._Begbie_-_btv1b53258353m.jpg",
+   "licence": "Public domain",
+   "licence_url": "",
+   "author": "Werner, A. (17..-18..? ; cartographe). Cartographe\n\nBegbie, P. (17..-17..? ; graveur). Graveur",
+   "credit": "Bibliothèque nationale de France",
+   "date": "1784date QS:P571,+1784-00-00T00:00:00Z/9",
+   "description": "Sujet : Sondages sous-marins\nCours d'eau -- Mahārāshtra (Inde)\nPorts -- Mahārāshtra (Inde)\nForts -- Mahārāshtra (Inde)\nKundalika (cours d'eau)\nRajapuri\nPadmadurg, Île de\nÉchelle(s) : Scale of 5 nautic miles [= 10 cm]\nCouverture : Inde\nMer d'Arabie\nLangue : anglais\n\nÉditeur : A. Dalrymple (London)",
+   "width": 4166,
+   "height": 5436,
+   "bytes": 3368588,
+   "mime": "image/jpeg",
+   "sha1": "ca40df3ca85c6eed838621d996dfc4324351a5ec",
+   "retrieved": "2026-11-18",
+   "saved": "Plan_and_view_of_Gingerah_commonly_called_Donda_Rajapore_on_the_Malabar_coast_in_Lat._18_.16_N._-_by_A._Werner_engrav_d_by_P._Begbie_-_btv1b53258353m.jpg",
+   "sha256": "8a0ab4a3b6ad74cf1eb77ed6d71bef165ac9b91d94fb32667dd321d565c98ea3",
+   "status": "downloaded"
+  }
+ ]
+}

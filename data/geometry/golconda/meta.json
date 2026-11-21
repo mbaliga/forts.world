@@ -1,0 +1,10 @@
+{
+ "id": "golconda",
+ "lat": 17.383,
+ "lon": 78.401,
+ "radiusM": 1800,
+ "osm": true,
+ "tiles": 16,
+ "fetched": "2026-11-14T18:35:40.046Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

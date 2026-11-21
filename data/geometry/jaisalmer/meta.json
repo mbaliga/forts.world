@@ -1,0 +1,10 @@
+{
+ "id": "jaisalmer",
+ "lat": 26.913,
+ "lon": 70.912,
+ "radiusM": 1000,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-11T02:45:10.547Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

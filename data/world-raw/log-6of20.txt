@@ -1,0 +1,53 @@
+world fetch: 255 countries, this shard 13
+wikidata AL Albania 133
+wikidata BL Saint Barthélemy 0
+wikidata CL Chile 26
+wikidata EC Ecuador 2
+wikidata GI Gibraltar 3
+wikidata IL Israel 71
+wikidata KW Kuwait 0
+wikidata MH Marshall Islands 0
+wikidata NF Norfolk Island 0
+wikidata PS Palestine 30
+wikidata SL Sierra Leone 0
+wikidata TM Turkmenistan 6
+wikidata VU Vanuatu 0
+osm AL castle 94
+osm AL fort 1
+osm AL ruin 262
+osm BL castle 0
+osm BL fort 0
+osm BL ruin 0
+osm CL castle 44
+osm CL fort 22
+osm CL ruin 161
+osm EC castle 17
+osm EC fort 3
+osm EC ruin 25
+osm GI castle 2
+osm GI fort 65
+osm GI ruin 0
+osm IL castle 17
+osm IL fort 3
+osm IL ruin 783
+osm KW castle 3
+osm KW fort 1
+osm KW ruin 4
+osm MH castle 0
+osm MH fort 1
+osm MH ruin 1
+osm NF castle 0
+osm NF fort 0
+osm NF ruin 0
+osm PS castle 0
+osm PS fort 0
+osm PS ruin 0
+osm SL castle 0
+osm SL fort 1
+osm SL ruin 5
+osm TM castle 19
+osm TM fort 7
+osm TM ruin 29
+osm VU castle 0
+osm VU fort 0
+osm VU ruin 0

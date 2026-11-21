@@ -1,0 +1,24 @@
+{
+ "site_id": "fatehpur-sikri",
+ "plan": "data/plans/fatehpur-sikri/General_Plan_of_Fatehpur_Sikri_City_India_1917.jpg",
+ "plan_source": "Wikimedia Commons File:General Plan of Fatehpur Sikri City India 1917.jpg (V. A. Smith, Akbar the Great Mogul, Oxford 1917, p.477; Internet Archive Book Images, 'No restrictions' per Commons)",
+ "plan_size_px": [2896, 1632],
+ "frame": "OSM local metres, origin 27.091111N 77.661111E (data/traces/fatehpur-sikri.trace.json), x east, y north",
+ "transform": "o = a*(px - i*py) + b (complex, px/py in ORIGINAL 2896x1632 pixels); free similarity, least squares over 8 control points",
+ "a": [1.13015, 0.87695],
+ "b": [-1934.85, 23.71],
+ "scale_m_per_px": 1.4305,
+ "rotation_deg": 37.8,
+ "control_points": [
+  {"name": "Hiran Minar (plan 3)", "plan_px": [1487, 440], "osm": [144, 846], "resid_m": 20},
+  {"name": "Octagonal baoli (plan 23) / OSM Puits", "plan_px": [1535, 543], "osm": [254, 755], "resid_m": 22},
+  {"name": "Diwan-i-Am (plan 5)", "plan_px": [1685, 685], "osm": [572, 715], "resid_m": 12},
+  {"name": "Diwan-i-Khas (plan 9)", "plan_px": [1650, 640], "osm": [496, 747], "resid_m": 5},
+  {"name": "Birbal's House (plan 13)", "plan_px": [1508, 627], "osm": [318, 640], "resid_m": 3},
+  {"name": "Miriam's House (plan 14)", "plan_px": [1575, 662], "osm": [426, 640], "resid_m": 17},
+  {"name": "Gwalior Gate (plan) / OSM monument node on wall, 'inferred' match", "plan_px": [985, 1341], "osm": [373.7, -611.9], "resid_m": 25},
+  {"name": "Tehra Gate (plan) / OSM monument node on wall, 'inferred' match", "plan_px": [464, 962], "osm": [-582.3, -660.2], "resid_m": 16}
+ ],
+ "accuracy": "control points read by eye from the 2000 px preview (+-15 px); residuals 3-25 m over a 1.5 km span; stated registration accuracy +-30 m near the palace core, worse towards the edges. The fitted rotation (37.8 deg) agrees with the plan's printed north arrow (about 38 deg); the fitted scale is 1.43 m/px against 1.33 m/px from the printed scale bar (+7%), so distances read off the plan are uncertain by that much. The last two control points are a guess that two unnamed OSM monument nodes on the wall are the plan's gates, so they weaken the independence of the fit.",
+ "outside_grid": "The 1917 wall circuit, Delhi, Lal, Agra, Birbal, Chodanpol, Ajmir and Chor gates all fall outside the +-900 m terrain window (the window covers only the palace core and part of the south and west wall), so none is placed."
+}

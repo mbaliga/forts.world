@@ -1,0 +1,51 @@
+# Arco de Jesus
+
+> Portugal · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `arco-de-jesus-q23005908` |
+| Coordinates | 38.70926, -9.13092 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/38.70926/-9.13092)) |
+| Wikidata | [Q23005908](https://www.wikidata.org/wiki/Q23005908) (CC0) |
+| Wikidata class | fortification |
+| Types | city gate |
+| Administrative area | Santa Maria Maior |
+| Wikipedia language editions | 2 |
+| OSM `historic` | castle |
+| OSM `castle_type` | palace |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 325 elements (outline 1, marker 13, road 184, building 297, retaining-wall 15, wall 11, zone 11, coastline 1, water 3).
+
+Evidence: documented 0, mapped 325, inferred 0, derived 2; heights documented 49, inferred 0, unknown 97.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:way/96595204 historic=castle 34 m from ledger point
+- present-day buildings capped: kept the 120 nearest the outline centre of 297 mapped (trace size budget); the rest of the town is not drawn
+- roads capped: kept the 150 longest of 184 mapped (trace size budget); minor lanes are not drawn
+- origin moved 32 m from the ledger point to the outline centroid
+- sea-0: DEM check failed {"cells":399,"medianInside":16,"medianOutside":16.3}
+- sea-1: DEM check ok {"cells":65,"medianInside":0,"medianOutside":20}
+- 8 mapped path(s) meet closed wall lines (candidate openings for T2; not drawn)
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/38.70926/-9.13092) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=fortification; city gate; sitelinks=2; wikidata:Q23005908 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 325 elements); data/traces/arco-de-jesus-q23005908.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/portugal.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

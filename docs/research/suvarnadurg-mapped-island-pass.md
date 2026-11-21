@@ -1,0 +1,14 @@
+# Suvarnadurg: mapped island baseline
+
+The previous scene used an invented ellipse, entrance, buildings and bastion pattern. The current research scene uses the [UNESCO component reference](https://whc.unesco.org/en/list/1739/maps/) 17°48′59″N, 73°05′04″E as its origin, correcting the previous approximate catalogue point. This coordinate is a discovery/reference point, not an exact entrance, wall or building location.
+
+The outline follows [OSM coastline way 19798973](https://www.openstreetmap.org/way/19798973), which is tagged as sourced from PGS; the fort point is [node 2398275923](https://www.openstreetmap.org/node/2398275923). © OpenStreetMap contributors, ODbL. The older coastline trace covers approximately 7.05 ha in local projection. UNESCO reports 5.23 ha for the inscribed component property; island shoreline and property boundaries need not coincide. Neither represents a measured fort-wall trace. Coastline detail and position must be checked against a current orthophoto.
+
+[ICOMOS](https://whc.unesco.org/document/221034), p. 129, describes the fort’s stone ramparts and circular bastions, but this pass has not located them. The playable scene currently has **no fort walls, gates, bastions or internal architecture**. The previously offered 1755 reconstruction was removed because the modern coastline and the generic blockout do not establish the 1755 layout. It remains a research baseline, not a faithful model of the fort.
+
+The ground uses land-only [SRTM30](https://www.opentopodata.org/datasets/srtm/) samples on a 40 m grid, obtained 1 November 2026; only 42 sample centres fall inside the mapped island. Ocean values are excluded and a schematic minimum land height is applied. Small-island coastal pixels cannot resolve the real relief, ramparts or shoreline; sea level and depth are not measured.
+
+[UNESCO’s coastal fortification description](https://whc.unesco.org/en/tentativelists/6703/) identifies Gova/Bhuikot, Fatehgarh and Kanakdurg with Harnai and Suvarnadurg. These shore forts, harbour settlement and intervening waters remain outside the local scene. A registered fort survey, present orthophoto, coastal terrain and historical phase evidence are needed for a complete, connected reconstruction.
+
+
+A 2006 [oblique aerial photograph by ktnbravo](https://www.flickr.com/photos/ketanbravo/110138399/) shows substantial perimeter ramparts and projecting works. Its perspective, unknown camera geometry and incomplete view prevent a reliable georeferenced trace; it is a visual research lead, not a current condition survey. The [Ratnagiri Gazetteer](https://gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/RATNAGIRI/places_Harnai.html) describes bastions, a postern, reservoirs and a stepwell without providing positions. These features remain necessary work, not objects placed from guesswork.

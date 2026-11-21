@@ -1,0 +1,10 @@
+{
+ "id": "akhnoor-fort-q15178737",
+ "lat": 32.896038,
+ "lon": 74.740058,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-16T23:02:38.996Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

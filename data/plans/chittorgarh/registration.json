@@ -1,0 +1,73 @@
+{
+ "site_id": "chittorgarh",
+ "plan": "'Guide map of Chittaurgarh', Archaeological Survey of India, Jaipur Circle, 2010 (prepared by V.K. Uppal and Vivek Nigam, Surveyors Gr-I): a relief board at the site. Photograph by Amitbanerjee0143, Wikimedia Commons 'Chittorgarh Fort Map.jpg', 12 July 2015, CC BY-SA 4.0 (attribution required; share-alike). Catalogue: not a catalogued source (new).",
+ "file": "Chittorgarh_Fort_Map.jpg",
+ "pixel_frame": "native 2560x1920 photograph; x right, y down. The board is photographed nearly head-on; a similarity fit left no visible skew (an affine fit improved rms only from 20 to 18 m).",
+ "method": "similarity transform from board pixels to OSM local metres (x east, y north; origin = centroid of the OSM outline way 782250688). Control points are the centroids of 12 blue (tank) regions found by colour thresholding, matched by name and position to OSM tank polygons: Ratan Singh Tank, Kukreshwar Kund, Kumaria Talab, Bolia Talab, Tel Ki Bawri, Ghee Ki Baori, Gomukh Kund, Hathi Kund, Fatta Tank, Bhimlat Kund, Suraj Kund, Chatrang ka Talab.",
+ "fit": {
+  "m_per_px": 1.9376,
+  "rotation_deg": -89.7,
+  "north": "left on the board (the board's arrow points left)",
+  "board_pm": [
+   1020.25,
+   -1311.3333333333333
+  ],
+  "osm_om": [
+   -167.85963800878986,
+   982.2689822370768
+  ],
+  "z": [
+   0.010178147284747339,
+   -1.9375290277881168
+  ],
+  "rms_m": 20.1,
+  "leave_one_out_median_m": 19.6,
+  "worst_control_residuals_m": {
+   "Bhimlat Kund": 44,
+   "Kumaria Talab": 32
+  }
+ },
+ "validation_not_in_fit": [
+  {
+   "feature": "Ratan Singh's Palace (board white rectangle vs OSM building)",
+   "offset_m": 3
+  },
+  {
+   "feature": "Kalika Mata Temple",
+   "offset_m": 3
+  },
+  {
+   "feature": "Padmini's Palace",
+   "offset_m": 8
+  },
+  {
+   "feature": "Rampur/Bampur Bhanpur Haveli",
+   "offset_m": 11
+  },
+  {
+   "feature": "Bhamashah/Bahmasha Haveli",
+   "offset_m": 12
+  },
+  {
+   "feature": "Fatta Haveli",
+   "offset_m": 12
+  },
+  {
+   "feature": "Vijaya Stambh symbol vs OSM 'Victory Tower'",
+   "offset_m": 16
+  },
+  {
+   "feature": "Rana Kumbha's Palace (large footprint, centre read by eye)",
+   "offset_m": 46
+  }
+ ],
+ "stated_accuracy_m": 30,
+ "added_from_board": [
+  "plan-tank-1",
+  "plan-surhadia-tank",
+  "plan-mrigvan-pond (tanks with no OSM water within 130-480 m of their centre)",
+  "plan-kirti-stambh (board symbol)"
+ ],
+ "not_traced": "the board's other white and yellow footprints that OSM already maps, the lettering, the route lines, the Mrigvan forest hatching; gate positions (OSM nodes are used, the board only letters their names beside the road)",
+ "traced_by": "colour thresholding for tanks (contours simplified at 3 px); the Kirti Stambh symbol and check points read by eye; pixel coordinates are in tools/trace/curation/chittorgarh.mjs"
+}

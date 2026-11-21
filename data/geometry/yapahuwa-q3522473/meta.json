@@ -1,0 +1,10 @@
+{
+ "id": "yapahuwa-q3522473",
+ "lat": 7.816667,
+ "lon": 80.316667,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-18T03:51:01.435Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

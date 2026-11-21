@@ -1,0 +1,26 @@
+{
+ "site_id": "rohtas-pk",
+ "items": [
+  {
+   "file": "File:Langar Khani Gate Plan.jpg",
+   "role": "plan",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/79/Langar_Khani_Gate_Plan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "page": "https://commons.wikimedia.org/wiki/File%3ALangar_Khani_Gate_Plan.jpg",
+   "licence": "Public domain",
+   "licence_url": "",
+   "author": "Unknown authorUnknown author",
+   "credit": "Ihsan H Nadiem, “Rohtas: Formidable Fort Of Sher Shah. Lahore: Sang-e-Meel Publications, ISBN 969-35-0603-0.",
+   "date": "1922-03",
+   "description": "The image is from Architectural Survey of India maps. It was first drawn in \"Annual Report of Archaeological Survey of India: 1922-23: Delhi\". After 1947(Pakistan) it has been in public domain and been freely used in many books including the book I took it from.",
+   "width": 884,
+   "height": 1465,
+   "bytes": 110288,
+   "mime": "image/jpeg",
+   "sha1": "642f7442a00bc7f4019515b7ded1a0ed51726ad9",
+   "retrieved": "2026-11-18",
+   "saved": "Langar_Khani_Gate_Plan.jpg",
+   "sha256": "efcf0b8b1dcade9bf9c70edd395589e309e8102a9200ce255554cca52413fd75",
+   "status": "downloaded"
+  }
+ ]
+}

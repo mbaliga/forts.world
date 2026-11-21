@@ -1,0 +1,10 @@
+{
+ "id": "zafarabad-sn3356",
+ "lat": 25.71129,
+ "lon": 82.72893,
+ "radiusM": 500,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-11T04:04:42.615Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

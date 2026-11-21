@@ -1,0 +1,53 @@
+world fetch: 255 countries, this shard 13
+wikidata AF Afghanistan 11
+wikidata BH Bahrain 4
+wikidata CH Switzerland 1012
+wikidata DM Dominica 2
+wikidata GF French Guiana 0
+wikidata HU Hungary 181
+wikidata KN Saint Kitts and Nevis 3
+wikidata ME Montenegro 29
+wikidata NA Namibia 9
+wikidata PM Saint Pierre and Miquelon 0
+wikidata SI Slovenia 290
+wikidata TJ Tajikistan 6
+wikidata VG British Virgin Islands 6
+osm AF castle 33
+osm AF fort 40
+osm AF ruin 126
+osm BH castle 6
+osm BH fort 2
+osm BH ruin 0
+osm CH castle 939
+osm CH fort 9
+osm CH ruin 285
+osm DM castle 0
+osm DM fort 1
+osm DM ruin 8
+osm GF castle 0
+osm GF fort 0
+osm GF ruin 0
+osm HU castle 999
+osm HU fort 7
+osm HU ruin 544
+osm KN castle 2
+osm KN fort 6
+osm KN ruin 8
+osm ME castle 69
+osm ME fort 29
+osm ME ruin 104
+osm NA castle 11
+osm NA fort 3
+osm NA ruin 31
+osm PM castle 0
+osm PM fort 0
+osm PM ruin 0
+osm SI castle 268
+osm SI fort 17
+osm SI ruin 223
+osm TJ castle 24
+osm TJ fort 3
+osm TJ ruin 39
+osm VG castle 0
+osm VG fort 0
+osm VG ruin 2

@@ -1,0 +1,10 @@
+{
+ "id": "chaugan-fort-q97101217",
+ "lat": 22.758611,
+ "lon": 78.9275,
+ "radiusM": 500,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:44:14.343Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

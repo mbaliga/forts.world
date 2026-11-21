@@ -1,0 +1,10 @@
+{
+ "id": "raigad",
+ "lat": 18.235352,
+ "lon": 73.445463,
+ "radiusM": 1500,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-14T18:30:58.346Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

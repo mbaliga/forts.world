@@ -1,0 +1,10 @@
+{
+ "id": "hari-parbat",
+ "lat": 34.10603,
+ "lon": 74.81628,
+ "radiusM": 1000,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-14T18:35:51.097Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

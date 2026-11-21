@@ -1,0 +1,47 @@
+{
+ "site_id": "sanchi-q181123",
+ "items": [
+  {
+   "file": "File:Sanchi map with Stupa 2.jpg",
+   "role": "plan",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Sanchi_map_with_Stupa_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "page": "https://commons.wikimedia.org/wiki/File%3ASanchi_map_with_Stupa_2.jpg",
+   "licence": "Public domain",
+   "licence_url": "",
+   "author": "Maisey, Fredrick Charles; Cunningham, Alexander, Sir, 1814-1893",
+   "credit": "Sánchi and its remains, published in 1892  [1]",
+   "date": "1892-01-01",
+   "description": "Sanchi map with Stupa 2",
+   "width": 1822,
+   "height": 1273,
+   "bytes": 1077564,
+   "mime": "image/jpeg",
+   "sha1": "476ccb87895ffe79b13cfee1af23d8c3105bfca7",
+   "retrieved": "2026-11-18",
+   "saved": "Sanchi_map_with_Stupa_2.jpg",
+   "sha256": "438ff9bea22b7e8f3992b1ec64383a31d1483e6e90f95395accd5c620b0d8fa0",
+   "status": "downloaded"
+  },
+  {
+   "file": "File:Sanchi map.jpg",
+   "role": "plan",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Sanchi_map.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "page": "https://commons.wikimedia.org/wiki/File%3ASanchi_map.jpg",
+   "licence": "Public domain",
+   "licence_url": "",
+   "author": "Marshall, John",
+   "credit": "A Guide to Sanchi, Plate XV Publication date 1918",
+   "date": "2017-09-04",
+   "description": "Sanchi map",
+   "width": 2572,
+   "height": 1611,
+   "bytes": 409389,
+   "mime": "image/jpeg",
+   "sha1": "be0590b5eb760f66bfbcda1c9a2d81259bd7a498",
+   "retrieved": "2026-11-18",
+   "saved": "Sanchi_map.jpg",
+   "sha256": "8ea49b1827e7375a59fdca21f03e504f1b0794b46401ed34760898bf48e742ff",
+   "status": "downloaded"
+  }
+ ]
+}

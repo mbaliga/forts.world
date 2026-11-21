@@ -1,0 +1,10 @@
+{
+ "id": "raichur",
+ "lat": 16.20112,
+ "lon": 77.345667,
+ "radiusM": 2200,
+ "osm": true,
+ "tiles": 25,
+ "fetched": "2026-11-14T18:31:07.828Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

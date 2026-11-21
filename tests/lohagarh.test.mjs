@@ -1,0 +1,22 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {lohagarh} from '../src/levels/lohagarh.js';
+import {fortEraAt} from '../src/game/campaign-battle.js';
+import sources from '../src/data/source-catalogue.js';
+test('Lohagarh uses mapped present walls, moat and crossings with historic limits',()=>{
+ assert.deepEqual(lohagarh.coords,[27.2206,77.4955]);
+ assert.deepEqual(lohagarh.eras.map(e=>e.id),['today']);
+ assert.equal(fortEraAt(lohagarh,1805),null);
+ assert.ok(lohagarh.eras[0].sources.every(id=>sources.some(s=>s.id===id)));
+ const ops=lohagarh.terrain('today');
+ assert.equal(ops.filter(o=>o.op==='dig').length,1);
+ assert.equal(ops.filter(o=>o.op==='raise').length,1);
+ assert.ok(lohagarh.siteBoundary.length>300);
+ const walls=[],bridges=[],water=[];
+ lohagarh.build(new Proxy({era:'today',ground:()=>4,wall:o=>(walls.push(o),{}),bridge:o=>bridges.push(o),water:o=>water.push(o)},{get:(t,k)=>k in t?t[k]:(()=>{})}));
+ assert.equal(walls.filter(w=>w.closed===false&&w.path.length>100).length,2);
+ assert.ok(!walls.some(w=>w.closed===true));
+ assert.equal(bridges.length,2);
+ assert.equal(water.length,1);
+ assert.ok(water[0].poly.length>100);
+});

@@ -1,0 +1,10 @@
+{
+ "id": "panhala",
+ "lat": 16.808889,
+ "lon": 74.109167,
+ "radiusM": 1800,
+ "osm": true,
+ "tiles": 16,
+ "fetched": "2026-11-11T03:50:02.185Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

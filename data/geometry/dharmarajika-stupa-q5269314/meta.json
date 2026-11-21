@@ -1,0 +1,10 @@
+{
+ "id": "dharmarajika-stupa-q5269314",
+ "lat": 33.744722,
+ "lon": 72.841944,
+ "radiusM": 500,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-18T22:30:39.077Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

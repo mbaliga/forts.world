@@ -1,0 +1,10 @@
+{
+ "id": "old-castle-at-tsemo-hill-q59657882",
+ "lat": 34.1675,
+ "lon": 77.5906,
+ "radiusM": 500,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-11T04:08:44.362Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

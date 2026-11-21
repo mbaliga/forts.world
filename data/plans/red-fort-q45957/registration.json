@@ -1,0 +1,22 @@
+{
+ "site_id": "red-fort-q45957",
+ "plan": "data/plans/red-fort-q45957/Sketch_plan_of_Delhi_fort.jpg",
+ "plan_source": "Wikimedia Commons File:Sketch plan of Delhi fort.jpg (Sketch plan of Delhi Fort, Gordon Sanderson 1912, copied from Fergusson; Public domain per Commons)",
+ "plan_size_px": [4645, 3297],
+ "working_size_px": [2000, 1420],
+ "frame": "OSM local metres, origin 28.6546038N 77.2407056E (data/traces/red-fort-q45957.trace.json, +-800 m window), x east, y north",
+ "transform": "o = a*(px - i*py) + b (complex), px,py on the 2000-px-wide rendering (original px / 2.3225); plan top is east, plan left is north",
+ "a": [-0.00837438, -0.48349175],
+ "b": [360.2912, 527.8006],
+ "scale_m_per_px_working": 0.4836,
+ "rotation_deg": -90.99,
+ "control_points": [
+  {"name": "Shah Burj (NE corner)", "plan_px": [150, 108], "osm": [308, 448]},
+  {"name": "Asad Burj (SE corner bastion)", "plan_px": [1500, 130], "osm": [262, -208]},
+  {"name": "Lahore Gate barbican (west)", "plan_px": [920, 1215], "osm": [-225, 100]},
+  {"name": "Delhi Gate (south)", "plan_px": [1620, 865], "osm": [-62, -268]},
+  {"name": "Musamman Burj", "plan_px": [820, 105], "osm": [305, 165]}
+ ],
+ "residuals_m": [8, 26, 12, 22, 33],
+ "accuracy": "visual overlay of plan wall and OSM wall agrees to 10-30 m; stated registration accuracy +-30 m; plan scale 0.4836 m/px working vs dimension 'from Shah Burj to Asad Burj 630 m' consistent with OSM east wall 650 m"
+}

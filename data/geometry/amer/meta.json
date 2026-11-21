@@ -1,0 +1,10 @@
+{
+ "id": "amer",
+ "lat": 26.987778,
+ "lon": 75.849722,
+ "radiusM": 900,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-18T22:18:49.574Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

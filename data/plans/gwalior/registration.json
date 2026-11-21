@@ -1,0 +1,58 @@
+{
+ "site_id": "gwalior",
+ "plan": "data/plans/gwalior/Map_of_Gwalior_Fort.jpg",
+ "plan_source": "Wikimedia Commons File:Map of Gwalior Fort.jpg (1908 Gwalior State Gazetteer, drawn by A. Cunningham; Public domain per Commons)",
+ "plan_size_px": [
+  1660,
+  2543
+ ],
+ "plan_scale_bar": "0-4000 ft along the bottom edge; stated scale bar reads about 1.38 m/px but the fitted scale is 1.295 m/px (plan is about 6% stretched, as a hand-drawn sketch)",
+ "frame": "OSM local metres, origin 26.2230701N 78.1659176E (data/traces/gwalior.trace.json), x east, y north",
+ "transform": "osm_complex = a*(px - i*py) + b, with plan pixel (px, py down) ; invert for plan from osm",
+ "a": [
+  1.294021172031406,
+  0.05457774889284437
+ ],
+ "b": [
+  -1103.6456797427463,
+  1517.705986390438
+ ],
+ "scale_m_per_px": 1.2952,
+ "rotation_deg": 2.415,
+ "control_points": [
+  {
+   "name": "Suraj Kund",
+   "plan_px": [
+    876,
+    1219
+   ],
+   "osm": "centroid of water way 1231803602"
+  },
+  {
+   "name": "Gangola Talao",
+   "plan_px": [
+    878,
+    1476
+   ],
+   "osm": "centroid of water way 1231803604"
+  }
+ ],
+ "check_points": [
+  {
+   "name": "Teli-ka-Mandir",
+   "osm_node": "1109062007? marker-2 node 1109061982",
+   "plan_px_expected": [
+    800,
+    1434
+   ],
+   "plan_px_predicted": [
+    776,
+    1444
+   ],
+   "error_px": 26,
+   "error_m": 34
+  }
+ ],
+ "accuracy": "about +-35 m near the tanks and Teli ka Mandir; larger toward the north (Man Mandir palace, gates) where the OSM outline departs from the hachured scarp by up to about 60-100 m. Use plan positions as relative placement only, snapped to mapped lines where one exists.",
+ "overlay": "docs/fort-fidelity/shots/gwalior-plan-registration-overlay.png (red OSM outline, blue tanks, green markers, orange wall way, purple roads)"
+}

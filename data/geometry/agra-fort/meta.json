@@ -1,0 +1,10 @@
+{
+ "id": "agra-fort",
+ "lat": 27.183308,
+ "lon": 78.0191,
+ "radiusM": 1500,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-14T18:31:20.127Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

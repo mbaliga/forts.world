@@ -1,0 +1,10 @@
+{
+ "id": "warangal",
+ "lat": 17.957,
+ "lon": 79.613,
+ "radiusM": 2000,
+ "osm": true,
+ "tiles": 20,
+ "fetched": "2026-11-11T03:57:40.697Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

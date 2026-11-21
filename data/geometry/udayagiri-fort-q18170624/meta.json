@@ -1,0 +1,10 @@
+{
+ "id": "udayagiri-fort-q18170624",
+ "lat": 14.865193,
+ "lon": 79.27498,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-14T18:29:54.361Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

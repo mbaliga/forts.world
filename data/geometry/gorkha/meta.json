@@ -1,0 +1,10 @@
+{
+ "id": "gorkha",
+ "lat": 28.0044,
+ "lon": 84.6289,
+ "radiusM": 1000,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-11T04:07:05.829Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

@@ -1,0 +1,10 @@
+{
+ "id": "lohagad",
+ "lat": 18.709,
+ "lon": 73.476,
+ "radiusM": 1000,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-11T03:56:10.296Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

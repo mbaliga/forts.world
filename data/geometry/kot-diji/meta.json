@@ -1,0 +1,10 @@
+{
+ "id": "kot-diji",
+ "lat": 27.345079,
+ "lon": 68.706283,
+ "radiusM": 600,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-11T04:21:48.211Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

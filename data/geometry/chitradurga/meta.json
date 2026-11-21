@@ -1,0 +1,10 @@
+{
+ "id": "chitradurga",
+ "lat": 14.21584,
+ "lon": 76.395919,
+ "radiusM": 1500,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-14T18:32:03.569Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

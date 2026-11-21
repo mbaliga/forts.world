@@ -1,0 +1,67 @@
+# site_id|Commons search phrase|phrase...   (results land in data/plans/search/<site_id>.json)
+daulatabad|Daulatabad fort plan|Devagiri fort map|Dowlatabad plan|Daulatabad fort survey drawing
+murud-janjira|Janjira fort plan|Murud Janjira map|Jinjira plan|Janjira fort drawing
+sindhudurg|Sindhudurg fort plan|Sindhudurg fort map|Sindhudurg survey
+chittorgarh|Chittorgarh fort plan|Chitor fort map|Chittor fort plan|Chitorgarh survey drawing
+jaisalmer|Jaisalmer fort plan|Jaisalmer fort map|Jaisalmer fort survey drawing|Jaisalmer fort elevation
+fatehpur-sikri|Fatehpur Sikri plan|Fatehpur Sikri map|Fatehpur Sikri survey drawing|Fatehpur Sikri palace plan
+sigiriya|Sigiriya plan|Sigiriya map|Sigiriya survey drawing|Sigiriya water gardens plan
+lahore-fort|Lahore Fort plan|Lahore Fort map|Lahore Fort survey drawing|Shahi Qila Lahore plan
+ranthambore|Ranthambore fort plan|Ranthambhor fort map|Ranthambore fort survey
+galle|Galle fort plan|Galle fort map Dutch|Galle fort kaart|Fort Galle Nationaal Archief
+mehrangarh|Mehrangarh plan|Jodhpur fort map|Mehrangarh survey drawing|Jodhpur fort plan
+tughlaqabad|Tughlaqabad fort plan|Tughlakabad map|Tughlaqabad survey drawing
+panhala|Panhala fort plan|Panhala fort map|Panhala survey
+vellore|Vellore fort plan|Vellore fort map|Vellore fort survey drawing
+agra-fort|Agra Fort plan|Agra Fort map|Agra Fort survey drawing|Agra Fort ASI plan
+pavagadh|Champaner plan|Pavagadh map|Champaner survey drawing|Pavagadh fort plan
+rani-ki-vav|Rani ki Vav plan|Rani ki vav section|Rani ki vav survey drawing
+amer|Amber Fort plan|Amer Fort map|Amber fort survey drawing|Amber palace plan
+rohtas-pk|Rohtas Fort plan|Rohtas Fort map|Rohtas fort survey drawing
+hampi-q26732|Hampi plan|Vijayanagara map|Hampi survey drawing|Hampi royal centre plan
+nalanda-mahavihara-q216243|Nalanda plan|Nalanda excavation plan|Nalanda map
+bhadra-fort-q3544561|Bhadra Fort plan|Bhadra fort Ahmedabad map|Bhadra Fort survey
+humayun-s-tomb-q189648|Humayun's Tomb plan|Humayun tomb map|Humayun tomb survey drawing
+jantar-mantar-q508634|Jantar Mantar Jaipur plan|Jantar Mantar map
+red-fort-q45957|Red Fort plan|Delhi Red Fort map|Lal Qila survey drawing|Red Fort Delhi plan 19th century
+gagron|Gagron fort plan|Gagron fort map|Gagraun survey
+sanchi-q181123|Sanchi plan|Sanchi stupa plan|Sanchi map
+dholavira-q9468|Dholavira plan|Dholavira map|Dholavira excavation plan
+qutb-complex-q1074330|Qutb Minar plan|Qutb complex plan|Qutb Delhi map
+royal-palace-of-kandy-q3273212|Kandy palace plan|Kandy royal palace map|Kandy plan
+polonnaruwa-q394443|Polonnaruwa plan|Polonnaruwa map|Polonnaruwa survey
+pattadakal|Pattadakal plan|Pattadakal map
+taj-mahal-q9141|Taj Mahal plan|Taj Mahal site plan|Taj Mahal map
+mahabodhi-temple-q4513|Mahabodhi plan|Bodh Gaya plan|Bodh Gaya map
+group-of-monuments-at-mahabalipuram-q3522747|Mahabalipuram plan|Mahabalipuram map
+sirkap-q1340954|Sirkap plan|Sirkap Taxila map|Sirkap excavation plan
+dharmarajika-stupa-q5269314|Dharmarajika plan|Taxila map
+shalamar-gardens-q499527|Shalimar Gardens Lahore plan|Shalamar gardens map
+takht-i-bahi-q117623|Takht-i-Bahi plan|Takht-i-Bahi map
+kumbhalgarh|Kumbhalgarh fort plan|Kumbhalgarh map|Kumbhalgarh fort survey drawing
+ajanta-caves-q184427|Ajanta caves plan|Ajanta cave survey plan|Ajanta caves map
+ellora-caves-q189616|Ellora caves plan|Ellora cave survey plan|Ellora caves map
+elephanta-caves-q649384|Elephanta caves plan|Elephanta cave plan|Elephanta survey
+great-bath-mohenjo-daro-q3346415|Mohenjo-daro plan|Mohenjo-daro great bath plan|Mohenjo-daro site map
+bhimbetka-rock-shelters-q331603|Bhimbetka plan|Bhimbetka map
+buddhas-of-bamiyan-q484458|Bamiyan plan|Bamiyan Buddhas map
+sarnath-q324394|Sarnath plan|Sarnath excavation plan|Dhamekh stupa plan
+royal-thai-monastery-lumbini-nepal-q13020937|Lumbini plan|Lumbini Maya Devi temple plan|Lumbini excavation plan
+site-q305044|Paharpur plan|Somapura Mahavihara plan|Paharpur excavation plan|Paharpur monastery map
+minaret-of-jam-q192981|Minaret of Jam plan|Jam minaret map|Minaret of Jam survey
+ramappa-temple-q3380656|Ramappa temple plan|Ramappa temple Palampet plan
+boudhanath-q889902|Boudhanath plan|Boudha stupa plan|Boudhanath map
+great-living-chola-temples-q695229|Brihadisvara temple plan|Gangaikonda Cholapuram plan|Airavatesvara temple plan
+pashupatinath-temple-q380384|Pashupatinath plan|Pashupatinath temple map
+santiniketan-q1026431|Santiniketan plan|Shantiniketan map
+dambulla-cave-temple-q45690|Dambulla cave temple plan|Dambulla caves plan
+chaturbhuj-temple-khajuraho-q5087986|Chaturbhuj temple Khajuraho plan|Khajuraho temples map
+changu-narayan-temple-q1062150|Changu Narayan plan|Changu Narayan temple map
+churches-and-convents-of-goa-q15726428|Old Goa map|Old Goa plan|Se Cathedral Goa plan|Basilica of Bom Jesus plan
+historic-city-of-ahmadabad-q5472448|Ahmedabad old city map|Ahmedabad walled city plan|Bhadra Fort Ahmedabad plan
+jandial-q28163477|Jandial temple plan|Jandial Taxila plan
+taxila-jaulian-q82076030|Jaulian plan|Jaulian Taxila plan|Jaulian monastery plan
+bhir-mound-q854989|Bhir Mound plan|Bhir Mound Taxila plan
+mohra-muradu-q938223|Mohra Muradu plan|Mohra Muradu Taxila
+giri-complex-of-monuments-q66134819|Giri Taxila plan|Giri complex Taxila
+convocation-hall-university-of-mumbai-q97149899|Convocation Hall Mumbai plan|University of Mumbai Fort campus

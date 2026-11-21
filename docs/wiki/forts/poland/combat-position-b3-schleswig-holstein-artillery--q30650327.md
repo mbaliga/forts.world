@@ -1,0 +1,48 @@
+# Combat position B3 (Schleswig-Holstein artillery battery)
+
+> Poland · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `combat-position-b3-schleswig-holstein-artillery--q30650327` |
+| Coordinates | 54.62584, 18.79969 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/54.62584/18.79969)) |
+| Wikidata | [Q30650327](https://www.wikidata.org/wiki/Q30650327) (CC0) |
+| Wikidata class | fort |
+| Types | fortification |
+| Administrative area | Hel |
+| Inception | 1945 |
+| Designations | immovable monument in Poland |
+| Wikipedia language editions | 0 |
+| OSM `historic` | yes |
+| OSM `description` | obiekt jest zamknięty, ale można wejść na dach |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 17 elements (outline 1, road 15, wall 1).
+
+Evidence: documented 0, mapped 17, inferred 0, derived 0; heights documented 0, inferred 0, unknown 1.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:way/333585174 historic=yes 9 m from ledger point
+- origin moved 7 m from the ledger point to the centre of the mapped site
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/54.62584/18.79969) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=fort; fortification; sitelinks=0; wikidata:Q30650327 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 17 elements); data/traces/combat-position-b3-schleswig-holstein-artillery--q30650327.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/poland.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

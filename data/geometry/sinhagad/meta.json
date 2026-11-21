@@ -1,0 +1,10 @@
+{
+ "id": "sinhagad",
+ "lat": 18.366,
+ "lon": 73.755,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-14T18:27:33.642Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

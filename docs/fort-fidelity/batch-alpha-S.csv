@@ -1,0 +1,11 @@
+seq,letter,site_id,name,region,country,significance_rank,ledger_batch,radius_m
+1,S,sinhagad,Sinhagad (Kondhana),Maharashtra,India,226,16,1200
+2,V,vishalgad-q11954902,Vishalgad,Kolhapur district,India,,139,1000
+3,Y,yadgir-sn1265,Yadgir,Karnataka,India,,1694,800
+4,B,balapur-fort-q4850070,Balapur Fort,Akola district,India,474,103,500
+5,E,egarasindhur-fort-q25586763,Egarasindhur Fort,Dhaka Division,Bangladesh,3805,760,500
+6,H,hari-parbat,"Hari Parbat, Srinagar",Jammu and Kashmir,India,265,12,1000
+7,K,kangra,Kangra,Himachal Pradesh,India,222,12,800
+8,N,nalknad-palace-q6960926,Nalknad Palace,Kodagu district,India,,181,500
+9,Q,qila-mubarak-patiala,"Qila Mubarak, Patiala",Punjab,India,,18,500
+10,T,thakur-chaman-singh-ki-gadhi-q97101197,Thakur Chaman Singh ki Gadhi,Mandsaur district,India,889,186,500

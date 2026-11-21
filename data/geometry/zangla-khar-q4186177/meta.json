@@ -1,0 +1,10 @@
+{
+ "id": "zangla-khar-q4186177",
+ "lat": 33.67,
+ "lon": 76.98,
+ "radiusM": 500,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-11T04:05:17.618Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

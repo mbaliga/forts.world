@@ -1,0 +1,10 @@
+{
+ "id": "moti-mahal-q98927684",
+ "lat": 22.6145,
+ "lon": 80.5113,
+ "radiusM": 900,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:31:12.343Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

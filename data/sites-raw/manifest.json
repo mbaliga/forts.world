@@ -1,0 +1,196 @@
+{
+ "fetched": "2026-11-03T15:15:19.702Z",
+ "countries": [
+  "IN",
+  "PK",
+  "BD",
+  "NP",
+  "LK",
+  "AF",
+  "BT"
+ ],
+ "sources": {
+  "unesco": {
+   "ok": true,
+   "files": [],
+   "url": "https://whc.unesco.org/en/list/xml/",
+   "rows": 1273,
+   "region": 68
+  },
+  "asi": {
+   "ok": true,
+   "lists": 57,
+   "rows": 1,
+   "titles": [
+    "Monuments of National Importance",
+    "List of Monuments of National Importance in Raichur district",
+    "List of Monuments of National Importance in Karnataka",
+    "List of Monuments of National Importance in Kalaburagi district",
+    "List of Monuments of National Importance in Uttar Pradesh",
+    "List of Monuments of National Importance in Nagaland",
+    "List of Monuments of National Importance in Puducherry",
+    "List of Monuments of National Importance in Allahabad district",
+    "List of Monuments of National Importance in Bidar district",
+    "List of Monuments of National Importance in Tamil Nadu",
+    "List of Monuments of National Importance in Uttarakhand",
+    "List of Monuments of National Importance in Manipur",
+    "List of Monuments of National Importance in Meghalaya",
+    "List of Monuments of National Importance in Mizoram",
+    "List of Monuments of National Importance in Tripura",
+    "List of Monuments of National Importance in Punjab, India",
+    "List of Monuments of National Importance in Dadra and Nagar Haveli and Daman and Diu",
+    "List of Monuments of National Importance in Haryana",
+    "List of Monuments of National Importance in Uttara Kannada district",
+    "List of Monuments of National Importance in Jharkhand",
+    "List of Monuments of National Importance in Dharwad district",
+    "List of Monuments of National Importance in Telangana",
+    "List of Monuments of National Importance in Ladakh",
+    "List of Monuments of National Importance in Sikkim",
+    "List of Monuments of National Importance in Lucknow circle",
+    "List of Monuments of National Importance in Arunachal Pradesh",
+    "List of Monuments of National Importance in Maharashtra",
+    "List of Monuments of National Importance in Goa",
+    "List of Monuments of National Importance in Madhya Pradesh",
+    "List of Monuments of National Importance in Belgaum district",
+    "List of Monuments of National Importance in Kerala",
+    "List of Monuments of National Importance in Ahmedabad district",
+    "List of Monuments of National Importance in Chhattisgarh",
+    "List of Monuments of National Importance in Jammu and Kashmir",
+    "List of Monuments of National Importance in Odisha",
+    "List of Monuments of National Importance in Himachal Pradesh",
+    "List of Monuments of National Importance in Aurangabad circle",
+    "List of Monuments of National Importance in Assam",
+    "List of Monuments of National Importance in Bihar",
+    "List of Monuments of National Importance in Lalitpur district, India",
+    "List of Monuments of National Importance in Sarnath circle, Uttar Pradesh",
+    "List of Monuments of National Importance in Bagalkot and Bijapur district, Karnataka",
+    "List of Monuments of National Importance in West Bengal",
+    "List of monuments of national importance in Mumbai circle",
+    "List of Monuments of National Importance in Nagpur circle",
+    "List of Monuments of National Importance in Lucknow circle/North",
+    "List of Monuments of National Importance in Gujarat",
+    "List of Monuments of National Importance in Andhra Pradesh",
+    "List of Monuments of National Importance in Lucknow circle/South",
+    "List of Monuments of National Importance in Rajasthan",
+    "List of Monuments of National Importance in Madhya Pradesh/West",
+    "List of Monuments of National Importance in Bangalore circle",
+    "List of Monuments of National Importance in Madhya Pradesh/East",
+    "List of Monuments of National Importance in Delhi",
+    "List of Monuments of National Importance in Agra circle",
+    "List of Monuments of National Importance in Agra district",
+    "List of Monuments of National Importance in Tiruchirapalli circle"
+   ]
+  },
+  "wikidata": {
+   "ok": true,
+   "queries": 70,
+   "rows": 6957,
+   "failed": [
+    "IN:fort:504 https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3Fname%20%3Fcoord%",
+    "IN:ancient:504 https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3Fname%20%3Fcoord%",
+    "IN:temple:504 https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3Fname%20%3Fcoord%"
+   ],
+   "IN": 5838,
+   "PK": 291,
+   "BD": 210,
+   "NP": 179,
+   "LK": 254,
+   "AF": 112,
+   "BT": 73
+  },
+  "osm": {
+   "ok": true,
+   "queries": 20,
+   "elements": 889,
+   "failed": [
+    "IN:historic:504 https://overpass.kumi.systems/api/interpreter",
+    "IN:heritage:The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+    "IN:worship:skipped (mirrors failing)",
+    "IN:water:skipped (mirrors failing)",
+    "IN:port:skipped (mirrors failing)",
+    "PK:heritage:The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+    "PK:worship:The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+    "PK:water:skipped (mirrors failing)",
+    "PK:port:skipped (mirrors failing)",
+    "BD:historic:504 https://overpass.kumi.systems/api/interpreter",
+    "BD:water:The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+    "BD:port:The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+    "NP:water:The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+    "NP:port:The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+    "LK:historic:The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+    "LK:heritage:The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+    "LK:worship:skipped (mirrors failing)",
+    "LK:water:skipped (mirrors failing)",
+    "LK:port:skipped (mirrors failing)",
+    "AF:historic:The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+    "AF:worship:The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+    "AF:water:skipped (time budget)",
+    "AF:port:skipped (time budget)",
+    "BT:historic:skipped (time budget)",
+    "BT:heritage:skipped (time budget)",
+    "BT:worship:skipped (time budget)",
+    "BT:water:skipped (time budget)",
+    "BT:port:skipped (time budget)"
+   ],
+   "PK-historic": 630,
+   "BD-heritage": 9,
+   "BD-worship": 46,
+   "NP-historic": 153,
+   "NP-heritage": 17,
+   "NP-worship": 31,
+   "AF-heritage": 3
+  }
+ },
+ "warnings": [
+  "class \"vihara\" not resolved; skipped",
+  "class Q44377 expected \"tomb\" but is \"tunnel\"; searching by label",
+  "wikidata IN fort: 504 https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3Fname%20%3Fcoord%",
+  "wikidata IN ancient: 504 https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3Fname%20%3Fcoord%",
+  "wikidata IN temple: 504 https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3Fname%20%3Fcoord%",
+  "osm IN historic: 504 https://overpass.kumi.systems/api/interpreter",
+  "osm IN heritage: The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+  "osm PK heritage: The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+  "osm PK worship: The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+  "osm BD historic: 504 https://overpass.kumi.systems/api/interpreter",
+  "osm BD water: The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+  "osm BD port: The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+  "osm NP water: The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+  "osm NP port: The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+  "osm LK historic: The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+  "osm LK heritage: The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+  "osm AF historic: The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter",
+  "osm AF worship: The operation was aborted due to timeout https://overpass.kumi.systems/api/interpreter"
+ ],
+ "wikidataClasses": {
+  "fort": [
+   "Q57821",
+   "Q23413",
+   "Q1785071"
+  ],
+  "palace": [
+   "Q16560"
+  ],
+  "ancient": [
+   "Q15661340",
+   "Q839954"
+  ],
+  "monastery": [
+   "Q44613"
+  ],
+  "temple": [
+   "Q44539",
+   "Q180987"
+  ],
+  "stepwell": [
+   "Q1473950"
+  ],
+  "tomb": [
+   "Q381885",
+   "Q162875"
+  ],
+  "port": [
+   "Q44782",
+   "Q283202"
+  ]
+ }
+}

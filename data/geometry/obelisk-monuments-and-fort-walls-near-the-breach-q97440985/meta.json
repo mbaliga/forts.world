@@ -1,0 +1,10 @@
+{
+ "id": "obelisk-monuments-and-fort-walls-near-the-breach-q97440985",
+ "lat": 12.425444,
+ "lon": 76.674062,
+ "radiusM": 500,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:34:06.644Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

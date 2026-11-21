@@ -1,0 +1,47 @@
+# Castle of Sajazarra
+
+> Spain · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `castle-of-sajazarra-q29445075` |
+| Coordinates | 42.58938, -2.96024 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/42.58938/-2.96024)) |
+| Wikidata | [Q29445075](https://www.wikidata.org/wiki/Q29445075) (CC0) |
+| Wikidata class | castle |
+| Types | castle\|defensive\|castle\|fortified palace |
+| Administrative area | Sajazarra |
+| Inception | 1457 |
+| Wikipedia language editions | 2 |
+| OSM `historic` | castle |
+| OSM `castle_type` | defensive |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 388 elements (outline 1, marker 1, building 259, road 62, zone 3, waterway 6, wall 56).
+
+Evidence: documented 0, mapped 388, inferred 0, derived 0; heights documented 1, inferred 0, unknown 314.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:way/1013346668 historic=castle Q29445075 3 m from ledger point
+- origin moved 3 m from the ledger point to the centre of the mapped site
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/42.58938/-2.96024) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=castle; castle\|defensive\|castle\|fortified palace; sitelinks=2; wikidata:Q29445075 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 388 elements); data/traces/castle-of-sajazarra-q29445075.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/spain.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

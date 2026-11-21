@@ -1,0 +1,10 @@
+{
+ "id": "hampi-q26732",
+ "lat": 15.334547,
+ "lon": 76.462162,
+ "radiusM": 2500,
+ "osm": true,
+ "tiles": 25,
+ "fetched": "2026-11-14T18:33:26.053Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

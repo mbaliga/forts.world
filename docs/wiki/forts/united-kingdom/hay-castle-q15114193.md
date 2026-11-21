@@ -1,0 +1,49 @@
+# Hay Castle
+
+> United Kingdom · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `hay-castle-q15114193` |
+| Coordinates | 52.074, -3.12597 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/52.074/-3.12597)) |
+| Wikidata | [Q15114193](https://www.wikidata.org/wiki/Q15114193) (CC0) |
+| Wikidata class | ruin |
+| Types | castle\|castle ruin\|heritage centre |
+| Administrative area | Hay |
+| Inception | 1070 |
+| Designations | National Monument of Wales\|Grade I listed building\|scheduled monument |
+| Wikipedia language editions | 8 |
+| OSM `historic` | castle |
+| OSM `castle_type` | manor |
+| OSM `website` | https://www.haycastletrust.org/ |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 400 elements (outline 1, marker 3, road 123, waterway 2, building 245, zone 8, wall 15, retaining-wall 3).
+
+Evidence: documented 0, mapped 400, inferred 0, derived 0; heights documented 1, inferred 0, unknown 262.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:way/331407045 historic=castle Q15114193 13 m from ledger point
+- origin moved 14 m from the ledger point to the outline centroid
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/52.074/-3.12597) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=ruin; castle\|castle ruin\|heritage centre; sitelinks=8; wikidata:Q15114193 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 400 elements); data/traces/hay-castle-q15114193.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/united-kingdom.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

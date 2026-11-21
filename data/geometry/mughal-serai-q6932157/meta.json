@@ -1,0 +1,10 @@
+{
+ "id": "mughal-serai-q6932157",
+ "lat": 30.798333,
+ "lon": 76.021667,
+ "radiusM": 900,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-11T04:08:05.087Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

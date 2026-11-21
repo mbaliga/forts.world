@@ -1,0 +1,10 @@
+{
+ "id": "tellicherry-fort-q3523380",
+ "lat": 11.748167,
+ "lon": 75.486544,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-11T04:01:33.512Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

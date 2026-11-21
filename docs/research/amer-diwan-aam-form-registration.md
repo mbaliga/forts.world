@@ -1,0 +1,9 @@
+# Amer Diwan-i-Aam form and point registration
+
+The former scene represented Diwan-i-Aam as a closed rectangular palace block. That contradicted the ASI/IGNCA monument inventory RJ/JPR-659, which identifies the hall as one storey, east–west oriented and facing west, with a colonnaded exterior, double columns, ornamented elephant-motif brackets and trabeate construction. The same inventory dates it to 1621–1667 and records Mirza Raja Jai Singh as patron.
+
+The UNESCO nomination gives a separate reference coordinate for Diwan-i-Aam (P2), 26°59′10″N, 75°51′02″E. The scene’s local coordinate transform now places the hall at that point. The solid block was replaced by an open, flat-roofed, two-row colonnade. Since the inventory does not establish a completion date within 1621–1667, the 1615 and c.1640 scenes omit the completed hall; the c.1670 and present scenes include it. This models the general form and axis while avoiding a claim that it was completed by 1640.
+
+The inventory leaves the hall’s dimensions and exact column count blank. The current 18-by-10 local-unit footprint corresponds to approximately 54-by-30 m at the scene’s 3 m/unit plan scale; both it and the 8-by-2 column grid are schematic visualization choices, not measured values. A previous note incorrectly called the local dimensions metres. Elephant-capital and bracket details are also not yet modeled. The coordinate locates the named structure but does not supply its footprint corners. Amer remains unverified at palace-complex and whole-fort scale: the hill, perimeter, gates, court connections, Maota shoreline, town fabric and Jaigarh route still need registration to measured plans and current aerial control.
+
+Sources: [ASI/IGNCA inventory RJ/JPR-659](https://ignca.gov.in/asi_reports/RJJPR_659.pdf); [UNESCO nomination 247rev](https://whc.unesco.org/uploads/nominations/247rev.pdf), feature table 1.3.

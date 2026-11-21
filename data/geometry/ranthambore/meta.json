@@ -1,0 +1,10 @@
+{
+ "id": "ranthambore",
+ "lat": 26.020278,
+ "lon": 76.455,
+ "radiusM": 2200,
+ "osm": true,
+ "tiles": 25,
+ "fetched": "2026-11-11T03:50:58.908Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

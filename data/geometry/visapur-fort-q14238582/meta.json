@@ -1,0 +1,10 @@
+{
+ "id": "visapur-fort-q14238582",
+ "lat": 18.721733,
+ "lon": 73.490167,
+ "radiusM": 1000,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-11T03:53:17.304Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

@@ -1,0 +1,10 @@
+{
+ "id": "narnala-fort-x-ambar-mahal-q97158988",
+ "lat": 21.2352,
+ "lon": 77.02381,
+ "radiusM": 1300,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-14T18:35:05.915Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

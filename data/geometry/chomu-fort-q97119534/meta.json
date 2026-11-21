@@ -1,0 +1,10 @@
+{
+ "id": "chomu-fort-q97119534",
+ "lat": 27.167778,
+ "lon": 75.722778,
+ "radiusM": 600,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:36:06.000Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

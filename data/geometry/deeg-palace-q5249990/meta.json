@@ -1,0 +1,10 @@
+{
+ "id": "deeg-palace-q5249990",
+ "lat": 27.472204,
+ "lon": 77.323856,
+ "radiusM": 700,
+ "osm": false,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:36:48.402Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

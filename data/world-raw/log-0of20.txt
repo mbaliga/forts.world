@@ -1,0 +1,55 @@
+world fetch: 255 countries, this shard 13
+wikidata AC Ascension 0
+wikidata BE Belgium 488
+wikidata CD Democratic Republic of the Congo 1
+wikidata DG Diego Garcia 0
+WARN wikidata GB band 1-1: 504 https://query.wikidata.org/sparql?format=json&query=SELECT%20DISTINCT%20%3Fitem%20WHERE%20
+WARN wikidata GB band 0-0: 504 https://query.wikidata.org/sparql?format=json&query=SELECT%20DISTINCT%20%3Fitem%20WHERE%20
+wikidata GB United Kingdom 2639
+wikidata HN Honduras 3
+wikidata KH Cambodia 0
+wikidata MA Morocco 239
+wikidata MX Mexico 17
+wikidata PH Philippines 24
+wikidata SE Sweden 1983
+wikidata TF French Southern and Antarctic Lands 0
+wikidata VA Vatican City 3
+osm AC castle 0
+osm AC fort 0
+osm AC ruin 0
+osm BE castle 2342
+osm BE fort 93
+osm BE ruin 230
+osm CD castle 7
+osm CD fort 0
+osm CD ruin 2
+osm DG castle 0
+osm DG fort 0
+osm DG ruin 0
+osm GB castle 1349
+osm GB fort 264
+osm GB ruin 3761
+osm HN castle 5
+osm HN fort 0
+osm HN ruin 21
+osm KH castle 11
+osm KH fort 0
+osm KH ruin 152
+osm MA castle 272
+osm MA fort 31
+osm MA ruin 82
+osm MX castle 52
+osm MX fort 8
+osm MX ruin 806
+osm PH castle 9
+osm PH fort 30
+osm PH ruin 132
+osm SE castle 305
+osm SE fort 156
+osm SE ruin 592
+osm TF castle 0
+osm TF fort 0
+osm TF ruin 0
+osm VA castle 0
+osm VA fort 0
+osm VA ruin 0

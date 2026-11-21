@@ -1,0 +1,10 @@
+{
+ "id": "naukot-fort-q30594659",
+ "lat": 24.845278,
+ "lon": 69.449722,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-18T03:50:54.086Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

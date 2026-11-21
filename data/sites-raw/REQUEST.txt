@@ -1,0 +1,3 @@
+all
+all
+# rerun: osm time-budgeted, osm last, 3 mirrors

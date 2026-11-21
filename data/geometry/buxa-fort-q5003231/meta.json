@@ -1,0 +1,12 @@
+{
+ "id": "buxa-fort-q5003231",
+ "lat": 26.755,
+ "lon": 89.5803,
+ "radiusM": 700,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:31:48.484Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs",
+ "osmRefetched": "2026-11-18T10:27:36.861Z",
+ "osmRefetchNote": "first fetch (2026-11-14T18:31:48.484Z) returned no OSM data; OSM re-fetched with the same query and radius, terrain tiles unchanged"
+}

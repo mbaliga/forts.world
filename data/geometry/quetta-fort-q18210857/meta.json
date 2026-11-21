@@ -1,0 +1,10 @@
+{
+ "id": "quetta-fort-q18210857",
+ "lat": 30.210278,
+ "lon": 67.009444,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-18T03:51:03.317Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

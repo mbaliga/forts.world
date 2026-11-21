@@ -1,0 +1,105 @@
+# model-all: build an auto-T1 model for every ledger fort that has none yet, in shards.
+# Start it by editing data/traces/MODEL-REQUEST.txt (line 1 kinds, e.g. `fort`; line 2 limit, 0 = all; line 3 shards, default 40),
+# or run it by hand from the Actions tab. Each shard: fetch open geometry (OSM + Terrarium DEM) for ~8 sites at a time,
+# build data/traces/<id>.trace.json with tools/build-t1.mjs, then DISCARD the raw geometry (it is ~1 MB a site and can be re-fetched).
+# Only traces are committed. The final job updates the ledger honestly (status needs-plan, tier T1) and the region index.
+# What an auto-T1 is, and is not, is in docs/fort-fidelity/PIPELINE-DESIGN.md section 2: open-data outline + DEM, no plan, fidelity unverified.
+name: model-all
+on:
+  push:
+    branches: [dev]
+    paths: ['data/traces/MODEL-REQUEST.txt']
+  workflow_dispatch:
+    inputs:
+      kinds: {description: "Scene kinds, comma separated (fort, palace, temple, tomb ...)", default: "fort"}
+      limit: {description: "Max sites (0 = all queued)", default: "0"}
+      shards: {description: "Number of shards", default: "40"}
+permissions: {contents: write}
+concurrency: {group: model-all, cancel-in-progress: false}
+jobs:
+  plan:
+    runs-on: ${{ fromJSON(vars.RUNNER_LABELS || '["ubuntu-latest"]') }}
+    outputs:
+      kinds: ${{ steps.p.outputs.kinds }}
+      limit: ${{ steps.p.outputs.limit }}
+      n: ${{ steps.p.outputs.n }}
+      shards: ${{ steps.p.outputs.shards }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 22}
+      - id: p
+        run: |
+          K="${{ inputs.kinds }}"; L="${{ inputs.limit }}"; N="${{ inputs.shards }}"
+          [ -z "$K" ] && K=$(sed -n 1p data/traces/MODEL-REQUEST.txt | tr -d ' \r'); [ -z "$K" ] && K=fort
+          [ -z "$L" ] && L=$(sed -n 2p data/traces/MODEL-REQUEST.txt | tr -d ' \r'); [ -z "$L" ] && L=0
+          [ -z "$N" ] && N=$(sed -n 3p data/traces/MODEL-REQUEST.txt | tr -d ' \r'); [ -z "$N" ] && N=40
+          COUNT=$(node tools/model-queue.mjs --kinds "$K" --limit "$L" --count)
+          echo "queued: $COUNT sites, kinds=$K limit=$L shards=$N"
+          [ "$COUNT" -lt "$N" ] && N=$(( COUNT > 0 ? COUNT : 1 ))
+          echo "kinds=$K" >> "$GITHUB_OUTPUT"; echo "limit=$L" >> "$GITHUB_OUTPUT"; echo "n=$N" >> "$GITHUB_OUTPUT"
+          echo "shards=$(node -e "console.log(JSON.stringify([...Array($N).keys()]))")" >> "$GITHUB_OUTPUT"
+  model:
+    needs: plan
+    runs-on: ${{ fromJSON(vars.RUNNER_LABELS || '["ubuntu-latest"]') }}
+    timeout-minutes: 345
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        shard: ${{ fromJSON(needs.plan.outputs.shards) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 22}
+      - run: corepack enable && pnpm i --frozen-lockfile
+      - name: Fetch geometry, build traces (commits as it goes)
+        timeout-minutes: 320
+        run: |
+          IDS=$(node tools/model-queue.mjs --kinds "${{ needs.plan.outputs.kinds }}" --limit "${{ needs.plan.outputs.limit }}" --shard "${{ matrix.shard }}/${{ needs.plan.outputs.n }}")
+          echo "shard ${{ matrix.shard }}: $(echo $IDS | tr ',' '\n' | wc -l) sites"
+          git config user.name "model-all"; git config user.email "actions@users.noreply.github.com"
+          push() { for i in 1 2 3 4 5 6; do git pull -q --rebase origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}" && return 0; sleep $((RANDOM % 20 + 5)); done; return 1; }
+          LOG="$PWD/data/traces/_model-logs/shard-${{ matrix.shard }}.txt"; mkdir -p "$(dirname "$LOG")"
+          { echo "node $(node -v) on $(uname -sm); $(date -u +%FT%TZ)"; for u in https://overpass-api.de/api/status https://overpass.kumi.systems/api/status https://s3.amazonaws.com/elevation-tiles-prod/terrarium/5/10/10.png; do echo "$u -> $(curl -s -o /dev/null -m 20 -w '%{http_code}' $u)"; done; } >> "$LOG" 2>&1
+          n=0; chunk=""; built=0
+          flush() {
+            [ -z "$chunk" ] && return
+            { echo "== chunk: $chunk"; node tools/fetch-geometry.mjs "$chunk" 1200; echo "fetch exit $?"; node tools/build-t1.mjs "$chunk"; echo "build exit $?"; } 2>&1 | tail -n 40 >> "$LOG" || true
+            for id in ${chunk//,/ }; do git ls-files --error-unmatch "data/geometry/$id/meta.json" >/dev/null 2>&1 || rm -rf "data/geometry/$id"; done
+            ( git add data/traces && (git diff --cached --quiet || git commit -q -m "data: auto-T1 traces (model-all shard ${{ matrix.shard }}) [skip ci]") )
+            n=$((n+1)); [ $((n % 4)) -eq 0 ] && ( push ) || true
+            chunk=""
+          }
+          for id in ${IDS//,/ }; do chunk="${chunk:+$chunk,}$id"; [ "$(echo $chunk | tr ',' '\n' | wc -l)" -ge 8 ] && flush; done
+          flush
+          ( push )
+      - name: Final push if anything is left
+        if: always()
+        run: |
+          git config user.name "model-all"; git config user.email "actions@users.noreply.github.com"
+          git add data/traces && (git diff --cached --quiet || git commit -q -m "data: auto-T1 traces (model-all shard ${{ matrix.shard }}, leftover) [skip ci]")
+          for i in 1 2 3 4 5 6; do git pull -q --rebase origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0; sleep $((RANDOM % 20 + 5)); done; exit 1
+  finalize:
+    needs: [plan, model]
+    if: always() && needs.plan.result == 'success'
+    runs-on: ${{ fromJSON(vars.RUNNER_LABELS || '["ubuntu-latest"]') }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 22}
+      - run: corepack enable && pnpm i --frozen-lockfile
+      - name: Ledger, region index, evidence gate
+        run: |
+          node tools/model-ledger-update.mjs
+          node tools/build-region-index.mjs
+          node tools/check_sources.mjs || echo "check_sources reported problems (see log); not blocking the commit"
+      - name: Smoke a sample of the new scenes
+        run: node tools/smoke.mjs --t1 60 || echo "smoke sample reported failures (see log)"
+      - name: Commit ledger and index
+        run: |
+          git config user.name "model-all"; git config user.email "actions@users.noreply.github.com"
+          git add docs/fort-fidelity/ledger.csv data/traces/index.json
+          git diff --cached --quiet && exit 0
+          git commit -q -m "data: ledger + region index after model-all [skip ci]"
+          for i in 1 2 3 4 5 6; do git pull -q --rebase origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0; sleep $((RANDOM % 20 + 5)); done; exit 1

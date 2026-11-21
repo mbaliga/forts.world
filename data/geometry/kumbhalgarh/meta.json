@@ -1,0 +1,10 @@
+{
+ "id": "kumbhalgarh",
+ "lat": 25.149167,
+ "lon": 73.581111,
+ "radiusM": 2000,
+ "osm": true,
+ "tiles": 25,
+ "fetched": "2026-11-14T18:26:01.840Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

@@ -1,0 +1,12 @@
+{
+ "id": "chaiturgarh-fort-q5068137",
+ "lat": 22.5103,
+ "lon": 82.2714,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:43:38.737Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs",
+ "osmRefetched": "2026-11-18T10:27:38.019Z",
+ "osmRefetchNote": "first fetch (2026-11-14T18:43:38.737Z) returned no OSM data; OSM re-fetched with the same query and radius, terrain tiles unchanged"
+}

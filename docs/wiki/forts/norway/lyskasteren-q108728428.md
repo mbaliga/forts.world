@@ -1,0 +1,47 @@
+# Lyskasteren
+
+> Norway · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `lyskasteren-q108728428` |
+| Coordinates | 58.13248, 8.01288 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/58.13248/8.01288)) |
+| Wikidata | [Q108728428](https://www.wikidata.org/wiki/Q108728428) (CC0) |
+| Wikidata class | fort |
+| Types | fortification |
+| Administrative area | Kristiansand Municipality |
+| Designations | cultural heritage preservation in Norway |
+| Wikipedia language editions | 0 |
+| OSM `historic` | fort |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 51 elements (outline 1, building 13, road 29, cliff 1, waterway 1, wall 1, coastline 4, water 1).
+
+Evidence: documented 0, mapped 51, inferred 0, derived 1; heights documented 0, inferred 0, unknown 14.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:way/777732059 historic=fort 7 m from ledger point
+- origin moved 7 m from the ledger point to the outline centroid
+- sea-0: DEM check ok {"cells":198,"medianInside":0,"medianOutside":20}
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/58.13248/8.01288) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=fort; fortification; sitelinks=0; wikidata:Q108728428 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 51 elements); data/traces/lyskasteren-q108728428.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/norway.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

@@ -1,0 +1,10 @@
+{
+ "id": "wanla-monastery-q2790445",
+ "lat": 34.249444,
+ "lon": 76.831111,
+ "radiusM": 600,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:48:29.671Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

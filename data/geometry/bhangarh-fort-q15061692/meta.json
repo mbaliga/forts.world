@@ -1,0 +1,10 @@
+{
+ "id": "bhangarh-fort-q15061692",
+ "lat": 27.095833,
+ "lon": 76.2875,
+ "radiusM": 1000,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-11T03:54:30.147Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

@@ -1,0 +1,10 @@
+{
+ "id": "chittorgarh",
+ "lat": 24.887222,
+ "lon": 74.646944,
+ "radiusM": 4300,
+ "osm": true,
+ "tiles": 72,
+ "fetched": "2026-11-11T03:37:49.482Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

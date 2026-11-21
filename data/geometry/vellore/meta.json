@@ -1,0 +1,10 @@
+{
+ "id": "vellore",
+ "lat": 12.921,
+ "lon": 79.13,
+ "radiusM": 900,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-11T03:56:32.045Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

@@ -1,0 +1,47 @@
+{
+ "site_id": "chittorgarh",
+ "items": [
+  {
+   "file": "File:Chittorgarh Fort Map.jpg",
+   "role": "plan",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Chittorgarh_Fort_Map.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "page": "https://commons.wikimedia.org/wiki/File%3AChittorgarh_Fort_Map.jpg",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "author": "Amitbanerjee0143",
+   "credit": "Own work",
+   "date": "2015-07-12 14:07:46",
+   "description": "Chittorgarh Fort map",
+   "width": 2560,
+   "height": 1920,
+   "bytes": 1382148,
+   "mime": "image/jpeg",
+   "sha1": "bf865d4ca4e194ca7cecce231599d66fd48ede0f",
+   "retrieved": "2026-11-18",
+   "saved": "Chittorgarh_Fort_Map.jpg",
+   "sha256": "06b30d6fe0402beb7e16513b5ab7115184914ad5abc01f15e021c6a0cd3956af",
+   "status": "downloaded"
+  },
+  {
+   "file": "File:1910 sketch of plan, Mirabai temple, Chittorgarh fort, Rajasthan.jpg",
+   "role": "plan",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/87/1910_sketch_of_plan%2C_Mirabai_temple%2C_Chittorgarh_fort%2C_Rajasthan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "page": "https://commons.wikimedia.org/wiki/File%3A1910_sketch_of_plan%2C_Mirabai_temple%2C_Chittorgarh_fort%2C_Rajasthan.jpg",
+   "licence": "Public domain",
+   "licence_url": "",
+   "author": "James Burgess (1910)",
+   "credit": "https://archive.org/stream/b28711270_0002#page/n11/mode/2up",
+   "date": "1910-12-31",
+   "description": "1910 sketch of plan, Mirabai temple, Chittorgarh fort, Rajasthan. The description of the sketch can be found in Book VI of Burgess 1910 publication. The details are approximate and based on tools, information available to the authors before 1910.",
+   "width": 283,
+   "height": 432,
+   "bytes": 33962,
+   "mime": "image/jpeg",
+   "sha1": "bb2f4158228be77eea2ddbb471ad38ae766cca87",
+   "retrieved": "2026-11-18",
+   "saved": "1910_sketch_of_plan_Mirabai_temple_Chittorgarh_fort_Rajasthan.jpg",
+   "sha256": "515bc7106f99ac7019fe196934c471f87a0f9e5cbc95062995374d8299b5d5fd",
+   "status": "downloaded"
+  }
+ ]
+}

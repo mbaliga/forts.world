@@ -1,0 +1,11 @@
+seq,letter,site_id,name,region,country,significance_rank,ledger_batch,radius_m
+1,R,rohtasgarh,Rohtasgarh,Bihar,India,214,,1200
+2,U,umarkot-fort-q7881165,Umarkot Fort,Umerkot,Pakistan,3337,667,800
+3,A,attock,Attock Fort,Punjab,Pakistan,279,17,1200
+4,B,barabati,"Barabati, Cuttack",,India,240,,
+5,D,diu,Diu Fort,Dadra and Nagar Haveli and Daman and Diu,India,236,10,1200
+6,G,gooty,Gooty,Andhra Pradesh,India,258,9,1500
+7,K,kondapalli,Kondapalli,Andhra Pradesh,India,244,9,1200
+8,M,mahur-fort-q96391538,Mahur Fort,Nanded district,India,444,97,800
+9,P,penukonda,"Penukonda",,India,273,,
+10,T,tellicherry-fort-q3523380,"Tellicherry Fort",,India,419,,

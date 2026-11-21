@@ -1,0 +1,48 @@
+# Double position of mobile armored turrets, Wielkie Lniska
+
+> Poland · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `double-position-of-mobile-armored-turrets-wielki-q122261701` |
+| Coordinates | 53.47877, 18.81472 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/53.47877/18.81472)) |
+| Wikidata | [Q122261701](https://www.wikidata.org/wiki/Q122261701) (CC0) |
+| Wikidata class | fort |
+| Types | fortification |
+| Administrative area | Wielkie Lniska |
+| Designations | immovable monument in Poland |
+| Wikipedia language editions | 0 |
+| OSM `historic` | fort |
+| OSM `heritage` | 2 |
+| OSM `website` | http://www.grudziadz.fortyfikacje.pl/Pffaffen.htm |
+
+## What the model contains
+
+Tier **T1**, status `outline-only`, 94 elements (outline 1, marker 2, road 40, zone 13, building 31, water 1, waterway 6).
+
+Evidence: documented 0, mapped 94, inferred 0, derived 0; heights documented 13, inferred 0, unknown 18.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:way/893037173 historic=fort Q29975053 286 m from ledger point
+- origin moved 291 m from the ledger point to the outline centroid
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/53.47877/18.81472) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=fort; fortification; sitelinks=0; wikidata:Q122261701 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline-only, 94 elements); data/traces/double-position-of-mobile-armored-turrets-wielki-q122261701.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/poland.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

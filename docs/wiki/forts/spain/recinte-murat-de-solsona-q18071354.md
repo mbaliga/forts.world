@@ -1,0 +1,47 @@
+# Recinte murat de Solsona
+
+> Spain · evidence: **T1 (location-only)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `recinte-murat-de-solsona-q18071354` |
+| Coordinates | 41.9937, 1.51718 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/41.9937/1.51718)) |
+| Wikidata | [Q18071354](https://www.wikidata.org/wiki/Q18071354) (CC0) |
+| Wikidata class | fortification |
+| Types | city walls |
+| Administrative area | Solsona |
+| Inception | 1400 |
+| Designations | Cultural Asset of National Interest\|bien de interés cultural |
+| Wikipedia language editions | 3 |
+
+## What the model contains
+
+Tier **T1**, status `location-only`, 284 elements (marker 6, zone 3, road 170, building 344, waterway 1, wall 4).
+
+Evidence: documented 0, mapped 284, inferred 0, derived 0; heights documented 1, inferred 0, unknown 123.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: no closed historic=* way/relation found; location-only scene
+- present-day buildings capped: kept the 120 nearest the outline centre of 344 mapped (trace size budget); the rest of the town is not drawn
+- roads capped: kept the 150 longest of 170 mapped (trace size budget); minor lanes are not drawn
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/41.9937/1.51718) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=fortification; city walls; sitelinks=3; wikidata:Q18071354 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (location-only, 284 elements); data/traces/recinte-murat-de-solsona-q18071354.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/spain.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

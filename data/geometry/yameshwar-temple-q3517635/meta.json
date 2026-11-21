@@ -1,0 +1,10 @@
+{
+ "id": "yameshwar-temple-q3517635",
+ "lat": 20.2404,
+ "lon": 85.8315,
+ "radiusM": 400,
+ "osm": true,
+ "tiles": 2,
+ "fetched": "2026-11-14T18:36:04.337Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

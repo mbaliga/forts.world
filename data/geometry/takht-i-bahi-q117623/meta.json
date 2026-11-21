@@ -1,0 +1,10 @@
+{
+ "id": "takht-i-bahi-q117623",
+ "lat": 34.320833,
+ "lon": 71.945833,
+ "radiusM": 400,
+ "osm": true,
+ "tiles": 2,
+ "fetched": "2026-11-18T22:19:35.219Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

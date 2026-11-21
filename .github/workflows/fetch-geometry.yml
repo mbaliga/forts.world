@@ -1,0 +1,24 @@
+name: fetch-geometry
+on:
+  push:
+    branches: [dev]
+    paths: ['data/geometry/REQUEST.txt']
+  workflow_dispatch:
+    inputs:
+      sites: {description: "Comma-separated site_ids from docs/fort-fidelity/ledger.csv", required: true}
+      radius: {description: "Radius in metres", default: "1200"}
+permissions: {contents: write}
+jobs:
+  fetch:
+    runs-on: ${{ fromJSON(vars.RUNNER_LABELS || '["ubuntu-latest"]') }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20}
+      - name: Resolve sites
+        run: echo "SITES=${{ inputs.sites }}" >> $GITHUB_ENV; [ -z "${{ inputs.sites }}" ] && echo "SITES=$(head -1 data/geometry/REQUEST.txt)" >> $GITHUB_ENV || true
+      - run: node tools/fetch-geometry.mjs "$SITES" "${{ inputs.radius || '1200' }}"
+      - name: Commit raw data (skip loop)
+        run: |
+          git config user.name "fetch-geometry"; git config user.email "actions@users.noreply.github.com"
+          git add data/geometry ':!data/geometry/REQUEST.txt' && (git diff --cached --quiet || git commit -m "data: raw geometry for $SITES [skip ci]") && git pull --rebase origin "${GITHUB_REF_NAME}" && git push

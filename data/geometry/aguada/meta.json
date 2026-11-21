@@ -1,0 +1,10 @@
+{
+ "id": "aguada",
+ "lat": 15.492,
+ "lon": 73.774,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-02T02:22:31.463Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

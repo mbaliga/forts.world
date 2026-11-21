@@ -1,0 +1,10 @@
+{
+ "id": "humayun-s-tomb-q189648",
+ "lat": 28.593264,
+ "lon": 77.250602,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:33:38.297Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

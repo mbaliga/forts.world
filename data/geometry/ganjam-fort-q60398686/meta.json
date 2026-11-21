@@ -1,0 +1,10 @@
+{
+ "id": "ganjam-fort-q60398686",
+ "lat": 19.379265,
+ "lon": 85.056442,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-16T23:03:39.155Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

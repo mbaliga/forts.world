@@ -1,0 +1,10 @@
+{
+ "id": "gingee",
+ "lat": 12.252,
+ "lon": 79.397,
+ "radiusM": 2500,
+ "osm": true,
+ "tiles": 25,
+ "fetched": "2026-11-11T03:59:38.152Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

@@ -1,0 +1,10 @@
+{
+ "id": "chanki-fort-q18916065",
+ "lat": 27.138348,
+ "lon": 84.422865,
+ "radiusM": 600,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-14T18:36:33.374Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

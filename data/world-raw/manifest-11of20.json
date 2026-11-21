@@ -1,0 +1,121 @@
+{
+ "fetched": "2026-11-15T22:59:44.039Z",
+ "shard": "11/20",
+ "sources": {
+  "wikidata": {
+   "ok": true,
+   "queries": 127,
+   "rows": 4617,
+   "countries": {
+    "AS": 0,
+    "BR": 92,
+    "CQ": 0,
+    "ES": 4148,
+    "GQ": 0,
+    "IR": 368,
+    "LC": 1,
+    "MO": 0,
+    "NP": 8,
+    "RE": 0,
+    "SS": 0,
+    "TV": 0,
+    "YT": 0
+   }
+  },
+  "osm": {
+   "ok": true,
+   "queries": 39,
+   "elements": 15089,
+   "countries": {
+    "AS": {
+     "castle": 0,
+     "fort": 0,
+     "ruin": 0
+    },
+    "BR": {
+     "castle": 126,
+     "fort": 46,
+     "ruin": 578
+    },
+    "CQ": {
+     "castle": 0,
+     "fort": 0,
+     "ruin": 0
+    },
+    "ES": {
+     "castle": 3036,
+     "fort": 133,
+     "ruin": 10277
+    },
+    "GQ": {
+     "castle": 11,
+     "fort": 0,
+     "ruin": 1
+    },
+    "IR": {
+     "castle": 471,
+     "fort": 58,
+     "ruin": 159
+    },
+    "LC": {
+     "castle": 0,
+     "fort": 1,
+     "ruin": 12
+    },
+    "MO": {
+     "castle": 0,
+     "fort": 0,
+     "ruin": 0
+    },
+    "NP": {
+     "castle": 128,
+     "fort": 9,
+     "ruin": 33
+    },
+    "RE": {
+     "castle": 0,
+     "fort": 0,
+     "ruin": 0
+    },
+    "SS": {
+     "castle": 2,
+     "fort": 4,
+     "ruin": 4
+    },
+    "TV": {
+     "castle": 0,
+     "fort": 0,
+     "ruin": 0
+    },
+    "YT": {
+     "castle": 0,
+     "fort": 0,
+     "ruin": 0
+    }
+   }
+  }
+ },
+ "warnings": [
+  "wikidata BR band 1-1: 504 https://query.wikidata.org/sparql?format=json&query=SELECT%20DISTINCT%20%3Fitem%20WHERE%20",
+  "wikidata ES band 2-2: 504 https://query.wikidata.org/sparql?format=json&query=SELECT%20DISTINCT%20%3Fitem%20WHERE%20"
+ ],
+ "failed": [
+  "wikidata:BR:band1-1:504 https://query.wikidata.org/sparql?format=json&query=SELECT%20DISTINCT%20%3Fitem%20WHERE%20",
+  "wikidata:ES:band2-2:504 https://query.wikidata.org/sparql?format=json&query=SELECT%20DISTINCT%20%3Fitem%20WHERE%20"
+ ],
+ "countries": [
+  "AS",
+  "BR",
+  "CQ",
+  "ES",
+  "GQ",
+  "IR",
+  "LC",
+  "MO",
+  "NP",
+  "RE",
+  "SS",
+  "TV",
+  "YT"
+ ]
+}

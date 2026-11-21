@@ -1,0 +1,11 @@
+seq,letter,site_id,name,region,country,significance_rank,ledger_batch,radius_m
+1,C,chomu-fort-q97119534,Chomu Fort,Jaipur district,India,808,170,600
+2,C,chanki-fort-q18916065,Chanki Fort,West Champaran district,India,803,169,600
+3,C,citadel-of-ghazni-q58295438,Citadel of Ghazni,Ghazni Province,Afghanistan,3626,724,600
+4,C,chisapani-gadhi-q104814295,Chisapani Gadhi,Bagmati Province,Nepal,3801,759,500
+5,C,chokkanatha-nayak-palace-q5104236,Chokkanatha Nayak Palace,Tamil Nadu,India,3747,749,400
+6,C,herat-citadel,Citadel of Herat (Qala Ikhtiyaruddin),Herat,Afghanistan,382,5,600
+7,C,chaiturgarh-fort-q5068137,Chaiturgarh Fort,Korba district,India,1000,208,800
+8,C,chaugan-fort-q97101217,Chaugan Fort,Narsinghpur district,India,2151,439,500
+9,C,churangarh-fort-q97147394,Churangarh Fort,Cuttack district,India,2160,440,600
+10,C,colvale-fort-q10284063,Colvale Fort,Colvale,India,3321,663,500

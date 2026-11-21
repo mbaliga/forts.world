@@ -1,0 +1,10 @@
+{
+ "id": "arnala-fort-q3778583",
+ "lat": 19.46577,
+ "lon": 72.73247,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-11T03:55:27.123Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

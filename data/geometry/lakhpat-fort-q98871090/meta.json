@@ -1,0 +1,10 @@
+{
+ "id": "lakhpat-fort-q98871090",
+ "lat": 23.823611,
+ "lon": 68.78,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-16T23:03:55.682Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

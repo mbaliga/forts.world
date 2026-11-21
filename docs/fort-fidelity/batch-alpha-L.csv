@@ -1,0 +1,11 @@
+seq,letter,site_id,name,region,country,significance_rank,ledger_batch
+1,L,lohagad,Lohagad,Maharashtra,India,219,25
+2,N,nahargarh,Nahargarh,Rajasthan,India,206,27
+3,P,purana-qila,"Purana Qila, Delhi",Delhi,India,204,11
+4,R,rohtas-pk,Rohtas Fort,Punjab,Pakistan,6,18
+5,V,vasai,Vasai (Bassein) Fort,Maharashtra,India,217,16
+6,A,agra-fort,Agra Fort,Uttar Pradesh,India,1,20
+7,C,chitradurga,Chitradurga,Karnataka,India,269,22
+8,F,feroz-shah-kotla-q1187568,Feroz Shah Kotla,Jangpura tehsil,India,351,79
+9,H,hampi-q26732,Hampi,Vijayanagara District,India,11,29
+10,J,jhansi,Jhansi,Uttar Pradesh,India,242,21

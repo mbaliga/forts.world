@@ -1,0 +1,10 @@
+{
+ "id": "kandhar-nanded",
+ "lat": 18.9005,
+ "lon": 77.2014,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:34:19.333Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

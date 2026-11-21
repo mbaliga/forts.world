@@ -1,0 +1,10 @@
+{
+ "id": "phillaur-fort-q56236008",
+ "lat": 31.011806,
+ "lon": 75.788889,
+ "radiusM": 600,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:27:50.388Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

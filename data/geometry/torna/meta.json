@@ -1,0 +1,10 @@
+{
+ "id": "torna",
+ "lat": 18.276,
+ "lon": 73.622,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-11T03:50:55.515Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

@@ -1,0 +1,10 @@
+{
+ "id": "wakandurg-sn1162",
+ "lat": 15.915496,
+ "lon": 75.829771,
+ "radiusM": 600,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-11T04:02:59.359Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

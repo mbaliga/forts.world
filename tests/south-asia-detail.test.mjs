@@ -1,0 +1,41 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import vm from 'node:vm';
+import {createRequire} from 'node:module';
+import {fileURLToPath} from 'node:url';
+const require=createRequire(new URL('../package.json',import.meta.url));
+const esbuild=require('esbuild');
+
+test('detailed map registers the streamed DEM and fort markers',async()=>{
+ const entry=new URL('../src/south-asia/detailed-viewer.js',import.meta.url);
+ const bundle=await esbuild.build({entryPoints:[fileURLToPath(entry)],bundle:true,format:'iife',write:false,define:{__FORT_LEVEL_IDS__:JSON.stringify(['reis-magos'])}});
+ const elements=new Map();for(const id of ['sites','search','detail','status','count','markers','study','terrain','relief','reset','scene-link','scene-panel','scene-frame','scene-title','scene-close'])elements.set(id,{value:'',textContent:'',options:[],append(o){this.options.push(o)},replaceChildren(){this.options=[]},addEventListener(name,fn){this[name]=fn}});
+ elements.get('markers').checked=true;elements.get('study').checked=true;elements.get('terrain').checked=true;elements.get('relief').checked=true;
+ const context={createImageData:(w,h)=>({data:new Uint8ClampedArray(w*h*4)}),putImageData(){},drawImage(){},beginPath(){},moveTo(){},lineTo(){},stroke(){}};
+ const document={getElementById:id=>elements.get(id),createElement:type=>type==='canvas'?{getContext:()=>context,toDataURL:()=> 'data:image/png;base64,AA=='}:{}};
+ let instance;
+ class MockMap{constructor(options){instance=this;this.options=options;this.handlers={};this.sources={};this.layers={};this.hidden=[];}addControl(){}on(event,...args){if(typeof args.at(-1)==='function'&&!this.handlers[event])this.handlers[event]=args.at(-1);}addSource(name,source){this.sources[name]=source;}setTerrain(terrain){this.terrain=terrain;}addLayer(layer){this.layers[layer.id]=layer;}setLayoutProperty(id,key,value){this.hidden.push(id)}getStyle(){return {layers:[{id:'road', 'source-layer':'transportation'},{id:'highway-name', 'source-layer':'transportation_name'},{id:'building','source-layer':'building'},...Object.values(this.layers)]}}flyTo(x){this.destination=x}resize(){}getCanvas(){return {style:{}}}getLayer(id){return this.layers[id]}getSource(id){return this.sources[id]}}
+ const maplibregl={Map:MockMap,NavigationControl:class{}};
+ vm.runInNewContext(bundle.outputFiles[0].text,{document,maplibregl,console,Math,Number});
+ instance.handlers.load();
+ assert.equal(instance.sources['regional-elevation'].encoding,'terrarium');
+ assert.equal(instance.sources['regional-elevation'].tileSize,512);
+ assert.equal(instance.terrain.source,'regional-elevation');
+ assert.ok(instance.sources['fort-locations'].data.features.length>=100);
+ assert.ok(instance.sources['study-locations'].data.features.length>3000);
+ assert.ok(instance.layers['fort-markers']);
+ assert.ok(instance.layers['national-relief']);
+ assert.ok(instance.hidden.includes('road') && instance.hidden.includes('highway-name') && instance.hidden.includes('building'));
+ assert.match(elements.get('count').textContent,/duplicates/);
+ const reis=elements.get('sites').options.find(o=>o.textContent.startsWith('Reis Magos'));
+ elements.get('sites').value=reis.value;elements.get('sites').change();
+ assert.equal(elements.get('scene-frame').src,'index.html?fort=reis-magos');
+ assert.equal(elements.get('scene-panel').hidden,false);
+ assert.equal(elements.get('scene-link').hidden,false);
+ elements.get('scene-close').click();
+ const study=elements.get('sites').options.find(o=>o.textContent.includes(' · study'));
+ elements.get('sites').value=study.value;elements.get('sites').change();
+ assert.equal(elements.get('scene-panel').hidden,true);
+ assert.equal(elements.get('scene-link').hidden,true);
+ assert.match(elements.get('detail').textContent,/No local 3D scene/);
+});

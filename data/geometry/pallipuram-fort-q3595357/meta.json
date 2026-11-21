@@ -1,0 +1,10 @@
+{
+ "id": "pallipuram-fort-q3595357",
+ "lat": 10.170087,
+ "lon": 76.18098,
+ "radiusM": 1000,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-11T03:51:57.320Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

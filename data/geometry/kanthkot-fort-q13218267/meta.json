@@ -1,0 +1,10 @@
+{
+ "id": "kanthkot-fort-q13218267",
+ "lat": 23.483889,
+ "lon": 70.461944,
+ "radiusM": 800,
+ "osm": true,
+ "tiles": 6,
+ "fetched": "2026-11-14T18:35:29.706Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

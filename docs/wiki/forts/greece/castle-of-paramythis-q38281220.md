@@ -1,0 +1,48 @@
+# Castle of Paramythis
+
+> Greece · evidence: **T1 (auto, outline)** · status: `needs-plan`
+
+## Identity
+
+| Field | Value |
+|---|---|
+| Site id | `castle-of-paramythis-q38281220` |
+| Coordinates | 39.47284, 20.51991 ([OpenStreetMap](https://www.openstreetmap.org/#map=17/39.47284/20.51991)) |
+| Wikidata | [Q38281220](https://www.wikidata.org/wiki/Q38281220) (CC0) |
+| Wikidata class | castle |
+| Types | castle |
+| Administrative area | Souli Municipality |
+| Designations | archaeological site in Greece\|protected building in Greece |
+| Wikipedia language editions | 0 |
+| OSM `historic` | castle |
+| OSM `castle_type` | fortress |
+| OSM `barrier` | wall |
+
+## What the model contains
+
+Tier **T1**, status `outline+walls`, 4 elements (outline 1, marker 1, road 1).
+
+Evidence: documented 0, mapped 4, inferred 0, derived 0; heights documented 0, inferred 0, unknown 1.
+
+This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
+
+Build notes:
+- site: osm:way/559357391 historic=castle 91 m from ledger point
+- origin moved 85 m from the ledger point to the centre of the mapped site
+
+## Sources used
+
+| Source | Licence | Link | Fetched |
+|---|---|---|---|
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/39.47284/20.51991) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
+
+## Ledger note
+
+world; type=castle; castle; sitelinks=0; wikidata:Q38281220 \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 4 elements); data/traces/castle-of-paramythis-q38281220.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+
+## 3D model
+
+Viewable in the browser on the Forts of the World page (simplified from this trace). Coarse, medium and full GLB tiers are produced by `tools/export.mjs` and `tools/models/` and are not stored in git. Units: metres, +Y up, -Z north.
+
+[Country page](../../countries/greece.md) · [Sources](../../SOURCES.md) · [Schema](../../SCHEMA.md)

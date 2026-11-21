@@ -1,0 +1,10 @@
+{
+ "id": "mehrangarh",
+ "lat": 26.298,
+ "lon": 73.018,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-11T03:49:27.543Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

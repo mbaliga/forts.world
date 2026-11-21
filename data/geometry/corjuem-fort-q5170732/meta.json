@@ -1,0 +1,10 @@
+{
+ "id": "corjuem-fort-q5170732",
+ "lat": 15.5968,
+ "lon": 73.8928,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-16T23:03:21.547Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}
