@@ -14,7 +14,9 @@ on:
     paths-ignore: ['docs/**', '**/*.md']
   workflow_dispatch:
 permissions: {contents: read, deployments: write}
-concurrency: {group: deploy-pages-${{ github.ref_name }}, cancel-in-progress: true}
+concurrency:
+  group: deploy-pages-${{ github.ref_name }}
+  cancel-in-progress: true
 jobs:
   site:
     runs-on: ${{ fromJSON(vars.RUNNER_LABELS || '["ubuntu-latest"]') }}
