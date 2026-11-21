@@ -1,22 +1,17 @@
-# Vellore Fort: research pass
+# Vellore Fort: mapped geometry with a schematic 3D view
 
-Batch-0 run, 2026-11-15 (scheduled run). Site id `vellore`. Tier reached **T1** (status `needs-plan`). Curation: `tools/trace/curation/vellore.mjs`; trace: `src/levels/vellore.trace.js`; level: `src/levels/vellore-t1.js`. Standing rules: no invented heights, no invented gates, no constructed layer. The level is registered in `src/levels/alpha-x0.js`.
+## Documented and mapped
 
-## Mapped (OpenStreetMap and terrain)
-Outline is OSM way 557512110 (273 vertices, Q3390913). 149 elements: 7 wall lines, 2 waterways (moat line), 60 buildings, 68 paths, 4 markers.
+- The OpenStreetMap trace for Vellore contains the perimeter wall (way 557512110), internal walls, roads, moat waterways, 60 building footprints, mapped temple grounds and other named features. Terrain is Terrarium z15 (about 30 m SRTM-derived resolution).
+- The Vellore District Government says the fort was built by Bommu Nayakar and his brother during 1526–1595, covers about 133 acres, has a moat, and contains Jalakandeswarar Temple, a church, a mosque and five mahals. Its visitor page describes a rectangular granite fort with a circumference of about 3 km and provides current photographs.
+- ASI's 2025 visitor-parking auction document includes an Annexure-I parking layout and aerial context. It is not a measured fort plan and is not used to place walls, gates or buildings.
 
-Terrain is Terrarium z15 (about 30 m SRTM-derived, smoothed), so scarps, ditches and terraces are not resolved. Only one era, "today", is drawn: no earlier era was carried back because no dated source was read.
+Sources: [Vellore District, ASI protected monuments](https://vellore.nic.in/archaeological-survey-of-india-asi-protected-monuments/); [Vellore District, Vellore Fort](https://vellore.nic.in/tourist-place/vellore-fort/); [ASI 2025 parking-layout document](https://asi.nic.in/admin/tender/download/764).
 
-## Plans and images found
-Commons search returned journals, gazetteers and photos; no plan of the fort.
+## Constructed view
 
-## Not done in this run
-Written history (builders, sieges, dates) was not researched or cited: the sandbox web fetch was refused for unattended runs, and search returned links only. None of it is in the scene. No image was downloaded or used as a texture.
+The mapped perimeter is raised as a schematic granite curtain. Projecting bastions are spaced evenly along it as an illustrative massing. The mapped Jalakandeswarar Temple precinct is shown as a simple massing block. These are all in the optional `today~built` view, separate from the mapped `today` layer. No gate is reconstructed because there is no surveyed or otherwise verified gate position.
 
-## Missing evidence for T2
-A survey plan or historic view for the bastions, gate and drawbridge, Jalakandeswarar temple, church and mosque, moat width; wall heights.
+## Limits
 
-## Sources
-- OpenStreetMap contributors (ODbL), fetched by the fetch-geometry Action.
-- Terrarium terrain tiles per AWS Open Data.
-- Wikimedia Commons search results in `data/plans/search/vellore.json` (candidates only; licences not yet verified).
+This is T1 mapped geometry with a constructed illustration, not a T2 measured architectural reconstruction. Bastion spacing, temple massing, wall section and all constructed heights are assumed; OSM is not a substitute for an archaeological drawing. The OSM road/wall crossing remains mapped geometry and is not treated as a gate. The moat's water level and bathymetry are not surveyed, and Terrarium terrain smooths local scarps. No reference pixels are used as textures.

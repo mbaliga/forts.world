@@ -136,7 +136,7 @@ export function makeFort(F) {
     const end = pts[pts.length - 1], ea = Math.atan2(end[1], end[0]); pts.push([end[0] + Math.cos(ea) * 14, end[1] + Math.sin(ea) * 14, 0.8]);
     return pts;
   }
-  const PATH = (sea || flat) ? null : hillPath();
+  const PATH = (sea || flat || F.noApproach) ? null : hillPath();
   const hasShore = !!F.shore;
   const SHORE = hasShore ? (() => { const d = F.shore.dist, w = ext * 2.2; const a = F.shore.a * DEG, ux = Math.cos(a), uy = Math.sin(a), tx = -uy, ty = ux; const c0 = [ux * d, uy * d], c1 = [ux * (d + ext * 2), uy * (d + ext * 2)]; return [[c0[0] + tx * w, c0[1] + ty * w], [c0[0] - tx * w, c0[1] - ty * w], [c1[0] - tx * w, c1[1] - ty * w], [c1[0] + tx * w, c1[1] + ty * w]]; })() : null;
   const ISTHMUS = (F.type === 'coast' || F.type === 'river') && hasShore ? (() => { const a = F.shore.a * DEG, ux = Math.cos(a), uy = Math.sin(a), tx = -uy, ty = ux, w = F.isthmusW ?? 40; return [[tx * w, ty * w], [-tx * w, -ty * w], [ux * (F.shore.dist + 10) - tx * w, uy * (F.shore.dist + 10) - ty * w], [ux * (F.shore.dist + 10) + tx * w, uy * (F.shore.dist + 10) + ty * w]]; })() : null;
@@ -150,7 +150,7 @@ export function makeFort(F) {
     ...(Array.isArray(F.siteBoundary) ? { siteBoundary: F.siteBoundary.map(([x, y]) => [x, y]), siteBoundaryLabel: F.siteBoundaryLabel || 'Site boundary · source status unspecified' } : {}),
     ...(F.spawnInside ? { spawnInside: [...F.spawnInside] } : {}),
     poiCount: F.pois.length, groundName: (sea || flat) ? 'Inside the walls' : 'The plateau', datum: 0, datumLabel: (F.type === 'river' || moat) ? 'above schematic water level' : sea ? 'above high tide' : flat ? 'local ground datum' : 'above the foot of the hill',
-    units: F.units || { planScale: 3, vScale: 6 }, bounds: [-ext, -ext, ext, ext], stride: ext > 380 ? 3 : 2, navCell: ext > 700 ? 2 : 1, navStep: ext > 700 ? 2.5 : 0.62, seed: F.seed || 7,
+    units: F.units || { planScale: 3, vScale: 6 }, bounds: [-ext, -ext, ext, ext], stride: F.stride ?? (ext > 380 ? 3 : 2), navCell: F.navCell ?? (ext > 700 ? 2 : 1), navStep: F.navStep ?? (ext > 700 ? 2.5 : 0.62), seed: F.seed || 7,
     water: sea ? { sea: 0, deep: '#2a5558', mid: '#3d6f6a', shallow: '#6f9a84', silt: '#8c9470' } : null,
     apron: sea ? undefined : { h: 0.4, color: '#8a8a55' },
     view: { az: F.view?.az ?? -35, el: 40, zoom: F.view?.zoom ?? 80, introAt: [0, 0], introZoom: ext * 1.9 },
@@ -237,14 +237,14 @@ export function makeFort(F) {
     },
 
     build(W) {
-      const era = W.era, hist = era !== 'today', E = F.eras.find((e) => e.id === era) || F.eras[0], gates = gatesForEra(era);
+      const era = W.era, baseEra = era.endsWith('~built') ? era.slice(0, -6) : era, hist = baseEra !== 'today', E = F.eras.find((e) => e.id === baseEra) || F.eras[0], gates = gatesForEra(era);
       const wallStyle = F.wallStyleByEra?.[era] || {};
       if (F.siteBoundary && F.siteBoundaryLabel && (!F.siteBoundaryOnly || F.siteBoundaryOnly === era)) W.zone(F.siteBoundary, F.siteBoundaryLabel);
       const ring = explicitWallPath
         ? F.wallPath.map(([x, y]) => [x, y])
         : [];
       if (!ring.length) for (let a = 0; a < 360; a += 3) ring.push(atW(a));
-      const wall = F.suppressPerimeterWall ? null : W.wall({ path: ring, closed: true, outer: 'right', h: wallStyle.h ?? F.wallH ?? (sea ? 7 : 5), thick: F.wallT ?? 3.2, batter: wallStyle.batter ?? 0.06, parapet: wallStyle.parapet ?? { h: 1.2, t: 0.6 }, merlon: wallStyle.merlon ?? { style: 'round', w: 0.9, gap: 0.75, h: 0.85, slit: true }, color: wallStyle.color || 'wall', coping: wallStyle.coping ?? true, spouts: wallStyle.spouts ?? { every: 18 }, maxSeg: 3 });
+      const wall = F.suppressPerimeterWall ? null : W.wall({ path: ring, closed: true, outer: 'right', h: wallStyle.h ?? F.wallH ?? (sea ? 7 : 5), thick: wallStyle.thick ?? F.wallTByEra?.[era] ?? F.wallT ?? 3.2, batter: wallStyle.batter ?? 0.06, parapet: wallStyle.parapet ?? { h: 1.2, t: 0.6 }, merlon: wallStyle.merlon ?? { style: 'round', w: 0.9, gap: 0.75, h: 0.85, slit: true }, color: wallStyle.color || 'wall', coping: wallStyle.coping ?? true, spouts: wallStyle.spouts ?? { every: 18 }, maxSeg: 3 });
       let innerW = null;
       if (F.innerWall && (!F.innerWall.only || F.innerWall.only === era)) innerW = W.wall({ path: ringAt(R, F.innerWall.k, 0, 0, 4), closed: true, outer: 'right', h: F.innerWall.h ?? 4.5, thick: 2.6, batter: 0.05, parapet: { h: 1.1, t: 0.5 }, merlon: { style: 'round', w: 0.85, gap: 0.8, h: 0.8 }, color: 'wall' });
       // gates
@@ -257,13 +257,16 @@ export function makeFort(F) {
       const enclosedPaths = [F.wallPath, ...(F.additionalWalls || []).map((w) => w.path)].filter((p) => Array.isArray(p) && p.length >= 3);
       for (const circuit of F.additionalWalls || []) {
         if (!Array.isArray(circuit.path) || circuit.path.length < 3 || (circuit.only && circuit.only !== era)) continue;
-        const circuitWall = W.wall({ path: circuit.path.map(([x, y]) => [x, y]), closed: true, outer: 'right', h: circuit.h ?? 5, thick: circuit.thick ?? 3, batter: 0.05, parapet: { h: 1.1, t: 0.5 }, merlon: { style: 'round', w: 0.85, gap: 0.8, h: 0.8 }, color: circuit.color || 'wall', maxSeg: 3 });
-        if (circuit.gateAt) W.gate({ wall: circuitWall, at: circuit.gateAt, width: circuit.gateWidth ?? 3, spring: 2.8, rise: 1.4, style: 'pointed', towers: false, name: circuit.gateName || 'Gate · position approximate', doors: hist, frameUp: 1, floor: H });
+        const cs = circuit.wallStyleByEra?.[era] || {};
+        const circuitWall = W.wall({ path: circuit.path.map(([x, y]) => [x, y]), closed: true, outer: 'right', h: cs.h ?? circuit.h ?? 5, thick: cs.thick ?? circuit.thick ?? 3, batter: 0.05, parapet: cs.parapet ?? { h: 1.1, t: 0.5 }, merlon: cs.merlon ?? { style: 'round', w: 0.85, gap: 0.8, h: 0.8 }, color: cs.color || circuit.color || 'wall', maxSeg: 3 });
+        const gateSpec = circuit.gatesByEra?.[era] || (circuit.gateAt ? [{ at: circuit.gateAt, width: circuit.gateWidth, name: circuit.gateName }] : []);
+        for (const g of gateSpec) W.gate({ wall: circuitWall, at: g.at, width: g.width ?? 3, spring: 2.8, rise: 1.4, style: 'pointed', towers: false, name: g.name || 'Gate · plan position, schematic form', doors: hist, frameUp: 1, floor: H });
         if (circuit.label) W.zone(circuit.path, circuit.label);
       }
       // bastions along the wall, clear of the gates
       const step = F.bastionStep ?? 34; let acc = 0, k = 0;
-      if (F.bastionAngles) for (const a of F.bastionAngles) W.bastion({ at: atW(a), wall, r: F.bastionR ?? 3.6, off: 1.3, dh: 0.4, cannon: false });
+      const bastionAngles = F.bastionAnglesByEra?.[era] ?? F.bastionAngles;
+      if (bastionAngles) for (const a of bastionAngles) W.bastion({ at: atW(a), wall, r: F.bastionR ?? 3.6, off: 1.3, dh: 0.4, cannon: false });
       else if (F.bastionsPerSide && explicitWallPath) {
         const count = Math.max(1, Math.floor(F.bastionsPerSide));
         for (let side = 0; side < F.wallPath.length; side++) {
@@ -305,7 +308,7 @@ export function makeFort(F) {
         else W.ruin({ rect, base, h: Math.min(3.4, 2.2 + (b.storeys || 1) * 0.6), thick: 0.6, jag: true, windows: false, color: 'stone', doors: [{ edge: 0, at: 0.5, w: 1.8 }] });
         if (b.name) W.zone(rectPts(b.x, b.y, b.w + 6, b.d + 6, b.rot || 0), b.name);
       }
-      for (const t of F.temples || []) if (inside(t.x, t.y)) W.temple({ x: t.x, y: t.y, rot: t.rot || 0, w: t.w || 4.5, h: t.h || 7, style: t.style || 'nagara', plinth: 0.6, mandapa: { d: 4.5, w: (t.w || 4.5) + 1, h: 2.8, roof: 'flat' }, color: 'stone', base: F.islandHill ? W.ground(t.x, t.y) : H });
+      for (const t of F.temples || []) if ((!t.only || t.only === era) && inside(t.x, t.y)) W.temple({ x: t.x, y: t.y, rot: t.rot || 0, w: t.w || 4.5, h: t.h || 7, style: t.style || 'nagara', plinth: 0.6, mandapa: { d: 4.5, w: (t.w || 4.5) + 1, h: 2.8, roof: 'flat' }, color: 'stone', base: F.islandHill ? W.ground(t.x, t.y) : H });
       for (const t of F.tanks || []) if (!t.only || t.only === era) { const poly = ellPoly(t.x, t.y, t.rx, t.ry, t.rot || 0); W.tank({ poly, waterDepth: 2, tiers: 4, color: 'stone' }); if (t.name) W.zone(poly, t.name); }
       // Small illustrative rock-cut stair and shaft; scale and placement come from the level sheet.
       for (const v of F.rockSteps || []) if (!v.only || v.only === era) {
