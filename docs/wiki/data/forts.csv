@@ -87,7 +87,7 @@ gobindgarh,"Gobindgarh, Amritsar",India,Punjab,31.627387,74.860095,needs-plan,T1
 lahore-fort,Lahore Fort (Shahi Qila),Pakistan,Punjab,31.590278,74.309722,needs-plan,T1,Q613720,,293,forts/pakistan/lahore-fort.md
 qila-mubarak-bathinda,"Qila Mubarak, Bathinda",India,Punjab,30.208,74.937166,needs-plan,T1,,,47,forts/india/qila-mubarak-bathinda.md
 qila-mubarak-patiala,"Qila Mubarak, Patiala",India,Punjab,30.324187,76.403083,needs-plan,"T1 (auto, outline)",,,90,forts/india/qila-mubarak-patiala.md
-rohtas-pk,Rohtas Fort,Pakistan,Punjab,32.964,73.577,needs-plan,"T1 (auto, outline)",Q155188,,167,forts/pakistan/rohtas-pk.md
+rohtas-pk,Rohtas Fort,Pakistan,Punjab,32.964,73.577,needs-plan,"T1 (auto, outline)",Q155188,,39,forts/pakistan/rohtas-pk.md
 amer,Amer,India,Rajasthan,26.987778,75.849722,needs-plan,"T1 (auto, outline)",Q456817,,139,forts/india/amer.md
 bhatner,"Bhatner, Hanumangarh",India,Rajasthan,29.58605,74.325322,needs-plan,"T1 (auto, outline)",,,82,forts/india/bhatner.md
 dindigul,Dindigul,India,Tamil Nadu,10.360556,77.963056,needs-plan,"T1 (auto, outline)",Q3534110,,68,forts/india/dindigul.md
@@ -97,8 +97,8 @@ trichy-rock,Tiruchirappalli Rock Fort,India,Tamil Nadu,10.828,78.697,needs-plan,
 bhongir,Bhongir,India,Telangana,17.515964,78.892533,needs-plan,"T1 (auto, outline)",Q4901951,,173,forts/india/bhongir.md
 medak,Medak Fort,India,Telangana,18.044425,78.255149,needs-plan,T1 (location-only),,,82,forts/india/medak.md
 warangal,Warangal Fort,India,Telangana,17.957,79.613,needs-plan,T1,,,225,forts/india/warangal.md
-agra-fort,Agra Fort,India,Uttar Pradesh,27.183308,78.0191,plan-traced,T2 (partial),Q171857,,170,forts/india/agra-fort.md
-allahabad-fort,Allahabad Fort,India,Uttar Pradesh,25.43,81.876,needs-plan,T1,Q771105,,145,forts/india/allahabad-fort.md
+agra-fort,Agra Fort,India,Uttar Pradesh,27.183308,78.0191,plan-traced,T2 (partial) + constructed (schematic),Q171857,,170,forts/india/agra-fort.md
+allahabad-fort,Allahabad Fort,India,Uttar Pradesh,25.43,81.876,needs-plan,T1 + constructed (schematic),Q771105,,145,forts/india/allahabad-fort.md
 chunar,Chunar,India,Uttar Pradesh,25.1255,82.8747,needs-plan,"T1 (auto, outline)",Q5116225,,30,forts/india/chunar.md
 fatehpur-sikri,Fatehpur Sikri,India,Uttar Pradesh,27.091111,77.661111,plan-traced,T2 (partial),,,126,forts/india/fatehpur-sikri.md
 jhansi,Jhansi,India,Uttar Pradesh,25.45809,78.57544,needs-plan,"T1 (auto, outline)",,,85,forts/india/jhansi.md
@@ -127,7 +127,7 @@ revdanda,Revdanda (Chaul),India,Maharashtra,18.546867,72.924679,needs-plan,"T1 (
 suvarnadurg,Suvarnadurg,India,Maharashtra,17.816389,73.084444,needs-plan,"T1 (auto, outline)",,,6,forts/india/suvarnadurg.md
 udgir,Udgir,India,Maharashtra,18.4028,77.1178,needs-plan,T1,,,26,forts/india/udgir.md
 vijaydurg,Vijaydurg,India,Maharashtra,16.560833,73.333333,needs-plan,"T1 (auto, outline)",Q3827850,,19,forts/india/vijaydurg.md
-gagron,Gagron,India,Rajasthan,24.628,76.183,needs-plan,"T1 (auto, outline)",Q16891508,,17,forts/india/gagron.md
+gagron,Gagron,India,Rajasthan,24.628,76.183,needs-plan,"T1 (auto, outline)",Q16891508,,11,forts/india/gagron.md
 jaigarh,Jaigarh,India,Rajasthan,26.981713,75.844702,needs-plan,"T1 (auto, outline)",Q456817,,139,forts/india/jaigarh.md
 junagarh-bikaner,"Junagarh, Bikaner",India,Rajasthan,28.022,73.318,needs-plan,"T1 (auto, outline)",Q6311597,,155,forts/india/junagarh-bikaner.md
 lohagarh,"Lohagarh, Bharatpur",India,Rajasthan,27.2206,77.4955,needs-plan,"T1 (auto, outline)",Q4208071,,92,forts/india/lohagarh.md
@@ -141,7 +141,7 @@ rani-ki-vav,Rani ki Vav,India,Gujarat,23.85892,72.10162,todo,,,,0,
 hampi-q26732,Hampi,India,Vijayanagara District,15.334547,76.462162,needs-plan,"T1 (auto, outline)",Q26732,,103,forts/india/hampi-q26732.md
 nalanda-mahavihara-q216243,Nalanda Mahavihara,India,Nalanda,25.136797,85.443828,todo,,Q216243,,0,
 ajanta-caves-q184427,Ajanta Caves,India,Aurangabad district,20.553417,75.700472,todo,,Q184427,,0,
-bhadra-fort-q3544561,Bhadra Fort,India,Ahmedabad Municipal Corporation,23.023611,72.581111,needs-plan,"T1 (auto, outline)",Q3544561,,110,forts/india/bhadra-fort-q3544561.md
+bhadra-fort-q3544561,Bhadra Fort,India,Ahmedabad Municipal Corporation,23.023611,72.581111,needs-plan,"T1 (auto, outline)",Q3544561,,106,forts/india/bhadra-fort-q3544561.md
 ellora-caves-q189616,Ellora Caves,India,Aurangabad district,20.026389,75.179167,todo,,Q189616,,0,
 humayun-s-tomb-q189648,Humayun's Tomb,India,Jangpura tehsil,28.593264,77.250602,todo,,Q189648,,0,
 jantar-mantar-q508634,Jantar Mantar,India,Jaipur,26.924722,75.825,needs-plan,"T1 (auto, outline)",Q508634,,47,forts/india/jantar-mantar-q508634.md
@@ -177,8 +177,8 @@ chhatrapati-shivaji-maharaj-terminus-q235884,Chhatrapati Shivaji Maharaj Terminu
 khajuraho-group-of-monuments-q167298,Khajuraho Group of Monuments,India,Khajuraho,24.85222,79.92222,todo,,Q167298,,0,
 konark-sun-temple-q752091,Konark Sun Temple,India,Puri district,19.887444,86.094596,todo,,Q752091,,0,
 prahadisvarar-temple-q916943,Prahadisvarar Temple,India,Thanjavur,10.783056,79.1325,todo,,Q916943,,0,
-shalamar-gardens-q499527,Shalamar Gardens,Pakistan,Lahore,31.585833,74.381944,needs-plan,"T1 (auto, outline)",Q499527,,92,forts/pakistan/shalamar-gardens-q499527.md
-takht-i-bahi-q117623,Takht-i-Bahi,Pakistan,Takht Bhai Tehsil,34.320833,71.945833,needs-plan,T1 (location-only),Q117623,,1,forts/pakistan/takht-i-bahi-q117623.md
+shalamar-gardens-q499527,Shalamar Gardens,Pakistan,Lahore,31.585833,74.381944,needs-plan,"T1 (auto, outline)",Q499527,,386,forts/pakistan/shalamar-gardens-q499527.md
+takht-i-bahi-q117623,Takht-i-Bahi,Pakistan,Takht Bhai Tehsil,34.320833,71.945833,needs-plan,T1 (location-only),Q117623,,0,forts/pakistan/takht-i-bahi-q117623.md
 boudhanath-q889902,Boudhanath,Nepal,Kathmandu,27.721389,85.361944,todo,,Q889902,,0,
 manas-national-park-q506511,Manas National Park,India,Assam,26.716667,90.933333,todo,,Q506511,,0,
 mosque-city-of-bagerhat-q799893,Mosque City of Bagerhat,Bangladesh,,22.66097,89.75855,todo,,Q799893,,0,
@@ -215,11 +215,11 @@ central-highlands-of-sri-lanka-q422941,Central Highlands of Sri Lanka,Sri Lanka,
 group-of-monuments-at-mahabalipuram-q3522747,Group of monuments at Mahabalipuram,India,"Tamil Nadu State, Chingleput District",12.616667,80.191667,todo,,Q3522747,,0,
 periyar-national-park-q548153,Periyar National Park,India,Kerala,9.5775,77.18,todo,,Q548153,,0,
 mukunda-nayanar-temple-q65998810,Mukunda Nayanar Temple,India,Chengalpattu district,12.627166,80.194894,todo,,Q65998810,,0,
-sirkap-q1340954,Sirkap,Pakistan,Punjab,33.756111,72.829167,todo,,Q1340954,,0,
+sirkap-q1340954,Sirkap,Pakistan,Punjab,33.756111,72.829167,todo,T1,Q1340954,,56,forts/pakistan/sirkap-q1340954.md
 basantapur-durbar-square-q6122177,Basantapur Durbar Square,Nepal,Kathmandu,27.704075,85.307083,todo,,Q6122177,,0,
 churches-and-convents-of-goa-q15726428,Churches and Convents of Goa,India,Goa,15.5024,73.9117,todo,,Q15726428,,0,
 chandigarh-capitol-complex-q25931399,Chandigarh Capitol Complex,India,Chandigarh,30.759167,76.804722,needs-plan,"T1 (auto, outline)",Q25931399,,28,forts/india/chandigarh-capitol-complex-q25931399.md
-dharmarajika-stupa-q5269314,Dharmarajika Stupa,Pakistan,Taxila Cantonment,33.744722,72.841944,todo,,Q5269314,,0,
+dharmarajika-stupa-q5269314,Dharmarajika Stupa,Pakistan,Taxila Cantonment,33.744722,72.841944,todo,T1,Q5269314,,20,forts/pakistan/dharmarajika-stupa-q5269314.md
 eravikulam-national-park-q1194252,Eravikulam National Park,India,Idukki district,10.2,77.083,todo,,Q1194252,,0,
 sacred-ensembles-of-the-hoysalas-q66023123,Sacred Ensembles of the Hoysalas,India,,13.212453,75.994072,todo,,Q66023123,,0,
 horton-plains-national-park-q1630245,Horton Plains National Park,Sri Lanka,,6.8,80.8,todo,,Q1630245,,0,

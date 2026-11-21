@@ -1,6 +1,6 @@
 # Allahabad Fort
 
-> India · Uttar Pradesh · evidence: **T1** · status: `needs-plan`
+> India · Uttar Pradesh · evidence: **T1 + constructed (schematic)** · status: `needs-plan`
 
 ## Identity
 
@@ -44,7 +44,7 @@ Build notes:
 
 ## Ledger note
 
-src/levels/allahabad-fort.trace.js (curation tools/trace/curation/allahabad-fort.mjs), level src/levels/allahabad-fort-t1.js, registered in alpha-x0.js. Outline is OSM way 903260229 (tagged historic=monument, Q771105, about 782 x 791 m); no wall line is mapped. Missing for T2: A plan with the wall circuit, gates, Ashoka pillar, Patalpuri temple and the river frontage; wall heights. Research: docs/research/allahabad-fort-pass.md. Batch-0 run 2026-11-15; written history not researched. Alpha-V batch (2026-11-11): 10 forts spread across A-Z starting at V (seq 2/10), distinct from batch 0, alpha-K, alpha-L, alpha-X and the H set.
+src/levels/allahabad-fort.trace.js (curation tools/trace/curation/allahabad-fort.mjs), level src/levels/allahabad-fort-t1.js, registered in alpha-x0.js. Outline is OSM way 903260229 (tagged historic=monument, Q771105, about 782 x 791 m); no wall line is mapped. Missing for T2: A plan with the wall circuit, gates, Ashoka pillar, Patalpuri temple and the river frontage; wall heights. Research: docs/research/allahabad-fort-pass.md. Batch-0 run 2026-11-15; written history not researched. Alpha-V batch (2026-11-11): 10 forts spread across A-Z starting at V (seq 2/10), distinct from batch 0, alpha-K, alpha-L, alpha-X and the H set. \| 2026-11-19: constructed layer added (tinted): rampart on the OSM outline (21 m assumed by analogy with Agra), angular landward bastions, two gate openings with tower pairs at mapped road ends, Ashoka pillar (OSM way 1169644585, 10.6 m); eras Akbar 1583 and today. Smoke 4 scenes 0 failures. STILL MISSING: any plan (wall line, true gate count and positions, Patalpuri, Saraswati Koop, Akshayavat, palaces, river frontage); the outline is a site boundary, not a surveyed wall.
 
 ## 3D model
 

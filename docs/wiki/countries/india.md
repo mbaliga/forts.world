@@ -39,7 +39,7 @@
 | [Agnigarh](../forts/india/agnigarh-sn114.md) | Assam | T1 (location-only) | 4 | needs-plan |
 | [Agori](../forts/india/agori-sn3582.md) | Uttar Pradesh | T1 (auto, outline) | 4 | needs-plan |
 | [Agori Fort](../forts/india/agori-fort-q24929774.md) |  | T1 (location-only) | 4 | needs-plan |
-| [Agra Fort](../forts/india/agra-fort.md) | Uttar Pradesh | T2 (partial) | 170 | plan-traced |
+| [Agra Fort](../forts/india/agra-fort.md) | Uttar Pradesh | T2 (partial) + constructed (schematic) | 170 | plan-traced |
 | [Agrahara valavanthi](../forts/india/agrahara-valavanthi-sn2951.md) | Tamil Nadu | T1 (location-only) | 3 | needs-plan |
 | [Agroha Mound](../forts/india/agroha-mound-q4694244.md) | Hisar district | T1 (auto, outline) | 15 | needs-plan |
 | [Aher Banpur Bagheri](../forts/india/aher-banpur-bagheri-sn1679.md) | Madhya Pradesh | T1 (location-only) | 1 | needs-plan |
@@ -92,7 +92,7 @@
 | [Alipur](../forts/india/alipur-sn2492.md) | Rajasthan | T1 (location-only) | 2 | needs-plan |
 | [Aliyabad](../forts/india/aliyabad-sn3076.md) | Telangana | T1 (location-only) | 1 | needs-plan |
 | [Alkuti / Kadambande Wada](../forts/india/alkuti-kadambande-wada-sn1743.md) | Maharashtra | T1 (location-only) | 69 | needs-plan |
-| [Allahabad Fort](../forts/india/allahabad-fort.md) | Uttar Pradesh | T1 | 145 | needs-plan |
+| [Allahabad Fort](../forts/india/allahabad-fort.md) | Uttar Pradesh | T1 + constructed (schematic) | 145 | needs-plan |
 | [Allebada](../forts/india/allebada-sn348.md) | Andhra Pradesh | T1 (location-only) | 2 | needs-plan |
 | [Allipur](../forts/india/allipur-sn2260.md) | Maharashtra | T1 (location-only) | 5 | needs-plan |
 | [Alorna Fort](../forts/india/alorna-fort-q10283773.md) | Pernem taluk | T1 (auto, outline) | 12 | needs-plan |
@@ -473,7 +473,7 @@
 | [Bhaderwah](../forts/india/bhaderwah-sn3680.md) | Jammu and Kashmir | T1 (auto, outline) | 18 | needs-plan |
 | [Bhadesar](../forts/india/bhadesar-sn2557.md) | Rajasthan | T1 (location-only) | 4 | needs-plan |
 | [Bhadon Sarai](../forts/india/bhadon-sarai-sn3138.md) | Uttar Pradesh | T1 (location-only) | 3 | needs-plan |
-| [Bhadra Fort](../forts/india/bhadra-fort-q3544561.md) | Ahmedabad Municipal Corporation | T1 (auto, outline) | 110 | needs-plan |
+| [Bhadra Fort](../forts/india/bhadra-fort-q3544561.md) | Ahmedabad Municipal Corporation | T1 (auto, outline) | 106 | needs-plan |
 | [Bhadrajun](../forts/india/bhadrajun-sn2654.md) | Rajasthan | T1 (auto, outline) | 1 | needs-plan |
 | [Bhadva](../forts/india/bhadva-sn691.md) | Gujarat | T1 (location-only) | 41 | needs-plan |
 | [Bhagalpur](../forts/india/bhagalpur-sn454.md) | Bihar | T1 (location-only) | 26 | needs-plan |
@@ -1151,7 +1151,7 @@
 | [Gaganagiri / Perivamalai](../forts/india/gaganagiri-perivamalai-sn2929.md) | Tamil Nadu | T1 (location-only) | 1 | needs-plan |
 | [Gagangad](../forts/india/gagangad-sn1869.md) | Maharashtra | T1 (auto, outline) | 2 | needs-plan |
 | [Gagodhar](../forts/india/gagodhar-sn653.md) | Gujarat | T1 (location-only) | 7 | needs-plan |
-| [Gagron](../forts/india/gagron.md) | Rajasthan | T1 (auto, outline) | 17 | needs-plan |
+| [Gagron](../forts/india/gagron.md) | Rajasthan | T1 (auto, outline) | 11 | needs-plan |
 | [Gaiapathis](../forts/india/gaiapathis-sn376.md) | Andhra Pradesh | T1 (location-only) | 17 | needs-plan |
 | [Gainta](../forts/india/gainta-sn2726.md) | Rajasthan | T1 (location-only) | 3 | needs-plan |
 | [Gajendragad](../forts/india/gajendragad-sn1074.md) | Karnataka | T1 (location-only) | 3 | needs-plan |

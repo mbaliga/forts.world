@@ -42,7 +42,7 @@ Build notes:
 
 ## Ledger note
 
-src/levels/daulatabad.trace.js (curation tools/trace/curation/daulatabad.mjs), level src/levels/daulatabad.js; eras 1327 (hill and scarp only), 1633 (adds mapped wall lines and 3 gates), today. All carried back as inferred. OSM outline is the citadel hill only (~180 m); ring walls are not identified as Ambarkot or Kataka. No plan, survey or dated image found; no wall or tower height read. Wikipedia dates conflict (annexation 1307/08, capital move 1327/28, Mughal capture 1632/33; Chand Minar 1347-58 vs 1446). NOT traced: Chand Minar, Chini Mahal, moat, dark passage. Old hand level kept as daulatabad-hand.js. T2 needs a survey plan, heights, finer DEM. docs/research/daulatabad-pass.md
+src/levels/daulatabad.trace.js (curation tools/trace/curation/daulatabad.mjs), level src/levels/daulatabad.js; eras 1327 (hill and scarp only), 1633 (adds mapped wall lines and 3 gates), today. All carried back as inferred. OSM outline is the citadel hill only (~180 m); ring walls are not identified as Ambarkot or Kataka. No plan, survey or dated image found; no wall or tower height read. Wikipedia dates conflict (annexation 1307/08, capital move 1327/28, Mughal capture 1632/33; Chand Minar 1347-58 vs 1446). NOT traced: Chand Minar, Chini Mahal, moat, dark passage. Old hand level kept as daulatabad-hand.js. T2 needs a survey plan, heights, finer DEM. docs/research/daulatabad-pass.md \| 2026-11-19: the original hand-built constructed level (daulatabad-hand, one of the first Ten Forts of India) is listed again in the game as "Daulatabad (constructed)" beside the traced level, and the Forts of the World page links to it (ten-forts.html?fort=daulatabad-hand).
 
 ## 3D model
 

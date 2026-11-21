@@ -1,6 +1,6 @@
 # Fort wiki
 
-Generated 2026-11-18 from the ledger, the merged world table and the model traces. 86095 sites in the ledger across 173 countries; 78051 have a model page.
+Generated 2026-11-21 from the ledger, the merged world table and the model traces. 86095 sites in the ledger across 173 countries; 78053 have a model page.
 
 - [Sources and licences](SOURCES.md): every dataset, tool and reference we draw on.
 - [Metadata schema](SCHEMA.md): what each field means and where it comes from.
@@ -14,8 +14,10 @@ Generated 2026-11-18 from the ledger, the merged world table and the model trace
 |---|---|
 | T1 (auto, outline) | 45926 |
 | T1 (location-only) | 32062 |
-| T1 | 56 |
-| T2 (partial) | 6 |
+| T1 | 57 |
+| T2 (partial) | 5 |
+| T2 (partial) + constructed (schematic) | 1 |
+| T1 + constructed (schematic) | 1 |
 | T1 (plan-validated) | 1 |
 
 T2 means a survey plan was used. T1 (plan-validated) means a mapped outline was checked against a plan. T1 (auto, outline) and T1 (location-only) are automatic builds from open map data and terrain, unchecked against plans. Generic schematic means a stand-in layout with unverified fidelity.
@@ -42,7 +44,7 @@ T2 means a survey plan was used. T1 (plan-validated) means a mapped outline was 
 | [United States](countries/united-states.md) | 913 | 913 |
 | [Norway](countries/norway.md) | 832 | 832 |
 | [Romania](countries/romania.md) | 800 | 800 |
-| [Pakistan](countries/pakistan.md) | 771 | 272 |
+| [Pakistan](countries/pakistan.md) | 771 | 274 |
 | [Denmark](countries/denmark.md) | 721 | 721 |
 | [Russia](countries/russia.md) | 706 | 706 |
 | [Ireland](countries/ireland.md) | 691 | 690 |

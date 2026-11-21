@@ -22,9 +22,9 @@
 
 ## What the model contains
 
-Tier **T1**, status `outline+walls`, 17 elements (outline 1, road 3, water 3, waterway 3, wall 7).
+Tier **T1**, status `outline+walls`, 11 elements (outline 1, road 1, water 2, waterway 2, wall 5).
 
-Evidence: documented 0, mapped 17, inferred 0, derived 0; heights documented 0, inferred 0, unknown 7.
+Evidence: documented 0, mapped 11, inferred 0, derived 0; heights documented 0, inferred 0, unknown 5.
 
 This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
 
@@ -36,8 +36,8 @@ Build notes:
 
 | Source | Licence | Link | Fetched |
 |---|---|---|---|
-| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/24.628/76.183) | 2026-11-14 |
-| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-14 |
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/24.628/76.183) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
 
 ## Research notes
 
@@ -45,7 +45,7 @@ Build notes:
 
 ## Ledger note
 
-coords from wikidata (was 24.626389,76.187222) Alpha-I batch (2026-11-14): 10 forts spread across A-Z starting at I, distinct from batch 0 and every other alpha batch. \| 2026-11-16: Commons search found no plans (7 results, 0 plan-like); needs Rajputana gazetteer or ASI drawings from archive.org. \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 17 elements); data/traces/gagron.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+coords from wikidata (was 24.626389,76.187222) Alpha-I batch (2026-11-14): 10 forts spread across A-Z starting at I, distinct from batch 0 and every other alpha batch. \| 2026-11-16: Commons search found no plans (7 results, 0 plan-like); needs Rajputana gazetteer or ASI drawings from archive.org. \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 17 elements); data/traces/gagron.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey. 2026-11-18 rebuilt at 600 m (11 elements, 5 wall ways); mapped fort centre is 711 m from the ledger point, origin moved. Search found 7 results, no open plan. T2 needs: a survey plan.
 
 ## 3D model
 

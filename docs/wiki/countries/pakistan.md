@@ -1,6 +1,6 @@
 # Pakistan
 
-771 sites in the ledger; 272 have a model.
+771 sites in the ledger; 274 have a model.
 
 | Site | Region | Evidence | Elements | Status |
 |---|---|---|---|---|
@@ -61,6 +61,7 @@
 | [Derawar](../forts/pakistan/derawar.md) | Punjab (Cholistan) | T1 | 36 | needs-plan |
 | [DewaGarh](../forts/pakistan/dewagarh-n8084457217.md) |  | T1 (location-only) | 3 | needs-plan |
 | [DHA V Gate 1](../forts/pakistan/dha-v-gate-1-w1525219925.md) |  | T1 (location-only) | 40 | needs-plan |
+| [Dharmarajika Stupa](../forts/pakistan/dharmarajika-stupa-q5269314.md) | Taxila Cantonment | T1 | 20 | todo |
 | [Din Garh Fort](../forts/pakistan/din-garh-fort-w507000840.md) | Punjab | T1 (auto, outline) | 2 | needs-plan |
 | [Dipalpur](../forts/pakistan/dipalpur-sn14.md) | Punjab | T1 (location-only) | 17 | needs-plan |
 | [Dir Fort](../forts/pakistan/dir-fort-n7231518397.md) |  | T1 (location-only) | 12 | needs-plan |
@@ -210,7 +211,7 @@
 | [Rawat Fort](../forts/pakistan/rawat-fort-q7296947.md) | Rawat, Murree | T1 (auto, outline) | 52 | needs-plan |
 | [Reti Gate](../forts/pakistan/reti-gate-n7159388113.md) |  | T1 (auto, outline) | 108 | needs-plan |
 | [Riaz Khan's House](../forts/pakistan/riaz-khan-s-house-n12716484801.md) |  | T1 (location-only) | 10 | needs-plan |
-| [Rohtas Fort](../forts/pakistan/rohtas-pk.md) | Punjab | T1 (auto, outline) | 167 | needs-plan |
+| [Rohtas Fort](../forts/pakistan/rohtas-pk.md) | Punjab | T1 (auto, outline) | 39 | needs-plan |
 | [Roshnai Gate](../forts/pakistan/roshnai-gate-q7368849.md) | Lahore | T1 (auto, outline) | 261 | needs-plan |
 | [Rukanpur](../forts/pakistan/rukanpur-sn41.md) | Punjab | T1 (location-only) | 1 | needs-plan |
 | [Sabir Tanvri (صابر تنوری)](../forts/pakistan/sabir-tanvri-n5725018723.md) |  | T1 (location-only) | 5 | needs-plan |
@@ -238,7 +239,7 @@
 | [Shaheed Chowk](../forts/pakistan/shaheed-chowk-n6938741366.md) |  | T1 (location-only) | 3 | needs-plan |
 | [Shahi Gate](../forts/pakistan/shahi-gate-n14112030370.md) |  | T1 (auto, outline) | 167 | needs-plan |
 | [Shairanwala Gate](../forts/pakistan/shairanwala-gate-q7462484.md) | Lahore | T1 (auto, outline) | 160 | needs-plan |
-| [Shalamar Gardens](../forts/pakistan/shalamar-gardens-q499527.md) | Lahore | T1 (auto, outline) | 92 | needs-plan |
+| [Shalamar Gardens](../forts/pakistan/shalamar-gardens-q499527.md) | Lahore | T1 (auto, outline) | 386 | needs-plan |
 | [Sharkargarh](../forts/pakistan/sharkargarh-n883898388.md) |  | T1 (location-only) | 5 | needs-plan |
 | [Sheikhupura Fort](../forts/pakistan/sheikhupura-fort-q18357797.md) | Punjab | T1 (auto, outline) | 40 | needs-plan |
 | [Shergarh Fort](../forts/pakistan/shergarh-fort-n12076201047.md) |  | T1 (location-only) | 12 | needs-plan |
@@ -249,13 +250,14 @@
 | [Sialkot Fort](../forts/pakistan/sialkot-fort-q7506675.md) | Sialkot | T1 (auto, outline) | 45 | needs-plan |
 | [Sialkoti Gate](../forts/pakistan/sialkoti-gate-n9593097070.md) |  | T1 (auto, outline) | 49 | needs-plan |
 | [Silli](../forts/pakistan/silli-n7733686085.md) |  | T1 (location-only) | 1 | needs-plan |
+| [Sirkap](../forts/pakistan/sirkap-q1340954.md) | Punjab | T1 | 56 | todo |
 | [Sirki Gate](../forts/pakistan/sirki-gate-n7159388092.md) |  | T1 (auto, outline) | 74 | needs-plan |
 | [Skardu Fort](../forts/pakistan/skardu-fort-q1438714.md) | Skardu | T1 (auto, outline) | 15 | needs-plan |
 | [Southern Kafir Kot](../forts/pakistan/southern-kafir-kot-sn4.md) | Khyber Pakhtunkhwa | T1 (location-only) | 4 | needs-plan |
 | [Taimoor home](../forts/pakistan/taimoor-home-n13936370001.md) |  | T1 (location-only) | 18 | needs-plan |
 | [Taj Ali Bhetak Hayatabad (Meelu)](../forts/pakistan/taj-ali-bhetak-hayatabad-meelu-n6741831187.md) |  | T1 (location-only) | 6 | needs-plan |
 | [Taj Ali House Merabadi](../forts/pakistan/taj-ali-house-merabadi-n10250742011.md) |  | T1 (location-only) | 30 | needs-plan |
-| [Takht-i-Bahi](../forts/pakistan/takht-i-bahi-q117623.md) | Takht Bhai Tehsil | T1 (location-only) | 1 | needs-plan |
+| [Takht-i-Bahi](../forts/pakistan/takht-i-bahi-q117623.md) | Takht Bhai Tehsil | T1 (location-only) |  | needs-plan |
 | [Talaqi Gate](../forts/pakistan/talaqi-gate-n14112030367.md) |  | T1 (auto, outline) | 167 | needs-plan |
 | [Taxali Gate](../forts/pakistan/taxali-gate-q7689499.md) | Lahore | T1 (auto, outline) | 261 | needs-plan |
 | [Thall Fort](../forts/pakistan/thall-fort-w505420875.md) |  | T1 (auto, outline) | 18 | needs-plan |
@@ -344,7 +346,6 @@
 | Dargah Syed Akbar Shah wali |  |  |  | todo |
 | Data Durbar Complex | Lahore |  |  | todo |
 | Dhamrao Jo Daro |  |  |  | todo |
-| Dharmarajika Stupa | Taxila Cantonment |  |  | todo |
 | Diwan Sharfa Khan Tarkhan |  |  |  | todo |
 | Elahi Bukhsh Sethi Haveli |  |  |  | todo |
 | Empty Palce |  |  |  | todo |
@@ -651,7 +652,6 @@
 | Shrine of Sher Muhammad Jalandri Qalandar |  |  |  | todo |
 | Shrine of Syed Surkh Roh Shaheed |  |  |  | todo |
 | Shrine of Syeda Meeran PIr |  |  |  | todo |
-| Sirkap | Punjab |  |  | todo |
 | Sirsukh | Punjab |  |  | todo |
 | Sokhta Koh | Balochistan |  |  | todo |
 | Sphola Stupa | Khyber District |  |  | todo |

@@ -45,7 +45,7 @@ Build notes:
 
 ## Ledger note
 
-src/levels/gwalior.trace.js (curation tools/trace/curation/gwalior.mjs), level src/levels/gwalior.js; eras 1780/1868/today plus sibling ~built eras (schematic layer: wall 8 m, palace masses 10-12 m, Teli ka Mandir 25 m, Hathiya towers; all heights assumed and labelled). Plan: Cunningham 1908 (Commons, PD), registered by two local fits, gates +-80 m and snapped to the OSM scarp wall, palaces +-60 m. NOT traced: southern tanks, Sas-Bahu and other temples, Badalgarh, rock-cut Jain groups, escalade site. Old hand level kept as src/levels/gwalior-hand.js (unregistered). T2 needs a survey plan or the 1911 ASI plan (licence regex fix), photographs for heights, finer DEM. docs/research/gwalior-pass.md
+src/levels/gwalior.trace.js (curation tools/trace/curation/gwalior.mjs), level src/levels/gwalior.js; eras 1780/1868/today plus sibling ~built eras (schematic layer: wall 8 m, palace masses 10-12 m, Teli ka Mandir 25 m, Hathiya towers; all heights assumed and labelled). Plan: Cunningham 1908 (Commons, PD), registered by two local fits, gates +-80 m and snapped to the OSM scarp wall, palaces +-60 m. NOT traced: southern tanks, Sas-Bahu and other temples, Badalgarh, rock-cut Jain groups, escalade site. Old hand level kept as src/levels/gwalior-hand.js (unregistered). T2 needs a survey plan or the 1911 ASI plan (licence regex fix), photographs for heights, finer DEM. docs/research/gwalior-pass.md \| 2026-11-19: the original hand-built constructed level (gwalior-hand, one of the first Ten Forts of India) is listed again in the game as "Gwalior (constructed)" beside the traced level, and the Forts of the World page links to it (ten-forts.html?fort=gwalior-hand).
 
 ## 3D model
 

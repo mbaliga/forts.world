@@ -20,27 +20,27 @@
 
 ## What the model contains
 
-Tier **T1**, status `outline+walls`, 110 elements (outline 1, water 1, road 84, waterway 1, building 19, zone 3, wall 1).
+Tier **T1**, status `outline+walls`, 106 elements (outline 1, road 82, building 19, zone 3, wall 1).
 
-Evidence: documented 0, mapped 110, inferred 0, derived 0; heights documented 7, inferred 0, unknown 13.
+Evidence: documented 0, mapped 106, inferred 0, derived 0; heights documented 7, inferred 0, unknown 13.
 
 This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
 
 Build notes:
-- site: osm:way/1136222353 historic=fort 59 m from ledger point
-- origin moved 58 m from the ledger point to the outline centroid
+- site: osm:way/843168356 historic=fort Q3544561 59 m from ledger point
+- origin moved 58 m from the ledger point to the centre of the mapped site
 - 4 mapped path(s) meet closed wall lines (candidate openings for T2; not drawn)
 
 ## Sources used
 
 | Source | Licence | Link | Fetched |
 |---|---|---|---|
-| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/23.023611/72.581111) | 2026-11-16 |
-| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-16 |
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/23.023611/72.581111) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
 
 ## Ledger note
 
-Alpha-V batch (2026-11-11): 10 forts spread across A-Z starting at V (seq 5/10), checked against all other batch files at push time. type=fort; confidence=high; rank=16; sources=3 \| 2026-11-16: auto-T1 by the model-all pipeline run directly (outline+walls, 110 elements); data/traces/bhadra-fort-q3544561.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey. \| 2026-11-16: no open plan found by the Commons search (only generic gazetteer PDFs); T2 needs ASI/Ahmedabad survey drawings.
+Alpha-V batch (2026-11-11): 10 forts spread across A-Z starting at V (seq 5/10), checked against all other batch files at push time. type=fort; confidence=high; rank=16; sources=3 \| 2026-11-16: auto-T1 by the model-all pipeline run directly (outline+walls, 110 elements); data/traces/bhadra-fort-q3544561.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey. \| 2026-11-16: no open plan found by the Commons search (only generic gazetteer PDFs); T2 needs ASI/Ahmedabad survey drawings. 2026-11-18 rebuilt at 300 m (110 elements). Commons search found only gazetteer/ASI report PDFs (no extracted plan). T2 needs: the Ahmedabad Bhadra plan (Baedeker 1914 / 1855 map requested for the Ahmadabad row may help).
 
 ## 3D model
 

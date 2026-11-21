@@ -40,7 +40,7 @@ Build notes:
 
 ## Ledger note
 
-src/levels/jaisalmer.trace.js (curation tools/trace/curation/jaisalmer.mjs), level src/levels/jaisalmer.js; eras 1647/today plus ~built (schematic perimeter wall 4.6 m high 2.5 m thick from Wikipedia's 15 ft outer base wall; thickness assumed). One OSM Pol node promoted to a gate; three Pols stay as gate-house footprints. No plan, survey or dated image found (Commons search returned gazetteer pages and 2012-13 photographs). 1156 foundation is legend. NOT traced: 99 bastions, real gate forms, temples, havelis. Old hand level kept as jaisalmer-hand.js. T2 needs a survey plan, heights, finer DEM. docs/research/jaisalmer-pass.md \| Batch 0 (2026-11-11): alphabetical sweep F-V chosen by user; do first.
+src/levels/jaisalmer.trace.js (curation tools/trace/curation/jaisalmer.mjs), level src/levels/jaisalmer.js; eras 1647/today plus ~built (schematic perimeter wall 4.6 m high 2.5 m thick from Wikipedia's 15 ft outer base wall; thickness assumed). One OSM Pol node promoted to a gate; three Pols stay as gate-house footprints. No plan, survey or dated image found (Commons search returned gazetteer pages and 2012-13 photographs). 1156 foundation is legend. NOT traced: 99 bastions, real gate forms, temples, havelis. Old hand level kept as jaisalmer-hand.js. T2 needs a survey plan, heights, finer DEM. docs/research/jaisalmer-pass.md \| Batch 0 (2026-11-11): alphabetical sweep F-V chosen by user; do first. \| 2026-11-19: the original hand-built constructed level (jaisalmer-hand, one of the first Ten Forts of India) is listed again in the game as "Jaisalmer (constructed)" beside the traced level, and the Forts of the World page links to it (ten-forts.html?fort=jaisalmer-hand).
 
 ## 3D model
 

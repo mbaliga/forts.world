@@ -38,8 +38,8 @@ Build notes:
 
 | Source | Licence | Link | Fetched |
 |---|---|---|---|
-| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/26.987778/75.849722) | 2026-11-14 |
-| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-14 |
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/26.987778/75.849722) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
 
 ## Research notes
 
@@ -49,7 +49,7 @@ Build notes:
 
 ## Ledger note
 
-coords from wikidata (was 26.985,75.851) Alpha-I batch (2026-11-14): 10 forts spread across A-Z starting at I, distinct from batch 0 and every other alpha batch. Research pass 1 done: docs/research/amer-pass.md. \| 2026-11-16: Commons search returned no open plan (photos only); fetch ASI/Jaipur survey drawings from archive.org next. \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 139 elements); data/traces/amer.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+coords from wikidata (was 26.985,75.851) Alpha-I batch (2026-11-14): 10 forts spread across A-Z starting at I, distinct from batch 0 and every other alpha batch. Research pass 1 done: docs/research/amer-pass.md. \| 2026-11-16: Commons search returned no open plan (photos only); fetch ASI/Jaipur survey drawings from archive.org next. \| 2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 139 elements); data/traces/amer.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey. 2026-11-18 geometry refetched at 900 m, auto model rebuilt (139 elements: 31 wall ways, 46 buildings, 4 retaining walls). Commons search (155 hits) found no open plan, only CC BY-SA photos (not usable as textures). T2 needs: an ASI/survey plan or palace plan under an open licence.
 
 ## 3D model
 

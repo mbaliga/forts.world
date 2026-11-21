@@ -35,7 +35,7 @@ Build notes:
 
 ## Ledger note
 
-2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 283 elements); data/traces/golconda.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey.
+2026-11-18: auto-T1 by the model-all pipeline run directly (outline+walls, 283 elements); data/traces/golconda.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey. \| 2026-11-19: the Forts of the World page links this fort's hand-built constructed level, one of the first Ten Forts of India (ten-forts.html?fort=golconda).
 
 ## 3D model
 

@@ -39,7 +39,7 @@ Build notes:
 
 ## Ledger note
 
-Alpha-K batch (2026-11-11): 10 forts spread across A-Z starting at K, distinct from batch 0; do after batch 0. Auto-T1 built 2026-11-15 from OSM+Terrarium (data/traces/gingee.trace.json). T2 needs plans/surveys/photos; none researched yet. docs/research/alpha-K-pass.md
+Alpha-K batch (2026-11-11): 10 forts spread across A-Z starting at K, distinct from batch 0; do after batch 0. Auto-T1 built 2026-11-15 from OSM+Terrarium (data/traces/gingee.trace.json). T2 needs plans/surveys/photos; none researched yet. docs/research/alpha-K-pass.md \| 2026-11-19: the Forts of the World page links this fort's hand-built constructed level, one of the first Ten Forts of India (ten-forts.html?fort=gingee).
 
 ## 3D model
 

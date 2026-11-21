@@ -19,9 +19,9 @@
 
 ## What the model contains
 
-Tier **T1**, status `location-only`, 1 elements (waterway 1).
+Tier **T1**, status `location-only`, 0 elements ().
 
-Evidence: documented 0, mapped 1, inferred 0, derived 0; heights documented 0, inferred 0, unknown 0.
+Evidence: documented 0, mapped 0, inferred 0, derived 0; heights documented 0, inferred 0, unknown 0.
 
 This is an automatic outline: shapes come from OpenStreetMap and ground height from the ~30 m terrain tiles. It is **not** checked against a survey plan, and no gates, bastions or heights are invented.
 
@@ -32,12 +32,12 @@ Build notes:
 
 | Source | Licence | Link | Fetched |
 |---|---|---|---|
-| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/34.320833/71.945833) | 2026-11-16 |
-| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-16 |
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/34.320833/71.945833) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
 
 ## Ledger note
 
-type=fort; confidence=high; rank=55; sources=3 Alpha-H batch (2026-11-14): 10 forts spread across A-Z starting at H, distinct from batch 0 and every other alpha batch. \| 2026-11-16: auto-T1 by the model-all pipeline run directly (location-only, 1 elements); data/traces/takht-i-bahi-q117623.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey. \| 2026-11-16: plan found: Excavations at Takht-i-Bahi main monastery plan 1908 (public domain, fetched) but the trace is location-only (one river element), so there is no OSM geometry to register to; T2 needs ground control (monastery coordinates) before tracing.
+type=fort; confidence=high; rank=55; sources=3 Alpha-H batch (2026-11-14): 10 forts spread across A-Z starting at H, distinct from batch 0 and every other alpha batch. \| 2026-11-16: auto-T1 by the model-all pipeline run directly (location-only, 1 elements); data/traces/takht-i-bahi-q117623.trace.json. Open-data outline and DEM only, no plan: fidelity unverified; T2 needs a plan or survey. \| 2026-11-16: plan found: Excavations at Takht-i-Bahi main monastery plan 1908 (public domain, fetched) but the trace is location-only (one river element), so there is no OSM geometry to register to; T2 needs ground control (monastery coordinates) before tracing. 2026-11-18 geometry refetched at 400 m: OSM returns no mapped feature, only the DEM. Excavation plan held (Commons PD, 'Excavations at Takht-i Bahi Main Monastery plan') but there is nothing to register it to. T2 needs: a mapped outline or georeferenced control points (ASI/UNESCO).
 
 ## 3D model
 

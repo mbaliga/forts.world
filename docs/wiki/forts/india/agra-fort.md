@@ -1,6 +1,6 @@
 # Agra Fort
 
-> India · Uttar Pradesh · evidence: **T2 (partial)** · status: `plan-traced`
+> India · Uttar Pradesh · evidence: **T2 (partial) + constructed (schematic)** · status: `plan-traced`
 
 ## Identity
 
@@ -46,7 +46,7 @@ Build notes:
 
 ## Ledger note
 
-coords from wikidata (was 27.18,78.021) \| 2026-11-16: src/levels/agra-fort.trace.js (curation tools/trace/curation/agra-fort.mjs), level src/levels/agra-fort.js; old generated scene kept as agra-fort-hand.js. T2 partial: 4 gates (Delhi, Elephant, Amar Singh, Water), Moti Masjid, Diwan-i-Amm court, Jahangiri block and 5 numbered palace label positions from the 1901 Stanford plan (public domain, data/plans/agra-fort/), one similarity fit to the OSM wall, +-25 m (registration.json). Eras 1901/today plus ~built (schematic wall 21 m, Britannica secondary). Smoke 4 scenes 0 failures. MISSING: wall/gate/palace heights, gate forms, bastion shapes beyond the OSM bumps, moat, Yamuna on the east (OSM Yamuna way sits on the SW ravine side and was dropped), Diwan-i-Khas/Anguri Bagh/Naginah Masjid footprints, any ASI measured drawing (Commons ASI site-plan photo CC BY 3.0 fetched but not traced), earlier eras (Akbar 1565-73, 1803, 1857). docs/research/agra-fort-pass.md
+coords from wikidata (was 27.18,78.021) \| 2026-11-16: src/levels/agra-fort.trace.js (curation tools/trace/curation/agra-fort.mjs), level src/levels/agra-fort.js; old generated scene kept as agra-fort-hand.js. T2 partial: 4 gates (Delhi, Elephant, Amar Singh, Water), Moti Masjid, Diwan-i-Amm court, Jahangiri block and 5 numbered palace label positions from the 1901 Stanford plan (public domain, data/plans/agra-fort/), one similarity fit to the OSM wall, +-25 m (registration.json). Eras 1901/today plus ~built (schematic wall 21 m, Britannica secondary). Smoke 4 scenes 0 failures. MISSING: wall/gate/palace heights, gate forms, bastion shapes beyond the OSM bumps, moat, Yamuna on the east (OSM Yamuna way sits on the SW ravine side and was dropped), Diwan-i-Khas/Anguri Bagh/Naginah Masjid footprints, any ASI measured drawing (Commons ASI site-plan photo CC BY 3.0 fetched but not traced), earlier eras (Akbar 1565-73, 1803, 1857). docs/research/agra-fort-pass.md \| 2026-11-19: constructed layer added (tinted, written descriptions only): crenellated 21 m rampart, ~40 round bastions, Delhi and Amar Singh gate towers, Musamman Burj, Jahangiri Mahal, Diwan-i-Am hall, Khas Mahal, Shish Mahal, Moti Masjid with three domes; new eras Akbar 1573 and Shah Jahan 1653 (+ built views for all four eras). Smoke 8 scenes 0 failures. Positions from the 1901 plan (+-25 m); sizes and heights assumed. STILL MISSING: Diwan-i-Khas, Anguri Bagh, Naginah Masjid (no registered position), moat and Yamuna, measured ASI drawing, photo-based elevations.
 
 ## 3D model
 

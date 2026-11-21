@@ -16,7 +16,7 @@
 
 ## What the model contains
 
-Tier **T1**, status `outline+walls`, 47 elements (outline 1, marker 8, road 112, building 114, wall 7, zone 10).
+Tier **T1**, status `outline+walls`, 47 elements (outline 1, marker 8, road 112, building 113, wall 7, zone 10).
 
 Evidence: documented 0, mapped 47, inferred 0, derived 0; heights documented 0, inferred 0, unknown 10.
 
@@ -24,16 +24,16 @@ This is an automatic outline: shapes come from OpenStreetMap and ground height f
 
 Build notes:
 - site: osm:way/102879535 historic=archaeological_site Q508634 52 m from ledger point
-- pruned to the outline plus 25 m: 252 -> 46 elements
-- origin moved 55 m from the ledger point to the outline centroid
+- pruned to the outline plus 25 m: 251 -> 46 elements
+- origin moved 55 m from the ledger point to the centre of the mapped site
 - 8 mapped path(s) meet closed wall lines (candidate openings for T2; not drawn)
 
 ## Sources used
 
 | Source | Licence | Link | Fetched |
 |---|---|---|---|
-| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/26.924722/75.825) | 2026-11-11 |
-| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-11 |
+| OpenStreetMap | ODbL | [link](https://www.openstreetmap.org/#map=17/26.924722/75.825) | 2026-11-18 |
+| Terrarium elevation tiles (Mapzen / AWS Open Data; SRTM-derived) | see AWS Open Data terrain tiles docs | [link](https://registry.opendata.aws/terrain-tiles/) | 2026-11-18 |
 
 ## Research notes
 
@@ -41,7 +41,7 @@ Build notes:
 
 ## Ledger note
 
-Alpha-Q batch (2026-11-11): 10 forts spread across A-Z starting at Q (seq 8); distinct from batch 0 and the K, H, L, X, S, T, Y, U, I sets. type=fort; confidence=high; rank=19; sources=5 \| 2026-11-14: auto-T1 built (data/traces/jantar-mantar-q508634.trace.json, outline+walls), smoke passes; no plan or survey yet, nothing historic drawn. docs/research/jantar-mantar-pass.md \| 2026-11-16: CC0 Commons file Delhi Jantar Mantar Plan outline is a photo of a tactile site plaque (perspective, reflections), not a measured plan; kept as reference only. Jaipur instruments: no open plan found.
+Alpha-Q batch (2026-11-11): 10 forts spread across A-Z starting at Q (seq 8); distinct from batch 0 and the K, H, L, X, S, T, Y, U, I sets. type=fort; confidence=high; rank=19; sources=5 \| 2026-11-14: auto-T1 built (data/traces/jantar-mantar-q508634.trace.json, outline+walls), smoke passes; no plan or survey yet, nothing historic drawn. docs/research/jantar-mantar-pass.md \| 2026-11-16: CC0 Commons file Delhi Jantar Mantar Plan outline is a photo of a tactile site plaque (perspective, reflections), not a measured plan; kept as reference only. Jaipur instruments: no open plan found. 2026-11-18 rebuilt at 350 m (47 elements incl. 7 wall ways, 113 buildings). Plan held is a CC0 photo of a tactile plate, rotated and perspective-distorted, so it cannot be registered to +-10%; not used. T2 needs: a flat survey plan of the Delhi observatory and instrument dimensions.
 
 ## 3D model
 

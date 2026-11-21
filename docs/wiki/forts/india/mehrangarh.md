@@ -46,7 +46,7 @@ Build notes:
 
 ## Ledger note
 
-src/levels/mehrangarh.trace.js (curation tools/trace/curation/mehrangarh.mjs), level src/levels/mehrangarh-t1.js, registered in alpha-x0.js. Outline is OSM way 31725311 (Q1483099). Missing for T2: A plan of the gate sequence (Jayapol, Fatehpol, Lohapol), the palace courts and phases; wall heights. Research: docs/research/mehrangarh-pass.md. Batch-0 run 2026-11-15; written history not researched. Batch 0 (2026-11-11): alphabetical sweep F-V chosen by user; do first.
+src/levels/mehrangarh.trace.js (curation tools/trace/curation/mehrangarh.mjs), level src/levels/mehrangarh-t1.js, registered in alpha-x0.js. Outline is OSM way 31725311 (Q1483099). Missing for T2: A plan of the gate sequence (Jayapol, Fatehpol, Lohapol), the palace courts and phases; wall heights. Research: docs/research/mehrangarh-pass.md. Batch-0 run 2026-11-15; written history not researched. Batch 0 (2026-11-11): alphabetical sweep F-V chosen by user; do first. \| 2026-11-19: the Forts of the World page links this fort's hand-built constructed level, one of the first Ten Forts of India (ten-forts.html?fort=mehrangarh).
 
 ## 3D model
 
