@@ -3,8 +3,10 @@
 Walkable 3D reconstructions of the world's forts, castles and fortified settlements. Every fort is shown two ways:
 the **documented** model (only what plans, maps, surveys and photographs support, with heights left unknown where no
 source gives them) and a tinted **constructed** version (what written sources describe, drawn schematically with
-assumed heights and the rule for each). The site universe holds about 86,000 sites from Wikidata, OpenStreetMap and
-heritage lists; 78,000 have an automatic outline model, and a few dozen have hand-built or plan-traced scenes.
+assumed heights and the rule for each). The ledger tracks about 86,000 sites from Wikidata, OpenStreetMap and
+heritage lists, and the world map adds about 67,000 further OpenStreetMap markers. About 78,000 sites have an
+automatic model (32,000 of them terrain and surroundings only, where no outline is mapped); a few dozen have
+hand-built or plan-traced scenes.
 
 ## What is where
 
