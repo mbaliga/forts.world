@@ -16,7 +16,7 @@ const root = path.resolve(new URL('../..', import.meta.url).pathname);
 const OUT = path.resolve(process.argv[2] || 'atlas-out');
 const arg = (k, d) => { const i = process.argv.indexOf('--' + k); return i > 0 ? process.argv[i + 1] : d; };
 const BASE = arg('basemap', path.join(root, 'node_modules/world-atlas'));   // world-atlas 2.0.2 (Natural Earth, public domain), a devDependency
-const TOPO = arg('topojson', '/tmp/gt/na/topojson-client-3.1.0/package');
+const TOPO = arg('topojson', path.join(root, 'node_modules/topojson-client'));   // topojson-client 3.1.0 (ISC), a devDependency
 const mk = (p) => fs.mkdirSync(p, { recursive: true });
 for (const d of ['data/cells', 'data/models']) { fs.rmSync(path.join(OUT, d), { recursive: true, force: true }); mk(path.join(OUT, d)); }
 mk(path.join(OUT, 'data')); for (const f of fs.readdirSync(path.join(OUT, 'data'))) if (/^(core(-\d+)?|base|base10)\.(json|txt)$/.test(f)) fs.rmSync(path.join(OUT, 'data', f));
