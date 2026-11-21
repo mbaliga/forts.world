@@ -1,0 +1,4 @@
+fort
+40
+4
+# re-run with per-shard logs in data/traces/_model-logs
