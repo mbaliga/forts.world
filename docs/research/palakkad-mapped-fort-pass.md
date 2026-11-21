@@ -1,0 +1,11 @@
+# Palakkad Fort: mapped rampart pass
+
+The former catalogue and campaign coordinate, 10.774 N, 76.656 E, placed the fort roughly 1.1 km north of its mapped site. The local origin and catalogue marker now use 10.7637 N, 76.6567 E. The former schematic square, invented river and arbitrary garrison shelter have been removed.
+
+The scene extrudes [OSM way 194242538](https://www.openstreetmap.org/way/194242538), v4, a mapped rampart footprint with corner and intermediate projections and an eastern gap. The present bridge and route use [way 193362257](https://www.openstreetmap.org/way/193362257) and way 193362234. © OpenStreetMap contributors, ODbL. A point-of-interest marks the nearby [mapped Hanuman temple](https://www.openstreetmap.org/node/2038676569), not a modeled shrine. The mapped band is not a measured wall survey; height and flat terrain use an arbitrary local datum. The ASI Thrissur Circle [inventory](https://ignca.gov.in/Asi_data/88324.pdf), p. 9 (PDF page 23), includes a plan showing the square fort, bastions and moat. It has not been registered to the mapped trace.
+
+[Kerala Tourism](https://www.keralatourism.org/kerala-article/2020/palakkad-fort/1024) describes the modern bridge, north-east entrance, L-shaped screen wall, second doorway and stone stepwell. The district government describes the surrounding moat and Hanuman temple. The scene omits the moat, screen wall, shrine, internal buildings and well pending registered locations and evidence; the bridge form and all heights are illustrative. The earlier generic 1770 period was withdrawn: present structures and bridge cannot establish the 1770 layout.
+
+## Provisional moat
+
+The ASI inventory plan shows a ditch following the outer bastions. The scene now approximates a dry ditch by offsetting the mapped outer rampart trace; its distance, width, depth and water condition are inferred and are not a survey. The present-day mapped bridge passes across the approximation. A navigation graph spot check reached points on both sides of the bridge, but this is not proof of its real dimensions or historical configuration. The previous statement that the moat is omitted is superseded; the actual moat, revetments and water remain unverified.

@@ -1,0 +1,121 @@
+{
+ "fetched": "2026-11-15T16:43:40.030Z",
+ "shard": "0/20",
+ "sources": {
+  "wikidata": {
+   "ok": true,
+   "queries": 146,
+   "rows": 5397,
+   "countries": {
+    "AC": 0,
+    "BE": 488,
+    "CD": 1,
+    "DG": 0,
+    "GB": 2639,
+    "HN": 3,
+    "KH": 0,
+    "MA": 239,
+    "MX": 17,
+    "PH": 24,
+    "SE": 1983,
+    "TF": 0,
+    "VA": 3
+   }
+  },
+  "osm": {
+   "ok": true,
+   "queries": 39,
+   "elements": 10712,
+   "countries": {
+    "AC": {
+     "castle": 0,
+     "fort": 0,
+     "ruin": 0
+    },
+    "BE": {
+     "castle": 2342,
+     "fort": 93,
+     "ruin": 230
+    },
+    "CD": {
+     "castle": 7,
+     "fort": 0,
+     "ruin": 2
+    },
+    "DG": {
+     "castle": 0,
+     "fort": 0,
+     "ruin": 0
+    },
+    "GB": {
+     "castle": 1349,
+     "fort": 264,
+     "ruin": 3761
+    },
+    "HN": {
+     "castle": 5,
+     "fort": 0,
+     "ruin": 21
+    },
+    "KH": {
+     "castle": 11,
+     "fort": 0,
+     "ruin": 152
+    },
+    "MA": {
+     "castle": 272,
+     "fort": 31,
+     "ruin": 82
+    },
+    "MX": {
+     "castle": 52,
+     "fort": 8,
+     "ruin": 806
+    },
+    "PH": {
+     "castle": 9,
+     "fort": 30,
+     "ruin": 132
+    },
+    "SE": {
+     "castle": 305,
+     "fort": 156,
+     "ruin": 592
+    },
+    "TF": {
+     "castle": 0,
+     "fort": 0,
+     "ruin": 0
+    },
+    "VA": {
+     "castle": 0,
+     "fort": 0,
+     "ruin": 0
+    }
+   }
+  }
+ },
+ "warnings": [
+  "wikidata GB band 1-1: 504 https://query.wikidata.org/sparql?format=json&query=SELECT%20DISTINCT%20%3Fitem%20WHERE%20",
+  "wikidata GB band 0-0: 504 https://query.wikidata.org/sparql?format=json&query=SELECT%20DISTINCT%20%3Fitem%20WHERE%20"
+ ],
+ "failed": [
+  "wikidata:GB:band1-1:504 https://query.wikidata.org/sparql?format=json&query=SELECT%20DISTINCT%20%3Fitem%20WHERE%20",
+  "wikidata:GB:band0-0:504 https://query.wikidata.org/sparql?format=json&query=SELECT%20DISTINCT%20%3Fitem%20WHERE%20"
+ ],
+ "countries": [
+  "AC",
+  "BE",
+  "CD",
+  "DG",
+  "GB",
+  "HN",
+  "KH",
+  "MA",
+  "MX",
+  "PH",
+  "SE",
+  "TF",
+  "VA"
+ ]
+}

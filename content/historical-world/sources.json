@@ -1,0 +1,121 @@
+[
+  {
+    "id": "unesco-maratha",
+    "title": "UNESCO Maratha Military Landscapes announcement",
+    "url": "https://www.unesco.org/en/articles/maratha-military-landscapes-india-inscribed-unesco-world-heritage-list-indias-44th-world-heritage-0",
+    "accessed": "2026-10-28",
+    "scope": "Full page; names and landform classes, not measured geometry."
+  },
+  {
+    "id": "reis",
+    "title": "Government of Goa Reis Magos",
+    "url": "https://www.goa.gov.in/places/reis-magos-fort/",
+    "accessed": "2026-10-28",
+    "scope": "Full page; historical chronology; present visitor information appears stale."
+  },
+  {
+    "id": "chapora",
+    "title": "Government of Goa Chapora",
+    "url": "https://www.goa.gov.in/places/chapora-fort/",
+    "accessed": "2026-10-28",
+    "scope": "Full page; chronology is a single-source account requiring corroboration."
+  },
+  {
+    "id": "mirjan",
+    "title": "Karnataka Tourism Mirjan",
+    "url": "https://karnatakatourism.org/en/attractions/mirjan-fort/",
+    "accessed": "2026-10-28",
+    "scope": "Full page; identification and coastal setting only; no secure founding chronology."
+  },
+  {
+    "id": "angelo",
+    "title": "Kerala Tourism St Angelo",
+    "url": "https://www.keralatourism.org/thalassery/culture/kannur-fort",
+    "accessed": "2026-10-28",
+    "scope": "Full page; dated transfers and architectural description."
+  },
+  {
+    "id": "thirumayam",
+    "title": "Pudukkottai District Thirumayam",
+    "url": "https://pudukkottai.nic.in/tourist-place/thirumayam-fort/",
+    "accessed": "2026-10-28",
+    "scope": "Full page; 1687 attribution and adjacent temples; extent claim is not a surveyed footprint."
+  },
+  {
+    "id": "asi-temples",
+    "title": "ASI Chennai protected monuments list",
+    "url": "https://asichennai.gov.in/monuments_full_list.html",
+    "accessed": "2026-10-28",
+    "scope": "Search excerpt only; full page timed out. Temple identities provisional pending full inspection."
+  },
+  {
+    "id": "khanderi",
+    "title": "Directorate General of Lighthouses Khanderi",
+    "url": "https://dgll.nic.in/DGLL-light-house-location/about-mumbai/kanhoji-angre-lighthouse",
+    "accessed": "2026-10-28",
+    "scope": "Full page; modern access and dated lighthouse. Modern jetty is not evidence of a historical landing."
+  },
+  {
+    "id": "surla-goa",
+    "title": "Government of Goa temples",
+    "url": "https://www.goa.gov.in/what_to_see/temples/",
+    "accessed": "2026-10-28",
+    "scope": "Government account gives circa 13th–14th century; conflicts with GTDC."
+  },
+  {
+    "id": "surla-gtdc",
+    "title": "GTDC Tambdi Surla",
+    "url": "https://goa-tourism.com/siteseeing/tambdi-surla/",
+    "accessed": "2026-10-28",
+    "scope": "Government tourism account gives 12th century; chronology unresolved."
+  },
+  {
+    "id": "pattadakal",
+    "title": "UNESCO Pattadakal",
+    "url": "https://whc.unesco.org/en/list/239/",
+    "accessed": "2026-10-28",
+    "scope": "Full page; group chronology; each structure needs a separate phase record."
+  },
+  {
+    "id": "chola",
+    "title": "UNESCO Great Living Chola Temples",
+    "url": "https://whc.unesco.org/en/list/250/",
+    "accessed": "2026-10-28",
+    "scope": "Full page; three temples, 11th–12th centuries; Gangaikondacholisvaram completed 1035."
+  },
+  {
+    "id": "rani",
+    "title": "UNESCO Rani ki Vav",
+    "url": "https://whc.unesco.org/en/list/922/",
+    "accessed": "2026-10-28",
+    "scope": "Full page; 11th-century religious and water architecture. Burial and restoration chronology needed."
+  },
+  {
+    "id": "adalaj",
+    "title": "Gandhinagar District Adalaj",
+    "url": "https://gandhinagar.nic.in/places-of-interest/",
+    "accessed": "2026-10-28",
+    "scope": "Full page; 1499 attribution and caravan use."
+  },
+  {
+    "id": "rajpuri",
+    "title": "Maharashtra Gazetteer Rajpuri",
+    "url": "https://gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/KOLABA/places_Rajpuri.html",
+    "accessed": "2026-10-28",
+    "scope": "Search excerpt only; full page timed out. Distinguish settlement names and shoreline locations before mapping."
+  },
+  {
+    "id": "harnai",
+    "title": "Bombay Presidency Gazetteer Harnai",
+    "url": "https://www.gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/Ratnagiri%20and%20Sawantwadi/ratnagiri/places1_h.html",
+    "accessed": "2026-10-28",
+    "scope": "Search excerpt only; full page timed out. Historical account needs source-period context."
+  },
+  {
+    "id": "smith-newton-2024",
+    "title": "Smith and Newton (2024), supplementary fortification dataset",
+    "url": "https://doi.org/10.1186/s40537-024-00962-1",
+    "accessed": "2026-11-01",
+    "scope": "Supplementary table rows are research leads. Coordinate coverage and quality vary; duplicate place names occur; points are not surveyed fort footprints or a complete verified inventory."
+  }
+]

@@ -1,0 +1,11 @@
+seq,letter,site_id,name,region,country,significance_rank,ledger_batch,radius_m
+1,F,fort-dansborg-q11964733,Fort Dansborg,Mayiladuthurai district,India,435,96,300
+2,I,ishvara-temple-arasikere-q6080700,"Ishvara Temple, Arasikere",Hassan district,India,531,115,400
+3,L,lohagarh,"Lohagarh, Bharatpur",Rajasthan,India,231,27,1000
+4,O,obelisk-monuments-and-fort-walls-near-the-breach-q97440985,Obelisk Monuments and Fort walls near the Breach,Mandya district,India,1565,321,500
+5,R,rasalgad-q24950082,Rasalgad,Ratnagiri district,India,556,120,500
+6,U,uparkot,"Uparkot, Junagadh",Gujarat,India,277,12,600
+7,Y,yameshwar-temple-q3517635,Yameshwar Temple,Bhubaneswar,India,397,88,400
+8,A,ajaigarh,Ajaigarh,Madhya Pradesh,India,275,13,1200
+9,D,durg-mandalgarh-q140982232,Durg Mandalgarh,Bhilwara district,India,818,172,1000
+10,G,ganjam-fort-q60398686,Ganjam  Fort,Ganjam district,India,691,147,600

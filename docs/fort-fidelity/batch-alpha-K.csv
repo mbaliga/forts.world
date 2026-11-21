@@ -1,0 +1,11 @@
+seq,letter,site_id,name,region,country,significance_rank,ledger_batch
+1,K,kumbhalgarh,Kumbhalgarh,Rajasthan,India,8,3
+2,M,mahim-fort-q3633207,Mahim Fort,Mumbai City district,India,328,75
+3,O,orchha,Orchha,Madhya Pradesh,India,229,14
+4,Q,qila-mubarak-bathinda,"Qila Mubarak, Bathinda",Punjab,India,209,18
+5,S,shivneri,Shivneri,Maharashtra,India,205,16
+6,U,udgir,Udgir,Maharashtra,India,238,26
+7,W,warangal,Warangal Fort,Telangana,India,228,20
+8,A,asirgarh,Asirgarh,Madhya Pradesh,India,220,13
+9,C,pavagadh,Champaner-Pavagadh,Gujarat,India,3,11
+10,G,gingee,Gingee,Tamil Nadu,India,212,3

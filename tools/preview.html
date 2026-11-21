@@ -1,0 +1,26 @@
+<!doctype html><html><head><style>html,body{margin:0;background:#e9e6dd}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"/engine/node_modules/three/build/three.module.js","three/addons/":"/engine/node_modules/three/examples/jsm/"}}</script></head><body>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+const q = new URLSearchParams(location.search);
+const r = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+r.setSize(1600, 1000); r.outputColorSpace = THREE.SRGBColorSpace; r.shadowMap.enabled = true; r.shadowMap.type = THREE.PCFSoftShadowMap;
+r.setClearColor(0xe9e6dd); document.body.appendChild(r.domElement);
+const scene = new THREE.Scene();
+scene.add(new THREE.HemisphereLight(0xe3ecef, 0x9a8a6a, 1.25));
+const sun = new THREE.DirectionalLight(0xfff1dc, 2.6); sun.castShadow = true; sun.shadow.mapSize.set(4096, 4096);
+const s = sun.shadow.camera; s.left = -420; s.right = 420; s.top = 420; s.bottom = -420; s.near = 10; s.far = 2000; sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.6;
+const az = -120 * Math.PI / 180, el = 50 * Math.PI / 180;
+sun.position.set(Math.cos(az) * Math.cos(el) * 800, Math.sin(el) * 800, -Math.sin(az) * Math.cos(el) * 800); scene.add(sun);
+new GLTFLoader().load(q.get('f'), (g) => {
+  g.scene.traverse((o) => { if (o.isMesh) { o.castShadow = o.name !== 'sea' && o.name !== 'terrain' ? true : o.name === 'terrain'; o.receiveShadow = true; } });
+  scene.add(g.scene);
+  const box = new THREE.Box3().setFromObject(g.scene), c = box.getCenter(new THREE.Vector3());
+  const cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 1, 6000);
+  const a = (+q.get('az') || -38) * Math.PI / 180, e = 34 * Math.PI / 180, H = +q.get('h') || 560;
+  cam.position.set(c.x + Math.cos(a) * Math.cos(e) * 2500, c.y + Math.sin(e) * 2500, c.z - Math.sin(a) * Math.cos(e) * 2500); cam.lookAt(c);
+  cam.top = H / 2; cam.bottom = -H / 2; cam.left = -H / 2 * 1.6; cam.right = H / 2 * 1.6; cam.updateProjectionMatrix();
+  r.render(scene, cam); window.DONE = true;
+});
+</script></body></html>

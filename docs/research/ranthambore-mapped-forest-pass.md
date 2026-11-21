@@ -1,0 +1,11 @@
+# Ranthambore: mapped boundary and coarse terrain pass
+
+The former scene presented a generic oval, speculative buildings and seven guessed gate locations as Ranthambore. It also offered a c. 1290 scene without evidence for the detailed appearance of that phase. Those features have been removed from the playable reconstruction.
+
+The replacement uses [OpenStreetMap wall way 254041053](https://www.openstreetmap.org/way/254041053), and [city-gate node 10753093569](https://www.openstreetmap.org/node/10753093569), which is shared with [footway 217548141](https://www.openstreetmap.org/way/217548141). The gate name, form and dimensions remain unknown. Present-day water polygons are [Padam Talao](https://www.openstreetmap.org/way/379712360), [Padamavati Talab](https://www.openstreetmap.org/way/217548337), and [Rami Tallab](https://www.openstreetmap.org/way/263318204). © OpenStreetMap contributors, ODbL. All coordinates are projected relative to UNESCO’s component reference 26.020278°N, 76.455°E.
+
+A planar calculation from the mapped wall gives roughly 110.5 ha and 5.67 km. UNESCO's evaluation reports approximately 102 ha and 5.4 km for the fort. These need reconciliation against the original property and wall surveys: the extents and measurement methods may differ. Neither figure validates the mapped alignment. Rendered wall height and thickness are placeholders, and the map does not establish the other gates, architecture, defensive phases or true current condition.
+
+The terrain is based on 121 SRTM30 samples, obtained via [OpenTopodata](https://www.opentopodata.org/datasets/srtm/) on 1 November 2026, on a 260 m grid around the fort, with interpolation. These coarse elevations span 308–473 m above sea level and cannot describe the actual cliff face, gateway gradient, terraces, paths, lake beds or individual structures. Lake levels are illustrative, not measured; the grid is a regional baseline only. The current shoreline is not evidence of an earlier period's water extent.
+
+The present scene remains incomplete and unverified. Further work requires registered plans, architectural elevations, current aerials, high-resolution terrain and dated evidence for the entire fort and landscape.

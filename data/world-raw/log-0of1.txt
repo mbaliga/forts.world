@@ -1,0 +1,10 @@
+world fetch: 3 countries, this shard 3
+osm LI castle 5
+osm LI fort 0
+osm LI ruin 3
+osm LU castle 68
+osm LU fort 28
+osm LU ruin 26
+osm MT castle 21
+osm MT fort 36
+osm MT ruin 25

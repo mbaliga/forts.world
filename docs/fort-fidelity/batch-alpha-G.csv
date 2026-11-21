@@ -1,0 +1,11 @@
+seq,letter,site_id,name,region,country,significance_rank,ledger_batch,radius_m
+1,G,ghosalegad-fort-q24950067,Ghosalegad Fort,Raigad district,India,403,89,800
+2,J,jalpaiguri-rajbati-q67009688,Jalpaiguri rajbati,Jalpaiguri,India,3310,661,900
+3,M,moti-mahal-q98927684,Moti Mahal,Mandla district,India,548,118,900
+4,P,parola-fort-q97142808,Parola Fort,Jalgaon district,India,866,182,800
+5,S,shergarh-fort-q97119184,Shergarh Fort,Rohtas district,India,457,100,800
+6,R,royal-palace-of-kandy-q3273212,Royal Palace of Kandy,Kandy,Sri Lanka,34,33,900
+7,A,antur-fort-q24908268,Antur Fort,Kannad taluka,India,425,94,800
+8,C,chandraketugarh-q5071385,Chandraketugarh,Deganga community development block,India,363,82,800
+9,F,firoz-shah-palace-complex-q5452165,Firoz Shah palace complex,Hisar district,India,483,105,900
+10,K,kanthkot-fort-q13218267,Kanthkot Fort,Bhachau Taluka,India,491,107,800

@@ -1,0 +1,580 @@
+{
+ "guard-siddi": {
+  "head": "turban",
+  "headColour": "#f1ede2",
+  "prop": "spear",
+  "body": "body_jama",
+  "pal": [
+   "#5e3f2c",
+   "#e9e4d6",
+   "#e9e4d6",
+   "#e9e4d6",
+   "#e9e4d6",
+   "#2f6b45",
+   "#e9e4d6",
+   "#e9e4d6",
+   "#4a3426"
+  ]
+ },
+ "musketeer-maratha": {
+  "head": "pagdi",
+  "headColour": "#d9751d",
+  "prop": "musket",
+  "body": "body_jama",
+  "pal": [
+   "#8a5a3c",
+   "#efe9da",
+   "#efe9da",
+   "#efe9da",
+   "#efe9da",
+   "#d07020",
+   "#efe9da",
+   "#efe9da",
+   "#4a3426"
+  ]
+ },
+ "guard-maratha": {
+  "head": "pagdi",
+  "headColour": "#d9751d",
+  "prop": "spear",
+  "body": "body_jama",
+  "pal": [
+   "#8a5a3c",
+   "#efe9da",
+   "#efe9da",
+   "#efe9da",
+   "#efe9da",
+   "#d07020",
+   "#efe9da",
+   "#efe9da",
+   "#4a3426"
+  ]
+ },
+ "guard-mughal": {
+  "head": "turban",
+  "headColour": "#f2eee3",
+  "prop": "musket",
+  "body": "body_jama",
+  "pal": [
+   "#94633f",
+   "#f2eee3",
+   "#f2eee3",
+   "#f2eee3",
+   "#f2eee3",
+   "#b8452a",
+   "#f2eee3",
+   "#b8452a",
+   "#4a3426"
+  ]
+ },
+ "guard-rajput": {
+  "head": "safa",
+  "headColour": "#e3a11c",
+  "prop": "spear",
+  "body": "body_jama",
+  "pal": [
+   "#93603f",
+   "#f1ece0",
+   "#f1ece0",
+   "#f1ece0",
+   "#f1ece0",
+   "#c9361f",
+   "#f1ece0",
+   "#f1ece0",
+   "#4a3426"
+  ]
+ },
+ "guard-deccan": {
+  "head": "turban",
+  "headColour": "#ece6d6",
+  "prop": "spear",
+  "body": "body_jama",
+  "pal": [
+   "#7a4f34",
+   "#ece6d6",
+   "#ece6d6",
+   "#ece6d6",
+   "#ece6d6",
+   "#2d4a6b",
+   "#ece6d6",
+   "#2d4a6b",
+   "#4a3426"
+  ]
+ },
+ "courtier": {
+  "head": "turban",
+  "headColour": "#d6b23a",
+  "prop": null,
+  "body": "body_jama",
+  "pal": [
+   "#9a6a48",
+   "#f4f0e6",
+   "#f4f0e6",
+   "#f4f0e6",
+   "#f4f0e6",
+   "#7a2d5a",
+   "#f4f0e6",
+   "#f4f0e6",
+   "#4a3426"
+  ]
+ },
+ "sailor": {
+  "head": "cap",
+  "headColour": "#c03a2b",
+  "prop": null,
+  "body": "body_bare",
+  "pal": [
+   "#6a4630",
+   "#6a4630",
+   "#d9d2bf",
+   "#d9d2bf",
+   "#d9d2bf",
+   "#a33d2b",
+   "#3d5a80",
+   "#6a4630",
+   "#6a4630"
+  ]
+ },
+ "sepoy": {
+  "head": "pagdi",
+  "headColour": "#9e2a22",
+  "prop": "musket",
+  "body": "body_jama",
+  "pal": [
+   "#7d5236",
+   "#c8b48a",
+   "#c8b48a",
+   "#c8b48a",
+   "#c8b48a",
+   "#9e2a22",
+   "#c8b48a",
+   "#c8b48a",
+   "#4a3426"
+  ]
+ },
+ "officer": {
+  "head": "hat",
+  "headColour": "#efe9da",
+  "prop": "staff",
+  "body": "body_jama",
+  "pal": [
+   "#d9b08c",
+   "#ece8dc",
+   "#ece8dc",
+   "#ece8dc",
+   "#ece8dc",
+   "#6b5a3a",
+   "#ece8dc",
+   "#ece8dc",
+   "#4a3426"
+  ]
+ },
+ "lady": {
+  "head": "hat",
+  "headColour": "#f2efe6",
+  "prop": "umbrella",
+  "body": "body_dress",
+  "pal": [
+   "#e0b896",
+   "#9fb3c8",
+   "#9fb3c8",
+   "#9fb3c8",
+   "#9fb3c8",
+   "#f2efe6",
+   "#9fb3c8",
+   "#9fb3c8",
+   "#e0b896"
+  ]
+ },
+ "villager": {
+  "head": "cap",
+  "headColour": "#f0ebe0",
+  "prop": "staff",
+  "body": "body_jama",
+  "pal": [
+   "#7f5438",
+   "#e6dfcf",
+   "#e6dfcf",
+   "#e6dfcf",
+   "#e6dfcf",
+   "#8a6a4a",
+   "#e6dfcf",
+   "#e6dfcf",
+   "#4a3426"
+  ]
+ },
+ "merchant": {
+  "head": "pagdi",
+  "headColour": "#8e2a2a",
+  "prop": "pack",
+  "body": "body_jama",
+  "pal": [
+   "#94633f",
+   "#f2ede1",
+   "#f2ede1",
+   "#f2ede1",
+   "#f2ede1",
+   "#4b6b3a",
+   "#f2ede1",
+   "#f2ede1",
+   "#4a3426"
+  ]
+ },
+ "priest": {
+  "head": "none",
+  "headColour": null,
+  "prop": "staff",
+  "body": "body_bare",
+  "pal": [
+   "#8d5c3c",
+   "#8d5c3c",
+   "#e78b2a",
+   "#e78b2a",
+   "#e78b2a",
+   "#e78b2a",
+   "#f1e6cc",
+   "#8d5c3c",
+   "#8d5c3c"
+  ]
+ },
+ "pilgrim": {
+  "head": "scarf",
+  "headColour": "#e08a1e",
+  "prop": "staff",
+  "body": "body_jama",
+  "pal": [
+   "#86583a",
+   "#e08a1e",
+   "#e08a1e",
+   "#e08a1e",
+   "#e08a1e",
+   "#f2e8d0",
+   "#e08a1e",
+   "#e08a1e",
+   "#4a3426"
+  ]
+ },
+ "woman-red": {
+  "head": "veil",
+  "headColour": "#c94a34",
+  "prop": null,
+  "body": "body_dress",
+  "pal": [
+   "#8f5e40",
+   "#b53a2a",
+   "#b53a2a",
+   "#b53a2a",
+   "#b53a2a",
+   "#e1b13c",
+   "#b53a2a",
+   "#b53a2a",
+   "#8f5e40"
+  ]
+ },
+ "woman-green": {
+  "head": "veil",
+  "headColour": "#3a8a60",
+  "prop": "pot",
+  "body": "body_dress",
+  "pal": [
+   "#8a5a3c",
+   "#2f7a52",
+   "#2f7a52",
+   "#2f7a52",
+   "#2f7a52",
+   "#e3c35a",
+   "#2f7a52",
+   "#2f7a52",
+   "#8a5a3c"
+  ]
+ },
+ "woman-indigo": {
+  "head": "veil",
+  "headColour": "#3b4c8c",
+  "prop": null,
+  "body": "body_dress",
+  "pal": [
+   "#93613f",
+   "#2f3f7a",
+   "#2f3f7a",
+   "#2f3f7a",
+   "#2f3f7a",
+   "#d68b2a",
+   "#2f3f7a",
+   "#2f3f7a",
+   "#93613f"
+  ]
+ },
+ "boatman": {
+  "head": "cap",
+  "headColour": "#d9d0bd",
+  "prop": "oar",
+  "body": "body_bare",
+  "pal": [
+   "#5e3e2a",
+   "#5e3e2a",
+   "#efe9dc",
+   "#efe9dc",
+   "#efe9dc",
+   "#2f5d8a",
+   "#2f5d8a",
+   "#5e3e2a",
+   "#5e3e2a"
+  ]
+ },
+ "fisherwoman": {
+  "head": "none",
+  "headColour": null,
+  "prop": "basket",
+  "body": "body_dress",
+  "pal": [
+   "#6a4430",
+   "#7a3a6a",
+   "#7a3a6a",
+   "#7a3a6a",
+   "#7a3a6a",
+   "#e0a030",
+   "#2f6f6a",
+   "#2f6f6a",
+   "#6a4430"
+  ]
+ },
+ "tourist-a": {
+  "head": "cap",
+  "headColour": "#222a30",
+  "prop": "pack",
+  "body": "body_bare",
+  "pal": [
+   "#90613f",
+   "#90613f",
+   "#e0573d",
+   "#e0573d",
+   "#e0573d",
+   "#3b4f6b",
+   "#3b4f6b",
+   "#90613f",
+   "#90613f"
+  ]
+ },
+ "tourist-b": {
+  "head": "none",
+  "headColour": null,
+  "prop": "umbrella",
+  "body": "body_bare",
+  "pal": [
+   "#a8754f",
+   "#a8754f",
+   "#f2c64a",
+   "#f2c64a",
+   "#f2c64a",
+   "#5b6a74",
+   "#5b6a74",
+   "#a8754f",
+   "#a8754f"
+  ]
+ },
+ "tourist-c": {
+  "head": "hat",
+  "headColour": "#e9dcc0",
+  "prop": "camera",
+  "body": "body_bare",
+  "pal": [
+   "#c99a76",
+   "#c99a76",
+   "#3e8ebf",
+   "#3e8ebf",
+   "#3e8ebf",
+   "#e9e4d8",
+   "#e9e4d8",
+   "#c99a76",
+   "#c99a76"
+  ]
+ },
+ "tourist-d": {
+  "head": "veil",
+  "headColour": "#d65a8a",
+  "prop": "pack",
+  "body": "body_dress",
+  "pal": [
+   "#8e5d3e",
+   "#c2417a",
+   "#c2417a",
+   "#c2417a",
+   "#c2417a",
+   "#f0d070",
+   "#c2417a",
+   "#c2417a",
+   "#8e5d3e"
+  ]
+ },
+ "asi-guard": {
+  "head": "cap",
+  "headColour": "#6b5a33",
+  "prop": "staff",
+  "body": "body_jama",
+  "pal": [
+   "#7d5236",
+   "#b9a77a",
+   "#b9a77a",
+   "#b9a77a",
+   "#b9a77a",
+   "#5a4a2a",
+   "#b9a77a",
+   "#b9a77a",
+   "#4a3426"
+  ]
+ },
+ "musketeer-siddi": {
+  "head": "turban",
+  "headColour": "#2f6b45",
+  "prop": "musket",
+  "body": "body_jama",
+  "pal": [
+   "#4f3424",
+   "#e4ddcb",
+   "#e4ddcb",
+   "#e4ddcb",
+   "#e4ddcb",
+   "#2f6b45",
+   "#e4ddcb",
+   "#e4ddcb",
+   "#4a3426"
+  ]
+ },
+ "gunner-siddi": {
+  "head": "cap",
+  "headColour": "#d8cfba",
+  "prop": "rammer",
+  "body": "body_bare",
+  "pal": [
+   "#4f3424",
+   "#4f3424",
+   "#d8cfba",
+   "#d8cfba",
+   "#d8cfba",
+   "#8a2a22",
+   "#5a4a3a",
+   "#4f3424",
+   "#4f3424"
+  ]
+ },
+ "porter": {
+  "head": "cap",
+  "headColour": "#e6dccb",
+  "prop": "sack",
+  "body": "body_jama",
+  "pal": [
+   "#6a4630",
+   "#cdbf9f",
+   "#cdbf9f",
+   "#cdbf9f",
+   "#cdbf9f",
+   "#7a5a3a",
+   "#cdbf9f",
+   "#cdbf9f",
+   "#4a3426"
+  ]
+ },
+ "water-carrier": {
+  "head": "veil",
+  "headColour": "#a04632",
+  "prop": "pot",
+  "body": "body_dress",
+  "pal": [
+   "#7a4f34",
+   "#8a3a2a",
+   "#8a3a2a",
+   "#8a3a2a",
+   "#8a3a2a",
+   "#d9a93a",
+   "#8a3a2a",
+   "#8a3a2a",
+   "#7a4f34"
+  ]
+ },
+ "wrestler": {
+  "head": "none",
+  "headColour": null,
+  "prop": null,
+  "body": "body_bare",
+  "pal": [
+   "#6a4430",
+   "#6a4430",
+   "#6a4430",
+   "#6a4430",
+   "#6a4430",
+   "#b8452a",
+   "#b8452a",
+   "#6a4430",
+   "#6a4430"
+  ]
+ },
+ "farmer": {
+  "head": "pagdi",
+  "headColour": "#e9e2d0",
+  "prop": "hoe",
+  "body": "body_jama",
+  "pal": [
+   "#6f4a32",
+   "#e6dccb",
+   "#e6dccb",
+   "#e6dccb",
+   "#e6dccb",
+   "#7a5a3a",
+   "#e6dccb",
+   "#e6dccb",
+   "#4a3426"
+  ]
+ },
+ "archer-siddi": {
+  "head": "turban",
+  "headColour": "#e4ddcb",
+  "prop": "bow",
+  "body": "body_bare",
+  "pal": [
+   "#4f3424",
+   "#4f3424",
+   "#e4ddcb",
+   "#e4ddcb",
+   "#e4ddcb",
+   "#2f6b45",
+   "#5a4a3a",
+   "#4f3424",
+   "#4f3424"
+  ]
+ },
+ "settler": {
+  "head": "pagdi",
+  "headColour": "#c9a14a",
+  "prop": "sack",
+  "body": "body_jama",
+  "pal": [
+   "#7a5236",
+   "#d9cdb2",
+   "#d9cdb2",
+   "#d9cdb2",
+   "#d9cdb2",
+   "#8a5a3a",
+   "#d9cdb2",
+   "#d9cdb2",
+   "#4a3426"
+  ]
+ },
+ "student": {
+  "head": "none",
+  "headColour": null,
+  "prop": "pack",
+  "body": "body_bare",
+  "pal": [
+   "#94633f",
+   "#94633f",
+   "#ffffff",
+   "#ffffff",
+   "#ffffff",
+   "#2d3d6a",
+   "#2d3d6a",
+   "#94633f",
+   "#94633f"
+  ]
+ }
+}

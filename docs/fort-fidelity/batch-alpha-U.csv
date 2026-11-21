@@ -1,0 +1,11 @@
+seq,letter,site_id,name,region,country,significance_rank,ledger_batch
+1,U,umred-fort-q97142824,Umred Fort,Nagpur district,India,895,187
+2,A,arnala-fort-q3778583,Arnala Fort,Palghar district,India,332,75
+3,C,chandragiri-fort-q3520635,Chandragiri Fort,Kerala,India,335,76
+4,G,gandikota,Gandikota,Andhra Pradesh,India,270,9
+5,K,korlai,Korlai,Maharashtra,India,252,25
+6,M,madikeri-fort-q6727744,Madikeri Fort,Kodagu district,India,496,108
+7,N,namakkal-fort-q15260872,Namakkal Fort,Namakkal district,India,448,98
+8,P,pratapgad,Pratapgad,Maharashtra,India,292,15
+9,R,raichur,Raichur,Karnataka,India,255,23
+10,T,talagad-q19807538,Talagad,Raigad district,India,460,101

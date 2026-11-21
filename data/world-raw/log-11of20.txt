@@ -1,0 +1,55 @@
+world fetch: 255 countries, this shard 13
+wikidata AS American Samoa 0
+WARN wikidata BR band 1-1: 504 https://query.wikidata.org/sparql?format=json&query=SELECT%20DISTINCT%20%3Fitem%20WHERE%20
+wikidata BR Brazil 92
+wikidata CQ Sark 0
+WARN wikidata ES band 2-2: 504 https://query.wikidata.org/sparql?format=json&query=SELECT%20DISTINCT%20%3Fitem%20WHERE%20
+wikidata ES Spain 4148
+wikidata GQ Equatorial Guinea 0
+wikidata IR Iran 368
+wikidata LC Saint Lucia 1
+wikidata MO Macau 0
+wikidata NP Nepal 8
+wikidata RE Réunion 0
+wikidata SS South Sudan 0
+wikidata TV Tuvalu 0
+wikidata YT Mayotte 0
+osm AS castle 0
+osm AS fort 0
+osm AS ruin 0
+osm BR castle 126
+osm BR fort 46
+osm BR ruin 578
+osm CQ castle 0
+osm CQ fort 0
+osm CQ ruin 0
+osm ES castle 3036
+osm ES fort 133
+osm ES ruin 10277
+osm GQ castle 11
+osm GQ fort 0
+osm GQ ruin 1
+osm IR castle 471
+osm IR fort 58
+osm IR ruin 159
+osm LC castle 0
+osm LC fort 1
+osm LC ruin 12
+osm MO castle 0
+osm MO fort 0
+osm MO ruin 0
+osm NP castle 128
+osm NP fort 9
+osm NP ruin 33
+osm RE castle 0
+osm RE fort 0
+osm RE ruin 0
+osm SS castle 2
+osm SS fort 4
+osm SS ruin 4
+osm TV castle 0
+osm TV fort 0
+osm TV ruin 0
+osm YT castle 0
+osm YT fort 0
+osm YT ruin 0

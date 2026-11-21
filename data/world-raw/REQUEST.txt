@@ -1,0 +1,5 @@
+all
+all
+60
+GB,BR,ES
+resume run (re-queued on the self-hosted runner): skips finished countries; redo = countries with timed-out Wikidata bands

@@ -1,0 +1,26 @@
+// Placeholders for Delhi forts; their precise layouts and periods are not surveyed.
+import {makeFort} from './gen.js';
+const whc='https://whc.unesco.org/en/list/231/';
+const evaluation='https://whc.unesco.org/archive/2007/whc07-31com-inf8b1e.pdf';
+const delhi='https://www.delhitourism.gov.in/tourist_place/purana_quila.html';
+export const salimgarh=makeFort({
+ id:'salimgarh',name:'Salimgarh Fort',native:{text:'Salimgarh',lang:'en',script:'latn'},region:'Delhi · India',typeLabel:'River island fort · inferred prototype',coords:[28.659,77.245],
+ type:'sea',seed:397,units:{planScale:3,vScale:4},size:{rx:80,ry:65},margin:70,guard:'guard-mughal',people:5,flag:false,boats:[],
+ gates:[{a:50,name:'Approach · position inferred',main:true}],buildings:[{name:'Shelter · inferred',x:-15,y:-13,w:12,d:7,kind:'barracks'}],
+ eras:[{id:'1550',year:'c. 1550',label:'Early Salimgarh interpretation',short:'Early fort',lens:'engraving',summary:'Illustrative island fort shortly after its construction.',basis:'UNESCO dates Salimgarh to 1546 and describes its original river-island setting; it later became inseparable in use and history from the Red Fort complex.',conjecture:'The fort plan, bridge, riverbanks and garrison are inferred. The generic guard is only a visual placeholder and does not establish a Suri-period uniform. The adjacent Red Fort and city are absent.',sources:['SAL-01','SAL-02']},
+ {id:'today',year:'Today',label:'Fort remains',short:'Present',lens:'none',summary:'Explore an illustrative island fort.',basis:'UNESCO records that the former river setting changed and that a railway divides Salimgarh; the complex includes both Red Fort and Salimgarh.',conjecture:'The modern river course, road, railway, surroundings, adjoining Red Fort and surviving buildings are not reconstructed. The island is retained only as an illustrative historical setting; no aerial comparison is complete.',sources:['SAL-01','SAL-02']}],
+ pois:[{id:'island',at:[25,15],title:'Former river island',text:'UNESCO describes the earlier fort on a river island linked by a bridge. The island, water and bridge position in this scene are not surveyed or fitted to the nomination map.',source:evaluation},
+ {id:'redfort',at:[-25,15],title:'Red Fort Complex',text:'The seventeenth-century Red Fort was built beside Salimgarh. UNESCO treats their later use and history as linked; this scene still isolates Salimgarh and needs a shared Delhi world map.',source:whc},
+ {id:'change',at:[0,-20],title:'River, road and railway change',text:'The river was replaced by a road and a railway divides Salimgarh. Those documented transformations are not represented in the current scene.',source:whc}]
+});
+export const puranaQila=makeFort({
+ id:'purana-qila',name:'Purana Qila',native:{text:'Purana Qila',lang:'en',script:'latn'},region:'Delhi · India',typeLabel:'Moated citadel · inferred prototype',coords:[28.610,77.243],
+ type:'moat',shape:'square',seed:401,units:{planScale:3,vScale:4},size:{rx:115,ry:85},moatWidth:9,guard:'guard-mughal',people:6,flag:false,boats:[],
+ gates:[{a:0,name:'Gateway · position inferred',main:true},{a:120,name:'Second gateway · position inferred'},{a:240,name:'Third gateway · position inferred'}],
+ buildings:[{name:'Shelter · inferred',x:-15,y:-13,w:12,d:7,kind:'barracks'}],
+ eras:[{id:'1556',year:'c. 1556',label:'Sixteenth-century interpretation',short:'Humayun period',lens:'engraving',summary:'An illustrative sixteenth-century fort with a moat.',basis:'Delhi Tourism describes the fort as roughly rectangular with three gateways and a moat once connected to the Yamuna; ASI inventories its walls, arcades, gateways, bastions, garden, Sher Shah mosque and Sher Mandal.',conjecture:'The 1556 plan, gateway phases, river, dimensions, moat, causeways, garrison and buildings remain inferred. The existing generic square is not a traced survey plan.',sources:['PQD-01','PQD-02']},
+ {id:'today',year:'Today',label:'Fort remains',short:'Present',lens:'none',summary:'Explore a schematic moated enclosure.',basis:'Delhi Tourism describes surviving ramparts and gateways; ASI’s protected-monument inventory identifies major surviving features inside the property.',conjecture:'The current moat, surroundings, river, wall geometry, gateway positions and condition are not surveyed. No current aerial has been georegistered; water remains illustrative.',sources:['PQD-01','PQD-02']}],
+ pois:[{id:'gate',at:[35,20],title:'Three gateways and bastions',text:'Delhi Tourism describes three gates; ASI also records the walls, bastions and Sher Shah’s gate. This model’s gateway bearings and construction are placeholders, not mapped placements.',source:delhi},
+ {id:'water',at:[-30,15],title:'Moat and former Yamuna link',text:'Delhi Tourism describes the former connection between moat and Yamuna. The generated moat and water are illustrative; river access and causeways are not reconstructed.',source:delhi},
+ {id:'phases',at:[0,-20],title:'Dinpanah, Sher Shah and surviving monuments',text:'Delhi Tourism associates the site with Humayun and Sher Shah Suri; ASI’s inventory names Sher Shah’s mosque and Sher Mandal. Exact construction phases and the city context still need primary-source review.',source:delhi}]
+});

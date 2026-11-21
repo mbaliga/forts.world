@@ -1,0 +1,13 @@
+# Fort fidelity programme
+- `ledger.csv`: work queue in batches of 5. Batches 1-28 are the original 138 catalogue forts (batch 1 = Aguada, Cabo de Rama, Chapora, Reis Magos, Gwalior); later batches are generated from `data/sites.csv` by significance rank. Regenerate with `node tools/build-sites.mjs` (rows with scene state are preserved, generated `no scene yet` rows are rebuilt).
+- `STANDARD.md`: tiers T0-T4 and evidence rules.
+- `WORKFLOW.md`: the bootstrap for each new chat.
+- Raw fetched data: `data/geometry/<id>/`.
+- To fetch without workflow_dispatch (needs the workflow on main): put comma-separated ids on line 1 of `data/geometry/REQUEST.txt` and push; the Action runs on branch dev.
+- `MASTER-PLAN.md`: scaling plan for ~4,500 sites (tiered pyramid).
+- `data/sites.csv` (+ `data/sites-report.json`, `PHASE0-REPORT.md`): the merged site universe (Phase 0). Raw extracts live in `data/sites-raw/`. To refresh: put `all` (or `wikidata,osm,unesco,asi`) on line 1 and optional ISO2 countries on line 2 of `data/sites-raw/REQUEST.txt`, push to `fort-fidelity`; the `fetch-sites` Action fetches, merges and commits.
+- `PIPELINE-DESIGN.md`: the trace schema, auto-T1 builder, evidence model, scale and throughput design (Nov 2026).
+- Auto-T1 traces: `data/traces/<id>.trace.json` (built by `tools/build-t1.mjs`, checked by `tools/check_sources.mjs`); scenes via `src/levels/t1.js`.
+- `batch-alpha-C.csv`: the top ten free C-named sites (four high-confidence, six medium), disjoint from every other alpha batch and all claims at the time of writing; see `alpha-batch-C-2026-11-14.md`.
+- `batch-alpha-W.csv`: alphabetical set starting at W, one fort per letter, disjoint from batch 0 and every other alpha batch at the time of writing. W has no free high-confidence fort (Warangal is in the K batch), so Wakandurg is medium with thin evidence.
+- `batch-alpha-W.csv`: alphabetical set starting at W, one fort per letter, disjoint from batch 0, the curated ten and every other alpha batch at the time of writing. W has no free high-confidence fort (Warangal is in the K batch), so Wakandurg is medium with thin evidence.

@@ -1,0 +1,25 @@
+# dependencies and build output
+node_modules/
+dist/
+build/
+src/game/fauna-data.js
+tools/shots/
+
+# generated bundles for the Forts of the World page
+web/forts-of-the-world/data/
+web/forts-of-the-world/ten-forts.html
+
+# editors, OS, logs, local secrets
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+*.tmp
+__pycache__/
+*.pyc
+.wrangler/
+.env
+
+# raw UNESCO list XML: it carries UNESCO's description text; only the facts extract (in-region.json.gz) is kept
+data/sites-raw/unesco/list.xml.gz

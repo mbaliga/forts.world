@@ -1,0 +1,7 @@
+# Mehrangarh: mapped present lake outlines
+
+The previous Ranisar and Padmasar water features were rectangles placed by inference. The present scene now uses [OpenStreetMap Ranisar Talab way 31725299](https://www.openstreetmap.org/way/31725299) and [Padamsar Talab way 31725298](https://www.openstreetmap.org/way/31725298), © OpenStreetMap contributors, ODbL. Their mapped points are projected from the scene's public fort reference, 26.2981°N, 73.0189°E, at the declared 1.4 m per plan unit. That point is not a verified local-model origin. The hand-built fort and terrain were not fitted to the map, so the absolute and relative alignment of the two layers remains uncertain. Lake banks, depth, water level, seasonal variation and the surrounding settlement remain unverified.
+
+The mapped outlines appear only in the present scene. They do not establish the lakes' 1806 or 1895 shorelines and their absence from those views is not a claim that the lakes did not exist. [Rajasthan Tourism](https://www.tourism.rajasthan.gov.in/jodhpur.html) describes the adjacent lakes near Fateh Pol. The [Rajasthan government Jodhpur report](https://foundation.rajasthan.gov.in/rf/pdf/Jodhpur.pdf) gives a date and patron descriptions, while other accounts differ on the dates and patrons; this pass does not choose between them.
+
+The fort's detailed ridge, actual wall footprint, gates, urban parcels and the lake/fort common coordinate registration need measured plans, a terrain survey and dated imagery. Automated movement tests do not validate geometry.

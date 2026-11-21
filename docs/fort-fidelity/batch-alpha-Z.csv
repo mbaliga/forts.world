@@ -1,0 +1,11 @@
+seq,letter,site_id,name,region,country,ledger_batch,radius_m
+1,Z,zaver-mahal-q117032083,Zaver Mahal,Mumbai City district,India,712,500
+2,W,wari-bateshwar-fort-city-sn3785,Wari-Bateshwar Fort City,Dhaka Division,Bangladesh,1692,1500
+3,T,thiagadurgam-fort-q31379708,Thiagadurgam Fort,Kallakurichi district,India,137,800
+4,Q,qal-ah-ye-wakil-q21822928,Qal‘ah-ye Wakīl,Kabul Province,Afghanistan,884,500
+5,N,nagaur-fort-q97119606,Nagaur Fort,Nagaur district,India,132,800
+6,K,kot-diji,Kot Diji Fort,Sindh,Pakistan,7,600
+7,H,hariharpur-gadhi-q109905441,Hariharpur Gadhi,Bagmati Province,Nepal,762,800
+8,E,entire-ruined-fort-enclosure-with-projecting-cor-q97691998,Entire ruined fort enclosure with projecting corners towers and numerous mounds,Ghazipur district,India,449,800
+9,B,baltit,"Baltit Fort, Hunza",Gilgit-Baltistan,Pakistan,5,500
+10,Y,yamakanmardi-sn951,Yamakanmardi,Karnataka,India,1695,500

@@ -1,0 +1,115 @@
+{
+ "fetched": "2026-11-15T16:43:38.062Z",
+ "shard": "3/20",
+ "sources": {
+  "wikidata": {
+   "ok": true,
+   "queries": 138,
+   "rows": 1553,
+   "countries": {
+    "AF": 11,
+    "BH": 4,
+    "CH": 1012,
+    "DM": 2,
+    "GF": 0,
+    "HU": 181,
+    "KN": 3,
+    "ME": 29,
+    "NA": 9,
+    "PM": 0,
+    "SI": 290,
+    "TJ": 6,
+    "VG": 6
+   }
+  },
+  "osm": {
+   "ok": true,
+   "queries": 39,
+   "elements": 3838,
+   "countries": {
+    "AF": {
+     "castle": 33,
+     "fort": 40,
+     "ruin": 126
+    },
+    "BH": {
+     "castle": 6,
+     "fort": 2,
+     "ruin": 0
+    },
+    "CH": {
+     "castle": 939,
+     "fort": 9,
+     "ruin": 285
+    },
+    "DM": {
+     "castle": 0,
+     "fort": 1,
+     "ruin": 8
+    },
+    "GF": {
+     "castle": 0,
+     "fort": 0,
+     "ruin": 0
+    },
+    "HU": {
+     "castle": 999,
+     "fort": 7,
+     "ruin": 544
+    },
+    "KN": {
+     "castle": 2,
+     "fort": 6,
+     "ruin": 8
+    },
+    "ME": {
+     "castle": 69,
+     "fort": 29,
+     "ruin": 104
+    },
+    "NA": {
+     "castle": 11,
+     "fort": 3,
+     "ruin": 31
+    },
+    "PM": {
+     "castle": 0,
+     "fort": 0,
+     "ruin": 0
+    },
+    "SI": {
+     "castle": 268,
+     "fort": 17,
+     "ruin": 223
+    },
+    "TJ": {
+     "castle": 24,
+     "fort": 3,
+     "ruin": 39
+    },
+    "VG": {
+     "castle": 0,
+     "fort": 0,
+     "ruin": 2
+    }
+   }
+  }
+ },
+ "warnings": [],
+ "failed": [],
+ "countries": [
+  "AF",
+  "BH",
+  "CH",
+  "DM",
+  "GF",
+  "HU",
+  "KN",
+  "ME",
+  "NA",
+  "PM",
+  "SI",
+  "TJ",
+  "VG"
+ ]
+}

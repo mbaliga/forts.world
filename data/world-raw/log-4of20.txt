@@ -1,0 +1,53 @@
+world fetch: 255 countries, this shard 13
+wikidata AG Antigua and Barbuda 2
+wikidata BI Burundi 0
+wikidata CI Ivory Coast 1
+wikidata DO Dominican Republic 7
+wikidata GG Guernsey 15
+wikidata ID Indonesia 82
+wikidata KP North Korea 16
+wikidata MF Saint-Martin 0
+wikidata NC New Caledonia 0
+wikidata PN Pitcairn Islands 0
+wikidata SJ Svalbard and Jan Mayen 0
+wikidata TK Tokelau 0
+wikidata VI United States Virgin Islands 0
+osm AG castle 1
+osm AG fort 4
+osm AG ruin 9
+osm BI castle 0
+osm BI fort 0
+osm BI ruin 0
+osm CI castle 4
+osm CI fort 1
+osm CI ruin 3
+osm DO castle 6
+osm DO fort 0
+osm DO ruin 23
+osm GG castle 21
+osm GG fort 6
+osm GG ruin 9
+osm ID castle 134
+osm ID fort 35
+osm ID ruin 152
+osm KP castle 22
+osm KP fort 2
+osm KP ruin 11
+osm MF castle 0
+osm MF fort 0
+osm MF ruin 0
+osm NC castle 0
+osm NC fort 0
+osm NC ruin 0
+osm PN castle 0
+osm PN fort 0
+osm PN ruin 0
+osm SJ castle 0
+osm SJ fort 0
+osm SJ ruin 0
+osm TK castle 0
+osm TK fort 0
+osm TK ruin 0
+osm VI castle 0
+osm VI fort 0
+osm VI ruin 0

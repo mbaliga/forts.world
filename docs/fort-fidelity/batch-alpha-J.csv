@@ -1,0 +1,11 @@
+seq,letter,site_id,name,region,country,significance_rank,ledger_batch,radius_m
+1,J,jalore-fort-q98915208,Jalore Fort,Jalore district,India,830,174,800
+2,K,kishangarh-fort-jaisalmer-q140478848,Kishangarh Fort Jaisalmer,Jaisalmer district,India,713,151,700
+3,M,madhavagadh-fort-q97101388,Madhavagadh Fort,Satna district,India,726,154,700
+4,R,rabdentse-q1244570,Rabdentse,Gyalshing district,India,323,74,700
+5,S,surat-castle-q28153959,Surat Castle,Gujarat,India,515,112,700
+6,A,avchitgad-q4827896,Avchitgad,Raigad district,India,427,94,700
+7,B,ballal-dhipi-q56380554,Ballal Dhipi,Nabadwip community development block,India,476,104,700
+8,C,chandrapur-fort-wall-q97147923,Chandrapur Fort Wall,Chandrapur,India,673,143,1500
+9,D,dongartal-fort-q97148059,Dongartal Fort,Nagpur district,India,684,145,700
+10,G,gulganj-fort-q97101031,Gulganj Fort,Chhatarpur district,India,594,127,700

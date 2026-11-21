@@ -1,0 +1,63 @@
+name: fetch-world
+# Global fort/castle universe. Push-triggered like fetch-geometry: line 1 of data/world-raw/REQUEST.txt = sources (all | wikidata,osm),
+# line 2 = countries (all | IN,FR,...), line 3 = number of shards (default 10), line 4 (optional) = countries to fetch again even if already on the branch. Finished countries/groups are skipped, so a re-run resumes. Raw extracts are committed per shard under data/world-raw/.
+on:
+  push:
+    branches: [dev]
+    paths: ['data/world-raw/REQUEST.txt']
+  workflow_dispatch:
+    inputs:
+      sources: {description: "all or wikidata,osm", default: "all"}
+      countries: {description: "all or comma list of ISO2", default: "all"}
+      shards: {description: "number of parallel shards", default: "10"}
+permissions: {contents: write}
+concurrency: {group: fetch-world, cancel-in-progress: false}
+jobs:
+  plan:
+    runs-on: ${{ fromJSON(vars.RUNNER_LABELS || '["ubuntu-latest"]') }}
+    outputs:
+      shards: ${{ steps.p.outputs.shards }}
+      sources: ${{ steps.p.outputs.sources }}
+      countries: ${{ steps.p.outputs.countries }}
+      n: ${{ steps.p.outputs.n }}
+      redo: ${{ steps.p.outputs.redo }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: p
+        env: {IN_S: "${{ inputs.sources }}", IN_C: "${{ inputs.countries }}", IN_N: "${{ inputs.shards }}"}
+        run: |
+          S="$IN_S"; C="$IN_C"; N="$IN_N"
+          [ -z "$S" ] && S="$(sed -n 1p data/world-raw/REQUEST.txt | tr -d ' \r')"
+          [ -z "$C" ] && C="$(sed -n 2p data/world-raw/REQUEST.txt | tr -d ' \r')"
+          [ -z "$N" ] && N="$(sed -n 3p data/world-raw/REQUEST.txt | tr -d ' \r')"
+          S="${S:-all}"; C="${C:-all}"; N="${N:-10}"
+          echo "sources=$S" >> "$GITHUB_OUTPUT"; echo "countries=$C" >> "$GITHUB_OUTPUT"; echo "n=$N" >> "$GITHUB_OUTPUT"; echo "redo=$(sed -n 4p data/world-raw/REQUEST.txt | tr -d ' \r' | grep -E '^[A-Za-z,]+$' || true)" >> "$GITHUB_OUTPUT"
+          echo "shards=$(node -e "const n=+process.argv[1];console.log(JSON.stringify(Array.from({length:n},(_,i)=>i)))" "$N")" >> "$GITHUB_OUTPUT"
+  fetch:
+    needs: plan
+    runs-on: ${{ fromJSON(vars.RUNNER_LABELS || '["ubuntu-latest"]') }}
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        shard: ${{ fromJSON(needs.plan.outputs.shards) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20}
+      - name: Fetch shard
+        continue-on-error: true
+        timeout-minutes: 320
+        run: |
+          mkdir -p data/world-raw
+          node tools/world/fetch-world.mjs "${{ needs.plan.outputs.sources }}" "${{ needs.plan.outputs.countries }}" "${{ matrix.shard }}/${{ needs.plan.outputs.n }}" "${{ needs.plan.outputs.redo }}" 2>&1 | tee "data/world-raw/log-${{ matrix.shard }}of${{ needs.plan.outputs.n }}.txt"
+          exit ${PIPESTATUS[0]}
+      - name: Commit raw extracts (retry on push races)
+        if: always()
+        run: |
+          git config user.name "fetch-world"; git config user.email "actions@users.noreply.github.com"
+          git add data/world-raw ':!data/world-raw/REQUEST.txt'
+          git diff --cached --quiet && exit 0
+          git commit -m "data: world extracts shard ${{ matrix.shard }}/${{ needs.plan.outputs.n }} [skip ci]"
+          for i in 1 2 3 4 5 6; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0; sleep $((RANDOM % 20 + 5)); done; exit 1

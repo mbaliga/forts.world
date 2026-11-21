@@ -1,0 +1,11 @@
+seq,letter,site_id,name,region,country,significance_rank,ledger_batch,radius_m
+1,D,dindigul,Dindigul,Tamil Nadu,India,235,19,1000
+2,G,gulbarga,Gulbarga (Kalaburagi),Karnataka,India,241,22,1500
+3,J,jiran-ki-gadhi-q97101316,Jiran ki Gadhi,Neemuch district,India,834,175,600
+4,M,manora-fort-q13646574,Manora Fort,Thanjavur district,India,547,118,700
+5,P,pratapagiri-fort-q97143063,Pratapagiri Fort,Karimnagar district,India,746,158,700
+6,R,raigad,Raigad,Maharashtra,India,185,15,1500
+7,S,st-thomas-fort-q7595554,St Thomas Fort,Kerala,India,355,80,700
+8,V,visapur-fort-q14238582,Visapur Fort,Pune district,India,395,88,1000
+9,B,bekal,Bekal,Kerala,India,218,23,1000
+10,C,chanderi,Chanderi,Madhya Pradesh,India,249,13,1500

@@ -1,0 +1,31 @@
+# Auto-T1 build: runs after fetch-geometry lands raw data, or on demand. Pure offline Node work, so it also runs
+# fine locally (node tools/build-t1.mjs --all). Commits data/traces/*.trace.json + index.json back to the branch that ran it.
+name: build-traces
+on:
+  push:
+    branches: [dev]
+    paths: ['data/geometry/**/osm.json', 'data/geometry/**/meta.json', 'tools/build-t1.mjs', 'tools/trace/**']
+  workflow_dispatch:
+    inputs:
+      sites: {description: "Comma-separated site_ids, or 'all'", default: 'all'}
+permissions: {contents: write}
+jobs:
+  build:
+    runs-on: ${{ fromJSON(vars.RUNNER_LABELS || '["ubuntu-latest"]') }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 22}
+      - run: corepack enable && pnpm i --frozen-lockfile
+      - name: Build traces
+        run: node tools/build-t1.mjs ${{ (inputs.sites == '' || inputs.sites == 'all') && '--all' || inputs.sites }}
+      - name: Evidence gate
+        run: node tools/check_sources.mjs
+      - name: Region index
+        run: node tools/build-region-index.mjs
+      - name: Smoke every T1 scene
+        run: node tools/smoke.mjs --t1
+      - name: Commit traces (skip loop)
+        run: |
+          git config user.name "build-traces"; git config user.email "actions@users.noreply.github.com"
+          git add data/traces && (git diff --cached --quiet || git commit -m "data: auto-T1 traces [skip ci]") && git push

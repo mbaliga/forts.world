@@ -1,0 +1,11 @@
+seq,letter,site_id,name,region,country,significance_rank,ledger_batch
+1,H,humayun-s-tomb-q189648,Humayun's Tomb,Jangpura tehsil,India,18,30
+2,I*,jabalpur-madan-mahal-q17058399,Jabalpur Madan Mahal,Jabalpur district,India,489,106
+3,K,krishnagiri-fort-q6437519,Krishnagiri Fort,Krishnagiri district,India,440,97
+4,N,naukot-fort-q30594659,Naukot Fort,Mithi Taluka,Pakistan,3603,720
+5,Q*,khetri-fort-q110749731,Khetri Fort,Jhunjhunu district,India,712,151
+6,T*,kans-quila-q97124420,Kans Quila,Mathura,India,606,130
+7,B,birwadi-fort-q24943477,Birwadi Fort,Raigad district,India,480,105
+8,Z*,baghsar-fort-q4841911,Baghsar Fort,,Pakistan,3403,680
+9,C,chandragad-q13117071,Chandragad,Raigad district,India,525,114
+10,F,fort-emmanuel-q18355920,Fort Emmanuel,Kerala,India,3211,645

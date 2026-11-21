@@ -1,0 +1,85 @@
+import {kangra,nurpur} from './kangra-valley.js';
+import {karengGhar,talatalGhar} from './ahom-palaces.js';
+import {sonakanda,hajiganj} from './shitalakhya.js';
+import {idrakpur,lalbagh} from './dhaka-forts.js';
+import {chunar} from './kaimur-ganga.js';
+import rohtasgarh from './rohtasgarh.js';
+import {fortWilliam,barabati} from './lower-ganges.js';
+import {narwar,garhKundar} from './narwar-kundar.js';
+import {chanderi,ajaigarh} from './chanderi-ajaigarh.js';
+import {jhansiFortScene,asirgarh} from './bundelkhand-khandesh.js';
+import {kalinjar,orchhaFort} from './bundelkhand.js';
+import {rohtasFort,attockFort} from './indus-approaches.js';
+import {allahabadFort,lahoreFort} from './mughal-river-cities.js';
+import {tughlaqabad} from './imperial-cities.js';
+import fatehpurSikri from './fatehpur-sikri.js';
+import {salimgarh,puranaQila} from './delhi-suri.js';
+import redFort from './red-fort.js';
+import agraFort from './agra-fort.js';
+import {bhatner} from './bhatner.js';
+import {lohagarh} from './lohagarh.js';
+import {taragarhBundi,taragarhAjmer} from './taragarh-pair.js';
+import {nahargarh,junagarh} from './rajasthan-cities.js';
+import {ranthambore,gagron} from './rajasthan-landscapes.js';
+import {amer,jaigarh} from './amber-jaigarh.js';
+import {mandu,raisen} from './malwa-forts.js';
+import {uparkot,pavagadh} from './gujarat-forts.js';
+import {diu,motiDaman} from './daman-diu.js';
+import {thirumayam,fortStGeorge} from './tamil-coast.js';
+import {dindigul,sankagiri} from './tamil-hills.js';
+import {penukonda,udayagiri} from './vijayanagara-east.js';
+import {medak,kondapalli} from './east-hill-forts.js';
+import {revdanda,korlai} from './chaul-estuary.js';
+import {warangal,bhongir} from './kakatiya.js';
+import {chitradurga,bangalore} from './karnataka-inland.js';
+import {bijapur,udgir} from './vijayapura-udgir.js';
+import {raichur,mudgal} from './raichur-doab.js';
+import {parenda,kandhar} from './marathwada.js';
+import {bidar,gulbarga} from './bahmani.js';
+import {ahmednagar,naldurg} from './maharashtra-deccan.js';
+import {srirangapatna,trichyRock} from './kaveri.js';
+import {gandikota,chandragiri} from './pennar-chandragiri.js';
+import {gooty,vellore} from './eastern-deccan.js';
+import aguada from './aguada.js';
+import caboDeRama from './cabo-de-rama.js';
+import {bekal,palakkad} from './malabar-approaches.js';
+import {mirjan} from './kanara-malabar.js';
+import stAngelo from './st-angelo.js'; // the earlier generated level stays exported from kanara-malabar.js (id 'st-angelo'), unregistered
+import reisMagos from './reis-magos.js';
+import chapora from './chapora.js';
+import {purandar,vasai} from './western-campaign.js';
+import {torna,sinhagad} from './sahyadri-core.js';
+import padmadurg from './padmadurg.js';
+import underi from './underi.js';
+import janjira from './janjira.js';
+import sindhudurg from './sindhudurg.js';
+import daulatabad from './daulatabad.js';
+import golconda from './golconda.js';
+import gingee from './gingee.js';
+import gwalior from './gwalior.js';
+import chittorgarh from './chittorgarh.js';
+import kumbhalgarh from './kumbhalgarh.js';
+import mehrangarh from './mehrangarh.js';
+import jaisalmer from './jaisalmer.js';
+// The first ten forts were hand-built, constructed reconstructions (each at three moments). Six of them were later
+// replaced by traced levels; the originals were kept as <id>-hand and are listed again right after their traced versions.
+import janjiraHand from './janjira-hand.js';
+import sindhudurgHand from './sindhudurg-hand.js';
+import daulatabadHand from './daulatabad-hand.js';
+import gwaliorHand from './gwalior-hand.js';
+import chittorgarhHand from './chittorgarh-hand.js';
+import jaisalmerHand from './jaisalmer-hand.js';
+const constructed = (L, name) => ({ ...L, name: `${name} (constructed)` });
+import thirumalaiNayakkarMahal from './thirumalai-nayakkar-mahal.js';
+import vattakottai from './vattakottai.js';
+import { MARATHA_FORTS } from './maratha.js';
+import {bahu,gobindgarh,bathinda,patiala,hariParbat} from './punjab-jammu-forts.js';
+
+export const LEVELS = [janjira, constructed(janjiraHand, 'Murud-Janjira'), sindhudurg, constructed(sindhudurgHand, 'Sindhudurg'), daulatabad, constructed(daulatabadHand, 'Daulatabad'), golconda, gingee, gwalior, constructed(gwaliorHand, 'Gwalior'), chittorgarh, constructed(chittorgarhHand, 'Chittorgarh'), kumbhalgarh, mehrangarh, jaisalmer, constructed(jaisalmerHand, 'Jaisalmer'), thirumalaiNayakkarMahal, vattakottai, ...MARATHA_FORTS, underi, padmadurg, torna, sinhagad, purandar, vasai, reisMagos, chapora, mirjan, stAngelo, bekal, palakkad, aguada, caboDeRama, gooty, vellore, gandikota, chandragiri, srirangapatna, trichyRock, ahmednagar, naldurg, bidar, gulbarga, parenda, kandhar, raichur, mudgal, bijapur, udgir, chitradurga, bangalore, warangal, bhongir, revdanda, korlai, medak, kondapalli, penukonda, udayagiri, dindigul, sankagiri, thirumayam, fortStGeorge, diu, motiDaman, uparkot, pavagadh, mandu, raisen, amer, jaigarh, ranthambore, gagron, nahargarh, junagarh, taragarhBundi, taragarhAjmer, lohagarh, bhatner, redFort, agraFort, salimgarh, puranaQila, tughlaqabad, fatehpurSikri, allahabadFort, lahoreFort, rohtasFort, attockFort, kalinjar, orchhaFort, jhansiFortScene, asirgarh, chanderi, ajaigarh, narwar, garhKundar, fortWilliam, barabati, rohtasgarh, chunar, idrakpur, lalbagh, sonakanda, hajiganj, karengGhar, talatalGhar, kangra, nurpur, bahu, gobindgarh, bathinda, patiala, hariParbat];
+
+import ALPHA_U from './alpha-u.js';
+import ALPHA_X0 from './alpha-x0.js';
+for (const L of [...ALPHA_U, ...ALPHA_X0]) {
+  const i = LEVELS.findIndex((x) => x.id === L.id);
+  if (i >= 0) LEVELS[i] = L; else LEVELS.push(L);
+}

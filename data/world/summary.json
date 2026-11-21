@@ -1,0 +1,863 @@
+{
+ "built": "2026-11-18T11:35:52.605Z",
+ "total": 143210,
+ "notable": 75433,
+ "osmMarkers": 67777,
+ "osmNamed": 37401,
+ "kinds": {
+  "castle": 62391,
+  "fort": 25659,
+  "fortification": 42871,
+  "ruin": 12289
+ },
+ "wikidata": 60571,
+ "osm": 164880,
+ "osmDupIds": 287,
+ "osmToWd": {
+  "byQid": 17711,
+  "byProximity": 5654
+ },
+ "osmOsmMerged": 8452,
+ "countries": {
+  "AD": {
+   "notable": 3,
+   "osm": 1
+  },
+  "AE": {
+   "notable": 30,
+   "osm": 56
+  },
+  "AF": {
+   "notable": 17,
+   "osm": 139
+  },
+  "AG": {
+   "notable": 2,
+   "osm": 4
+  },
+  "AL": {
+   "notable": 141,
+   "osm": 53
+  },
+  "AM": {
+   "notable": 69,
+   "osm": 49
+  },
+  "AO": {
+   "notable": 23,
+   "osm": 6
+  },
+  "AR": {
+   "notable": 21,
+   "osm": 64
+  },
+  "AT": {
+   "notable": 2270,
+   "osm": 248
+  },
+  "AU": {
+   "notable": 59,
+   "osm": 1
+  },
+  "AW": {
+   "notable": 1,
+   "osm": 0
+  },
+  "AZ": {
+   "notable": 115,
+   "osm": 61
+  },
+  "BA": {
+   "notable": 106,
+   "osm": 79
+  },
+  "BB": {
+   "notable": 2,
+   "osm": 5
+  },
+  "BD": {
+   "notable": 18,
+   "osm": 92
+  },
+  "BE": {
+   "notable": 1041,
+   "osm": 1803
+  },
+  "BG": {
+   "notable": 136,
+   "osm": 189
+  },
+  "BH": {
+   "notable": 5,
+   "osm": 3
+  },
+  "BJ": {
+   "notable": 1,
+   "osm": 13
+  },
+  "BM": {
+   "notable": 3,
+   "osm": 18
+  },
+  "BO": {
+   "notable": 4,
+   "osm": 13
+  },
+  "BR": {
+   "notable": 105,
+   "osm": 207
+  },
+  "BS": {
+   "notable": 3,
+   "osm": 2
+  },
+  "BT": {
+   "notable": 17,
+   "osm": 14
+  },
+  "BY": {
+   "notable": 597,
+   "osm": 136
+  },
+  "CA": {
+   "notable": 153,
+   "osm": 90
+  },
+  "CD": {
+   "notable": 2,
+   "osm": 6
+  },
+  "CH": {
+   "notable": 1348,
+   "osm": 214
+  },
+  "CI": {
+   "notable": 1,
+   "osm": 5
+  },
+  "CL": {
+   "notable": 60,
+   "osm": 29
+  },
+  "CM": {
+   "notable": 5,
+   "osm": 183
+  },
+  "CN": {
+   "notable": 238,
+   "osm": 2402
+  },
+  "CO": {
+   "notable": 9,
+   "osm": 31
+  },
+  "CU": {
+   "notable": 19,
+   "osm": 41
+  },
+  "CV": {
+   "notable": 10,
+   "osm": 0
+  },
+  "CW": {
+   "notable": 7,
+   "osm": 0
+  },
+  "CY": {
+   "notable": 21,
+   "osm": 15
+  },
+  "CZ": {
+   "notable": 3361,
+   "osm": 243
+  },
+  "DE": {
+   "notable": 16897,
+   "osm": 3362
+  },
+  "DK": {
+   "notable": 723,
+   "osm": 54
+  },
+  "DM": {
+   "notable": 2,
+   "osm": 0
+  },
+  "DO": {
+   "notable": 9,
+   "osm": 1
+  },
+  "DZ": {
+   "notable": 44,
+   "osm": 270
+  },
+  "EC": {
+   "notable": 2,
+   "osm": 21
+  },
+  "EE": {
+   "notable": 274,
+   "osm": 15
+  },
+  "EG": {
+   "notable": 60,
+   "osm": 66
+  },
+  "EH": {
+   "notable": 1,
+   "osm": 0
+  },
+  "ES": {
+   "notable": 5223,
+   "osm": 2140
+  },
+  "ET": {
+   "notable": 5,
+   "osm": 79
+  },
+  "FI": {
+   "notable": 213,
+   "osm": 90
+  },
+  "FM": {
+   "notable": 4,
+   "osm": 0
+  },
+  "FO": {
+   "notable": 1,
+   "osm": 1
+  },
+  "FR": {
+   "notable": 10420,
+   "osm": 10185
+  },
+  "GB": {
+   "notable": 3710,
+   "osm": 2928
+  },
+  "GD": {
+   "notable": 3,
+   "osm": 1
+  },
+  "GE": {
+   "notable": 96,
+   "osm": 312
+  },
+  "GG": {
+   "notable": 18,
+   "osm": 16
+  },
+  "GH": {
+   "notable": 42,
+   "osm": 86
+  },
+  "GI": {
+   "notable": 14,
+   "osm": 7
+  },
+  "GM": {
+   "notable": 7,
+   "osm": 0
+  },
+  "GR": {
+   "notable": 671,
+   "osm": 898
+  },
+  "GT": {
+   "notable": 4,
+   "osm": 7
+  },
+  "GW": {
+   "notable": 2,
+   "osm": 4
+  },
+  "GY": {
+   "notable": 3,
+   "osm": 1
+  },
+  "HN": {
+   "notable": 3,
+   "osm": 2
+  },
+  "HR": {
+   "notable": 380,
+   "osm": 252
+  },
+  "HT": {
+   "notable": 8,
+   "osm": 49
+  },
+  "HU": {
+   "notable": 358,
+   "osm": 920
+  },
+  "ID": {
+   "notable": 95,
+   "osm": 127
+  },
+  "IE": {
+   "notable": 692,
+   "osm": 18776
+  },
+  "IL": {
+   "notable": 79,
+   "osm": 51
+  },
+  "IM": {
+   "notable": 16,
+   "osm": 21
+  },
+  "IN": {
+   "notable": 760,
+   "osm": 1462
+  },
+  "IQ": {
+   "notable": 21,
+   "osm": 328
+  },
+  "IR": {
+   "notable": 385,
+   "osm": 474
+  },
+  "IS": {
+   "notable": 1,
+   "osm": 1
+  },
+  "IT": {
+   "notable": 7080,
+   "osm": 2508
+  },
+  "JE": {
+   "notable": 15,
+   "osm": 7
+  },
+  "JM": {
+   "notable": 1,
+   "osm": 30
+  },
+  "JO": {
+   "notable": 50,
+   "osm": 46
+  },
+  "JP": {
+   "notable": 1568,
+   "osm": 908
+  },
+  "KE": {
+   "notable": 2,
+   "osm": 10
+  },
+  "KG": {
+   "notable": 5,
+   "osm": 17
+  },
+  "KN": {
+   "notable": 4,
+   "osm": 3
+  },
+  "KP": {
+   "notable": 16,
+   "osm": 23
+  },
+  "KR": {
+   "notable": 425,
+   "osm": 218
+  },
+  "KZ": {
+   "notable": 31,
+   "osm": 68
+  },
+  "LB": {
+   "notable": 37,
+   "osm": 31
+  },
+  "LC": {
+   "notable": 1,
+   "osm": 1
+  },
+  "LI": {
+   "notable": 6,
+   "osm": 2
+  },
+  "LK": {
+   "notable": 30,
+   "osm": 14
+  },
+  "LT": {
+   "notable": 953,
+   "osm": 72
+  },
+  "LU": {
+   "notable": 84,
+   "osm": 48
+  },
+  "LV": {
+   "notable": 654,
+   "osm": 112
+  },
+  "LY": {
+   "notable": 26,
+   "osm": 202
+  },
+  "MA": {
+   "notable": 246,
+   "osm": 298
+  },
+  "MD": {
+   "notable": 8,
+   "osm": 97
+  },
+  "ME": {
+   "notable": 34,
+   "osm": 69
+  },
+  "MK": {
+   "notable": 36,
+   "osm": 11
+  },
+  "ML": {
+   "notable": 4,
+   "osm": 35
+  },
+  "MM": {
+   "notable": 6,
+   "osm": 53
+  },
+  "MN": {
+   "notable": 2,
+   "osm": 46
+  },
+  "MR": {
+   "notable": 5,
+   "osm": 57
+  },
+  "MT": {
+   "notable": 165,
+   "osm": 18
+  },
+  "MU": {
+   "notable": 2,
+   "osm": 8
+  },
+  "MX": {
+   "notable": 25,
+   "osm": 67
+  },
+  "MY": {
+   "notable": 27,
+   "osm": 63
+  },
+  "MZ": {
+   "notable": 15,
+   "osm": 6
+  },
+  "NA": {
+   "notable": 11,
+   "osm": 10
+  },
+  "NE": {
+   "notable": 3,
+   "osm": 16
+  },
+  "NG": {
+   "notable": 10,
+   "osm": 64
+  },
+  "NI": {
+   "notable": 2,
+   "osm": 6
+  },
+  "NO": {
+   "notable": 832,
+   "osm": 352
+  },
+  "NP": {
+   "notable": 9,
+   "osm": 138
+  },
+  "NZ": {
+   "notable": 240,
+   "osm": 2369
+  },
+  "OM": {
+   "notable": 25,
+   "osm": 171
+  },
+  "PA": {
+   "notable": 8,
+   "osm": 12
+  },
+  "PE": {
+   "notable": 16,
+   "osm": 37
+  },
+  "PH": {
+   "notable": 28,
+   "osm": 61
+  },
+  "PK": {
+   "notable": 63,
+   "osm": 169
+  },
+  "PL": {
+   "notable": 2702,
+   "osm": 2894
+  },
+  "PS": {
+   "notable": 28,
+   "osm": 0
+  },
+  "PT": {
+   "notable": 1017,
+   "osm": 427
+  },
+  "PY": {
+   "notable": 5,
+   "osm": 12
+  },
+  "QA": {
+   "notable": 7,
+   "osm": 13
+  },
+  "RO": {
+   "notable": 800,
+   "osm": 277
+  },
+  "RS": {
+   "notable": 92,
+   "osm": 66
+  },
+  "RU": {
+   "notable": 707,
+   "osm": 635
+  },
+  "SA": {
+   "notable": 49,
+   "osm": 215
+  },
+  "SD": {
+   "notable": 9,
+   "osm": 44
+  },
+  "SE": {
+   "notable": 2164,
+   "osm": 222
+  },
+  "SG": {
+   "notable": 12,
+   "osm": 11
+  },
+  "SI": {
+   "notable": 335,
+   "osm": 154
+  },
+  "SK": {
+   "notable": 529,
+   "osm": 245
+  },
+  "SM": {
+   "notable": 5,
+   "osm": 3
+  },
+  "SN": {
+   "notable": 1,
+   "osm": 13
+  },
+  "SR": {
+   "notable": 4,
+   "osm": 0
+  },
+  "ST": {
+   "notable": 3,
+   "osm": 1
+  },
+  "SX": {
+   "notable": 2,
+   "osm": 0
+  },
+  "SY": {
+   "notable": 82,
+   "osm": 84
+  },
+  "TH": {
+   "notable": 47,
+   "osm": 106
+  },
+  "TJ": {
+   "notable": 9,
+   "osm": 29
+  },
+  "TL": {
+   "notable": 7,
+   "osm": 4
+  },
+  "TM": {
+   "notable": 6,
+   "osm": 32
+  },
+  "TN": {
+   "notable": 180,
+   "osm": 204
+  },
+  "TR": {
+   "notable": 438,
+   "osm": 460
+  },
+  "TW": {
+   "notable": 50,
+   "osm": 69
+  },
+  "TZ": {
+   "notable": 2,
+   "osm": 20
+  },
+  "UA": {
+   "notable": 490,
+   "osm": 490
+  },
+  "UG": {
+   "notable": 3,
+   "osm": 11
+  },
+  "US": {
+   "notable": 915,
+   "osm": 1949
+  },
+  "UY": {
+   "notable": 8,
+   "osm": 7
+  },
+  "UZ": {
+   "notable": 32,
+   "osm": 71
+  },
+  "VA": {
+   "notable": 2,
+   "osm": 0
+  },
+  "VC": {
+   "notable": 2,
+   "osm": 2
+  },
+  "VE": {
+   "notable": 14,
+   "osm": 15
+  },
+  "VG": {
+   "notable": 6,
+   "osm": 0
+  },
+  "VN": {
+   "notable": 35,
+   "osm": 57
+  },
+  "XK": {
+   "notable": 24,
+   "osm": 28
+  },
+  "YE": {
+   "notable": 10,
+   "osm": 135
+  },
+  "ZA": {
+   "notable": 27,
+   "osm": 44
+  },
+  "MG": {
+   "notable": 1,
+   "osm": 113
+  },
+  "NL": {
+   "notable": 483,
+   "osm": 314
+  },
+  "SO": {
+   "notable": 0,
+   "osm": 10
+  },
+  "BN": {
+   "notable": 1,
+   "osm": 4
+  },
+  "MC": {
+   "notable": 1,
+   "osm": 1
+  },
+  "ZW": {
+   "notable": 0,
+   "osm": 16
+  },
+  "GN": {
+   "notable": 1,
+   "osm": 4
+  },
+  "BZ": {
+   "notable": 0,
+   "osm": 2
+  },
+  "ER": {
+   "notable": 0,
+   "osm": 9
+  },
+  "CR": {
+   "notable": 0,
+   "osm": 6
+  },
+  "NU": {
+   "notable": 0,
+   "osm": 4
+  },
+  "RW": {
+   "notable": 0,
+   "osm": 4
+  },
+  "SH": {
+   "notable": 1,
+   "osm": 9
+  },
+  "KW": {
+   "notable": 2,
+   "osm": 3
+  },
+  "KH": {
+   "notable": 1,
+   "osm": 12
+  },
+  "TT": {
+   "notable": 0,
+   "osm": 8
+  },
+  "SZ": {
+   "notable": 0,
+   "osm": 3
+  },
+  "GS": {
+   "notable": 0,
+   "osm": 1
+  },
+  "GL": {
+   "notable": 0,
+   "osm": 5
+  },
+  "WS": {
+   "notable": 0,
+   "osm": 1
+  },
+  "KM": {
+   "notable": 0,
+   "osm": 4
+  },
+  "TD": {
+   "notable": 0,
+   "osm": 24
+  },
+  "BF": {
+   "notable": 1,
+   "osm": 14
+  },
+  "MH": {
+   "notable": 0,
+   "osm": 1
+  },
+  "LA": {
+   "notable": 0,
+   "osm": 6
+  },
+  "MW": {
+   "notable": 0,
+   "osm": 5
+  },
+  "LR": {
+   "notable": 0,
+   "osm": 1
+  },
+  "TO": {
+   "notable": 1,
+   "osm": 2
+  },
+  "SL": {
+   "notable": 0,
+   "osm": 2
+  },
+  "LS": {
+   "notable": 0,
+   "osm": 2
+  },
+  "DJ": {
+   "notable": 0,
+   "osm": 3
+  },
+  "CG": {
+   "notable": 0,
+   "osm": 22
+  },
+  "CK": {
+   "notable": 0,
+   "osm": 1
+  },
+  "KY": {
+   "notable": 0,
+   "osm": 1
+  },
+  "SS": {
+   "notable": 0,
+   "osm": 5
+  },
+  "GQ": {
+   "notable": 0,
+   "osm": 11
+  },
+  "TG": {
+   "notable": 0,
+   "osm": 6
+  },
+  "MS": {
+   "notable": 0,
+   "osm": 1
+  },
+  "MV": {
+   "notable": 0,
+   "osm": 2
+  },
+  "PG": {
+   "notable": 0,
+   "osm": 1
+  },
+  "FJ": {
+   "notable": 0,
+   "osm": 3
+  },
+  "BW": {
+   "notable": 0,
+   "osm": 2
+  },
+  "SC": {
+   "notable": 0,
+   "osm": 1
+  },
+  "CF": {
+   "notable": 1,
+   "osm": 0
+  },
+  "PW": {
+   "notable": 0,
+   "osm": 2
+  },
+  "ZM": {
+   "notable": 0,
+   "osm": 2
+  }
+ },
+ "files": {
+  "wikidata": 539,
+  "osm": 1010
+ },
+ "enriched": {
+  "loaded": 19874,
+  "promoted": 18434
+ },
+ "programmeLinked": 571,
+ "programmeSites": 8669,
+ "droppedRuins": 50424,
+ "tiles": 625
+}

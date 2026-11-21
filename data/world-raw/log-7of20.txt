@@ -1,0 +1,53 @@
+world fetch: 255 countries, this shard 13
+wikidata AM Armenia 68
+wikidata BM Bermuda 2
+wikidata CM Cameroon 1
+wikidata EE Estonia 272
+wikidata GL Greenland 0
+wikidata IM Isle of Man 15
+wikidata KY Cayman Islands 0
+wikidata MK North Macedonia 25
+wikidata NG Nigeria 8
+wikidata PT Portugal 809
+wikidata SM San Marino 2
+wikidata TN Tunisia 166
+wikidata WF Wallis and Futuna 0
+osm AM castle 52
+osm AM fort 6
+osm AM ruin 159
+osm BM castle 1
+osm BM fort 15
+osm BM ruin 12
+osm CM castle 191
+osm CM fort 2
+osm CM ruin 6
+osm EE castle 23
+osm EE fort 13
+osm EE ruin 103
+osm GL castle 1
+osm GL fort 0
+osm GL ruin 69
+osm IM castle 4
+osm IM fort 5
+osm IM ruin 73
+osm KY castle 0
+osm KY fort 1
+osm KY ruin 1
+osm MK castle 16
+osm MK fort 0
+osm MK ruin 105
+osm NG castle 71
+osm NG fort 1
+osm NG ruin 0
+osm PT castle 642
+osm PT fort 145
+osm PT ruin 453
+osm SM castle 4
+osm SM fort 0
+osm SM ruin 2
+osm TN castle 100
+osm TN fort 13
+osm TN ruin 599
+osm WF castle 0
+osm WF fort 0
+osm WF ruin 0

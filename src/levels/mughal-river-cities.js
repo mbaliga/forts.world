@@ -1,0 +1,28 @@
+// Illustrative prototypes: the cities and measured fort plans remain to be reconstructed.
+import {makeFort} from './gen.js';
+const prayag='https://prayagraj.nic.in/top-attractions/';
+const lahore='https://whc.unesco.org/en/list/171/';
+const shared={type:'hill',units:{planScale:3,vScale:4},hill:{h:8,cliff:4,skirt:22},guard:'guard-mughal',people:6,flag:false,
+ palette:{wall:'#a06452',wallTop:'#b67c64',stone:'#a27762',rock:'#a18975',dry:'#b0a185'},
+ gates:[{a:70,name:'Entrance · position inferred',main:true}],buildings:[{name:'Shelter · inferred',x:-15,y:-13,w:12,d:7,kind:'barracks'}]};
+export const allahabadFort=makeFort({...shared,id:'allahabad-fort',name:'Allahabad Fort',native:{text:'Allahabad Fort',lang:'en',script:'latn'},region:'Prayagraj · Uttar Pradesh',typeLabel:'Riverside fort · inferred prototype',coords:[25.430,81.876],seed:421,size:{rx:105,ry:85},
+ eras:[{id:'1590',year:'c. 1590',label:'Akbar period',short:'Akbar',lens:'engraving',summary:'An illustrative garrison after the fort’s construction.',basis:'Prayagraj district records Akbar’s fort at the Sangam and describes the eastern ramparts overlooking the confluence; its attractions account dates construction to 1583 and identifies the Ashoka Pillar and Akshayavat within.',conjecture:'The plan, dimensions, terrain, city, exact river edges, entrances, buildings and garrison are not reconstructed. The fort was a controlled Mughal and later military site; public access is limited today.',sources:['ALH-01','ALH-02','ALH-03']},
+ {id:'today',year:'Today',label:'Fort remains',short:'Present',lens:'none',summary:'Explore a schematic enclosure.',basis:'Prayagraj district states that the eastern ramparts overlook the Sangam and that only a limited portion of the fort is open to visitors.',conjecture:'The existing fort, city, river confluence, restricted military areas and present condition are not modeled or compared to current aerial imagery.',sources:['ALH-01','ALH-02']}],
+ pois:[{id:'fort',at:[35,20],title:'Akbar’s fort and the Sangam',text:'The district government dates Akbar’s fort to 1583 and places it at the Ganga–Yamuna confluence. Its actual outline and restricted areas are not reproduced.',source:prayag},
+ {id:'rivers',at:[-30,15],title:'Eastern ramparts and river confluence',text:'The district identifies the fort’s eastern ramparts overlooking the Sangam; the river edges are not modeled.',source:'https://prayagraj.nic.in/tourist-place/sangam/'},
+ {id:'setting',at:[0,-20],title:'Prayagraj',text:'The surrounding city and riverbanks are research tasks; this generated landscape is not a geographic representation.',source:prayag}]
+});
+export function buildNorthCourt(W,era){
+ if(era !== '1625' && era !== 'today') return;
+ // The pavilion evokes a court; its dimensions, details and location are placeholders.
+ W.pavilion({x:25,y:-40,w:20,d:12,base:W.ground(25,-40),plinth:0.4,colH:3,cols:[6,4],inner:true,roof:'flat',color:'stone',stairs:false,walk:false,kind:'palace'});
+}
+export const lahoreFort=makeFort({...shared,id:'lahore-fort',name:'Lahore Fort',native:{text:'Shahi Qila',lang:'en',script:'latn'},region:'Lahore · Punjab · Pakistan',typeLabel:'Palace fort · inferred prototype',coords:[31.588,74.315],shape:'square',seed:431,size:{rx:120,ry:85},
+ extraBuild:(W,{era})=>buildNorthCourt(W,era),
+ eras:[{id:'1600',year:'c. 1600',label:'Akbar period',short:'Akbar',lens:'engraving',summary:'An illustrative earlier Mughal enclosure.',basis:'UNESCO describes Akbar-era Masjidi Gate and public/private audience hall and states the fort occupies the north-west corner of Lahore’s Walled City.',conjecture:'The 1600 plan, city wall, gates, garrison and buildings are inferred. The later north-court pavilion and Shah Jahan’s Shish Mahal are not modeled in this scene.',sources:['LAH-01','LAH-02']},
+ {id:'1625',year:'c. 1625',label:'Jahangir period',short:'Jahangir',lens:'engraving',summary:'An illustrative scene after completion of the north court.',basis:'UNESCO dates completion of the north court to 1617–18 and decoration of the north and north-west walls to 1624–25; its map labels quadrangles, gates, courtyards and major palace groups.',conjecture:'The court is evoked by a generic pavilion with invented position, dimensions and architecture. City, gates, garrison and overall fort plan are not reconstructed; Shish Mahal is not modeled.',sources:['LAH-01','LAH-02']},
+ {id:'today',year:'Today',label:'Fort remains',short:'Present',lens:'none',summary:'Explore a schematic palace-fort enclosure.',basis:'UNESCO’s site map gives a 200 m scale and labels the fort boundary, internal quadrangles, gates, gardens and paths; its dossier includes an aerial photograph of the complex.',conjecture:'The court pavilion is illustrative; the real city, palace complex, layout and present condition are not modeled. The published aerial is not a current image or registered to this scene.',sources:['LAH-01','LAH-02']}],
+ pois:[{id:'akbar',at:[35,20],title:'Akbari Gate and audience hall',text:'UNESCO identifies the Masjidi Gate and audience hall among Akbar’s work. The official site plan gives locations, but this generated scene does not trace them.',source:lahore},
+ {id:'court',at:[25,-25],title:'Jahangir and Shah Jahan quadrangles',text:'UNESCO’s map names the Jahangir and Shah Jahan quadrangles, Diwan-e-Aam and Diwan-e-Khas. The current scene does not reproduce these mapped footprints.',source:'https://whc.unesco.org/document/221560'},
+ {id:'shish',at:[-30,15],title:'Shish Mahal and picture wall',text:'UNESCO dates the Shish Mahal to 1631–32 under Shah Jahan; its map marks the picture wall and Shah Burj complex. Neither is modeled here.',source:'https://whc.unesco.org/document/221560'}]
+});

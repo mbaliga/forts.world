@@ -1,0 +1,21 @@
+{
+ "fetched": "2026-11-18T08:14:38.986Z",
+ "shard": "0/1",
+ "sources": {
+  "osm": {
+   "ok": true,
+   "queries": 1,
+   "elements": 0,
+   "countries": {
+    "KE": {
+     "fortsite": 0
+    }
+   }
+  }
+ },
+ "warnings": [],
+ "failed": [],
+ "countries": [
+  "KE"
+ ]
+}

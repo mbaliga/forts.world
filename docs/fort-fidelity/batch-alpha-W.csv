@@ -1,0 +1,11 @@
+seq,letter,site_id,name,region,country,significance_rank,ledger_batch,radius_m
+1,W,wakandurg-sn1162,Wakandurg,Karnataka,India,8614,1691,600
+2,Z,zafarabad-sn3356,Zafarabad,Uttar Pradesh,India,8646,1696,500
+3,B,bala-hisar-peshawar,"Bala Hisar, Peshawar",Khyber Pakhtunkhwa,Pakistan,379,6,1000
+4,D,devra-ka-kila-q97100898,Devra ka Kila,Chhatarpur district,India,681,145,1000
+5,G,gorkhatri-q5586577,Gorkhatri,Peshawar,Pakistan,3373,674,1000
+6,K,khanderi,Khanderi,Maharashtra,India,290,24,1000
+7,M,madakasira-bastion-and-gateway-q17278418,Madakasira Bastion and Gateway,Madakasira mandal,India,847,178,1000
+8,P,palamau-fort-q134543326,Palamau Fort,Alberto Tomba,India,863,181,1000
+9,R,ranikot,Ranikot,Sindh,Pakistan,261,8,1000
+10,T,timangarh-fort-q7804561,Timangarh Fort,Karauli district,India,462,101,1000

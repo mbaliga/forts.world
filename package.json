@@ -1,0 +1,36 @@
+{
+  "name": "forts-world",
+  "version": "22.60.0",
+  "description": "Forts of the World: walkable 3D reconstructions of forts, castles and fortified settlements",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build.mjs --min",
+    "test": "node tools/smoke.mjs",
+    "audit:routes": "node tools/strategic-route-audit.mjs",
+    "audit:hydrorivers": "node tools/audit-hydrorivers.mjs",
+    "audit:historic-settlements": "node tools/audit-historic-settlements.mjs",
+    "audit:dem": "node tools/strategic-dem-audit.mjs",
+    "audit:terrarium": "node tools/terrarium-png-audit.mjs",
+    "import:dem": "node tools/import-strategic-dem.mjs",
+    "import:mapzen-terrain": "node tools/import-mapzen-terrain.mjs",
+    "import:hydrorivers": "node tools/import-hydrorivers.mjs"
+  },
+  "keywords": [],
+  "license": "Apache-2.0",
+  "author": "Madhav Baliga",
+  "dependencies": {
+    "esbuild": "0.24.2",
+    "maplibre-gl": "5.9.0",
+    "three": "0.159.0"
+  },
+  "type": "module",
+  "private": true,
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  },
+  "devDependencies": {
+    "world-atlas": "2.0.2"
+  }
+}

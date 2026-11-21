@@ -1,0 +1,11 @@
+seq,letter,site_id,name,region,country,significance_rank,ledger_batch
+1,T,thirumalai-nayakkar-mahal-q3536592,Thirumalai Nayakkar Mahal,Madurai district,India,374,84
+2,V,vattakottai-fort-q7917189,Vattakottai Fort,Kanniyakumari district,India,423,93
+3,A,akhnoor-fort-q15178737,Akhnoor Fort,Akhnoor,India,331,75
+4,B,bahu,"Bahu Fort, Jammu",Jammu and Kashmir,India,264,12
+5,C,chandragiri,Chandragiri,Andhra Pradesh,India,268,8
+6,G,golconda,Golconda,Telangana,India,271,3
+7,K,kandhar-nanded,Kandhar,Maharashtra,India,259,24
+8,N,narnala-fort-x-ambar-mahal-q97158988,Narnala Fort: x. Ambar Mahal,Akola district,India,413,91
+9,P,padmadurg-q7123842,Padmadurg,Raigad district,India,501,109
+10,S,st-angelo,St Angelo’s Fort,Kerala,India,216,24

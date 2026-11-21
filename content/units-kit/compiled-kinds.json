@@ -1,0 +1,63 @@
+{
+ "in-mughal-matchlock": {
+  "spec": {
+   "top": "#f2eee3",
+   "bottom": "#b8452a",
+   "sash": "#b8452a",
+   "skin": "#94633f",
+   "hat": "#f2eee3",
+   "head": "turban",
+   "prop": "musket",
+   "long": true
+  },
+  "unrendered": [],
+  "evidence": "needs-source"
+ },
+ "in-rajput-spear": {
+  "spec": {
+   "top": "#f1ece0",
+   "bottom": "#f1ece0",
+   "sash": "#c9361f",
+   "skin": "#93603f",
+   "hat": "#e3a11c",
+   "head": "safa",
+   "prop": "spear",
+   "long": true
+  },
+  "unrendered": [
+   "shield-dhal (no mesh yet)",
+   "armour-quilted-coat (no mesh yet)"
+  ],
+  "evidence": "needs-source"
+ },
+ "in-maratha-swordsman": {
+  "spec": {
+   "top": "#efe9da",
+   "bottom": "#efe9da",
+   "sash": "#d07020",
+   "skin": "#8a5a3c",
+   "hat": "#d9751d",
+   "head": "pagdi",
+   "prop": null,
+   "long": true
+  },
+  "unrendered": [
+   "weapon-dandpatta (no mesh yet)",
+   "shield-dhal (no mesh yet)"
+  ],
+  "evidence": "needs-source"
+ },
+ "in-deccan-archer": {
+  "spec": {
+   "top": "#ece6d6",
+   "bottom": "#2d4a6b",
+   "sash": "#2d4a6b",
+   "skin": "#7a4f34",
+   "hat": "#ece6d6",
+   "head": "turban",
+   "prop": "bow"
+  },
+  "unrendered": [],
+  "evidence": "needs-source"
+ }
+}

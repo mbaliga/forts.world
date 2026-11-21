@@ -1,0 +1,11 @@
+seq,letter,site_id,name,region,country,significance_rank,ledger_batch
+1,Y,yakki-gate-q97958818,Yakki Gate,Lahore,Pakistan,4481,895
+2,B,buxa-fort-q5003231,Buxa Fort,Kalchini community development block,India,380,85
+3,E,ek-khamba-mahal-q97946384,Ek Khamba Mahal,Dhar district,India,1287,266
+4,H,hazarduari-palace-q5687746,Hazarduari Palace,Murshidabad,India,488,106
+5,K,kareng-ghar,"Kareng Ghar, Garhgaon",Assam,India,243,10
+6,N,nuwakot,Nuwakot Durbar,Bagmati,Nepal,297,4
+7,Q,qala-i-jangi-q7265904,Qala-i-Jangi,Balkh Province,Afghanistan,3650,729
+8,T,tipu-sultan-s-summer-palace-q7809034,Tipu Sultan's Summer Palace,Bengaluru,India,463,101
+9,W,wanla-monastery-q2790445,Wanla Monastery,Leh district,India,653,139
+10,Z,zafar-mahal-q8064241,Zafar Mahal,South Delhi district,India,654,139

@@ -1,0 +1,438 @@
+<title>Historical Worlds · R22.66</title>
+<meta name="description" content="Walk ten Indian forts in an isometric 3D world, at three moments in their history.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&family=Tiro+Devanagari+Marathi&family=Tiro+Telugu&family=Tiro+Tamil&display=swap&text=__NATIVE_TEXT__">
+<style>
+/* Layout: the fort fills the screen; a cartouche names it (top left), the plan of the fort is the minimap (bottom left),
+   the timeline of three moments sits bottom centre, tools bottom right. Panels are flat sheets, not cards. */
+:root {
+  --sky: #dce4e2; --paper: #f4f6f4; --ink: #182023; --muted: #586569; --rule: rgba(24, 32, 35, .16);
+  --accent: #0e7a77; --gold: #8f5c00; --panel: rgba(244, 246, 244, .9); --halo: rgba(244, 246, 244, .88); --scrim: rgba(244, 246, 244, .78); --scrim-mid: rgba(244, 246, 244, .42); --veil: rgba(244, 246, 244, .96);
+  --pl-land: #f7f6f1; --pl-water: #cfe0e4; --pl-hatch: #8fb3c2; --pl-contour: #a68259; --pl-hachure: #8a6644; --pl-road: #e5d9bd; --pl-court: #e7e3d9;
+  --pl-wall: #182023; --pl-bld: #d4cdbf; --pl-bld-edge: #3a3d3e; --pl-temple: #c4b79e; --pl-tank: #bcd5dc; --pl-poi: #c48a16; --pl-poi-found: #8d9897;
+  --font-display: 'IM Fell English SC', 'IM Fell English', Georgia, 'Times New Roman', serif;
+  --font-serif: 'IM Fell English', Georgia, 'Times New Roman', serif;
+  --font-body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-data: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --gap: 16px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --sky: #222c32; --paper: #12181b; --ink: #e5ebe8; --muted: #9aa8ab; --rule: rgba(229, 235, 232, .16);
+  --accent: #4cc3b7; --gold: #e3b04b; --panel: rgba(18, 24, 27, .88); --halo: rgba(10, 14, 16, .72); --scrim: rgba(12, 16, 18, .72); --scrim-mid: rgba(12, 16, 18, .38); --veil: rgba(18, 24, 27, .96);
+  --pl-land: #1d2528; --pl-water: #17323a; --pl-hatch: #2c5664; --pl-contour: #8b6c4c; --pl-hachure: #7c6248; --pl-road: #3a3628; --pl-court: #2a302f;
+  --pl-wall: #e5ebe8; --pl-bld: #3b4346; --pl-bld-edge: #c9d0cc; --pl-temple: #514a3c; --pl-tank: #1f4450; --pl-poi: #e3b04b; --pl-poi-found: #6c7877;
+  color-scheme: dark; } }
+:root[data-theme="dark"], :root[data-sky="night"] {
+  --sky: #222c32; --paper: #12181b; --ink: #e5ebe8; --muted: #9aa8ab; --rule: rgba(229, 235, 232, .16);
+  --accent: #4cc3b7; --gold: #e3b04b; --panel: rgba(18, 24, 27, .88); --halo: rgba(10, 14, 16, .72); --scrim: rgba(12, 16, 18, .72); --scrim-mid: rgba(12, 16, 18, .38); --veil: rgba(18, 24, 27, .96);
+  --pl-land: #1d2528; --pl-water: #17323a; --pl-hatch: #2c5664; --pl-contour: #8b6c4c; --pl-hachure: #7c6248; --pl-road: #3a3628; --pl-court: #2a302f;
+  --pl-wall: #e5ebe8; --pl-bld: #3b4346; --pl-bld-edge: #c9d0cc; --pl-temple: #514a3c; --pl-tank: #1f4450; --pl-poi: #e3b04b; --pl-poi-found: #6c7877;
+  color-scheme: dark; }
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--sky); color: var(--ink); font: 14px/1.45 var(--font-body); overflow: hidden; -webkit-font-smoothing: antialiased; }
+button { font: inherit; color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+a { color: var(--accent); }
+#view { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: crosshair; transition: filter .6s ease; }
+#view[data-lens="albumen"] { filter: sepia(.8) saturate(.92) contrast(1.08) brightness(1.04); }
+#view[data-lens="engraving"] { filter: sepia(.28) saturate(.86) contrast(1.05) brightness(1.02); }
+#lens, #dark { position: fixed; inset: 0; pointer-events: none; transition: opacity .6s ease; }
+#lens { opacity: 0; }
+#lens[data-lens="albumen"] { opacity: 1; mix-blend-mode: multiply; background:
+  radial-gradient(ellipse 75% 70% at 50% 50%, transparent 55%, rgba(64, 40, 18, .42) 100%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .42 0 0 0 0 .32 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"); }
+#lens[data-lens="engraving"] { opacity: 1; mix-blend-mode: multiply; background: radial-gradient(ellipse 80% 75% at 50% 50%, transparent 60%, rgba(80, 58, 24, .24) 100%), rgba(240, 222, 186, .12); }
+#dark { opacity: 0; background: radial-gradient(circle at 50% 52%, rgba(0, 0, 0, .1) 6%, rgba(4, 3, 2, .88) 34%); }
+#dark.on { opacity: 1; }
+
+/* cartouche */
+#cartouche { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 18px); left: 20px; max-width: min(430px, calc(100vw - 210px)); pointer-events: none; text-shadow: 0 0 4px var(--halo); }
+#topfade { position: fixed; left: 0; right: 0; top: 0; height: 240px; pointer-events: none; background: linear-gradient(to bottom, var(--scrim) 0%, var(--scrim-mid) 42%, transparent 100%); }
+#botfade { position: fixed; left: 0; right: 0; bottom: 0; height: 150px; pointer-events: none; background: linear-gradient(to top, var(--scrim) 0%, var(--scrim-mid) 45%, transparent 100%); }
+#cartouche .eyebrow { font: 500 11px/1.2 var(--font-data); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+#cartouche h1 { margin: 4px 0 0; font: 400 34px/1.02 var(--font-display); letter-spacing: .02em; text-wrap: balance; }
+#cartouche .native { margin-top: 2px; font-size: 19px; line-height: 1.3; color: var(--muted); }
+#cartouche .meta { margin-top: 6px; font-size: 12.5px; color: var(--muted); }
+#era-note p { margin: 8px 0 0; font: italic 15px/1.35 var(--font-serif); color: var(--ink); max-width: 38ch; }
+.native-deva { font-family: 'Tiro Devanagari Hindi', 'Noto Serif Devanagari', serif; }
+.native-mr { font-family: 'Tiro Devanagari Marathi', 'Tiro Devanagari Hindi', 'Noto Serif Devanagari', serif; }
+.native-telu { font-family: 'Tiro Telugu', 'Noto Serif Telugu', serif; }
+.native-taml { font-family: 'Tiro Tamil', 'Noto Serif Tamil', serif; }
+
+/* top bar */
+#topbar { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 12px); right: 12px; display: flex; gap: 2px; }
+#topbar button { border: 0; background: transparent; padding: 8px 10px; cursor: pointer; font-size: 13.5px; font-weight: 500; letter-spacing: .01em;
+  text-shadow: 0 0 6px var(--halo), 0 0 12px var(--halo); }
+#topbar button:hover { background: var(--panel); text-shadow: none; }
+
+/* timeline */
+#timeline { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 14px); }
+#timeline ol { list-style: none; margin: 0; padding: 0; display: flex; gap: 6px; }
+#timeline button { display: grid; gap: 3px; justify-items: center; min-width: 112px; padding: 6px 14px 7px; border: 0; background: transparent; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; text-shadow: 0 0 6px var(--halo), 0 0 14px var(--halo); }
+#timeline button:hover { color: var(--ink); }
+#timeline button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+#timeline .yr { font: 400 20px/1 var(--font-display); font-variant-numeric: oldstyle-nums; }
+#timeline .lb { font: 500 10.5px/1.2 var(--font-data); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+
+/* minimap = the fort's plan */
+#minimap { position: fixed; left: 18px; bottom: calc(env(safe-area-inset-bottom, 0px) + 14px); width: 220px; cursor: pointer; }
+#mini-wrap { position: relative; width: 100%; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 2px rgba(0, 0, 0, .1), 0 8px 26px rgba(0, 0, 0, .14); }
+#mini-plan svg, #mini-over { display: block; width: 100%; height: auto; }
+#mini-over { position: absolute; inset: 0; height: 100%; pointer-events: none; }
+#mini-over .view rect { fill: none; stroke: var(--accent); stroke-width: 1.4; vector-effect: non-scaling-stroke; opacity: .8; }
+#mini-over .me path { fill: var(--accent); stroke: var(--paper); stroke-width: 1; vector-effect: non-scaling-stroke; }
+#mini-over .pu { fill: var(--pl-poi); stroke: var(--paper); stroke-width: 1; vector-effect: non-scaling-stroke; }
+#mini-over .pf { fill: var(--pl-poi-found); }
+#status { padding: 10px 2px 0; display: grid; gap: 3px; text-shadow: 0 0 6px var(--halo), 0 0 12px var(--halo); }
+#s-zone { font-weight: 600; font-size: 13px; }
+#s-elev { font: 400 11.5px var(--font-data); color: var(--muted); font-variant-numeric: tabular-nums; }
+#s-progress { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
+#s-progress .dots { display: flex; flex-wrap: wrap; gap: 3px; max-width: 120px; }
+#s-progress .dots i { width: 6px; height: 6px; border: 1px solid var(--gold); border-radius: 50%; }
+#s-progress .dots i.on { background: var(--gold); }
+.pl-land { fill: var(--pl-land); stroke: var(--pl-hatch); stroke-width: .6; } .pl-water { fill: var(--pl-water); } .pl-hatchline { stroke: var(--pl-hatch); stroke-width: .35; }
+.pl-contour { stroke: var(--pl-contour); stroke-width: .3; opacity: .55; } .pl-contour-idx { stroke: var(--pl-contour); stroke-width: .55; opacity: .7; }
+.pl-hachure { stroke: var(--pl-hachure); stroke-width: .4; opacity: .55; fill: none; } .pl-road { fill: var(--pl-road); } .pl-court { fill: var(--pl-court); }
+.pl-wall, .pl-bastion, .pl-tower { fill: var(--pl-wall); } .pl-wall-over { fill: none; stroke: var(--pl-wall); stroke-width: .4; stroke-dasharray: 1.2 .8; }
+.pl-building, .pl-house, .pl-palace, .pl-granary, .pl-barracks, .pl-pavilion { fill: var(--pl-bld); stroke: var(--pl-bld-edge); stroke-width: .3; }
+.pl-temple, .pl-mosque { fill: var(--pl-temple); stroke: var(--pl-bld-edge); stroke-width: .35; } .pl-temple-plinth, .pl-platform, .pl-court, .pl-bridge { fill: var(--pl-court); stroke: var(--pl-bld-edge); stroke-width: .15; }
+.pl-ruin { fill: none; stroke: var(--pl-bld-edge); stroke-width: .5; stroke-dasharray: 1.6 .9; } .pl-tank, .pl-well { fill: var(--pl-tank); stroke: var(--pl-wall); stroke-width: .35; } .pl-tank-water { fill: var(--pl-water); }
+.pl-rock { fill: var(--pl-court); } .pl-stairs { stroke: var(--pl-wall); stroke-width: .2; fill: none; } .pl-cannon { stroke: var(--pl-wall); stroke-width: .9; stroke-linecap: round; fill: none; }
+.pl-tunnel { fill: none; stroke: var(--pl-wall); stroke-width: 1; stroke-dasharray: 1.6 1.1; }
+.pl-frame { fill: none; stroke: var(--rule); stroke-width: .6; } .pl-poi circle { display: none; }
+
+/* tools */
+#tools { position: fixed; right: 14px; bottom: calc(env(safe-area-inset-bottom, 0px) + 16px); display: grid; gap: 4px; }
+#tools button { width: 38px; height: 38px; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--panel); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); cursor: pointer; padding: 0; box-shadow: 0 1px 3px rgba(0, 0, 0, .12); }
+#tools button:hover { color: var(--accent); }
+#tools svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+#tools .attn { color: var(--accent); box-shadow: 0 0 0 1.5px var(--accent); }
+#btn-lens[aria-pressed="true"] { color: var(--accent); }
+#compass { width: 38px; height: 38px; display: grid; place-items: center; }
+#compass-needle { width: 22px; height: 22px; transition: transform .25s ease; }
+#compass-needle path { fill: var(--ink); stroke: none; } #compass-needle text { fill: var(--ink); font: 600 8px var(--font-body); }
+
+/* card + drawer */
+#card { position: fixed; right: 16px; top: calc(env(safe-area-inset-top, 0px) + 60px); width: min(360px, calc(100vw - 32px)); max-height: calc(100vh - 220px); overflow: auto; background: var(--panel); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 6px; box-shadow: 0 12px 36px rgba(0, 0, 0, .14); padding: 20px 24px 22px; box-sizing: border-box; }
+#card .eyebrow { margin: 0; font: 500 11px var(--font-data); letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+#card h2 { margin: 6px 0 10px; font: 400 25px/1.12 var(--font-serif); text-wrap: balance; padding-right: 20px; }
+#card p { margin: 0 0 10px; font-size: 14.5px; line-height: 1.55; max-width: 62ch; }
+#card .era-note { font: italic 14.5px/1.45 var(--font-serif); color: var(--muted); }
+#card .src { font-size: 12.5px; }
+.x { position: absolute; top: 8px; right: 10px; border: 0; background: transparent; font-size: 22px; line-height: 1; cursor: pointer; color: var(--muted); padding: 4px 6px; }
+#drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(420px, 100vw); overflow: auto; background: var(--paper); border-left: 1px solid var(--rule); padding: calc(env(safe-area-inset-top, 0px) + 18px) 24px calc(env(safe-area-inset-bottom, 0px) + 24px); box-sizing: border-box; }
+#drawer header { position: relative; }
+#drawer h2 { margin: 0; font: 400 28px/1.1 var(--font-display); }
+#drawer h3 { margin: 22px 0 6px; font: 600 13px var(--font-body); letter-spacing: .02em; }
+#drawer h4 { margin: 18px 0 6px; font: 500 11px var(--font-data); letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+#drawer .sub, #drawer p { color: var(--muted); font-size: 13.5px; max-width: 60ch; }
+#drawer .caveat { font-size: 12.5px; border-top: 1px solid var(--rule); padding-top: 10px; margin-top: 16px; }
+.places { list-style: none; padding: 0; margin: 14px 0 0; }
+.places li { display: grid; grid-template-columns: 28px 1fr auto; gap: 10px; align-items: center; padding: 10px 0; border-top: 1px solid var(--rule); }
+.places .n { font: 500 12px var(--font-data); color: var(--gold); text-align: right; }
+.places li:not(.found) .n { color: var(--muted); }
+.places .t { min-width: 0; display: grid; gap: 2px; } .places .t b { font-weight: 500; }
+.places .hint { font-size: 12px; color: var(--muted); }
+.places .lnk, .places .go { border: 0; background: transparent; padding: 0; cursor: pointer; color: var(--accent); font-size: 12.5px; justify-self: start; }
+.places .go { padding: 5px 0 5px 10px; color: var(--accent); font-weight: 500; }
+.places .go:hover { text-decoration: underline; text-underline-offset: 3px; }
+.evidence-note { font-size: 12px; color: var(--muted); }
+.src { list-style: none; padding: 0; margin: 0; }
+.src li { padding: 7px 0; border-top: 1px solid var(--rule); display: grid; gap: 2px; font-size: 13.5px; }
+.src .m { color: var(--muted); font-size: 12px; } .src .lic { font: 400 10.5px var(--font-data); color: var(--muted); letter-spacing: .03em; }
+
+/* fort index */
+#index { position: fixed; inset: 0; background: var(--paper); overflow: auto; }
+#index .wrap { max-width: 1180px; margin: 0 auto; padding: calc(env(safe-area-inset-top, 0px) + 32px) 24px calc(env(safe-area-inset-bottom, 0px) + 40px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 40px; align-items: start; box-sizing: border-box; }
+#index h1 { margin: 0; font: 400 clamp(34px, 5vw, 54px)/1 var(--font-display); letter-spacing: .015em; }
+#index .lede { margin: 14px 0 0; font: italic 18px/1.45 var(--font-serif); color: var(--muted); max-width: 46ch; }
+#index-map { margin-top: 26px; }
+#index-map svg { width: 100%; height: auto; display: block; }
+#index-map .land { fill: var(--pl-land); stroke: var(--muted); stroke-width: .8; }
+#index-map .grat path { stroke: var(--rule); stroke-width: .6; fill: none; } #index-map .gl { font: 9px var(--font-data); fill: var(--muted); }
+#index-map .dot circle { fill: var(--gold); stroke: var(--paper); stroke-width: 1.5; } #index-map .dot.cur circle { fill: var(--accent); }
+#index-map .dot text { font: 600 11px var(--font-body); fill: var(--ink); paint-order: stroke; stroke: var(--paper); stroke-width: 3px; }
+#index-search { box-sizing: border-box; width: 100%; padding: 10px 12px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); font: inherit; }
+#index-count { margin: 8px 0; color: var(--muted); font-size: 13px; }
+#index-list ol { list-style: none; margin: 0; padding: 0; counter-reset: f; }
+#index-list li + li { border-top: 1px solid var(--rule); }
+#index-list button { width: 100%; text-align: left; border: 0; background: transparent; cursor: pointer; padding: 14px 4px; display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; grid-template-areas: "no nm pr" "no rg pr"; column-gap: 12px; }
+#index-list button:hover .nm, #index-list button[aria-current] .nm { color: var(--accent); }
+#index-list .no { grid-area: no; font: 500 12px/2.2 var(--font-data); color: var(--muted); }
+#index-list .nm { grid-area: nm; font: 400 24px/1.15 var(--font-display); display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+#index-list .nt { font-size: 17px; color: var(--muted); }
+#index-list .rg { grid-area: rg; font-size: 13px; color: var(--muted); margin-top: 3px; }
+#index-list .pr { grid-area: pr; font: 400 11.5px var(--font-data); color: var(--gold); align-self: center; }
+#index-close { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 12px); right: 16px; border: 0; background: var(--paper); padding: 8px 12px; cursor: pointer; font-weight: 500; color: var(--accent); }
+#index .note { margin-top: 18px; font-size: 13px; color: var(--muted); max-width: 52ch; }
+
+/* help, veil, toast */
+#help { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(520px, calc(100vw - 32px)); max-height: calc(100vh - 40px); overflow: auto; background: var(--paper); border-radius: 8px; box-shadow: 0 18px 50px rgba(0, 0, 0, .2); padding: 24px 28px 20px; box-sizing: border-box; }
+#help h2 { margin: 0 0 12px; font: 400 26px var(--font-display); }
+#help dl { display: grid; grid-template-columns: max-content 1fr; gap: 7px 18px; margin: 0; font-size: 14px; }
+#help dt { font: 500 12px var(--font-data); color: var(--muted); padding-top: 2px; }
+#help dd { margin: 0; }
+#help p { color: var(--muted); font-size: 13px; margin: 14px 0 0; }
+#veil { position: fixed; inset: 0; display: grid; place-content: center; text-align: center; background: var(--veil); }
+#veil-name { font: 400 clamp(32px, 6vw, 56px)/1 var(--font-display); }
+#veil-note { margin-top: 10px; font: 500 12px var(--font-data); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+#veil .bar { width: 160px; height: 1px; background: var(--rule); margin: 22px auto 0; overflow: hidden; }
+#veil .bar i { display: block; width: 40%; height: 100%; background: var(--accent); animation: slide 1.1s ease-in-out infinite; }
+@keyframes slide { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+#toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 92px); background: var(--ink); color: var(--paper); padding: 9px 14px; font-size: 13.5px; max-width: calc(100vw - 32px); }
+@media (max-width: 720px) {
+  #cartouche { left: 14px; max-width: calc(100vw - 120px); }
+  #cartouche h1 { font-size: 25px; } #cartouche .native { font-size: 16px; } #cartouche .meta { display: none; } #era-note p { font-size: 13.5px; }
+  #topbar { flex-direction: column; align-items: flex-end; gap: 0; } #topbar button { padding: 6px 8px; font-size: 13px; }
+  #minimap { width: 138px; left: 12px; bottom: calc(env(safe-area-inset-bottom, 0px) + 72px); } #status { padding: 6px 2px 0; } #s-progress .dots { display: none; }
+  #botfade { height: 210px; }
+  #timeline { left: 10px; right: 10px; transform: none; bottom: calc(env(safe-area-inset-bottom, 0px) + 10px); }
+  #timeline ol { justify-content: space-between; } #timeline li { flex: 1; } #timeline button { min-width: 0; width: 100%; padding: 7px 4px; } #timeline .yr { font-size: 17px; } #timeline .lb { font-size: 9px; letter-spacing: .04em; }
+  #tools { right: 10px; bottom: calc(env(safe-area-inset-bottom, 0px) + 72px); } #tools button { width: 34px; height: 34px; }
+  #card { left: 10px; right: 10px; width: auto; top: auto; bottom: calc(env(safe-area-inset-bottom, 0px) + 72px); max-height: 46vh; }
+  #index .wrap { grid-template-columns: 1fr; gap: 20px; padding-inline: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { #view, #lens, #dark, #compass-needle { transition: none; } #veil .bar i { animation: none; } }
+
+/* ---------------- minimap: live layer, north arrow, scale, key */
+#minimap { width: 248px; }
+#mini-over .mm-sol { fill: #b8352a; stroke: var(--paper); stroke-width: .6; vector-effect: non-scaling-stroke; }
+#mini-over .mm-ani { fill: #8a6a3a; opacity: .85; } #mini-over .mm-ani.own { fill: var(--accent); }
+#mini-over .mm-gun { fill: var(--pl-wall); stroke: var(--paper); stroke-width: .6; vector-effect: non-scaling-stroke; }
+#mini-over .mm-gun.crew { fill: #d07a1a; } #mini-over .mm-gun.auto { fill: #c0281e; }
+#mini-over .mm-boat { fill: var(--paper); stroke: var(--pl-wall); stroke-width: .8; vector-effect: non-scaling-stroke; }
+#mini-over .mm-foe { fill: #e07a1a; stroke: #5a2a10; stroke-width: .8; vector-effect: non-scaling-stroke; }
+#mini-over .mm-gar circle { fill: #2f6b45; stroke: var(--paper); stroke-width: 1; vector-effect: non-scaling-stroke; } #mini-over .mm-gar text, #mini-over .mm-pen text, #mini-over .mm-set text { fill: #fff; font: 600 1px var(--font-data); text-anchor: middle; }
+#mini-over .mm-pen rect { fill: #8a6a3a; stroke: var(--paper); stroke-width: .8; vector-effect: non-scaling-stroke; }
+#mini-over .mm-set path { fill: var(--gold); stroke: var(--paper); stroke-width: .8; vector-effect: non-scaling-stroke; } #mini-over .mm-set text { fill: var(--ink); }
+#mini-over .mm-sel { fill: none; stroke: #d8a02a; stroke-width: 2; vector-effect: non-scaling-stroke; }
+#mini-scale { position: absolute; left: 7px; bottom: 6px; display: flex; align-items: center; gap: 4px; pointer-events: none; font: 500 9.5px var(--font-data); color: var(--ink); }
+#mini-scale i { display: block; height: 4px; border: 1.2px solid var(--ink); border-top: 0; }
+#mini-key-btn { position: absolute; right: 5px; bottom: 5px; font: 500 10px var(--font-data); letter-spacing: .06em; text-transform: uppercase; border: 1px solid var(--rule); background: var(--panel); color: var(--ink); border-radius: 3px; padding: 2px 6px; cursor: pointer; }
+#mini-key { display: flex; flex-wrap: wrap; gap: 3px 10px; margin-top: 6px; font: 500 11px var(--font-body); color: var(--ink); background: var(--panel); padding: 6px 8px; border-radius: 5px; }
+#mini-key[hidden] { display: none; }
+#mini-key i { display: inline-block; width: 9px; height: 9px; margin-right: 4px; vertical-align: -1px; border-radius: 50%; }
+.k-me { background: var(--accent); } .k-sol { background: #b8352a; } .k-ani { background: #8a6a3a; } .k-gun { background: #d07a1a; border-radius: 1px !important; }
+.k-boat { background: var(--paper); border: 1px solid var(--pl-wall); } .k-foe { background: #e07a1a; } .k-gar { background: #2f6b45; } .k-pen { background: #8a6a3a; border-radius: 1px !important; } .k-poi { background: var(--pl-poi); }
+#gar-chips { position: fixed; inset: 0; pointer-events: none; z-index: 12; }
+#gar-chips .gchip { position: absolute; left: 0; top: 0; background: #2f6b45; color: #fff; font: 600 11px var(--font-data); padding: 2px 7px; border-radius: 10px; white-space: nowrap; box-shadow: 0 2px 6px rgba(0,0,0,.2); }
+@media (max-width: 720px) { #minimap { width: 150px; } #mini-key { font-size: 10px; } }
+
+/* ---------------- period dress for the interface
+   engraving: an 18th-century printed survey; albumen: a photograph album; modern: today */
+body[data-chrome="engraving"] {
+  --paper: #efe5cd; --panel: rgba(239, 229, 205, .95); --ink: #2b2116; --muted: #6e5c44; --rule: rgba(60, 40, 20, .3); --accent: #8a3b1e; --gold: #8f5c00;
+  --halo: rgba(239, 229, 205, .85); --scrim: rgba(239, 229, 205, .78); --scrim-mid: rgba(239, 229, 205, .4); --veil: rgba(239, 229, 205, .97);
+  --font-body: 'IM Fell English', Georgia, serif; --font-data: 'IM Fell English SC', Georgia, serif;
+  --pl-land: #f1e6cb; --pl-water: #d9d4b8; --pl-hatch: #9a8c64; --pl-contour: #8a6a3e; --pl-road: #e2d2a8; --pl-court: #e8dcbc; --pl-wall: #2b2116; --pl-bld: #d6c39a; --pl-bld-edge: #3a2a18; --pl-tank: #c9c7a6; --pl-poi: #8a3b1e;
+}
+body[data-chrome="albumen"] {
+  --paper: #ebe2cd; --panel: rgba(235, 226, 205, .96); --ink: #2a2018; --muted: #6b5a46; --rule: rgba(90, 70, 40, .3); --accent: #7a5426; --gold: #a07c34;
+  --halo: rgba(235, 226, 205, .85); --scrim: rgba(235, 226, 205, .78); --scrim-mid: rgba(235, 226, 205, .4); --veil: rgba(235, 226, 205, .97);
+  --font-body: 'Instrument Sans', system-ui, sans-serif; --font-data: 'IM Fell English SC', Georgia, serif;
+  --pl-land: #e9dcc0; --pl-water: #cbbf9e; --pl-hatch: #8e7a55; --pl-contour: #8a6a3e; --pl-road: #dccaa0; --pl-court: #e2d4b4; --pl-wall: #3a2a1a; --pl-bld: #cdb88e; --pl-bld-edge: #4a3622; --pl-tank: #b9ae8c; --pl-poi: #7a5426;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body[data-chrome="engraving"] { --paper: #1c1710; --panel: rgba(28, 23, 16, .92); --ink: #ecdfc2; --muted: #b5a283; --rule: rgba(236, 223, 194, .2); --accent: #d4875a; --halo: rgba(20, 16, 10, .75); --scrim: rgba(20, 16, 10, .72); --veil: rgba(28, 23, 16, .97); --pl-land: #2a2318; --pl-water: #23261c; --pl-wall: #ecdfc2; --pl-bld: #4a3d28; --pl-bld-edge: #d8c8a4; --pl-road: #3a3020; --pl-court: #302818; --pl-tank: #2d3428; --pl-poi: #e0a070; }
+  :root:not([data-theme="light"]) body[data-chrome="albumen"] { --paper: #1a1611; --panel: rgba(26, 22, 17, .92); --ink: #ebe0c8; --muted: #b3a184; --rule: rgba(235, 224, 200, .2); --accent: #cfa45e; --halo: rgba(18, 15, 11, .75); --scrim: rgba(18, 15, 11, .72); --veil: rgba(26, 22, 17, .97); --pl-land: #2a2419; --pl-water: #25241b; --pl-wall: #ebe0c8; --pl-bld: #4a3e2a; --pl-bld-edge: #d6c6a4; --pl-road: #392f1f; --pl-court: #302819; --pl-tank: #2c3127; --pl-poi: #cfa45e; }
+}
+:root[data-theme="dark"] body[data-chrome="engraving"], :root[data-sky="night"] body[data-chrome="engraving"] { --paper: #1c1710; --panel: rgba(28, 23, 16, .92); --ink: #ecdfc2; --muted: #b5a283; --rule: rgba(236, 223, 194, .2); --accent: #d4875a; --halo: rgba(20, 16, 10, .75); --scrim: rgba(20, 16, 10, .72); --veil: rgba(28, 23, 16, .97); --pl-land: #2a2318; --pl-water: #23261c; --pl-wall: #ecdfc2; --pl-bld: #4a3d28; --pl-bld-edge: #d8c8a4; --pl-road: #3a3020; --pl-court: #302818; --pl-tank: #2d3428; --pl-poi: #e0a070; }
+:root[data-theme="dark"] body[data-chrome="albumen"], :root[data-sky="night"] body[data-chrome="albumen"] { --paper: #1a1611; --panel: rgba(26, 22, 17, .92); --ink: #ebe0c8; --muted: #b3a184; --rule: rgba(235, 224, 200, .2); --accent: #cfa45e; --halo: rgba(18, 15, 11, .75); --scrim: rgba(18, 15, 11, .72); --veil: rgba(26, 22, 17, .97); --pl-land: #2a2419; --pl-water: #25241b; --pl-wall: #ebe0c8; --pl-bld: #4a3e2a; --pl-bld-edge: #d6c6a4; --pl-road: #392f1f; --pl-court: #302819; --pl-tank: #2c3127; --pl-poi: #cfa45e; }
+
+/* printed survey: ruled double borders, square corners, ink-red accents */
+body[data-chrome="engraving"] #ctx, body[data-chrome="engraving"] #card, body[data-chrome="engraving"] #drawer, body[data-chrome="engraving"] #help, body[data-chrome="engraving"] #mini-key { border-radius: 0; box-shadow: 0 0 0 1px var(--ink), 0 0 0 4px var(--paper), 0 0 0 5px var(--ink), 0 12px 32px rgba(40, 25, 10, .25); }
+body[data-chrome="engraving"] #ctx button, body[data-chrome="engraving"] #mini-key-btn { border-radius: 0; border-color: var(--ink); font-family: var(--font-serif); font-size: 14px; }
+body[data-chrome="engraving"] #ctx:after { border-top-color: var(--ink); }
+body[data-chrome="engraving"] #timeline button[aria-pressed="true"] { border-bottom: 3px double var(--accent); }
+body[data-chrome="engraving"] #cartouche { padding: 10px 14px 12px; background: radial-gradient(ellipse at 30% 40%, var(--scrim), transparent 75%); }
+body[data-chrome="engraving"] #cartouche h1 { letter-spacing: .06em; }
+body[data-chrome="engraving"] #tools button { border-radius: 0; box-shadow: 0 0 0 1px var(--ink); }
+body[data-chrome="engraving"] #toast, body[data-chrome="engraving"] #hud-mode { border-radius: 0; font-family: var(--font-serif); }
+body[data-chrome="engraving"] #hud-play span { border-radius: 0; box-shadow: 0 0 0 1px var(--ink); font-family: var(--font-serif); }
+body[data-chrome="engraving"] .gchip { border-radius: 0 !important; font-family: var(--font-serif) !important; background: #6b2a14 !important; }
+
+/* photograph album: cream mount, gilt rule, photo corners on the plan */
+body[data-chrome="albumen"] #ctx, body[data-chrome="albumen"] #card, body[data-chrome="albumen"] #drawer, body[data-chrome="albumen"] #help, body[data-chrome="albumen"] #mini-key { border-radius: 2px; box-shadow: inset 0 0 0 1px var(--gold), 0 0 0 4px var(--paper), 0 0 0 5px rgba(90, 70, 40, .35), 0 12px 32px rgba(40, 28, 12, .28); }
+body[data-chrome="albumen"] #ctx h3, body[data-chrome="albumen"] #card h2 { font-variant: small-caps; letter-spacing: .03em; }
+body[data-chrome="albumen"] #ctx button { border-color: rgba(160, 124, 52, .5); border-radius: 2px; }
+body[data-chrome="albumen"] #ctx:after { border-top-color: var(--paper); }
+body[data-chrome="albumen"] #timeline button[aria-pressed="true"] { border-bottom-color: var(--gold); }
+body[data-chrome="albumen"] #tools button { box-shadow: inset 0 0 0 1px var(--gold), 0 1px 3px rgba(0, 0, 0, .2); }
+body[data-chrome="albumen"] .gchip { background: #5a4422 !important; }
+
+/* ---------------- sky & weather panel */
+#climate { position: fixed; right: 64px; bottom: calc(env(safe-area-inset-bottom, 0px) + 18px); width: min(330px, calc(100vw - 90px)); max-height: calc(100vh - 40px); overflow: auto; background: var(--panel); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 8px; box-shadow: 0 14px 40px rgba(0, 0, 0, .2); padding: 14px 16px 14px; z-index: 25; color: var(--ink); box-sizing: border-box; }
+#climate[hidden] { display: none; }
+#climate h2 { margin: 0 0 8px; font: 400 21px/1.1 var(--font-serif); }
+#climate h3 { margin: 12px 0 5px; font: 500 10.5px/1 var(--font-data); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+#climate .x { position: absolute; right: 8px; top: 6px; border: 0; background: none; font-size: 20px; color: var(--muted); cursor: pointer; }
+.cl-dial { display: flex; align-items: center; gap: 10px; }
+.cl-dial svg { width: 130px; height: 58px; flex: none; }
+#cl-time { font: 400 26px/1 var(--font-display); font-variant-numeric: lining-nums tabular-nums; }
+#cl-phase { font: italic 14px/1.3 var(--font-serif); color: var(--muted); }
+.cl-row { display: flex; align-items: center; gap: 10px; margin-top: 8px; font: 500 12px var(--font-body); }
+.cl-row input[type=range] { flex: 1; accent-color: var(--accent); }
+.cl-flow button, .cl-seg button { border: 1px solid var(--rule); background: transparent; color: var(--ink); border-radius: 4px; padding: 5px 9px; font: 500 12.5px var(--font-body); cursor: pointer; }
+.cl-flow button[aria-pressed="true"], .cl-seg button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.cl-flow select { border: 1px solid var(--rule); background: transparent; color: var(--ink); border-radius: 4px; padding: 4px; font: 12px var(--font-body); }
+.cl-seg { display: flex; flex-wrap: wrap; gap: 5px; }
+.cl-note { margin: 5px 0 0; font: italic 13px/1.3 var(--font-serif); color: var(--muted); }
+#cl-dial .hz { stroke: var(--ink); stroke-width: .8; } #cl-dial .arc { fill: none; stroke: var(--rule); stroke-width: 1; stroke-dasharray: 2 2; }
+#cl-dial .sun { fill: #e8a630; } #cl-dial .moon { fill: #d8dde8; stroke: var(--muted); stroke-width: .6; } #cl-dial .ecl { fill: #1a1d26; }
+body[data-chrome="engraving"] #climate { border-radius: 0; box-shadow: 0 0 0 1px var(--ink), 0 0 0 4px var(--paper), 0 0 0 5px var(--ink), 0 12px 32px rgba(40, 25, 10, .25); }
+body[data-chrome="engraving"] .cl-flow button, body[data-chrome="engraving"] .cl-seg button { border-radius: 0; border-color: var(--ink); font-family: var(--font-serif); font-size: 13.5px; }
+body[data-chrome="albumen"] #climate { border-radius: 2px; box-shadow: inset 0 0 0 1px var(--gold), 0 0 0 4px var(--paper), 0 0 0 5px rgba(90, 70, 40, .35), 0 12px 32px rgba(40, 28, 12, .28); }
+@media (max-width: 720px) { #climate { right: 56px; bottom: 80px; } }
+
+/* ---------------- minimap: an octagon standing on a point, framed for the period */
+#minimap { width: 236px; }
+#mini-wrap { position: relative; width: 100%; aspect-ratio: 1; border-radius: 0; overflow: visible; box-shadow: none; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .28)); }
+#mini-face { position: absolute; inset: 0; clip-path: polygon(30.87% 3.81%, 69.13% 3.81%, 96.19% 30.87%, 96.19% 69.13%, 69.13% 96.19%, 30.87% 96.19%, 3.81% 69.13%, 3.81% 30.87%); background: var(--pl-water); display: flex; align-items: center; justify-content: center; }
+#mini-box { position: relative; width: 100%; }
+#mini-box #mini-plan svg { display: block; width: 100%; height: auto; }
+#mini-box #mini-over { position: absolute; inset: 0; width: 100%; height: 100%; }
+#mini-frame { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+#mini-frame .ring { fill: none; stroke: var(--ink); vector-effect: non-scaling-stroke; }
+#mini-frame .band { fill: var(--paper); stroke: none; }
+#mini-frame .tick { stroke: var(--ink); stroke-width: .35; }
+#mini-frame .card { font: 600 4.2px var(--font-data); fill: var(--ink); text-anchor: middle; dominant-baseline: central; }
+#mini-frame .rose-a { fill: var(--ink); } #mini-frame .rose-b { fill: var(--paper); stroke: var(--ink); stroke-width: .3; }
+#mini-frame .rose-n { font: 600 5px var(--font-display); fill: var(--accent); text-anchor: middle; }
+#mini-frame .bolt { fill: #6a5228; stroke: #3a2c14; stroke-width: .3; }
+#mini-scale { left: 2%; bottom: 3%; }
+#mini-key-btn { right: 1%; bottom: 2%; }
+body[data-chrome="engraving"] #mini-face { background: var(--pl-water) var(--paper-tex); }
+body[data-chrome="albumen"] #mini-face { background: var(--pl-water) var(--paper-tex); }
+:root { --paper-tex: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .32  0 0 0 0 .22  0 0 0 0 .1  0 0 0 .09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+/* rustic paper grain on the period panels */
+body[data-chrome="engraving"] :is(#ctx, #card, #drawer, #help, #climate, #mini-key, #index), body[data-chrome="albumen"] :is(#ctx, #card, #drawer, #help, #climate, #mini-key, #index) { background-image: var(--paper-tex); }
+@media (max-width: 720px) { #minimap { width: 158px; } #mini-frame .card { font-size: 5px; } }
+
+#mini-over .view polygon { fill: rgba(216, 160, 42, .12); stroke: #d8a02a; stroke-width: 1.4; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+#mini-over .view circle { fill: #d8a02a; }
+</style>
+
+<canvas id="view" aria-label="Isometric view of the fort. Click or tap to walk."></canvas>
+<div id="lens" aria-hidden="true"></div>
+<div id="dark" aria-hidden="true"></div>
+<div id="topfade" aria-hidden="true"></div>
+<div id="botfade" aria-hidden="true"></div>
+
+<header id="cartouche">
+  <div class="eyebrow" id="c-region"></div>
+  <h1 id="c-name">Historical Worlds · R22.66</h1>
+  <div class="native" id="c-native"></div>
+  <div class="meta" id="c-meta"></div>
+  <div id="era-note"></div>
+</header>
+
+<nav id="topbar" aria-label="Panels">
+  <button type="button" id="btn-forts">Forts</button>
+  <button type="button" id="btn-places">Places</button>
+  <button type="button" id="btn-sources">Sources</button>
+  <button type="button" id="btn-help" aria-label="Controls">Controls</button>
+</nav>
+
+<nav id="timeline" aria-label="Moments in the fort's history"></nav>
+
+<aside id="minimap" aria-label="Plan of the fort. Click to look there, double-click to walk there.">
+  <div id="mini-wrap">
+    <div id="mini-face"><div id="mini-box"><div id="mini-plan"></div><svg id="mini-over" preserveAspectRatio="xMidYMid meet"></svg></div></div>
+    <svg id="mini-frame" viewBox="0 0 100 100" aria-hidden="true"></svg>
+    <div id="mini-scale" aria-hidden="true"><i></i><span></span></div>
+    <button type="button" id="mini-key-btn" aria-label="Map key" aria-expanded="false">Key</button>
+  </div>
+  <div id="mini-key" hidden>
+    <span><i class="k-me"></i>You</span><span><i class="k-sol"></i>Soldiers</span><span><i class="k-ani"></i>Animals</span><span><i class="k-gun"></i>Guns (crewed, firing)</span>
+    <span><i class="k-boat"></i>Boats</span><span><i class="k-foe"></i>Enemy boats</span><span><i class="k-gar"></i>Garrison</span><span><i class="k-pen"></i>Pen</span><span><i class="k-poi"></i>Places</span>
+  </div>
+  <div id="status"><div id="s-zone"></div><div id="s-elev"></div><div id="s-progress"></div></div>
+</aside>
+
+<div id="tools">
+  <div id="compass" title="North"><svg id="compass-needle" viewBox="-12 -12 24 24" aria-hidden="true"><path d="M0 -10 L4 4 L0 1.5 L-4 4Z"/></svg></div>
+  <button type="button" id="btn-rot-l" aria-label="Rotate view left (Q)"><svg viewBox="0 0 24 24"><path d="M4 9a8 8 0 1 1 1.5 9"/><path d="M4 4v5h5"/></svg></button>
+  <button type="button" id="btn-rot-r" aria-label="Rotate view right (E)"><svg viewBox="0 0 24 24"><path d="M20 9a8 8 0 1 0-1.5 9"/><path d="M20 4v5h-5"/></svg></button>
+  <button type="button" id="btn-zoom-in" aria-label="Zoom in"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+  <button type="button" id="btn-zoom-out" aria-label="Zoom out"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+  <button type="button" id="btn-recenter" aria-label="Find the traveller (Space)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></button>
+  <button type="button" id="btn-battle" hidden aria-label="Battle"><svg viewBox="0 0 24 24"><path d="M4 4l9 9M20 4l-9 9M5.5 15.5l3 3M18.5 15.5l-3 3M3 19l3 2M21 19l-3 2M6 13l5 5M18 13l-5 5"/></svg></button>
+  <button type="button" id="btn-sky" aria-label="Sky, season and weather" aria-expanded="false"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3.4"/><path d="M9 2.5v1.6M9 13.9v1.6M2.5 9h1.6M13.9 9h1.6M4.4 4.4l1.1 1.1M12.5 12.5l1.1 1.1M4.4 13.6l1.1-1.1M12.5 5.5l1.1-1.1"/><path d="M10 20h9a3 3 0 0 0 0-6 4.5 4.5 0 0 0-8.6 1.4A2.4 2.4 0 0 0 10 20z"/></svg></button>
+  <button type="button" id="btn-lens" aria-label="Period lens" aria-pressed="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4l3 6M20 12l-6 2M12 20l-3-6M4 12l6-2"/></svg></button>
+</div>
+
+<section id="card" hidden aria-live="polite"></section>
+<section id="drawer" hidden></section>
+
+<section id="index" hidden>
+  <button type="button" id="index-close">Back to the fort</button>
+  <div class="wrap">
+    <div>
+      <h1>Historical Worlds · R22.66</h1>
+      <p class="lede">Explore forts across dated historical scenes, with living garrisons, local life and regional campaigns. Reconstructions include inferred layouts; open Sources for their evidence.</p>
+      <div id="index-map"></div>
+    </div>
+    <div>
+      <label for="index-search">Find a playable fort or region</label>
+      <input id="index-search" type="search" placeholder="Search forts and regions" autocomplete="off">
+      <p id="index-count" aria-live="polite"></p>
+      <div id="index-list"></div>
+      <p class="note">Each fort is a schematic reconstruction, not a measured survey. The Sources panel in each fort lists the plans, views, photographs and reports it is drawn from.</p>
+    </div>
+  </div>
+</section>
+
+<section id="help" hidden>
+  <button type="button" class="x" id="help-close" aria-label="Close">×</button>
+  <h2>Getting around</h2>
+  <dl>
+    <dt>Click / tap</dt><dd>Walk there. Click a gold marker to walk to that place.</dd>
+    <dt>Drag</dt><dd>Move the view</dd>
+    <dt>Wheel / pinch</dt><dd>Zoom</dd>
+    <dt>W A S D</dt><dd>Walk directly; hold Shift to run</dd>
+    <dt>Q / E</dt><dd>Turn the view by a quarter</dd>
+    <dt>Space</dt><dd>Find the traveller</dd>
+    <dt>1 2 3 4</dt><dd>Jump between the moments on the timeline</dd>
+    <dt>Esc</dt><dd>Close a menu, or leave aiming or moving a gun</dd>
+  </dl>
+  <p>Stairs and ramps lead up to ramparts, bastions and summits. The plan in the corner is the fort's own plan: click it to look somewhere, double-click to walk there.</p>
+  <h2>Things you can do</h2>
+  <p>Click a gun, an animal, a soldier, a pen, a bastion or barracks, or a settlement sign, and a menu opens beside it.</p>
+  <dl>
+    <dt>Guns</dt><dd>Fire one yourself, give it a crew to fire on your order or automatically, turn it, or roll it along a level rampart (never up or down stairs, 45 m at a time). Guns can be worked at Murud-Janjira in c. 1760 and 1774.</dd>
+    <dt>Horses</dt><dd>Approach slowly to tame one, then ride it; you dismount at the foot of stairs.</dd>
+    <dt>Dogs</dt><dd>Befriend one and it follows at your heel.</dd>
+    <dt>Flocks</dt><dd>Lead sheep, goats or cattle into a pen. Penned animals breed and can be milked or sheared.</dd>
+    <dt>Fowl and hares</dt><dd>Chase and catch them, carry them to a coop. A coop breeds only with a hen and a cock inside; collect the eggs.</dd>
+    <dt>Soldiers</dt><dd>Lead a squad, put one on a gun, or garrison them in a bastion, gate tower or barracks.</dd>
+    <dt>Sky &amp; weather</dt><dd>The sun-and-cloud button sets the hour, lets time pass, and chooses the season and weather: clear, hazy, overcast, rain, storm, fog or dust, or let the season decide. You can also call up an eclipse of the sun or the moon.</dd>
+    <dt>Animals</dt><dd>Animals and people are drawn by the game itself, at their real sizes. (Earlier builds used animated models from 0 A.D.; those are share-alike licensed and are not part of forts.world.)</dd>
+    <dt>Battles</dt><dd>Where a period has a battle (the crossed swords button), soldiers fight in companies. Select a company by its standard or any of its men; click the ground to move it or an enemy company to attack. Choose line, column, square or open order; hold, charge or fall back. Muskets fire in volleys at about 80 m, bows at 120 m; companies lose heart with their losses and break when morale fails. Each figure stands for about five men.</dd>
+    <dt>Wild animals</dt><dd>Boar, wolves, peafowl and monkeys cannot simply be tamed. Click one to see what may be tried and the odds: alone or with the men nearby, by day or night, in fair weather or rain. A capture can succeed, fail, or kill the animal; a struggle can injure your men or you, and boar and wolves can kill. Peafowl and langurs are never hunted.</dd>
+    <dt>Farming and stores</dt><dd>While time passes the seasons turn, about ten calendar days to a game day. Fields are ploughed and sown in their season, grow with the rains or a well, and are harvested by the farmers working them into the granary. Click a field for its stage and expected yield, and send more hands. Tended pens give milk and eggs to the stores; the boat from the mainland lands grain. Everyone in the fort eats from the granary; the bar at the top shows how many days the grain will last.</dd>
+    <dt>Garrisons</dt><dd>Every building can hold soldiers, by its floor area and use (about 4 m² a man in barracks, 8 in a house, 10 in a palace; ruins half). Click a building to send nearby soldiers in or call them out. In a battle, men inside fire from the windows and cannot be shot at.</dd>
+    <dt>The bar and the console</dt><dd>The bar across the top shows the fort's stores, its people and days of provisions; the orb shows the sun or moon, the hour and the date (click it for Sky &amp; weather). Select anything and the console at the foot shows its live portrait, its properties and what it can do; Learn more opens a note on its history. Alerts, with a drumbeat and a ping on the plan, tell you when your men come under attack. Sound starts with your first click.</dd>
+    <dt>Settlers</dt><dd>Where a fort-city has empty plots (Golconda in the 1880s), open them and families walk in and build.</dd>
+  </dl>
+</section>
+
+<section id="climate" hidden aria-label="Sky, season and weather">
+  <button type="button" class="x" id="climate-close" aria-label="Close">×</button>
+  <h2>Sky &amp; weather</h2>
+  <div class="cl-dial"><svg id="cl-dial" viewBox="-60 -40 120 52" aria-hidden="true"></svg><div><div id="cl-time"></div><div id="cl-phase"></div></div></div>
+  <label class="cl-row"><span>Hour</span><input type="range" id="cl-hour" min="0" max="24" step="0.05"></label>
+  <div class="cl-row cl-flow"><button type="button" id="cl-play" aria-pressed="false">Let time pass</button>
+    <button type="button" id="cl-turn" aria-pressed="true">Seasons turn</button>
+    <select id="cl-rate" aria-label="Speed"><option value="0.0167">1 hour a minute</option><option value="0.05" selected>1 hour in 20 s</option><option value="0.2">1 hour in 5 s</option></select></div>
+  <h3>Season</h3><div class="cl-seg" id="cl-season"></div><p class="cl-note" id="cl-season-note"></p>
+  <h3>Weather</h3><div class="cl-seg" id="cl-weather"></div>
+  <h3>The heavens</h3><div class="cl-seg"><button type="button" id="cl-solar">Eclipse of the sun</button><button type="button" id="cl-lunar">Eclipse of the moon</button></div>
+</section>
+<div id="veil"><div id="veil-name">Historical Worlds · R22.66</div><div id="veil-note"></div><div class="bar"><i></i></div></div>
+<div id="toast" hidden role="status"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.159.0/build/three.min.js"></script>
+<!--__SCRIPT__-->
