@@ -1,0 +1,36 @@
+{
+ "sources": [
+  {
+   "id": "MAT-01",
+   "kind": "reference",
+   "title": "Mariabruna Fabrizi, \"Matmata: underground dwellings for an extreme climate\", SOCKS, 26 March 2023",
+   "url": "https://socks-studio.com/2023/03/26/matmata-underground-dwellings-for-an-extreme-climate/",
+   "licence": "cited for figures only (nothing copied)",
+   "fetched": "2026-11-18"
+  },
+  {
+   "id": "MAT-02",
+   "kind": "reference",
+   "title": "Habitatio (Budapest University of Technology and Economics), Matmata pit dwellings",
+   "url": "https://habitatio.epitesz.bme.hu/en/?p=4758",
+   "licence": "cited for figures only (nothing copied)",
+   "fetched": "2026-11-18"
+  }
+ ],
+ "eras": [
+  {
+   "id": "today",
+   "year": "Today",
+   "label": "Mapped village · auto T1 with mapped pit rims",
+   "short": "Present",
+   "lens": "none",
+   "summary": "Matmata el Qadima, a Berber village of pit dwellings: each house is a courtyard dug into the ground, with rooms cut into the courtyard walls. 26 courtyard pits are mapped in OpenStreetMap as rim outlines (natural=cliff with building=yes) and are drawn as holes in the ground.",
+   "basis": "Pit rims, buildings, walls and paths are traced from OpenStreetMap (ODbL); the ground is the Terrarium terrain model (~30 m source resolution). Kalaa Matmata, the ruined hilltop above the village, is a separate row (matmata-kalaa-n11034987883).",
+   "conjecture": "No pit depth is mapped, so every pit is drawn 7 m deep to a flat floor. Published descriptions give the courtyards as 5-10 m across and no deeper than about 9 m (Fabrizi 2023, MAT-01), or about 9 m across and as deep (BME Habitatio, MAT-02). The rooms, tunnels and stairs inside the pits are not drawn: none are mapped. Walls without a height tag use the programme's schematic 6 m; buildings use 4 m.",
+   "sources": [
+    "MAT-01",
+    "MAT-02"
+   ]
+  }
+ ]
+}
