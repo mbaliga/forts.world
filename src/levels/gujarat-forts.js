@@ -21,7 +21,7 @@ export const uparkot=makeFort({
 });
 export const pavagadh=makeFort({
  id:'pavagadh',name:'Champaner–Pavagadh',native:{text:'Pavagadh',lang:'en',script:'latn'},region:'Panchmahal · Gujarat',typeLabel:'Hill fort · reconstructed from Ramsay’s 1847 plan (schematic heights)',coords:[22.486,73.530],
- type:'hill',seed:307,units:{planScale:1,vScale:3},size:{rx:1250,ry:850},hill:{h:160,cliff:36,skirt:500,pathSide:1},stride:10,navCell:4,navStep:5,guard:false,people:0,flag:false,trees:170,slopeTrees:850,defaultEra:'1847~built',
+ type:'hill',seed:307,units:{planScale:1,vScale:3},size:{rx:1250,ry:850},flatGround:true,baseGround:0.4,hill:{h:160,cliff:36,skirt:500,pathSide:1},terrainByEra:{'1847':{flatGround:true,H:0.4,approach:false,trees:0,slopeTrees:0},'1847~built':{flatGround:false,H:160,cliff:36,skirt:500,trees:170,slopeTrees:850}},stride:10,navCell:4,navStep:5,guard:false,people:0,flag:false,defaultEra:'1847~built',groundName:'Pavagadh hill',
  outline:pavPath([[270,520],[325,390],[470,300],[615,285],[690,325],[760,315],[870,275],[950,225],[1040,255],[1115,350],[1110,465],[1090,580],[1170,610],[1270,560],[1390,505],[1515,490],[1650,525],[1735,635],[1710,785],[1740,960],[1710,1115],[1600,1175],[1430,1160],[1275,1105],[1160,1135],[1060,1200],[900,1190],[760,1155],[690,1050],[700,900],[620,780],[500,735],[365,690],[290,610]]),
  wallPath:pavPath([[320,545],[322,430],[385,358],[490,320],[590,328],[625,365],[678,355],[760,300],[868,292],[934,246],[985,260],[1036,320],[1077,358],[1080,454],[1070,545],[1092,630],[1052,665],[930,668],[826,688],[720,678],[647,646],[570,664],[478,678],[390,642],[326,596]]),
  additionalWalls:[
