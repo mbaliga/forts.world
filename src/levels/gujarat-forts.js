@@ -21,7 +21,7 @@ export const uparkot=makeFort({
 });
 export const pavagadh=makeFort({
  id:'pavagadh',name:'Champaner–Pavagadh',native:{text:'Pavagadh',lang:'en',script:'latn'},region:'Panchmahal · Gujarat',typeLabel:'Hill fort · reconstructed from Ramsay’s 1847 plan (schematic heights)',coords:[22.486,73.530],
- type:'hill',seed:307,units:{planScale:1,vScale:3},size:{rx:1250,ry:850},flatGround:true,baseGround:0.4,spawnInside:[0,170],noApproach:true,stride:10,navCell:4,navStep:5,guard:false,people:0,flag:false,trees:0,slopeTrees:0,
+ type:'hill',seed:307,units:{planScale:1,vScale:3},size:{rx:1250,ry:850},hill:{h:160,cliff:36,skirt:500,pathSide:1},stride:10,navCell:4,navStep:5,guard:false,people:0,flag:false,trees:170,slopeTrees:850,defaultEra:'1847~built',
  outline:pavPath([[270,520],[325,390],[470,300],[615,285],[690,325],[760,315],[870,275],[950,225],[1040,255],[1115,350],[1110,465],[1090,580],[1170,610],[1270,560],[1390,505],[1515,490],[1650,525],[1735,635],[1710,785],[1740,960],[1710,1115],[1600,1175],[1430,1160],[1275,1105],[1160,1135],[1060,1200],[900,1190],[760,1155],[690,1050],[700,900],[620,780],[500,735],[365,690],[290,610]]),
  wallPath:pavPath([[320,545],[322,430],[385,358],[490,320],[590,328],[625,365],[678,355],[760,300],[868,292],[934,246],[985,260],[1036,320],[1077,358],[1080,454],[1070,545],[1092,630],[1052,665],[930,668],[826,688],[720,678],[647,646],[570,664],[478,678],[390,642],[326,596]]),
  additionalWalls:[
@@ -37,7 +37,7 @@ export const pavagadh=makeFort({
    {name:'Machhi Haveh · schematic blockout',x:pavXY(1280,760)[0],y:pavXY(1280,760)[1],w:34,d:28,kind:'palace',only:'1847~built'},
    {name:'Patai Raval Mehel · schematic blockout',x:pavXY(1510,1075)[0],y:pavXY(1510,1075)[1],w:45,d:28,kind:'palace',only:'1847~built'}
  ],
- temples:[{x:pavXY(1630,1080)[0],y:pavXY(1630,1080)[1],w:10,h:17,style:'nagara',only:'1847~built'}],
+ temples:[{x:pavXY(1630,1080)[0],y:pavXY(1630,1080)[1],w:20,h:24,style:'nagara',only:'1847~built'}],
  tanks:[
   {x:pavXY(1440,255)[0],y:pavXY(1440,255)[1],rx:24,ry:16,name:'Medhi Tank · schematic basin',only:'1847~built'},
   {x:pavXY(1315,820)[0],y:pavXY(1315,820)[1],rx:17,ry:29,name:'Annapurna Tank · schematic basin',only:'1847~built'},
@@ -47,7 +47,7 @@ export const pavagadh=makeFort({
  ],
  eras:[
   {id:'1847',year:'1847',label:'Ramsay plan · traced linework',short:'Plan traces',lens:'none',summary:'Inspect the fortification circuits and plan labels in a flat, unraised trace view.',basis:'Fortification traces and feature positions follow J. Ramsay’s 1847 British Library plan in a local coordinate frame. The plan is not georeferenced.',conjecture:'Wall line thickness is display-only and height is kerb-high. Relief, water depths, structure heights, gate forms and present survival are not represented in this layer.',sources:['PAV-01']},
-  {id:'1847~built',year:'1847',label:'1847 · constructed schematic',short:'Constructed ✦',layer:'constructed',lens:'none',summary:'View an explicitly schematic raised massing based on the 1847 plan.',basis:'Plan-traced footprints and gate positions are converted into walkable blockouts. The British Library sheet has no elevations or height measurements; the gateway form is informed only by photographs of surviving Pavagadh gateways.',conjecture:'The source does not give heights, wall thicknesses or detailed building outlines. The 8.5 m rampart height, gate heights, bastion forms and palace/temple/tank elevations are visual assumptions, not measured facts. Terrain, slope routes and current survival are not reconstructed.',sources:['PAV-01']}
+  {id:'1847~built',year:'1847',label:'1847 · constructed schematic',short:'Constructed ✦',layer:'constructed',lens:'none',summary:'View the plan traced fort circuits rising over a forested hill, with an ascending switchback and the named Bhadra Kali temple.',basis:'Plan-traced footprints and gate positions are converted into a schematic hill-fort scene. The 1847 plan supplies the fort circuits, named route and Bhadra Kali temple position; UNESCO identifies Pavagadh as a high hill in a landscape of forests, fortifications, temples and waterworks.',conjecture:'The hill relief, scarp, talus, switchback grade, 8.5 m rampart height, gate heights, bastion forms, vegetation density and palace/temple/tank dimensions are visual assumptions, not measured facts. The model is not registered to a DEM; the 1847 plan remains its own local frame.',sources:['PAV-01']}
  ],
  eraPalette:{'1847~built':{wall:'#bb9457',wallTop:'#c7a56c',trim:'#e0c18c',stone:'#b99a6a',plaster:'#cfb17b',plasterDark:'#a98d60',roof:'#9e7449',rock:'#9e8c6e',cliff:'#8a7b62',grass:'#6f8a3c',dry:'#a89060',road:'#9a7a56',court:'#a99a80',paved:'#8f877c',sand:'#c9b48a',accent:'#d2ac62'}},
  pois:[

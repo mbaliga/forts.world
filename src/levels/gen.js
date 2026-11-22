@@ -159,7 +159,7 @@ export function makeFort(F) {
       rock: '#6e6862', cliff: '#4f4a45', grass: '#6f8a3c', dry: '#a89060', road: '#9a7a56', court: '#a99a80', paved: '#8f877c', sand: '#c9b48a',
       field: '#8a9a50', mud: '#6a5440', garden: '#5f8a3e', water: '#4f6f6a', tank: '#4d6a5a', leaf: '#3f6a2a', leafDry: '#8c8648', trunk: '#5e4a36', dome: '#e4dccb', flag: '#e8731a', accent: '#b89a5a' }, F.palette || {}),
     eraPalette: { today: { plaster: '#cfc6b3', grass: '#6a8a38' } },
-    defaultEra: F.eras[0].id,
+    defaultEra: F.defaultEra || F.eras[0].id,
     eras: F.eras.map((e) => Object.assign({ sources: [] }, e)),
     pois: F.pois.map((p) => ({ id: p.id, at: p.at, r: p.r ?? 7, title: p.title, source: p.source, evidence: p.ev || 'unknown', positionEvidence: p.positionEvidence || 'inferred', text: p.text, eraNote: p.eraNote || {} })),
 
