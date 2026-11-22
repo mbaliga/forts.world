@@ -84,8 +84,13 @@ function pointInPolygon(x, y, poly) {
 }
 
 export function makeFort(F) {
-  const R = outlineFn(F), moat = F.type === 'moat', flat = !!F.flatGround, sea = F.type === 'sea' || F.type === 'coast' || F.type === 'river' || moat;
-  const H = moat ? 3 : flat ? (F.baseH ?? 0.4) : sea ? 3 : F.hill.h, cliffW = sea || flat ? 0 : F.hill.cliff ?? 12, skirt = sea || flat ? 0 : F.hill.skirt ?? 90;
+  const R = outlineFn(F), moat = F.type === 'moat', flat0 = !!F.flatGround, sea = F.type === 'sea' || F.type === 'coast' || F.type === 'river' || moat;
+  const H0 = moat ? 3 : flat0 ? (F.baseH ?? 0.4) : sea ? 3 : F.hill.h, cliffW0 = sea || flat0 ? 0 : F.hill.cliff ?? 12, skirt0 = sea || flat0 ? 0 : F.hill.skirt ?? 90;
+  const landscapeFor = (era) => F.terrainByEra?.[era] || {};
+  const flatFor = (era) => landscapeFor(era).flatGround ?? flat0;
+  const heightFor = (era) => landscapeFor(era).H ?? H0;
+  const cliffFor = (era) => landscapeFor(era).cliff ?? (sea ? 0 : F.hill.cliff ?? cliffW0);
+  const skirtFor = (era) => landscapeFor(era).skirt ?? (sea ? 0 : F.hill.skirt ?? skirt0);
   const maxR = Array.isArray(F.outline) && F.outline.length >= 3
     ? Math.max(...F.outline.map(([x, y]) => Math.hypot(x, y)))
     : Array.isArray(F.wallPath) && F.wallPath.length >= 3
@@ -101,7 +106,9 @@ export function makeFort(F) {
   // present-day site boundary and evidence markers. These context layers may
   // extend beyond the fort footprint; they must not enlarge or reshape it.
   const contextMargin = F.margin ?? 40;
-  const ext = Math.max((sea || flat) ? maxR + (F.margin ?? 70) : maxR + cliffW + skirt + contextMargin, extraWallR + contextMargin, contextR + contextMargin);
+  const hillProfiles = Object.values(F.terrainByEra || {}).filter((p) => p.flatGround === false);
+  const maxCliff = Math.max(cliffW0, ...hillProfiles.map((p) => p.cliff ?? F.hill.cliff ?? 0)), maxSkirt = Math.max(skirt0, ...hillProfiles.map((p) => p.skirt ?? F.hill.skirt ?? 0));
+  const ext = Math.max((sea || (flat0 && !hillProfiles.length)) ? maxR + (F.margin ?? 70) : maxR + maxCliff + maxSkirt + contextMargin, extraWallR + contextMargin, contextR + contextMargin);
   const NZ = makeNoise((F.seed || 1) * 31);
   const wallK = F.wallK ?? (sea ? 0.86 : 0.94);
   const mainGate = F.gates.find((g) => g.main) || F.gates[0];
@@ -109,7 +116,7 @@ export function makeFort(F) {
   const at = (a, k) => [R(a) * k * Math.cos(a * DEG), R(a) * k * Math.sin(a * DEG)];
   // hill-fort walls run a fixed distance in from the rim (so a narrow plateau keeps room for a gate landing)
   const explicitWallPath = Array.isArray(F.wallPath) && F.wallPath.length >= 3;
-  const RW = (a) => (sea || flat ? R(a) * wallK : R(a) - 7), atW = (a, extra = 0) => {
+  const RW = (a) => (sea || flat0 ? R(a) * wallK : R(a) - 7), atW = (a, extra = 0) => {
     const r = RW(a) + extra, radial = [r * Math.cos(a * DEG), r * Math.sin(a * DEG)];
     return explicitWallPath ? nearestPathPoint(F.wallPath, radial).at : radial;
   };
@@ -124,7 +131,7 @@ export function makeFort(F) {
     const [x0, y0] = atW(a - 1.5), [x1, y1] = atW(a + 1.5); let nx = y1 - y0, ny = -(x1 - x0); const l = Math.hypot(nx, ny) || 1; nx /= l; ny /= l; const [px, py] = atW(a); if (nx * px + ny * py < 0) { nx = -nx; ny = -ny; } return [nx, ny];
   };
   // the switchback path from the foot of the hill to the main gate
-  function hillPath() {
+  function hillPath(H, cliffW, skirt) {
     // the approach winds round the hill below the rim, always on the slope at its own angle, descending steadily
     const a0 = mainGate.a, side = F.hill.pathSide ?? 1, sweep = Math.min(230, 110 + H * 1.8), N = 28;
     const [gx, gy] = atW(a0), [nx, ny] = normalW(a0);
@@ -136,7 +143,6 @@ export function makeFort(F) {
     const end = pts[pts.length - 1], ea = Math.atan2(end[1], end[0]); pts.push([end[0] + Math.cos(ea) * 14, end[1] + Math.sin(ea) * 14, 0.8]);
     return pts;
   }
-  const PATH = (sea || flat) ? null : hillPath();
   const hasShore = !!F.shore;
   const SHORE = hasShore ? (() => { const d = F.shore.dist, w = ext * 2.2; const a = F.shore.a * DEG, ux = Math.cos(a), uy = Math.sin(a), tx = -uy, ty = ux; const c0 = [ux * d, uy * d], c1 = [ux * (d + ext * 2), uy * (d + ext * 2)]; return [[c0[0] + tx * w, c0[1] + ty * w], [c0[0] - tx * w, c0[1] - ty * w], [c1[0] - tx * w, c1[1] - ty * w], [c1[0] + tx * w, c1[1] + ty * w]]; })() : null;
   const ISTHMUS = (F.type === 'coast' || F.type === 'river') && hasShore ? (() => { const a = F.shore.a * DEG, ux = Math.cos(a), uy = Math.sin(a), tx = -uy, ty = ux, w = F.isthmusW ?? 40; return [[tx * w, ty * w], [-tx * w, -ty * w], [ux * (F.shore.dist + 10) - tx * w, uy * (F.shore.dist + 10) - ty * w], [ux * (F.shore.dist + 10) + tx * w, uy * (F.shore.dist + 10) + ty * w]]; })() : null;
@@ -149,8 +155,8 @@ export function makeFort(F) {
     ...(Array.isArray(F.additionalWalls) ? { additionalWalls: F.additionalWalls.map((w) => ({ ...w, path: (w.path || []).map(([x, y]) => [x, y]) })) } : {}),
     ...(Array.isArray(F.siteBoundary) ? { siteBoundary: F.siteBoundary.map(([x, y]) => [x, y]), siteBoundaryLabel: F.siteBoundaryLabel || 'Site boundary · source status unspecified' } : {}),
     ...(F.spawnInside ? { spawnInside: [...F.spawnInside] } : {}),
-    poiCount: F.pois.length, groundName: (sea || flat) ? 'Inside the walls' : 'The plateau', datum: 0, datumLabel: (F.type === 'river' || moat) ? 'above schematic water level' : sea ? 'above high tide' : flat ? 'local ground datum' : 'above the foot of the hill',
-    units: F.units || { planScale: 3, vScale: 6 }, bounds: [-ext, -ext, ext, ext], stride: ext > 380 ? 3 : 2, navCell: ext > 700 ? 2 : 1, navStep: ext > 700 ? 2.5 : 0.62, seed: F.seed || 7,
+    poiCount: F.pois.length, groundName: F.groundName || (sea || flat0) ? (F.groundName || 'Inside the walls') : 'The plateau', datum: 0, datumLabel: (F.type === 'river' || moat) ? 'above schematic water level' : sea ? 'above high tide' : flat0 ? 'local ground datum' : 'above the foot of the hill',
+    units: F.units || { planScale: 3, vScale: 6 }, bounds: [-ext, -ext, ext, ext], stride: F.stride ?? (ext > 380 ? 3 : 2), navCell: F.navCell ?? (ext > 700 ? 2 : 1), navStep: F.navStep ?? (ext > 700 ? 2.5 : 0.62), seed: F.seed || 7,
     water: sea ? { sea: 0, deep: '#2a5558', mid: '#3d6f6a', shallow: '#6f9a84', silt: '#8c9470' } : null,
     apron: sea ? undefined : { h: 0.4, color: '#8a8a55' },
     view: { az: F.view?.az ?? -35, el: 40, zoom: F.view?.zoom ?? 80, introAt: [0, 0], introZoom: ext * 1.9 },
@@ -159,11 +165,12 @@ export function makeFort(F) {
       rock: '#6e6862', cliff: '#4f4a45', grass: '#6f8a3c', dry: '#a89060', road: '#9a7a56', court: '#a99a80', paved: '#8f877c', sand: '#c9b48a',
       field: '#8a9a50', mud: '#6a5440', garden: '#5f8a3e', water: '#4f6f6a', tank: '#4d6a5a', leaf: '#3f6a2a', leafDry: '#8c8648', trunk: '#5e4a36', dome: '#e4dccb', flag: '#e8731a', accent: '#b89a5a' }, F.palette || {}),
     eraPalette: { today: { plaster: '#cfc6b3', grass: '#6a8a38' } },
-    defaultEra: F.eras[0].id,
+    defaultEra: F.defaultEra || F.eras[0].id,
     eras: F.eras.map((e) => Object.assign({ sources: [] }, e)),
     pois: F.pois.map((p) => ({ id: p.id, at: p.at, r: p.r ?? 7, title: p.title, source: p.source, evidence: p.ev || 'unknown', positionEvidence: p.positionEvidence || 'inferred', text: p.text, eraNote: p.eraNote || {} })),
 
     terrain: (era) => {
+      const profile = landscapeFor(era), flat = flatFor(era), H = heightFor(era), cliffW = cliffFor(era), skirt = skirtFor(era), PATH = (sea || flat || profile.approach === false || F.noApproach) ? null : hillPath(H, cliffW, skirt);
       const gates = gatesForEra(era);
       const mainGate = gates.find((g) => g.main) || gates[0];
       const ops = [{ op: 'base', h: sea ? -6 : flat ? (F.baseGround ?? 0.4) : 0.4 }, { op: 'noise', amp: sea || flat ? 0.6 : 1.4, scale: 60 }];
@@ -237,14 +244,15 @@ export function makeFort(F) {
     },
 
     build(W) {
-      const era = W.era, hist = era !== 'today', E = F.eras.find((e) => e.id === era) || F.eras[0], gates = gatesForEra(era);
+      const era = W.era, baseEra = era.endsWith('~built') ? era.slice(0, -6) : era, hist = baseEra !== 'today', E = F.eras.find((e) => e.id === baseEra) || F.eras[0], gates = gatesForEra(era);
+      const profile = landscapeFor(era), flat = flatFor(era), H = heightFor(era), cliffW = cliffFor(era), skirt = skirtFor(era), PATH = (sea || flat || profile.approach === false || F.noApproach) ? null : hillPath(H, cliffW, skirt);
       const wallStyle = F.wallStyleByEra?.[era] || {};
       if (F.siteBoundary && F.siteBoundaryLabel && (!F.siteBoundaryOnly || F.siteBoundaryOnly === era)) W.zone(F.siteBoundary, F.siteBoundaryLabel);
       const ring = explicitWallPath
         ? F.wallPath.map(([x, y]) => [x, y])
         : [];
       if (!ring.length) for (let a = 0; a < 360; a += 3) ring.push(atW(a));
-      const wall = F.suppressPerimeterWall ? null : W.wall({ path: ring, closed: true, outer: 'right', h: wallStyle.h ?? F.wallH ?? (sea ? 7 : 5), thick: F.wallT ?? 3.2, batter: wallStyle.batter ?? 0.06, parapet: wallStyle.parapet ?? { h: 1.2, t: 0.6 }, merlon: wallStyle.merlon ?? { style: 'round', w: 0.9, gap: 0.75, h: 0.85, slit: true }, color: wallStyle.color || 'wall', coping: wallStyle.coping ?? true, spouts: wallStyle.spouts ?? { every: 18 }, maxSeg: 3 });
+      const wall = F.suppressPerimeterWall ? null : W.wall({ path: ring, closed: true, outer: 'right', h: wallStyle.h ?? F.wallH ?? (sea ? 7 : 5), thick: wallStyle.thick ?? F.wallTByEra?.[era] ?? F.wallT ?? 3.2, batter: wallStyle.batter ?? 0.06, parapet: wallStyle.parapet ?? { h: 1.2, t: 0.6 }, merlon: wallStyle.merlon ?? { style: 'round', w: 0.9, gap: 0.75, h: 0.85, slit: true }, color: wallStyle.color || 'wall', coping: wallStyle.coping ?? true, spouts: wallStyle.spouts ?? { every: 18 }, maxSeg: 3 });
       let innerW = null;
       if (F.innerWall && (!F.innerWall.only || F.innerWall.only === era)) innerW = W.wall({ path: ringAt(R, F.innerWall.k, 0, 0, 4), closed: true, outer: 'right', h: F.innerWall.h ?? 4.5, thick: 2.6, batter: 0.05, parapet: { h: 1.1, t: 0.5 }, merlon: { style: 'round', w: 0.85, gap: 0.8, h: 0.8 }, color: 'wall' });
       // gates
@@ -257,13 +265,16 @@ export function makeFort(F) {
       const enclosedPaths = [F.wallPath, ...(F.additionalWalls || []).map((w) => w.path)].filter((p) => Array.isArray(p) && p.length >= 3);
       for (const circuit of F.additionalWalls || []) {
         if (!Array.isArray(circuit.path) || circuit.path.length < 3 || (circuit.only && circuit.only !== era)) continue;
-        const circuitWall = W.wall({ path: circuit.path.map(([x, y]) => [x, y]), closed: true, outer: 'right', h: circuit.h ?? 5, thick: circuit.thick ?? 3, batter: 0.05, parapet: { h: 1.1, t: 0.5 }, merlon: { style: 'round', w: 0.85, gap: 0.8, h: 0.8 }, color: circuit.color || 'wall', maxSeg: 3 });
-        if (circuit.gateAt) W.gate({ wall: circuitWall, at: circuit.gateAt, width: circuit.gateWidth ?? 3, spring: 2.8, rise: 1.4, style: 'pointed', towers: false, name: circuit.gateName || 'Gate · position approximate', doors: hist, frameUp: 1, floor: H });
+        const cs = circuit.wallStyleByEra?.[era] || {};
+        const circuitWall = W.wall({ path: circuit.path.map(([x, y]) => [x, y]), closed: true, outer: 'right', h: cs.h ?? circuit.h ?? 5, thick: cs.thick ?? circuit.thick ?? 3, batter: 0.05, parapet: cs.parapet ?? { h: 1.1, t: 0.5 }, merlon: cs.merlon ?? { style: 'round', w: 0.85, gap: 0.8, h: 0.8 }, color: cs.color || circuit.color || 'wall', maxSeg: 3 });
+        const gateSpec = circuit.gatesByEra?.[era] || (circuit.gateAt ? [{ at: circuit.gateAt, width: circuit.gateWidth, name: circuit.gateName }] : []);
+        for (const g of gateSpec) W.gate({ wall: circuitWall, at: g.at, width: g.width ?? 3, spring: 2.8, rise: 1.4, style: 'pointed', towers: false, name: g.name || 'Gate · plan position, schematic form', doors: hist, frameUp: 1, floor: H });
         if (circuit.label) W.zone(circuit.path, circuit.label);
       }
       // bastions along the wall, clear of the gates
       const step = F.bastionStep ?? 34; let acc = 0, k = 0;
-      if (F.bastionAngles) for (const a of F.bastionAngles) W.bastion({ at: atW(a), wall, r: F.bastionR ?? 3.6, off: 1.3, dh: 0.4, cannon: false });
+      const bastionAngles = F.bastionAnglesByEra?.[era] ?? F.bastionAngles;
+      if (bastionAngles) for (const a of bastionAngles) W.bastion({ at: atW(a), wall, r: F.bastionR ?? 3.6, off: 1.3, dh: 0.4, cannon: false });
       else if (F.bastionsPerSide && explicitWallPath) {
         const count = Math.max(1, Math.floor(F.bastionsPerSide));
         for (let side = 0; side < F.wallPath.length; side++) {
@@ -305,7 +316,7 @@ export function makeFort(F) {
         else W.ruin({ rect, base, h: Math.min(3.4, 2.2 + (b.storeys || 1) * 0.6), thick: 0.6, jag: true, windows: false, color: 'stone', doors: [{ edge: 0, at: 0.5, w: 1.8 }] });
         if (b.name) W.zone(rectPts(b.x, b.y, b.w + 6, b.d + 6, b.rot || 0), b.name);
       }
-      for (const t of F.temples || []) if (inside(t.x, t.y)) W.temple({ x: t.x, y: t.y, rot: t.rot || 0, w: t.w || 4.5, h: t.h || 7, style: t.style || 'nagara', plinth: 0.6, mandapa: { d: 4.5, w: (t.w || 4.5) + 1, h: 2.8, roof: 'flat' }, color: 'stone', base: F.islandHill ? W.ground(t.x, t.y) : H });
+      for (const t of F.temples || []) if ((!t.only || t.only === era) && inside(t.x, t.y)) W.temple({ x: t.x, y: t.y, rot: t.rot || 0, w: t.w || 4.5, h: t.h || 7, style: t.style || 'nagara', plinth: 0.6, mandapa: { d: 4.5, w: (t.w || 4.5) + 1, h: 2.8, roof: 'flat' }, color: 'stone', base: F.islandHill ? W.ground(t.x, t.y) : H });
       for (const t of F.tanks || []) if (!t.only || t.only === era) { const poly = ellPoly(t.x, t.y, t.rx, t.ry, t.rot || 0); W.tank({ poly, waterDepth: 2, tiers: 4, color: 'stone' }); if (t.name) W.zone(poly, t.name); }
       // Small illustrative rock-cut stair and shaft; scale and placement come from the level sheet.
       for (const v of F.rockSteps || []) if (!v.only || v.only === era) {
@@ -332,8 +343,8 @@ export function makeFort(F) {
         W.npc({ kind: 'tourist-a', zone: inner, count: F.visitors ?? 8, speed: 0.6 });
         if (F.todayPeople !== false) W.npc({ kind: 'villager', zone: inner, count: 2, speed: 0.5 });
       }
-      W.trees({ poly: ringAt(R, wallK * 0.82, 0, 0, 12), count: F.trees ?? (sea ? 14 : 30), types: sea ? { palm: 3, round: 1 } : hist ? { round: 2, neem: 1, acacia: 2 } : { round: 3, neem: 2, acacia: 2, banyan: 1 }, s: [0.8, 1.3], minDist: 6, seed: F.seed || 7 });
-      if (!sea && !flat) W.trees({ poly: ringAt(R, 1.0 + (cliffW + skirt * 0.8) / F.size.rx, 0, 0, 12).filter(() => true), count: F.slopeTrees ?? 50, types: { round: 2, acacia: 2, bush: 3 }, s: [0.7, 1.2], minDist: 7, seed: (F.seed || 7) + 3 });
+      W.trees({ poly: ringAt(R, wallK * 0.82, 0, 0, 12), count: profile.trees ?? F.trees ?? (sea ? 14 : 30), types: sea ? { palm: 3, round: 1 } : hist ? { round: 2, neem: 1, acacia: 2 } : { round: 3, neem: 2, acacia: 2, banyan: 1 }, s: [0.8, 1.3], minDist: 6, seed: F.seed || 7 });
+      if (!sea && !flat) W.trees({ poly: ringAt(R, 1.0 + (cliffW + skirt * 0.8) / F.size.rx, 0, 0, 12).filter(() => true), count: profile.slopeTrees ?? F.slopeTrees ?? 50, types: { round: 2, acacia: 2, bush: 3 }, s: [0.7, 1.2], minDist: 7, seed: (F.seed || 7) + 3 });
       if (sea && !moat) for (const b of F.boats || [{ a: mainGate.a, k: 1.25 }]) { const [bx, by] = at(b.a, b.k); W.boat({ x: bx, y: by, dir: b.a + 90, size: 0.8, sail: hist }); }
       if (!F.suppressPerimeterWall) W.zone(ring, (sea || flat) ? 'Inside the walls' : 'The plateau');
       // places of interest, with the note for this period; kept clear of buildings and trees
