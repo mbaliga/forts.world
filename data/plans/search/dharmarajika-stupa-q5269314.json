@@ -208,19 +208,6 @@
   "planish": false
  },
  {
-  "title": "File:((By @ibnAzhar))0DharmaRajika Stupa-Taxila-Pakistan (146).JPG",
-  "url": "https://upload.wikimedia.org/wikipedia/commons/9/95/%28%28By_%40ibnAzhar%29%290DharmaRajika_Stupa-Taxila-Pakistan_%28146%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-  "w": 2592,
-  "h": 1944,
-  "licence": "CC BY-SA 3.0",
-  "author": "Ibnazhar",
-  "date": "2014-09-15 22:31:26",
-  "desc": "This is a photo of a monument in Pakistan identified as the",
-  "query": "Taxila map",
-  "open": true,
-  "planish": false
- },
- {
   "title": "File:((By @ibnAzhar))0DharmaRajika Stupa-Taxila-Pakistan (147).JPG",
   "url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/%28%28By_%40ibnAzhar%29%290DharmaRajika_Stupa-Taxila-Pakistan_%28147%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "w": 2592,
@@ -399,6 +386,19 @@
   "date": "2024-05-13 09:09:57",
   "desc": "",
   "query": "Dharmarajika plan",
+  "open": true,
+  "planish": false
+ },
+ {
+  "title": "File:((By @ibnAzhar))0DharmaRajika Stupa-Taxila-Pakistan (18).JPG",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/0/08/%28%28By_%40ibnAzhar%29%290DharmaRajika_Stupa-Taxila-Pakistan_%2818%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "w": 2592,
+  "h": 1292,
+  "licence": "CC BY-SA 3.0",
+  "author": "Ibnazhar",
+  "date": "2014-09-15 22:15:53",
+  "desc": "This is a photo of a monument in Pakistan identified as the",
+  "query": "Taxila map",
   "open": true,
   "planish": false
  },

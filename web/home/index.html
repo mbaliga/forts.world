@@ -1,0 +1,909 @@
+<meta charset="utf-8">
+<title>forts.world</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Cinzel:wght@600;700&family=Marcellus&family=Amiri:wght@400;700&family=Cormorant+SC:wght@500;700&family=Rozha+One&family=Tiro+Devanagari+Hindi&family=Noto+Serif+SC:wght@500;700&family=Noto+Sans+Brahmi&family=Noto+Serif+Tamil:wght@500&display=swap">
+<style>
+@property --panel { syntax: '<color>'; inherits: true; initial-value: #14181a; }
+@property --panel2 { syntax: '<color>'; inherits: true; initial-value: #1b2023; }
+@property --on { syntax: '<color>'; inherits: true; initial-value: #eef1f1; }
+@property --onmute { syntax: '<color>'; inherits: true; initial-value: #9aa4a6; }
+@property --trim { syntax: '<color>'; inherits: true; initial-value: #6b767a; }
+@property --trim2 { syntax: '<color>'; inherits: true; initial-value: #d9dfe0; }
+/* Two registers. Until you pick a fort or a viewpoint the map is a sterile lens: monotone land, terrain contours, forts as points,
+   people's known worlds as stacked layers. Picking something brings in that culture's palette, type and ornament, on its card only. */
+:root {
+  --paper: #f3f3f0; --sea: #e7eae9; --land: #fafaf8; --coast: rgba(22,25,26,.28); --ink: #16191a; --mute: #5d6669; --faint: #9aa2a4;
+  --line: rgba(22,25,26,.12); --glass: rgba(250,250,248,.72); --fog: rgba(231,234,233,.82); --halo: rgba(250,250,248,.9); --dot: rgba(22,25,26,.62);
+  --panel: #14181a; --panel2: #1b2023; --on: #eef1f1; --onmute: #9aa4a6; --trim: #6b767a; --trim2: #d9dfe0; --pattern: none; --chromefont: "Geist";
+  --sans: "Geist", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --display: var(--chromefont), "Geist", sans-serif;
+  --script: "Tiro Devanagari Hindi", "Amiri", "Noto Serif SC", "Noto Sans Brahmi", "Noto Serif Tamil", serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #0b0e10; --sea: #0b0e10; --land: #12171a; --coast: rgba(233,237,238,.3); --ink: #e9edee; --mute: #9aa4a6; --faint: #5f6a6d;
+  --line: rgba(233,237,238,.12); --glass: rgba(11,14,16,.66); --fog: rgba(11,14,16,.8); --halo: rgba(11,14,16,.9); --dot: rgba(233,237,238,.7); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --paper: #0b0e10; --sea: #0b0e10; --land: #12171a; --coast: rgba(233,237,238,.3); --ink: #e9edee; --mute: #9aa4a6; --faint: #5f6a6d;
+  --line: rgba(233,237,238,.12); --glass: rgba(11,14,16,.66); --fog: rgba(11,14,16,.8); --halo: rgba(11,14,16,.9); --dot: rgba(233,237,238,.7); color-scheme: dark; }
+
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.55 var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: inherit; } button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
+.wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); max-width: 1240px; margin-inline: auto; box-sizing: border-box; }
+.label { font: 500 11px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+.wordmark { font: 600 17px/1 var(--sans); letter-spacing: -.01em; text-decoration: none; white-space: nowrap; }
+.wordmark span { color: var(--faint); }
+
+/* the plate: only for something picked, wearing its culture */
+.plate { position: relative; background: linear-gradient(180deg, var(--panel2), var(--panel)); color: var(--on); border: 1px solid var(--trim); border-radius: 8px;
+  box-shadow: inset 0 0 0 3px var(--panel), inset 0 0 0 4px color-mix(in srgb, var(--trim2) 45%, transparent), 0 10px 30px rgba(0,0,0,.22);
+  transition: --panel .45s ease, --panel2 .45s ease, --on .45s ease, --onmute .45s ease, --trim .45s ease, --trim2 .45s ease, border-radius .45s ease, box-shadow .45s ease; }
+/* the present: sterile black glass */
+.plate.glass { background: linear-gradient(180deg, color-mix(in srgb, var(--panel2) 78%, transparent), color-mix(in srgb, var(--panel) 86%, transparent)); backdrop-filter: blur(18px) saturate(1.3); -webkit-backdrop-filter: blur(18px) saturate(1.3);
+  border-color: rgba(255,255,255,.14); border-radius: 14px; box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 12px 34px rgba(0,0,0,.32); }
+.plate.glass.frieze { padding-top: 14px !important; } .plate.glass.frieze::before { display: none; }
+.plate.frieze { padding-top: 20px !important; }
+.plate.frieze::before { content: ""; position: absolute; left: 4px; right: 4px; top: 4px; height: 10px; background-image: var(--pattern); background-repeat: repeat-x; background-size: auto 10px; border-radius: 4px 4px 0 0; }
+
+.counter { display: flex; flex-wrap: wrap; gap: 2px 10px; font: 400 12px/1.3 var(--mono); font-variant-numeric: tabular-nums; color: var(--mute); }
+.counter span { white-space: nowrap; }
+.counter b { font-weight: 500; color: var(--ink); }
+.counter i { font-style: normal; color: var(--faint); }
+
+.ibtn { height: 34px; min-width: 34px; padding: 0 10px; box-sizing: border-box; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--ink); display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; font: 500 12px var(--mono); text-decoration: none; }
+.ibtn:hover { border-color: var(--faint); }
+.ibtn svg { width: 16px; height: 16px; flex: none; }
+.ibtn[aria-pressed="false"] { color: var(--faint); }
+.ibtn.icon { padding: 0; }
+
+/* ---------- landing ---------- */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 31; background: var(--paper); }
+.nav .wrap { display: flex; align-items: center; gap: 22px; padding-block: 11px; }
+.links { display: flex; gap: 22px; margin-left: auto; align-items: center; }
+.links a.t { text-decoration: none; font-size: 14px; color: var(--mute); white-space: nowrap; }
+.links a.t:hover { color: var(--ink); }
+.cta { padding: 8px 14px; border: 1px solid var(--ink); border-radius: 999px; text-decoration: none; font-weight: 500; font-size: 14px; white-space: nowrap; }
+@media (max-width: 900px) { .links a.hide-m { display: none; } }
+@media (max-width: 480px) { .links { gap: 8px; } .links .hide-xs { display: none; } .nav .wrap { gap: 10px; } .cta { padding: 7px 12px; } }
+
+.hero { position: relative; height: clamp(540px, 80vh, 800px); overflow: hidden; }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, var(--paper) 0%, color-mix(in srgb, var(--paper) 70%, transparent) 30%, transparent 58%), linear-gradient(0deg, var(--paper) 0%, transparent 22%), linear-gradient(180deg, var(--paper) 0%, transparent 18%); }
+.title { position: absolute; z-index: 2; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 22px; pointer-events: none; }
+.title > * { pointer-events: auto; }
+.hero .counter { position: absolute; z-index: 3; top: 18px; left: max(16px, env(safe-area-inset-left, 0px)); }
+.word { margin: 0; font: 600 clamp(44px, 7.4vw, 100px)/.92 var(--sans); letter-spacing: -.045em; }
+.word span { color: var(--faint); }
+.thesis { margin: 0; font: 400 clamp(17px, 1.8vw, 21px)/1.4 var(--sans); max-width: 25ch; color: var(--mute); text-wrap: balance; }
+.menu { display: grid; width: min(320px, 100%); }
+.menu a { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 13px 2px; text-decoration: none; font: 500 15px/1 var(--sans); border-bottom: 1px solid var(--line); }
+.menu a.go { padding: 13px 18px; border: 0; border-radius: 999px; background: var(--ink); color: var(--paper); margin-bottom: 6px; }
+.menu svg { width: 14px; height: 14px; flex: none; }
+.seen { position: absolute; z-index: 2; right: max(16px, env(safe-area-inset-right, 0px)); bottom: 22px; padding: 10px 16px 12px; display: grid; gap: 3px; min-width: 220px; }
+.seen b { font: 700 16px/1.2 var(--display); }
+.seen .s2 { font: 400 15px/1.3 var(--script); color: var(--trim2); }
+.seen .m { font: 400 12px var(--mono); color: var(--onmute); }
+
+.section { padding-block: 72px 6px; display: grid; gap: 20px; }
+.section h2 { margin: 0; font: 600 clamp(26px, 3.2vw, 40px)/1.1 var(--sans); letter-spacing: -.03em; text-wrap: balance; max-width: 26ch; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 28px; }
+.grid3 h3 { margin: 0 0 6px; font: 600 16px/1.3 var(--sans); }
+.grid3 p { margin: 0; color: var(--mute); }
+.wonders { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0 28px; }
+.wonder { display: grid; gap: 7px; padding: 14px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+.wonder .n { font: 600 16px/1.2 var(--sans); display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.wonder .n small { font: 400 15px var(--script); color: var(--mute); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 400 11.5px/1 var(--mono); padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--mute); }
+.reach { padding: 28px; display: grid; gap: 14px; border: 1px solid var(--line); border-radius: 12px; }
+.reach h3 { margin: 0; font: 600 24px/1.2 var(--sans); letter-spacing: -.02em; }
+.reach p { margin: 0; color: var(--mute); max-width: 62ch; }
+.mail { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.mail code { font: 500 15px var(--mono); user-select: all; }
+footer.site { margin-top: 80px; border-top: 1px solid var(--line); }
+footer.site .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 28px; padding-block: 40px 28px; }
+footer.site h4 { margin: 0 0 10px; font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+footer.site ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+footer.site li a { text-decoration: none; }
+footer.site li a:hover { text-decoration: underline; }
+footer.site .credits { padding-block: 0 36px; color: var(--mute); font: 400 12px/1.6 var(--mono); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+/* ---------- time map ---------- */
+.mapview { position: fixed; inset: 0; z-index: 40; background: var(--sea); overflow: hidden; }
+.mapview > canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+.mapview > canvas.dragging { cursor: grabbing; }
+.shade { position: absolute; left: 0; right: 0; pointer-events: none; z-index: 2; }
+.shade.top { top: 0; height: calc(env(safe-area-inset-top, 0px) + 150px); background: linear-gradient(180deg, var(--paper) 0%, var(--paper) 30%, color-mix(in srgb, var(--paper) 0%, transparent) 100%); }
+.shade.bottom { bottom: 0; height: calc(env(safe-area-inset-bottom, 0px) + 200px); background: linear-gradient(0deg, var(--paper) 0%, var(--paper) 45%, color-mix(in srgb, var(--paper) 0%, transparent) 100%); }
+.hud { position: absolute; z-index: 3; box-sizing: border-box; }
+.mtop { top: env(safe-area-inset-top, 0px); left: 0; right: 0; display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; gap: 10px 20px; padding: 14px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px)); }
+.mtop .homeline { display: flex; align-items: center; gap: 14px; }
+.mtop .titleline { text-align: center; display: grid; gap: 3px; min-width: 0; justify-items: center; }
+.mtop .titleline .stats { display: flex; gap: 14px; justify-content: center; margin-top: 3px; }
+.mtop .tools { justify-self: end; }
+.wordmark.big { font-size: 24px; letter-spacing: -.025em; }
+.mtop .titleline b { font: 600 15px/1.2 var(--sans); letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mtop .titleline b.cult { font-family: var(--display); font-size: 17px; }
+.mtop .titleline span { font: 400 12px var(--mono); color: var(--mute); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mtop .tools { display: flex; gap: 6px; align-items: center; }
+.stat { font: 400 12px var(--mono); color: var(--mute); display: inline-flex; gap: 6px; align-items: center; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.stat b { color: var(--ink); font-weight: 500; }
+
+.side.left { top: calc(env(safe-area-inset-top, 0px) + 92px); left: max(16px, env(safe-area-inset-left, 0px)); width: 300px; }
+.side { transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+.side.left.tucked { transform: translateX(-85%); }
+.side.right.tucked { transform: translateX(85%); }
+.side.tucked .era, .side.tucked .layers, .side.tucked .card { opacity: .7; }
+.tuck { position: absolute; top: 8px; z-index: 2; width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--line); background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: var(--ink); display: grid; place-items: center; cursor: pointer; pointer-events: auto; padding: 0; }
+.tuck svg { width: 14px; height: 14px; transition: transform .45s ease; }
+.side.left .tuck { right: -36px; } .side.right .tuck { left: -36px; }
+.side.tucked .tuck svg { transform: rotate(180deg); }
+.era { padding: 14px 18px 16px; display: grid; gap: 8px; }
+.era .when { font: 500 11px/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--onmute); display: flex; justify-content: space-between; gap: 8px; }
+.era h3 { margin: 0; font: 700 21px/1.15 var(--display); letter-spacing: .005em; text-wrap: balance; }
+.era p { margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--onmute); }
+.era .nums { display: flex; flex-wrap: wrap; gap: 4px 16px; font: 400 12px var(--mono); color: var(--onmute); font-variant-numeric: tabular-nums; border-top: 1px solid color-mix(in srgb, var(--trim) 45%, transparent); padding-top: 8px; }
+.era .nums b { color: var(--on); font-weight: 500; }
+.era .s { font: 400 16px/1.2 var(--script); color: var(--trim2); }
+.rightcol { top: calc(env(safe-area-inset-top, 0px) + 92px); right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(env(safe-area-inset-bottom, 0px) + 150px); width: 280px; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
+.rightcol > * { pointer-events: auto; }
+.layers { flex: 0 1 auto; min-height: 0; overflow: auto; padding: 12px 10px 10px; display: grid; gap: 1px; align-content: start;
+  background: var(--glass); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid var(--line); border-radius: 12px; scrollbar-width: thin; }
+.layers .head { display: flex; justify-content: space-between; align-items: baseline; padding: 0 6px 8px; }
+.layer { display: grid; grid-template-columns: 30px 18px 1fr; align-items: center; gap: 8px; padding: 5px 6px 5px 2px; border-radius: 8px; }
+.layer:hover { background: color-mix(in srgb, var(--ink) 5%, transparent); }
+.layer.focus { background: color-mix(in srgb, var(--ink) 9%, transparent); }
+.layer .eye, .ctl .eye { width: 30px; height: 30px; border-radius: 50%; border: 0; background: none; cursor: pointer; display: grid; place-items: center; color: var(--faint); }
+.layer .eye svg, .ctl .eye svg { width: 16px; height: 16px; }
+.layer .eye[aria-pressed="true"], .ctl .eye[aria-pressed="true"] { color: var(--ink); }
+.layer .sw { width: 16px; height: 16px; border-radius: 4px; border: 1px solid var(--line); box-sizing: border-box; }
+.layer .nm { text-align: left; border: 0; background: none; padding: 0; cursor: pointer; display: grid; gap: 0; min-width: 0; }
+.layer .nm b { font: 500 13.5px/1.25 var(--sans); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.layer .nm small { font: 400 11px/1.35 var(--mono); color: var(--mute); }
+.layer.off .nm b { color: var(--mute); }
+.layers .others { margin-top: 6px; border-top: 1px solid var(--line); padding-top: 6px; }
+.layers .others summary { cursor: pointer; padding: 6px; list-style: none; }
+.layers .others summary::-webkit-details-marker { display: none; }
+.layers .gap { margin: 8px 6px 2px; font: 400 11.5px/1.45 var(--mono); color: var(--mute); }
+
+.card { flex: none; padding: 14px 18px 16px; display: grid; gap: 9px; }
+.ctl { display: grid; grid-template-columns: 30px 18px 1fr; align-items: center; gap: 8px; padding: 3px 6px 3px 2px; border-radius: 8px; }
+.ctl .glyph { width: 18px; height: 14px; display: block; color: var(--ink); }
+.ctl b { font: 500 13px/1.25 var(--sans); }
+.ctl small { display: block; font: 400 11px/1.3 var(--mono); color: var(--mute); }
+.ctl.off b { color: var(--mute); }
+.ctl.na { opacity: .55; } .ctl.na .eye { cursor: not-allowed; }
+.play { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--ink); color: var(--paper); display: grid; place-items: center; cursor: pointer; flex: none; }
+.play svg { width: 14px; height: 14px; }
+.timehead .yl { display: flex; align-items: center; gap: 12px; }
+.card h4 { margin: 0; font: 700 20px/1.15 var(--display); padding-right: 26px; }
+.card .s { font: 400 18px/1.25 var(--script); color: var(--trim2); }
+.card .meta { font: 400 12px/1.5 var(--mono); color: var(--onmute); }
+.card .known { font: 500 12px/1.4 var(--mono); color: var(--trim2); }
+.card .chips .chip { border-color: color-mix(in srgb, var(--trim) 60%, transparent); color: var(--on); }
+.card .chip.near { background: var(--trim); color: var(--panel); border-color: var(--trim); font-weight: 500; }
+.card .x { position: absolute; top: 18px; right: 10px; width: 28px; height: 28px; border: 0; background: none; color: var(--onmute); cursor: pointer; font-size: 18px; line-height: 1; }
+.card a.go, .card button.go { display: inline-flex; justify-content: center; padding: 10px 14px; border: 1px solid var(--trim); border-radius: 6px; background: none; cursor: pointer; text-decoration: none; font: 700 13px/1 var(--display); letter-spacing: .04em; color: var(--trim2); }
+.card p { margin: 0; font-size: 13px; line-height: 1.5; color: var(--onmute); }
+
+.mbottom { left: max(16px, env(safe-area-inset-left, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(env(safe-area-inset-bottom, 0px) + 10px); display: grid; gap: 4px; }
+.timehead { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.year { font: 600 34px/1 var(--sans); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.mbottom canvas { width: 100%; height: 66px; display: block; cursor: ew-resize; touch-action: none; }
+
+.tip { position: absolute; z-index: 5; pointer-events: none; padding: 7px 10px; max-width: 250px; display: grid; gap: 1px; background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 8px; }
+.tip b { font: 500 13px/1.3 var(--sans); }
+.tip span { font: 400 11.5px/1.4 var(--mono); color: var(--mute); }
+.pop { position: absolute; z-index: 6; top: calc(env(safe-area-inset-top, 0px) + 64px); right: max(16px, env(safe-area-inset-right, 0px)); width: min(360px, calc(100vw - 32px)); padding: 16px 18px; display: grid; gap: 10px; font-size: 13.5px; box-sizing: border-box; background: var(--glass); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid var(--line); border-radius: 12px; }
+.pop h4 { margin: 0; font: 600 15px var(--sans); }
+.pop p { margin: 0; color: var(--mute); }
+.loading { position: absolute; inset: 0; display: grid; place-items: center; font: 400 13px var(--mono); color: var(--mute); z-index: 1; }
+
+@media (max-width: 900px) { .mtop .counter { display: none; } }
+@media (max-width: 760px) {
+  .hero { height: auto; display: grid; }
+  .hero canvas { position: relative; height: 300px; order: 1; }
+  .hero::after { display: none; }
+  .hero .counter { position: relative; top: auto; left: auto; order: 0; padding: 14px max(16px, env(safe-area-inset-left, 0px)) 6px; }
+  .title { position: relative; padding-block: 24px 8px; order: 2; }
+  .seen { position: relative; right: auto; bottom: auto; order: 3; margin: 8px 16px 0; }
+  .mtop { grid-template-columns: 1fr auto; } .mtop .titleline { grid-column: 1 / -1; grid-row: 2; justify-items: start; text-align: left; } .wordmark.big { font-size: 20px; }
+  .rightcol { top: auto; width: min(290px, 78vw); bottom: calc(env(safe-area-inset-bottom, 0px) + 128px); max-height: 42vh; }
+  .side.left { top: calc(env(safe-area-inset-top, 0px) + 136px); width: min(300px, 74vw); } .era { padding: 10px 14px 12px; gap: 4px; }
+  .era p, .era .nums, .era .s { display: none; } .era h3 { font-size: 16px; }
+  .year { font-size: 26px; }
+}
+</style>
+
+<header class="nav">
+  <div class="wrap">
+    <div style="display:grid;gap:5px"><a class="wordmark big" href="#">forts<span>.</span>world</a><div class="counter" data-counter></div></div>
+    <nav class="links" aria-label="Main">
+      <a class="t" href="#map">Time map</a>
+      <a class="t hide-m" href="#mission">Mission</a>
+      <a class="t hide-m" href="#tables">Interactive tables</a>
+      <a class="t hide-m" href="#museums">For museums</a>
+      <a class="t" href="https://github.com/mbaliga/forts.world" target="_blank" rel="noopener" title="forts.world on GitHub" style="display:inline-flex;gap:7px;align-items:center"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span class="hide-xs">GitHub</span></a>
+      <button class="ibtn icon" data-theme-toggle aria-label="Switch light or dark" title="Light / dark"></button>
+      <a class="cta" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+  <section class="hero" aria-label="forts.world">
+    <canvas id="heroMap" aria-hidden="true"></canvas>
+    <div class="title wrap">
+      <h1 class="word">forts<span>.</span>world</h1>
+      <p class="thesis">Every fort on Earth, seen through the eyes of the people who knew it.</p>
+      <nav class="menu" aria-label="Start">
+        <a class="go" href="#map">Open the time map <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3l5 5-5 5"/></svg></a>
+        <a href="#walk">Walk inside a fort <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3l5 5-5 5"/></svg></a>
+        <a href="#museums">Bring it to your site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3l5 5-5 5"/></svg></a>
+      </nav>
+    </div>
+    <div class="seen plate frieze" id="seen"><span class="label" style="color:var(--onmute)">Seen by</span><b id="seenWho">You, today</b><span class="s2" id="seenScript"></span><span class="m" id="seenWhere">2026</span></div>
+  </section>
+
+  <section class="wrap section" id="mission">
+    <span class="label">Mission</span>
+    <h2>Rebuild every fort on Earth, at every moment that mattered, as the people of the time saw it.</h2>
+    <div class="grid3">
+      <div><h3>Map every fort</h3><p>Castles, forts, walled towns and ruins from open data, each with its sources.</p></div>
+      <div><h3>Rebuild them in time</h3><p>Walkable 3D at the moments that changed them, documented and constructed side by side.</p></div>
+      <div><h3>See it through their eyes</h3><p>Stack what a traveller, court or geographer knew as layers, and see where their worlds overlapped.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="walk">
+    <span class="label">Walk inside</span>
+    <h2>Forts rebuilt at the moments that changed them.</h2>
+    <div class="wonders" id="wonders"></div>
+  </section>
+
+  <section class="wrap section" id="tables">
+    <span class="label">Interactive tables</span>
+    <h2>The time map on a touch table, for forts, museums and heritage sites.</h2>
+    <div class="grid3">
+      <div><h3>For the site itself</h3><p>Visitors walk the fort at its key moments and see who knew of it, and when.</p></div>
+      <div><h3>For museum galleries</h3><p>A table that turns a collection's maps and travellers into layers on one world.</p></div>
+      <div><h3>Made with partners</h3><p>Built with an interactive-table partner, installed and kept current from the open data.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="museums">
+    <div class="reach" id="contact">
+      <span class="label">For museums, exhibitions and historic sites</span>
+      <h3>Our picture is still incomplete. Help us fill it, or install it.</h3>
+      <p>Each viewpoint here rests on the few places its sources name, and many forts still lack a plan. If you hold plans, travel accounts or maps, or want a table at your site, write to us.</p>
+      <div class="mail"><code id="mail">contact@mdhv.xyz</code><button type="button" class="ibtn" id="copyMail">Copy</button></div>
+    </div>
+  </section>
+
+  <footer class="site">
+    <div class="wrap cols">
+      <div><h4>Explore</h4><ul><li><a href="#map">Time map</a></li><li><a href="/ten-forts.html" target="_blank" rel="noopener">Walk a fort</a></li><li><a href="/atlas/">Atlas of every site</a></li><li><a href="/search/">Fort search</a></li><li><a href="https://github.com/mbaliga/forts.world/tree/main/docs/wiki" target="_blank" rel="noopener">Fort wiki</a></li></ul></div>
+      <div><h4>Project</h4><ul><li><a href="#mission">Mission</a></li><li><a href="#tables">Interactive tables</a></li><li><a href="#museums">For museums and sites</a></li></ul></div>
+      <div><h4>Open source</h4><ul><li><a href="https://github.com/mbaliga/forts.world" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://github.com/mbaliga/forts.world/blob/main/LICENSES.md" target="_blank" rel="noopener">Licences</a></li><li><a href="https://github.com/mbaliga/forts.world/blob/main/NOTICE" target="_blank" rel="noopener">Attribution</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="#contact">Write to us</a></li><li><span style="font:12px var(--mono)">contact@mdhv.xyz</span></li></ul></div>
+    </div>
+    <div class="wrap credits"><span>Sites: Wikidata (CC0) / © OpenStreetMap contributors (ODbL) / Natural Earth / Relief: ETOPO1 (NOAA) via Fatiando a Terra, CC BY 4.0</span><span>Code Apache-2.0</span></div>
+  </footer>
+</main>
+
+<section class="mapview" id="mapview" hidden aria-label="Time map">
+  <canvas id="bigMap"></canvas>
+  <div class="loading" id="loading">Loading the world's forts and relief…</div>
+  <div class="shade top"></div><div class="shade bottom"></div>
+  <div class="hud mtop">
+    <div class="homeline">
+      <div style="display:grid;gap:5px"><a class="wordmark big" href="#" id="brand" title="Home">forts<span>.</span>world</a><div class="counter" data-counter></div></div>
+    </div>
+    <div class="titleline"><b id="titleB">Medieval era</b><span id="titleS"></span>
+      <div class="stats"><span class="stat" title="Forts with a recorded founding year standing in this year"><b id="rStand">0</b> standing</span><span class="stat" title="Viewpoint layers shown"><b id="rOn">0</b> layers</span></div></div>
+    <div class="tools">
+      <button class="ibtn" id="tiltBtn" aria-pressed="true" title="Tilt the lens">3D</button>
+      <button class="ibtn icon" data-theme-toggle aria-label="Switch light or dark" title="Light / dark"></button>
+      <button class="ibtn icon" id="soundBtn" aria-pressed="true" aria-label="Sound effects" title="Sound effects"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8v4h3l4 3V5L6 8H3z"/><path d="M13 7.5c1 .8 1 4.2 0 5M15.5 5.5c2.2 2 2.2 7 0 9"/></svg></button>
+      <button class="ibtn icon" id="infoBtn" aria-expanded="false" aria-label="About this view" title="About this view"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="7.5"/><path d="M10 9v5M10 6.2v.1"/></svg></button>
+    </div>
+  </div>
+  <div class="hud side left" id="leftSide"><button class="tuck" data-tuck="left" aria-label="Hide the era panel" title="Hide or show"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3L5 8l5 5"/></svg></button><div class="era plate frieze" id="eraWin" aria-live="polite"></div></div>
+  <div class="hud rightcol side right" id="rightSide"><button class="tuck" data-tuck="right" aria-label="Hide the layers panel" title="Hide or show"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3l5 5-5 5"/></svg></button><div class="card plate frieze" id="card" hidden></div><div class="layers" id="layers"></div></div>
+  <div class="hud mbottom">
+    <div class="timehead"><div class="yl"><button class="play" id="playBtn" aria-label="Play through time" title="Play through time"></button><div class="year" id="yearText">2026</div></div><span class="label" id="eraLabel"></span></div>
+    <canvas id="timeline" aria-label="Timeline: drag, or use the arrow keys" tabindex="0"></canvas>
+  </div>
+  <div class="tip" id="tip" hidden></div>
+  <div class="pop" id="pop" hidden><h4 id="popTitle"></h4><p id="popBody"></p>
+    <p>Solid points are forts whose founding year Wikidata records, shown from that year on. Faint points are the many more whose founding year is not recorded yet; they show at every year, so India and much of Asia and Africa are not left empty. Rings are forts rebuilt in 3D. Contours are the world's relief (ETOPO1, about 18 km cells), finer as you zoom. Borders are today's (Natural Earth). Empires over time need an openly licensed historical boundaries dataset; we have not found one yet. A person's world is shaped from the places their own writings name, so its edges are approximate; routes join those places in order.</p></div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+const svgURL = (w, h, body, bg) => `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}' viewBox='0 0 ${w} ${h}'>${bg ? `<rect width='${w}' height='${h}' fill='${bg}'/>` : ''}${body}</svg>`)}")`;
+const PATTERNS = {
+  meander: (a) => svgURL(20, 14, `<path d='M0 12H5V2H16V9H9V6H12' fill='none' stroke='${a}' stroke-width='1.8'/><path d='M16 9V12H20' fill='none' stroke='${a}' stroke-width='1.8'/>`),
+  lotus: (a) => svgURL(16, 14, `<path d='M0 14Q4 3 8 14Q12 3 16 14' fill='${a}' opacity='.85'/><circle cx='8' cy='3' r='1.6' fill='${a}'/>`),
+  star8: (a) => svgURL(16, 14, `<g transform='translate(8 7)' fill='none' stroke='${a}' stroke-width='1.2'><rect x='-4.2' y='-4.2' width='8.4' height='8.4'/><rect x='-4.2' y='-4.2' width='8.4' height='8.4' transform='rotate(45)'/></g>`),
+  fret: (a) => svgURL(14, 14, `<path d='M1 13V1H13V10H5V5H9' fill='none' stroke='${a}' stroke-width='1.6'/>`),
+  azulejo: (a) => svgURL(14, 14, `<rect width='14' height='14' fill='#ffffff'/><circle cx='7' cy='7' r='2' fill='${a}'/><g fill='none' stroke='${a}' stroke-width='1.1'><circle cx='7' cy='2.5' r='2.2'/><circle cx='7' cy='11.5' r='2.2'/><circle cx='2.5' cy='7' r='2.2'/><circle cx='11.5' cy='7' r='2.2'/></g><rect width='14' height='14' fill='none' stroke='${a}' stroke-width='.6'/>`),
+  jali: (a) => svgURL(14, 14, `<g fill='none' stroke='${a}' stroke-width='1.1'><circle cx='0' cy='7' r='7'/><circle cx='14' cy='7' r='7'/><circle cx='7' cy='0' r='7'/><circle cx='7' cy='14' r='7'/></g>`),
+  merlon: (a) => svgURL(14, 14, `<path d='M0 14V7H3V2H11V7H14V14Z' fill='${a}'/>`),
+  leheriya: (a, b) => svgURL(16, 14, `<g fill='none' stroke-width='2' transform='rotate(-20 8 7)'><path d='M-4 11Q0 7 4 11T12 11T20 11' stroke='${a}'/><path d='M-4 4Q0 0 4 4T12 4T20 4' stroke='${b}'/></g>`),
+  kolam: (a) => svgURL(14, 14, `<g fill='${a}'><circle cx='3.5' cy='3.5' r='1.1'/><circle cx='10.5' cy='3.5' r='1.1'/><circle cx='3.5' cy='10.5' r='1.1'/><circle cx='10.5' cy='10.5' r='1.1'/></g><path d='M7 1C11 3 11 11 7 13C3 11 3 3 7 1Z' fill='none' stroke='${a}' stroke-width='1'/>`),
+  plain: (a) => svgURL(14, 10, `<path d='M0 3H14M0 7H14' stroke='${a}' stroke-width='1'/>`),
+};
+const CULTURES = {
+  modern:     { name: 'Present day', panel: '#07090a', panel2: '#1a1e21', on: '#f2f4f5', onmute: '#8d979b', trim: '#3d4448', trim2: '#e6eaec', font: 'Geist', pat: 'plain' },
+  greek:      { name: 'Hellenistic', panel: '#e6dcc6', panel2: '#f5efe1', on: '#2a2118', onmute: '#6b5d4a', trim: '#2f5d8a', trim2: '#b5652f', font: 'Cinzel', pat: 'meander' },
+  mauryan:    { name: 'Mauryan', panel: '#e3cfa6', panel2: '#f2e4c4', on: '#3a2512', onmute: '#7a5c38', trim: '#8a5a22', trim2: '#4f6b3a', font: 'Marcellus', pat: 'lotus' },
+  islamic:    { name: 'Islamicate', panel: '#0f3b4a', panel2: '#145262', on: '#f3ead2', onmute: '#a9c4c4', trim: '#c9a24e', trim2: '#6fd0d3', font: 'Amiri', pat: 'star8' },
+  ming:       { name: 'Ming', panel: '#5a1410', panel2: '#7d1f17', on: '#f6e7c8', onmute: '#d9b98f', trim: '#d4a43a', trim2: '#8fcfb5', font: 'Noto Serif SC', pat: 'fret' },
+  portuguese: { name: 'Portuguese', panel: '#eef1f6', panel2: '#ffffff', on: '#16305e', onmute: '#4f6690', trim: '#1f4f9a', trim2: '#a37b2c', font: 'Cormorant SC', pat: 'azulejo' },
+  mughal:     { name: 'Mughal', panel: '#efe7da', panel2: '#fbf7ef', on: '#3b1f2a', onmute: '#7a5a63', trim: '#8c2f39', trim2: '#2f6b4f', font: 'Amiri', pat: 'jali' },
+  maratha:    { name: 'Maratha', panel: '#2b2522', panel2: '#3b332d', on: '#f6e6cf', onmute: '#c9b39a', trim: '#e07a1f', trim2: '#f2b25a', font: 'Tiro Devanagari Hindi', pat: 'merlon' },
+  rajput:     { name: 'Rajput', panel: '#f1dfbd', panel2: '#f9eed9', on: '#4a1c14', onmute: '#86574a', trim: '#b3261e', trim2: '#b07a10', font: 'Rozha One', pat: 'leheriya' },
+  dravida:    { name: 'Tamil country', panel: '#3d1f12', panel2: '#55291a', on: '#f8e9d0', onmute: '#d2b392', trim: '#d99a2b', trim2: '#e8784f', font: 'Marcellus', pat: 'kolam' },
+};
+function applyCulture(id, el = document.documentElement) {
+  const c = CULTURES[id] || CULTURES.modern, s = el.style;
+  s.setProperty('--panel', c.panel); s.setProperty('--panel2', c.panel2); s.setProperty('--on', c.on); s.setProperty('--onmute', c.onmute);
+  s.setProperty('--trim', c.trim); s.setProperty('--trim2', c.trim2); s.setProperty('--chromefont', `"${c.font}"`);
+  s.setProperty('--pattern', c.pat === 'plain' ? 'none' : PATTERNS[c.pat](c.trim, c.trim2)); el.classList?.toggle('glass', c.pat === 'plain' && el !== document.documentElement);
+}
+
+const ERAS = [{ id: 'ancient', name: 'Ancient', from: -800, to: 0 }, { id: 'classical', name: 'Classical', from: 0, to: 600 }, { id: 'medieval', name: 'Medieval', from: 600, to: 1400 }, { id: 'early', name: 'Early Modern', from: 1400, to: 1750 }, { id: 'modern', name: 'Modern', from: 1750, to: 2026 }];
+const PEOPLE = [
+  { id: 'ashoka', who: 'Ashoka’s court', script: '𑀅𑀲𑁄𑀓', where: 'Pataliputra', year: -250, tint: '#9a6a1f', culture: 'mauryan', center: 62, home: 0, angle: 30,
+    note: 'The Rock Edicts, around 256 BCE, name the Greek kings to the west who received Ashoka’s envoys. Names are the edicts’ forms.',
+    anchors: [[85.1,25.6,'Pāṭaliputra','Patna',8],[72.83,33.75,'Takṣaśilā','Taxila',7],[75.78,23.18,'Ujjenī','Ujjain',7],[85.84,20.19,'Tosalī','Dhauli, Odisha',6],[80.4,8.33,'Tambapaṃṇī','Sri Lanka',6],[65.7,31.6,'Kandahar','Kandahar',7],[36.16,36.2,'Aṃtiyoga','Antioch',7],[29.9,31.2,'Turamaya','Alexandria',7],[22.52,40.76,'Aṃtekina','Macedonia',6],[21.86,32.82,'Maka','Cyrene',6]] },
+  { id: 'ptolemy', who: 'Claudius Ptolemy', script: 'Κλαύδιος Πτολεμαῖος', where: 'Alexandria', year: 150, tint: '#8a5a2b', culture: 'greek', proj: 'conic', center: 62, home: 0, angle: 60,
+    note: 'His Geography lists about 8,000 places by latitude and longitude, from the Canary Islands to the edge of China. Drawn on a simple cone, as his first projection was.',
+    anchors: [[29.9,31.2,'Alexandreia','Alexandria',11],[12.5,41.9,'Rhōmē','Rome',11],[23.7,37.98,'Athēnai','Athens',9],[10.3,36.85,'Karchēdōn','Carthage',9],[-6.3,36.5,'Gadeira','Cádiz',10],[-0.1,51.5,'Londinion','London',9],[28.98,41.01,'Byzantion','Istanbul',9],[44.42,32.54,'Babylōn','Babylon',10],[69.2,34.5,'Kaboura','Kabul',9],[72.98,21.7,'Barygaza','Bharuch',9],[76.2,10.15,'Mouziris','Pattanam, Kerala',7],[85.1,25.6,'Palimbothra','Patna',9],[80.7,7.8,'Taprobanē','Sri Lanka',6],[33.75,16.9,'Meroē','Meroë',9],[45.0,12.8,'Eudaimōn Arabia','Aden',8]] },
+  { id: 'idrisi', who: 'Muhammad al-Idrisi', script: 'الإدريسي', where: 'Palermo', year: 1154, tint: '#1d7a5a', culture: 'islamic', center: 55, southUp: true, climes: true, home: 0, angle: 120,
+    note: 'His map for Roger II of Sicily puts south at the top and divides the world into seven climes, the bands shaded here.',
+    anchors: [[13.36,38.12,'Balarm','Palermo',10],[-4.78,37.88,'Qurṭuba','Córdoba',10],[31.24,30.04,'al-Qāhira','Cairo',11],[39.83,21.42,'Makka','Mecca',10],[44.36,33.31,'Baghdād','Baghdad',11],[66.97,39.65,'Samarqand','Samarkand',10],[67.5,24.75,'al-Daybul','near Karachi',8],[79.92,27.05,'Qannawj','Kannauj',9],[72.6,22.3,'Kanbāya','Khambhat',8],[80.7,7.8,'Sarandīb','Sri Lanka',6],[28.98,41.01,'al-Qusṭanṭīniyya','Istanbul',10],[12.5,41.9,'Rūmiya','Rome',9],[30.5,50.45,'Kūyāba','Kyiv',9],[-7.98,15.77,'Ghāna','Koumbi Saleh',8],[113.26,23.13,'Khānfū','Guangzhou',9]] },
+  { id: 'battuta', who: 'Ibn Battuta', script: 'ابن بطوطة', where: 'Fez', year: 1355, tint: '#2f6d8f', culture: 'islamic', center: 45, climes: true, home: 1, angle: 150,
+    note: 'Back in Morocco after three decades on the road, he dictated the Rihla in 1355. The arc joins the places he described, in the order he reached them.',
+    route: [0,4,5,6,7,14,8,9,10,11,12,13,15,1,2,3,1],
+    anchors: [[-5.81,35.77,'Ṭanja','Tangier',8],[-4.98,34.03,'Fās','Fez',8],[-3.6,37.18,'Gharnāṭa','Granada',7],[-3.0,16.77,'Tunbuktū','Timbuktu',8],[31.24,30.04,'Miṣr','Cairo',9],[36.3,33.51,'Dimashq','Damascus',8],[39.83,21.42,'Makka','Mecca',8],[44.36,33.31,'Baghdād','Baghdad',8],[28.98,41.01,'al-Qusṭanṭīniyya','Istanbul',8],[64.42,39.77,'Bukhārā','Bukhara',8],[77.21,28.65,'Dihlī','Delhi',9],[75.78,11.25,'Qāliqūṭ','Kozhikode',6],[73.5,4.17,'Dhībat al-Mahal','Maldives',5],[80.7,7.8,'Sarandīb','Sri Lanka',5],[39.5,-8.96,'Kulwā','Kilwa',6],[118.6,24.9,'Zaytūn','Quanzhou',8]] },
+  { id: 'ming', who: 'A sailor of Zheng He’s fleet', script: '郑和', where: 'Nanjing', year: 1433, tint: '#b33a27', culture: 'ming', center: 95, home: 0, angle: 90,
+    note: 'The seventh voyage returned in 1433. Names as Ma Huan wrote them in his account of the ports, the Yingya Shenglan. The arc follows the main fleet.',
+    route: [0,2,4,5,3,7,8,10],
+    anchors: [[118.8,32.06,'Nanjing 南京','Nanjing',10],[116.4,39.9,'Beijing 北京','Beijing',10],[109.2,13.8,'Zhancheng 占城','Champa, Vietnam',8],[102.25,2.19,'Manlajia 满剌加','Melaka',8],[112.4,-7.55,'Zhaowa 爪哇','Java',8],[104.75,-2.99,'Jiugang 旧港','Palembang',7],[90.6,23.65,'Bangela 榜葛剌','Bengal',8],[80.22,6.03,'Xilan 锡兰','Sri Lanka',7],[75.78,11.25,'Guli 古里','Kozhikode',7],[76.27,9.97,'Kezhi 柯枝','Kochi',6],[56.46,27.1,'Hulumosi 忽鲁谟斯','Hormuz',8],[45.03,12.79,'Adan 阿丹','Aden',7],[45.34,2.04,'Mugudushu 木骨都束','Mogadishu',7],[39.83,21.42,'Tianfang 天方','Mecca',7]] },
+  { id: 'pilot', who: 'A Portuguese pilot', script: 'Piloto português', where: 'Lisbon', year: 1510, tint: '#1f4f9a', culture: 'portuguese', center: 20, home: 0, angle: 0,
+    note: 'The year Goa was taken. Their ships had rounded Africa, crossed to Brazil and, in 1509, reached Malacca. The arc joins the ports in sailing order; ships kept to the coasts.',
+    route: [0,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+    anchors: [[-9.14,38.72,'Lisboa','Lisbon',10],[-5.32,35.89,'Ceuta','Ceuta',8],[-16.9,32.65,'Madeira','Madeira',6],[-23.5,15.0,'Cabo Verde','Cape Verde',6],[-1.35,5.08,'São Jorge da Mina','Elmina',7],[18.47,-34.36,'Cabo da Boa Esperança','Cape of Good Hope',7],[34.75,-20.15,'Sofala','Sofala',6],[40.73,-15.03,'Moçambique','Ilha de Moçambique',6],[39.67,-4.05,'Mombaça','Mombasa',6],[53.9,12.5,'Socotorá','Socotra',6],[56.46,27.1,'Ormuz','Hormuz',6],[73.83,15.5,'Goa','Goa',6],[75.78,11.25,'Calecute','Kozhikode',6],[76.27,9.97,'Cochim','Kochi',5],[79.86,6.93,'Ceilão','Sri Lanka',5],[102.25,2.19,'Malaca','Melaka',6],[-39.06,-16.45,'Terra de Vera Cruz','Porto Seguro, Brazil',7]] },
+  { id: 'mughal', who: 'The Mughal court', script: 'دربار اکبری', where: 'Agra', year: 1600, tint: '#7d3d86', culture: 'mughal', center: 68, climes: true, home: 0, angle: 45,
+    note: 'Akbar’s empire as the Ain-i-Akbari describes it, with the lands the court traded, prayed and corresponded with.',
+    anchors: [[78.02,27.18,'Āgra','Agra',8],[74.34,31.55,'Lāhaur','Lahore',7],[69.2,34.53,'Kābul','Kabul',7],[65.7,31.6,'Qandahār','Kandahar',7],[74.8,34.08,'Kashmīr','Srinagar',6],[88.14,24.87,'Bangāla','Bengal (Gaur)',8],[72.58,23.03,'Aḥmadābād','Ahmedabad',7],[72.83,21.17,'Sūrat','Surat',6],[76.23,21.31,'Burhānpūr','Burhanpur',7],[74.74,19.09,'Aḥmadnagar','Ahmednagar',7],[73.83,15.5,'Goa','Goa',5],[66.97,39.65,'Samarqand','Samarkand',8],[51.67,32.65,'Iṣfahān','Isfahan',8],[39.83,21.42,'Makka','Mecca',7],[28.98,41.01,'Rūm','Istanbul',8]] },
+  { id: 'maratha', who: 'Shivaji’s court', script: 'शिवाजी', where: 'Raigad', year: 1674, tint: '#c25e1a', culture: 'maratha', center: 76, home: 0, angle: 135,
+    note: 'The year of Shivaji’s coronation at Raigad. His world was the Deccan and its coast, Mughal north India, and the European and Siddi forts along the sea.',
+    anchors: [[73.44,18.23,'Rāygaḍ','Raigad',3],[73.86,18.52,'Puṇe','Pune',3],[72.96,18.3,'Janjirā','Murud-Janjira',2],[73.46,16.04,'Sindhudurg','Sindhudurg',3],[72.83,18.93,'Mumbaī','Bombay (English)',2],[72.83,21.17,'Sūrat','Surat',3],[73.83,15.5,'Goa','Goa',3],[75.71,16.83,'Vijāpūr','Bijapur',3],[78.4,17.38,'Golkoṇḍā','Golconda',3],[78.02,27.18,'Āgrā','Agra',3],[77.21,28.65,'Dillī','Delhi',3]] },
+];
+const TODAY = { id: 'today', who: 'You, today', where: 'Anywhere', year: 2026, culture: 'modern', proj: 'equalEarth', center: 15 };
+const RECON = [
+  ['Murud-Janjira', 72.96, 18.3, [['c. 1760', 1760], ['1774', 1774], ['1933', 1933], ['Today', 2026]], 'janjira-hand', 'islamic', 'जंजिरा'],
+  ['Sindhudurg', 73.46, 16.04, [['1765', 1765], ['1930s', 1935], ['Today', 2026]], 'sindhudurg-hand', 'maratha', 'सिंधुदुर्ग'],
+  ['Daulatabad', 75.21, 19.94, [['1633', 1633], ['1880s', 1885], ['Today', 2026]], 'daulatabad-hand', 'islamic', 'دولت آباد'],
+  ['Golconda', 78.4, 17.38, [['1686', 1686], ['1880s', 1885], ['Today', 2026]], 'golconda', 'islamic', 'گولکنڈہ'],
+  ['Gingee', 79.4, 12.25, [['1761', 1761], ['1890s', 1895], ['Today', 2026]], 'gingee', 'dravida', 'செஞ்சி'],
+  ['Gwalior', 78.17, 26.23, [['1780', 1780], ['1868', 1868], ['Today', 2026]], 'gwalior-hand', 'rajput', 'ग्वालियर'],
+  ['Chittorgarh', 74.65, 24.89, [['1567', 1567], ['1882', 1882], ['Today', 2026]], 'chittorgarh-hand', 'rajput', 'चित्तौड़गढ़'],
+  ['Kumbhalgarh', 73.59, 25.15, [['1458', 1458], ['1820', 1820], ['Today', 2026]], 'kumbhalgarh', 'rajput', 'कुम्भलगढ़'],
+  ['Mehrangarh', 73.02, 26.3, [['1806', 1806], ['1895', 1895], ['Today', 2026]], 'mehrangarh', 'rajput', 'मेहरानगढ़'],
+  ['Jaisalmer', 70.91, 26.91, [['1650', 1650], ['c. 1970s', 1975], ['Today', 2026]], 'jaisalmer-hand', 'rajput', 'जैसलमेर'],
+  ['Agra Fort', 78.02, 27.18, [['1573', 1573], ['1653', 1653], ['1901', 1901], ['Today', 2026]], null, 'mughal', 'आगरा क़िला'],
+  ['Allahabad Fort', 81.88, 25.43, [['1583', 1583], ['Today', 2026]], null, 'mughal', 'इलाहाबाद क़िला'],
+];
+const KIND = ['Castle', 'Fort', 'Fortification', 'Ruin'];
+const CLIMES = [12.67, 20.5, 27.5, 33.67, 39, 43.5, 47.25, 50.5];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const css = (v, el = document.documentElement) => getComputedStyle(el).getPropertyValue(v).trim();
+const yearText = (y) => y < 0 ? `${-y} BCE` : y === 0 ? '1 CE' : y < 1000 ? `${y} CE` : `${y}`;
+const byId = Object.fromEntries([...PEOPLE, TODAY].map((p) => [p.id, p]));
+const eraOf = (y) => ERAS.find((e) => y < e.to) || ERAS[ERAS.length - 1];
+const inEra = (e) => PEOPLE.filter((p) => p.year >= e.from && (p.year < e.to || e === ERAS[ERAS.length - 1]));
+const RAD = Math.PI / 180;
+const DATA = 'data/';
+// On the live site links stay on the site; in a preview elsewhere they point at the deployed copy.
+const SITE = /(^|\.)forts\.world$|pages\.dev$|^localhost$|^127\./.test(location.hostname) ? '' : 'https://forts-world.pages.dev';
+let LAND = null, SITES = null, BORDERS = null, UND = null;
+// What the left window says as the timeline passes: each stretch of time has its own text and its own chrome
+const SNAPS = [
+  { from: -800, to: -500, cult: 'mauryan', title: 'Ramparts of the Ganges plain', text: 'Cities of the sixteen great realms raise earth ramparts and moats. Rajgir’s dry-stone wall runs along its ring of hills.' },
+  { from: -500, to: -320, cult: 'greek', title: 'Walled cities and Persia', script: 'πόλις', text: 'Greek cities wall themselves in stone. Achaemenid Persia rules from the Aegean to the Indus, with forts along its royal roads.' },
+  { from: -320, to: -180, cult: 'mauryan', title: 'Mauryan India', script: '𑀧𑀸𑀝𑀮𑀺𑀧𑀼𑀢', text: 'Megasthenes describes Pataliputra’s timber wall, with 570 towers and 64 gates. Ashoka’s edicts mark the empire’s reach.' },
+  { from: -180, to: 300, cult: 'greek', title: 'Rome and Han', text: 'Rome fortifies its frontiers; Hadrian’s Wall is begun in 122. Han China extends its long walls west along the Silk Road.' },
+  { from: 300, to: 600, cult: 'greek', title: 'Late antique walls', text: 'Constantinople builds the Theodosian Walls in 413; they hold for a thousand years. Cities everywhere shrink behind new circuits.' },
+  { from: 600, to: 1000, cult: 'islamic', title: 'Citadels of the caliphates', script: 'مدينة السلام', text: 'From al-Andalus to Sindh, ribats and citadels guard the frontiers. Baghdad is founded in 762 as a round, walled city.' },
+  { from: 1000, to: 1200, cult: 'rajput', title: 'Rajput hill forts', script: 'दुर्ग', text: 'Rajput clans hold hill forts such as Chittor and Gwalior. In Europe, timber mottes give way to stone keeps.' },
+  { from: 1200, to: 1400, cult: 'islamic', title: 'Sultanates and castles', script: 'دولت آباد', text: 'The Delhi Sultanate reaches the Deccan; in 1327 Muhammad bin Tughluq moves his capital to Daulatabad. Castle building in Europe peaks.' },
+  { from: 1400, to: 1500, cult: 'ming', title: 'Brick walls and gunpowder', script: '长城', text: 'The Ming rebuild the Great Wall in brick and stone. Cannon breach Constantinople in 1453; Rana Kumbha raises Kumbhalgarh.' },
+  { from: 1500, to: 1556, cult: 'portuguese', title: 'Bastions reach the coasts', script: 'Estado da Índia', text: 'Portuguese forts with angled bastions rise from Mozambique to Malacca. Goa is taken in 1510.' },
+  { from: 1556, to: 1640, cult: 'mughal', title: 'Mughal red sandstone', script: 'قلعهٔ آگره', text: 'Akbar rebuilds Agra Fort in red sandstone (1565–73) and founds Allahabad Fort in 1583. The Portuguese finish Fort Jesus, Mombasa, in 1593.' },
+  { from: 1640, to: 1750, cult: 'maratha', title: 'Sea forts and hill forts', script: 'स्वराज्य', text: 'Shah Jahan’s Red Fort rises in Delhi (1639–48). Shivaji builds Sindhudurg (1664–67) and is crowned at Raigad in 1674.' },
+  { from: 1750, to: 1858, cult: 'modern', title: 'Company forts and sieges', text: 'Trading companies build star forts; Fort William in Calcutta is rebuilt from 1758. Artillery decides the sieges of Seringapatam (1799) and Delhi (1857).' },
+  { from: 1858, to: 1947, cult: 'modern', title: 'From strongholds to monuments', text: 'Many forts become barracks, prisons or ruins. The Archaeological Survey of India is founded in 1861 to record them.' },
+  { from: 1947, to: 2027, cult: 'modern', title: 'Heritage', text: 'Six Hill Forts of Rajasthan become World Heritage in 2013, and twelve forts of the Maratha Military Landscapes in 2025.' },
+];
+const snapOf = (y) => SNAPS.find((s) => y < s.to) || SNAPS[SNAPS.length - 1];
+const DEM = { g30: null, g10: null, g10p: null };
+
+// ---------- theme ----------
+const isDark = () => (document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark';
+const SUN = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="3.6"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6"/></svg>';
+const MOON = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16.5 12.5A7 7 0 0 1 7.5 3.5a7 7 0 1 0 9 9z"/></svg>';
+function paintThemeButtons() { document.querySelectorAll('[data-theme-toggle]').forEach((b) => { b.innerHTML = isDark() ? SUN : MOON; }); }
+try { const t = localStorage.getItem('fw:theme'); if (t) document.documentElement.dataset.theme = t; } catch {}
+document.querySelectorAll('[data-theme-toggle]').forEach((b) => b.addEventListener('click', () => {
+  const t = isDark() ? 'light' : 'dark'; document.documentElement.dataset.theme = t; try { localStorage.setItem('fw:theme', t); } catch {} paintThemeButtons(); blip(t === 'dark' ? 440 : 660, .04); }));
+paintThemeButtons();
+
+// ---------- sound ----------
+let ac = null, soundOn = true, interacted = false;
+try { soundOn = localStorage.getItem('fw:sound') !== '0'; } catch {}
+addEventListener('pointerdown', () => { interacted = true; }, { once: true, capture: true });
+function blip(f = 660, d = .05, vol = .03) {
+  if (!soundOn || !interacted) return;
+  try { ac ||= new (window.AudioContext || window.webkitAudioContext)(); const t = ac.currentTime, o = ac.createOscillator(), g = ac.createGain();
+    o.type = 'square'; o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * 1.5, t + d);
+    g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(.0001, t + d); o.connect(g).connect(ac.destination); o.start(t); o.stop(t + d + .02); } catch {}
+}
+const chord = () => { blip(523, .05); setTimeout(() => blip(784, .08), 60); };
+
+// ---------- counter ----------
+const COUNTS = [[146367, 'sites'], [78054, 'in 3D'], [208, 'countries'], [359, 'World Heritage']];
+function runCounters() {
+  document.querySelectorAll('[data-counter]').forEach((el) => { el.innerHTML = COUNTS.map(([n, l], i) => `${i ? '<i>|</i>' : ''}<span><b data-n="${n}">0</b> ${l}</span>`).join(''); });
+  const bs = document.querySelectorAll('[data-counter] b'), t0 = performance.now(), dur = reduce ? 0 : 1700;
+  const step = (now) => { const k = dur ? Math.min(1, (now - t0) / dur) : 1, e = 1 - Math.pow(1 - k, 3);
+    bs.forEach((b) => { b.textContent = Math.round(+b.dataset.n * e).toLocaleString('en-US'); }); if (k < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}
+
+// ---------- relief: grids are rows north to south, columns west to east, both ends included ----------
+// grids ship as lossless PNG: red = high byte, green = low byte of (metres + 32768)
+async function loadGrid(url, w, h) { const blob = await fetch(url).then((r) => { if (!r.ok) throw new Error(url); return r.blob(); });
+  const bmp = await createImageBitmap(blob, { colorSpaceConversion: 'none', premultiplyAlpha: 'none' }), cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+  const g = cv.getContext('2d', { willReadFrequently: true }); g.drawImage(bmp, 0, 0); const px = g.getImageData(0, 0, w, h).data, z = new Int16Array(w * h);
+  for (let i = 0; i < w * h; i++) z[i] = ((px[i * 4] << 8) | px[i * 4 + 1]) - 32768; return { w, h, z, step: 180 / (h - 1) }; }
+function demAt(g, lon, lat) {
+  const x = Math.max(0, Math.min(g.w - 1.001, (lon + 180) / g.step)), y = Math.max(0, Math.min(g.h - 1.001, (90 - lat) / g.step)), i = x | 0, j = y | 0, fx = x - i, fy = y - j, z = g.z, w = g.w;
+  return (z[j * w + i] * (1 - fx) + z[j * w + i + 1] * fx) * (1 - fy) + (z[(j + 1) * w + i] * (1 - fx) + z[(j + 1) * w + i + 1] * fx) * fy;
+}
+// contour rings -> open lines, dropping the stretches that run along the edge of the grid window
+function contourLines(g, thresholds, win) {
+  const [i0, j0, i1, j1] = win || [0, 0, g.w - 1, g.h - 1], n = i1 - i0 + 1, m = j1 - j0 + 1, v = new Float64Array(n * m);
+  for (let j = 0; j < m; j++) { const row = (j0 + j) * g.w + i0; for (let i = 0; i < n; i++) v[j * n + i] = g.z[row + i]; }
+  const e = .02, edge = (p, q) => (p[0] <= e && q[0] <= e) || (p[0] >= n - e && q[0] >= n - e) || (p[1] <= e && q[1] <= e) || (p[1] >= m - e && q[1] >= m - e);
+  const ll = (p) => [-180 + (i0 + p[0] - .5) * g.step, Math.max(-89.9, Math.min(89.9, 90 - (j0 + p[1] - .5) * g.step))];
+  return d3.contours().size([n, m]).smooth(true).thresholds(thresholds)(v).map((c) => {
+    const lines = [];
+    for (const poly of c.coordinates) for (const ring of poly) { let cur = [];
+      for (let i = 0; i < ring.length; i++) { if (i && edge(ring[i - 1], ring[i])) { if (cur.length > 1) lines.push(cur); cur = []; } cur.push(ll(ring[i])); }
+      if (cur.length > 1) lines.push(cur); }
+    return { value: c.value, geo: { type: 'MultiLineString', coordinates: lines } };
+  }).filter((c) => c.geo.coordinates.length);
+}
+// Known world as one shape: a smooth field around each named place and along each route, cut at one level (metaballs)
+function knownShape(p) {
+  const W = 361, H = 181, f = new Float64Array(W * H), pts = p.anchors.map((a) => [a[0], a[1], a[4] * 1.8]);
+  if (p.route) for (let r = 1; r < p.route.length; r++) { const A = p.anchors[p.route[r - 1]], B = p.anchors[p.route[r]], ip = d3.geoInterpolate([A[0], A[1]], [B[0], B[1]]), n = Math.max(1, Math.ceil(d3.geoDistance([A[0], A[1]], [B[0], B[1]]) / RAD / 2.5));
+    for (let t = 1; t < n; t++) { const q = ip(t / n); pts.push([q[0], q[1], 4.2]); } }
+  for (const [lo, la, R] of pts) { const R2 = R * R, ja = Math.max(0, Math.floor(90 - la - R)), jb = Math.min(H - 1, Math.ceil(90 - la + R));
+    for (let j = ja; j <= jb; j++) { const lat = 90 - j, dl = R / Math.max(.15, Math.cos(lat * RAD)), ia = Math.max(0, Math.floor(lo + 180 - dl)), ib = Math.min(W - 1, Math.ceil(lo + 180 + dl));
+      for (let i = ia; i <= ib; i++) { const d = d3.geoDistance([lo, la], [i - 180, lat]) / RAD; if (d < R) { const q = 1 - d * d / R2; f[j * W + i] += q * q; } } } }
+  const c = d3.contours().size([W, H]).smooth(true).thresholds([.3])(f)[0];
+  const polys = c.coordinates.map((poly) => poly.map((ring) => ring.map(([x, y]) => [x - .5 - 180, Math.max(-89.9, Math.min(89.9, 90 - (y - .5)))])));
+  for (const poly of polys) if (d3.geoArea({ type: 'Polygon', coordinates: poly }) > 2 * Math.PI) poly.forEach((r) => r.reverse());
+  return { type: 'MultiPolygon', coordinates: polys };
+}
+
+// ---------- the lens: a geographic projection, then a tilted perspective camera, so relief and layers can stand off the ground ----------
+class Lens {
+  constructor(canvas, { interactive = false, tilt = .9 } = {}) {
+    this.c = canvas; this.ctx = canvas.getContext('2d'); this.interactive = interactive;
+    this.focus = TODAY; this.on = []; this.year = 2026; this.k = 1; this.mx = 0; this.my = 0; this.th = tilt; this.thT = tilt; this.tiltOn = tilt;
+    this.show = { forts: true, undated: interactive, rebuilt: true, contours: true, borders: false }; this.sel = null; this.raf = 0; this.fog = document.createElement('canvas'); this.contours = {}; this.win = null; this._h = 0;
+    const self = this;
+    this.proj = { stream: (out) => self.pr.stream({ point(x, y) { const q = self.cam(x, y, self._h); out.point(q[0], q[1]); }, sphere() { out.sphere?.(); },
+      lineStart() { out.lineStart(); }, lineEnd() { out.lineEnd(); }, polygonStart() { out.polygonStart(); }, polygonEnd() { out.polygonEnd(); } }) };
+    new ResizeObserver(() => this.resize()).observe(canvas);
+    if (interactive) this.bind();
+  }
+  resize() { const r = this.c.getBoundingClientRect(); if (!r.width || !r.height) return; this.dpr = Math.min(2, devicePixelRatio || 1); this.w = r.width; this.h = r.height;
+    for (const cv of [this.c, this.fog]) { cv.width = Math.round(this.w * this.dpr); cv.height = Math.round(this.h * this.dpr); } this.layout(); this.request(); }
+  pad() { const W = this.w, nar = W < 760; return this.interactive ? (nar ? [16, 150, 16, 220] : this.focus === TODAY ? [40, 100, 40, 170] : [340, 110, 320, 190]) : (nar ? [10, 10, 10, 10] : [W * .36, 70, 240, 90]); }
+  layout() {
+    if (!this.w || !SITES) return; const p = this.focus, [l, t, r, b] = this.pad();
+    const pr = p.proj === 'equalEarth' ? d3.geoEqualEarth() : p.proj === 'conic' ? d3.geoConicEquidistant().parallels([15, 50]) : d3.geoEquirectangular();
+    pr.rotate([-(p.center || 0), 0]).precision(.6); if (p.southUp) pr.angle(180);
+    const focus = p.anchors ? { type: 'FeatureCollection', features: [{ type: 'Feature', geometry: SHAPES[p.id] }] } : { type: 'Sphere' };
+    pr.fitExtent([[l, t], [Math.max(l + 60, this.w - r), Math.max(t + 60, this.h - b)]], focus);
+    this.pr = pr; this.cx = (l + this.w - r) / 2; this.cy = (t + this.h - b) / 2 + (this.interactive ? 20 : 0); this.mx = this.cx; this.my = this.cy - (this.interactive ? 20 : 0); this.k = 1;
+    const n = SITES.n; this.px = new Float32Array(n); this.py = new Float32Array(n); this.sx = new Float32Array(n); this.sy = new Float32Array(n);
+    for (let i = 0; i < n; i++) { const q = pr([SITES.lon[i], SITES.lat[i]]); this.px[i] = q ? q[0] : NaN; this.py[i] = q ? q[1] : NaN; }
+    this.lid = (this.lid || 0) + 1; this.ukey = null;
+    if (UND) { const m = UND.n; this.upx = new Float32Array(m); this.upy = new Float32Array(m); this.usx = new Float32Array(m); this.usy = new Float32Array(m);
+      for (let i = 0; i < m; i++) { const q = pr([UND.lon[i], UND.lat[i]]); this.upx[i] = q ? q[0] : NaN; this.upy[i] = q ? q[1] : NaN; } }
+    this.rp = RECON.map((r) => pr([r[1], r[2]])); this.contours = {}; this.win = null; this.dirty = true;
+  }
+  // planar (x, y) plus height h in px -> screen
+  cam(x, y, h) {
+    const u = (x - this.mx) * this.k, v = (y - this.my) * this.k, c = Math.cos(this.th), s = Math.sin(this.th), D = this.h * 1.5;
+    const Y = v * c - h * s, Z = -v * s - h * c, p = D / Math.max(D * .08, D + Z); return [this.cx + u * p, this.cy + Y * p];
+  }
+  ground(sx, sy) { const c = Math.cos(this.th), s = Math.sin(this.th), D = this.h * 1.5, xp = sx - this.cx, yp = sy - this.cy;
+    const v = yp * D / Math.max(1e-3, D * c + yp * s), p = D / (D - v * s); return [xp / p, v]; }
+  hEl(m) { return m <= 0 ? 0 : m * this.h * 0.0000075 * Math.pow(this.k, .55) * Math.min(1, this.th * 1.6); }
+  hLayer(i) { return this.h * (.07 + i * .045) * Math.min(1, this.th * 1.4); }
+  path(h) { this._h = h; return d3.geoPath(this.proj, this.ctx); }
+  lookThrough(p) { this.focus = p; this.layout(); this.fade(); }
+  setYear(y) { this.year = y; this.dirty = true; this.request(); }
+  standing() { let n = 0; for (let i = 0; i < SITES.n; i++) if (SITES.year[i] <= this.year) n++; return n; }
+  setTilt(on) { this.thT = on ? this.tiltOn : 0; const step = () => { this.th += (this.thT - this.th) * (reduce ? 1 : .18); this.dirty = true; this.draw(); if (Math.abs(this.thT - this.th) > .002) requestAnimationFrame(step); else { this.th = this.thT; this.request(); } }; requestAnimationFrame(step); }
+  request() { if (!this.raf) this.raf = requestAnimationFrame(() => { this.raf = 0; this.draw(); }); }
+  fade() { if (reduce || !this.w) { this.request(); return; }
+    const old = document.createElement('canvas'); old.width = this.c.width; old.height = this.c.height; old.getContext('2d').drawImage(this.c, 0, 0); const t0 = performance.now();
+    const step = (now) => { const k = Math.min(1, (now - t0) / 450); this.draw(); if (k < 1) { const g = this.ctx; g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1 - k; g.drawImage(old, 0, 0); g.globalAlpha = 1; requestAnimationFrame(step); } };
+    requestAnimationFrame(step); }
+  // contour level for the zoom: coarser intervals on the 30' grid, finer on the 10' grid in a window around the view
+  level() { const k = this.k; return k < 2 ? { id: 'a', g: 'g30', step: 500 } : k < 4.5 ? { id: 'b', g: 'g30', step: 200 } : k < 11 ? { id: 'c', g: 'g10', step: 100 } : { id: 'd', g: 'g10', step: 50 }; }
+  viewBox() { const pts = []; for (let i = 0; i <= 4; i++) for (const [fx, fy] of [[i / 4, 0], [i / 4, 1], [0, i / 4], [1, i / 4]]) { const [u, v] = this.ground(fx * this.w, (.12 + fy * .88) * this.h), q = this.pr.invert([this.mx + u / this.k, this.my + v / this.k]); if (q && isFinite(q[0])) pts.push(q); }
+    if (pts.length < 4) return null; const lo = d3.extent(pts, (d) => d[0]), la = d3.extent(pts, (d) => d[1]); return [lo[0], la[0], lo[1], la[1]]; }
+  contourSet() {
+    const L = this.level(), g = DEM[L.g];
+    if (!g) { if (L.g === 'g10' && !DEM.g10p) DEM.g10p = loadGrid(DATA + 'dem10.png', 2161, 1081).then((x) => { DEM.g10 = x; this.request(); }).catch(() => {}); return this.contours.b || this.contours.a || this.make('a'); }
+    if (L.g === 'g30') return this.contours[L.id] || this.make(L.id);
+    const bb = this.viewBox(); if (!bb || bb[2] - bb[0] > 90) return this.contours.b || this.make('b');
+    const key = L.id + bb.map((v) => Math.round(v / 4)).join(',');
+    if (this.contours[key]) return this.contours[key];
+    clearTimeout(this.cT); this.cT = setTimeout(() => { const padX = (bb[2] - bb[0]) * .25 + 1, padY = (bb[3] - bb[1]) * .25 + 1;
+      const win = [Math.max(0, Math.floor((bb[0] - padX + 180) / g.step)), Math.max(0, Math.floor((90 - bb[3] - padY) / g.step)), Math.min(g.w - 1, Math.ceil((bb[2] + padX + 180) / g.step)), Math.min(g.h - 1, Math.ceil((90 - bb[1] + padY) / g.step))];
+      this.contours[key] = { step: L.step, sets: contourLines(g, d3.range(Math.ceil(-6000 / L.step) * L.step, 7000, L.step).filter((t) => t >= L.step || t === -200), win) }; this.lastFine = this.contours[key]; this.request(); }, 140);
+    return this.lastFine && this.lastFine.step === L.step ? this.lastFine : (this.contours.b || this.make('b'));
+  }
+  make(id) { const step = id === 'a' ? 500 : 200; return (this.contours[id] = { step, sets: contourLines(DEM.g30, [-4000, -2000, -200, ...d3.range(step, 6500, step)]) }); }
+  hatch(p, ink) { const key = p.id + ink; this.pats ||= {}; if (this.pats[key]) return this.pats[key];
+    const s = 7, D = this.dpr, c = document.createElement('canvas'), W = 28; c.width = c.height = Math.round(W * D); const g = c.getContext('2d'); g.scale(D, D); g.strokeStyle = ink; g.lineWidth = 1;
+    g.translate(W / 2, W / 2); g.rotate(p.angle * RAD); for (let k = -8; k <= 8; k++) { g.beginPath(); g.moveTo(-W * 2, k * s); g.lineTo(W * 2, k * s); g.stroke(); }
+    return (this.pats[key] = this.ctx.createPattern(c, 'repeat')); }
+  draw() {
+    if (!this.pr || !LAND || !DEM.g30) return; const g = this.ctx, p = this.focus, dpr = this.dpr, W = this.w, H = this.h, dark = isDark();
+    const C = { sea: css('--sea'), land: css('--land'), coast: css('--coast'), ink: css('--ink'), mute: css('--mute'), faint: css('--faint'), fog: css('--fog'), halo: css('--halo'), dot: css('--dot') };
+    g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = C.sea; g.fillRect(0, 0, this.c.width, this.c.height); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.lineJoin = 'round'; g.lineCap = 'round';
+    let path = this.path(0);
+    g.beginPath(); path({ type: 'Sphere' }); g.strokeStyle = C.line || C.faint; g.globalAlpha = .25; g.lineWidth = 1; g.stroke(); g.globalAlpha = 1;
+    g.beginPath(); path(LAND); g.fillStyle = C.land; g.fill(); g.strokeStyle = C.coast; g.lineWidth = 1; g.stroke();
+    // relief: each contour lifted to its height, so mountains stand up when the lens tilts
+    if (this.show.borders && BORDERS) { path = this.path(0); g.beginPath(); path(BORDERS); g.setLineDash([4, 3]); g.strokeStyle = C.ink; g.globalAlpha = .4; g.lineWidth = .8; g.stroke(); g.setLineDash([]); g.globalAlpha = 1; }
+    const cs = this.show.contours ? this.contourSet() : { step: 1, sets: [] }, idx = cs.step * 5;
+    for (const set of cs.sets) { const v = set.value; path = this.path(this.hEl(v)); g.beginPath(); path(set.geo);
+      g.strokeStyle = C.ink; g.globalAlpha = v < 0 ? .07 : v % idx === 0 ? .34 : .15; g.lineWidth = v % idx === 0 ? .9 : .6; g.stroke(); }
+    g.globalAlpha = 1;
+    if (p.climes) { path = this.path(0); g.setLineDash([2, 5]); for (const lat of CLIMES) { g.beginPath(); path({ type: 'LineString', coordinates: d3.range(-180, 181, 5).map((lo) => [lo, lat]) }); g.strokeStyle = C.ink; g.globalAlpha = .18; g.lineWidth = .8; g.stroke(); } g.setLineDash([]); g.globalAlpha = 1; }
+    // forts standing in the chosen year, sat on the relief
+    const y = this.year, r = Math.max(1, Math.min(2.4, .9 + this.k * .18)); g.fillStyle = C.dot;
+    // forts with no recorded founding year: faint, and present at every year
+    if (UND && this.upx && this.show.undated) { const key = [this.k, this.mx, this.my, this.th, W, H, this.lid].join();
+      if (key !== this.ukey) { this.ukey = key; this.uqt = null; for (let i = 0; i < UND.n; i++) { if (this.upx[i] !== this.upx[i]) { this.usx[i] = NaN; continue; } const q = this.cam(this.upx[i], this.upy[i], this.hEl(UND.elev[i])); this.usx[i] = q[0]; this.usy[i] = q[1]; } }
+      // 124k points: written straight into pixels once per camera move, then composited each frame
+      const ink = d3.rgb(C.ink), pk = key + ink;
+      if (pk !== this.upk) { this.upk = pk; const cw = this.c.width, ch = this.c.height; this.ucv ||= document.createElement('canvas'); if (this.ucv.width !== cw || this.ucv.height !== ch) { this.ucv.width = cw; this.ucv.height = ch; this.uimg = null; }
+        const ug = this.ucv.getContext('2d'); this.uimg ||= ug.createImageData(cw, ch); const buf = new Uint32Array(this.uimg.data.buffer); buf.fill(0);
+        const a = Math.round(255 * (dark ? .34 : .3)), col = ((a << 24) | (ink.b << 16) | (ink.g << 8) | ink.r) >>> 0, sz = Math.max(1, Math.round(Math.max(.9, Math.min(2, .7 + this.k * .14)) * dpr));
+        for (let i = 0; i < UND.n; i++) { const X = Math.round(this.usx[i] * dpr), Y = Math.round(this.usy[i] * dpr); if (X !== X || X < 0 || Y < 0 || X >= cw - sz || Y >= ch - sz) continue;
+          for (let yy = 0; yy < sz; yy++) { const row = (Y + yy) * cw + X; for (let xx = 0; xx < sz; xx++) buf[row + xx] = col; } }
+        ug.putImageData(this.uimg, 0, 0); }
+      g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(this.ucv, 0, 0); g.setTransform(dpr, 0, 0, dpr, 0, 0); } else if (this.usx) this.usx.fill(NaN);
+    const fresh = [];
+    for (let i = 0; i < SITES.n; i++) { if (!this.show.forts || SITES.year[i] > y || this.px[i] !== this.px[i]) { this.sx[i] = NaN; continue; }
+      const q = this.cam(this.px[i], this.py[i], this.hEl(SITES.elev[i])); this.sx[i] = q[0]; this.sy[i] = q[1];
+      if (q[0] < -5 || q[1] < -5 || q[0] > W + 5 || q[1] > H + 5) continue; const rr = SITES.big[i] ? r * 1.5 : r; g.fillRect(q[0] - rr / 2, q[1] - rr / 2, rr, rr);
+      if (this.pings && y - SITES.year[i] < 40) fresh.push(i); }
+    // forts founded in the last few decades of the playing timeline ring out as they appear
+    g.strokeStyle = C.ink; g.lineWidth = 1;
+    for (const i of fresh) { const a = (y - SITES.year[i]) / 40; g.globalAlpha = .7 * (1 - a); g.beginPath(); g.arc(this.sx[i], this.sy[i], 2 + a * 12, 0, 7); g.stroke(); }
+    g.globalAlpha = 1;
+    this.qt = null;
+    // looking through someone: everything outside their world sinks into fog
+    if (p.anchors) { const f = this.fog.getContext('2d'); f.setTransform(1, 0, 0, 1, 0, 0); f.globalCompositeOperation = 'source-over'; f.clearRect(0, 0, this.fog.width, this.fog.height);
+      f.fillStyle = C.fog; f.fillRect(0, 0, this.fog.width, this.fog.height); f.globalCompositeOperation = 'destination-out'; f.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if ('filter' in f) f.filter = `blur(${Math.round(14 * dpr)}px)`; this._h = 0; f.beginPath(); d3.geoPath(this.proj, f)(SHAPES[p.id]); f.fillStyle = '#000'; f.fill(); if ('filter' in f) f.filter = 'none';
+      g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(this.fog, 0, 0); g.setTransform(dpr, 0, 0, dpr, 0, 0); }
+    // layers: each person's world as a plane standing above the ground, stacked in the order they are listed
+    this.labels = [];
+    const order = PEOPLE.filter((q) => this.on.includes(q.id));
+    order.forEach((q, li) => { const h = this.hLayer(li), shape = SHAPES[q.id], focus = q === p, tint = focus ? q.tint : d3.interpolateRgb(q.tint, C.ink)(.45);
+      path = this.path(0); g.beginPath(); path(shape); g.setLineDash([3, 4]); g.strokeStyle = C.ink; g.globalAlpha = .22; g.lineWidth = .8; g.stroke(); g.setLineDash([]); g.globalAlpha = 1;
+      g.strokeStyle = C.ink; g.globalAlpha = .16; g.lineWidth = .7; g.beginPath();
+      for (const a of q.anchors) { const pt = this.pr([a[0], a[1]]); if (!pt) continue; const b0 = this.cam(pt[0], pt[1], this.hEl(demAt(DEM.g30, a[0], a[1]))), b1 = this.cam(pt[0], pt[1], h); g.moveTo(b0[0], b0[1]); g.lineTo(b1[0], b1[1]); }
+      g.stroke(); g.globalAlpha = 1;
+      path = this.path(h); g.beginPath(); path(shape);
+      g.fillStyle = C.sea; g.globalAlpha = (dark ? .42 : .5) * Math.min(1, 2.5 / this.k); g.fill(); g.globalAlpha = 1;
+      g.save(); g.clip(); g.fillStyle = this.hatch(q, tint); g.globalAlpha = (focus ? .5 : .32) * Math.min(1, 2.5 / this.k); g.fillRect(0, 0, W, H); g.restore(); g.globalAlpha = 1;
+      g.strokeStyle = tint; g.lineWidth = focus ? 1.6 : 1.1; g.stroke();
+      if (q.route) { g.strokeStyle = tint; g.lineWidth = focus ? 2 : 1.5; g.beginPath();
+        for (let rr = 1; rr < q.route.length; rr++) { const A = q.anchors[q.route[rr - 1]], B = q.anchors[q.route[rr]], ip = d3.geoInterpolate([A[0], A[1]], [B[0], B[1]]), dist = d3.geoDistance([A[0], A[1]], [B[0], B[1]]), lift = Math.min(H * .16, dist * H * .09), n = 28; let pen = false;
+          for (let t = 0; t <= n; t++) { const ll = ip(t / n), pt = this.pr(ll); if (!pt) { pen = false; continue; } const s = this.cam(pt[0], pt[1], h + Math.sin(Math.PI * t / n) * lift); if (pen) g.lineTo(s[0], s[1]); else g.moveTo(s[0], s[1]); pen = true; } }
+        g.stroke(); }
+      q.anchors.forEach((a, i) => { const pt = this.pr([a[0], a[1]]); if (pt) this.labels.push({ q, a, i, s: this.cam(pt[0], pt[1], h), focus }); }); });
+    // forts rebuilt in 3D
+    this.rs = this.rp.map((q, i) => { if (!q || !this.show.rebuilt) return null; const s = this.cam(q[0], q[1], this.hEl(demAt(DEM.g30, RECON[i][1], RECON[i][2]))), sel = this.sel === 'r' + i;
+      g.beginPath(); g.arc(s[0], s[1], sel ? 6.5 : 4.5, 0, 7); g.fillStyle = C.sea; g.fill(); g.lineWidth = sel ? 2.4 : 1.6; g.strokeStyle = C.ink; g.stroke();
+      if (this.interactive && this.k > 3) { g.font = '500 11px Geist, sans-serif'; g.textAlign = 'left'; g.textBaseline = 'middle'; g.lineWidth = 3.5; g.strokeStyle = C.halo; g.strokeText(RECON[i][0], s[0] + 9, s[1]); g.fillStyle = C.ink; g.fillText(RECON[i][0], s[0] + 9, s[1]); }
+      return s; });
+    if (typeof this.sel === 'string' && this.sel[0] === 'u') { const i = +this.sel.slice(1); if (this.usx[i] === this.usx[i]) { g.beginPath(); g.arc(this.usx[i], this.usy[i], 6, 0, 7); g.lineWidth = 1.6; g.strokeStyle = C.ink; g.stroke(); } }
+    if (typeof this.sel === 'number' && this.sx[this.sel] === this.sx[this.sel]) { g.beginPath(); g.arc(this.sx[this.sel], this.sy[this.sel], 6, 0, 7); g.lineWidth = 1.6; g.strokeStyle = C.ink; g.stroke(); }
+    // names, front layers first
+    g.textAlign = 'center'; g.textBaseline = 'middle'; const placed = [];
+    for (const L of this.labels.sort((a, b) => b.focus - a.focus)) { const [X, Y] = L.s; if (X < -40 || Y < 60 || X > W + 40 || Y > H - 40) continue; if (placed.some(([px, py]) => Math.abs(px - X) < 64 && Math.abs(py - Y) < 15)) continue; placed.push([X, Y]);
+      const home = L.focus && L.i === (L.q.home || 0); g.font = L.focus ? `${home ? 700 : 600} ${home ? 15 : 12.5}px "${CULTURES[L.q.culture].font}", serif` : '500 11.5px Geist, sans-serif';
+      g.lineWidth = 4; g.strokeStyle = C.halo; g.strokeText(L.a[2], X, Y - 9); g.fillStyle = L.focus ? C.ink : d3.interpolateRgb(L.q.tint, C.ink)(.35); g.fillText(L.a[2], X, Y - 9);
+      g.beginPath(); g.arc(X, Y, home ? 3.5 : 2, 0, 7); g.fillStyle = C.ink; g.fill(); }
+  }
+  pickRecon(mx, my) { let best = null, bd = 12; (this.rs || []).forEach((s, i) => { if (!s) return; const d = Math.hypot(s[0] - mx, s[1] - my); if (d < bd) { bd = d; best = i; } }); return best; }
+  pick(mx, my) { if (!this.qt) { const ids = []; for (let i = 0; i < SITES.n; i++) if (this.sx[i] === this.sx[i]) ids.push(i); this.qt = d3.quadtree(ids, (i) => this.sx[i], (i) => this.sy[i]); } return this.qt.find(mx, my, 9); }
+  pickU(mx, my) { if (!UND || !this.usx) return null; if (!this.uqt) { const ids = []; for (let i = 0; i < UND.n; i++) if (this.usx[i] === this.usx[i] && this.usx[i] > -5 && this.usx[i] < this.w + 5 && this.usy[i] > -5 && this.usy[i] < this.h + 5) ids.push(i); this.uqt = d3.quadtree(ids, (i) => this.usx[i], (i) => this.usy[i]); } return this.uqt.find(mx, my, 7); }
+  zoomAt(sx, sy, k2) { k2 = Math.max(.6, Math.min(48, k2)); const [u, v] = this.ground(sx, sy), X = this.mx + u / this.k, Y = this.my + v / this.k; this.k = k2; this.mx = X - u / k2; this.my = Y - v / k2; this.request(); }
+  bind() {
+    const c = this.c, pts = new Map(); let moved = 0, last = null;
+    const loc = (e) => { const r = c.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+    c.addEventListener('pointerdown', (e) => { c.setPointerCapture(e.pointerId); pts.set(e.pointerId, loc(e)); moved = 0; c.classList.add('dragging'); });
+    c.addEventListener('pointermove', (e) => { if (!pts.has(e.pointerId)) return; const now = loc(e), prev = pts.get(e.pointerId);
+      if (pts.size === 1) { const [u0, v0] = this.ground(...prev), [u1, v1] = this.ground(...now); this.mx -= (u1 - u0) / this.k; this.my -= (v1 - v0) / this.k; moved += Math.hypot(now[0] - prev[0], now[1] - prev[1]); this.request(); }
+      else if (pts.size === 2) { const [a, b] = [...pts.values()], d0 = Math.hypot(a[0] - b[0], a[1] - b[1]); pts.set(e.pointerId, now); const [a2, b2] = [...pts.values()], d1 = Math.hypot(a2[0] - b2[0], a2[1] - b2[1]); if (d0 > 0) this.zoomAt((a2[0] + b2[0]) / 2, (a2[1] + b2[1]) / 2, this.k * d1 / d0); moved += 10; }
+      pts.set(e.pointerId, now); });
+    const up = (e) => { pts.delete(e.pointerId); if (!pts.size) c.classList.remove('dragging'); if (e.type === 'pointerup' && moved < 5) this.onClick?.(...loc(e)); };
+    c.addEventListener('pointerup', up); c.addEventListener('pointercancel', up);
+    c.addEventListener('wheel', (e) => { e.preventDefault(); const [x, y] = loc(e); this.zoomAt(x, y, this.k * Math.exp(-e.deltaY * (e.ctrlKey ? .01 : .0018))); }, { passive: false });
+    c.addEventListener('dblclick', (e) => { const [x, y] = loc(e); this.zoomAt(x, y, this.k * 2); });
+  }
+}
+
+// ---------- fisheye timeline: eras get equal width, and the stretch under the pointer is magnified (Sarkar-Brown) ----------
+class Timeline {
+  constructor(canvas, onYear) {
+    this.c = canvas; this.g = canvas.getContext('2d'); this.onYear = onYear; this.year = 2026; this.fx = null; this.d = 0; this.dTarget = 0; this.drag = false; this.on = [];
+    new ResizeObserver(() => this.resize()).observe(canvas);
+    canvas.addEventListener('pointermove', (e) => { if (this.drag) { this.set(this.yearAt(this.local(e))); return; } this.fx = this.local(e); this.dTarget = 3.2; this.anim(); this.onHover?.(this.yearAt(this.fx)); });
+    canvas.addEventListener('pointerleave', () => { if (!this.drag) { this.dTarget = 0; this.anim(); this.onHover?.(null); } });
+    canvas.addEventListener('pointerdown', (e) => { this.drag = true; canvas.setPointerCapture(e.pointerId); this.fx = this.local(e); this.set(this.yearAt(this.fx)); this.dTarget = 3.2; this.anim(); });
+    canvas.addEventListener('pointerup', () => { this.drag = false; });
+    canvas.addEventListener('keydown', (e) => { const st = e.shiftKey ? 50 : 5; if (e.key === 'ArrowRight') this.set(Math.min(2026, this.year + st)); else if (e.key === 'ArrowLeft') this.set(Math.max(-800, this.year - st)); else return; e.preventDefault(); });
+  }
+  local(e) { const r = this.c.getBoundingClientRect(); return Math.max(0, Math.min(r.width, e.clientX - r.left)); }
+  resize() { const r = this.c.getBoundingClientRect(); if (!r.width) return; this.dpr = Math.min(2, devicePixelRatio || 1); this.w = r.width; this.h = r.height; this.c.width = r.width * this.dpr; this.c.height = r.height * this.dpr; this.draw(); }
+  base(y) { const i = ERAS.indexOf(eraOf(y)), e = ERAS[i]; return ((i + Math.min(1, (y - e.from) / (e.to - e.from))) / ERAS.length) * this.w; }
+  baseInv(x) { const f = Math.max(0, Math.min(.99999, x / this.w)) * ERAS.length, i = Math.floor(f), e = ERAS[i]; return Math.round(e.from + (f - i) * (e.to - e.from)); }
+  eye(x) { if (this.fx == null || this.d < .01) return x; const c = this.fx, R = x < c ? c : this.w - c; if (R <= 0) return x; const t = Math.abs(x - c) / R, s = (this.d + 1) * t / (this.d * t + 1); return c + Math.sign(x - c) * s * R; }
+  eyeInv(x) { if (this.fx == null || this.d < .01) return x; const c = this.fx, R = x < c ? c : this.w - c; if (R <= 0) return x; const s = Math.abs(x - c) / R, t = s / ((this.d + 1) - this.d * s); return c + Math.sign(x - c) * t * R; }
+  X(y) { return this.eye(this.base(y)); }
+  yearAt(x) { return Math.max(-800, Math.min(2026, this.baseInv(this.eyeInv(x)))); }
+  set(y) { if (y === this.year) return; this.year = y; this.onYear(y); this.draw(); }
+  anim() { if (this.raf) return; const step = () => { this.d += (this.dTarget - this.d) * .25; this.draw(); if (Math.abs(this.dTarget - this.d) > .02) this.raf = requestAnimationFrame(step); else { this.d = this.dTarget; this.draw(); this.raf = 0; } }; this.raf = requestAnimationFrame(step); }
+  draw() {
+    if (!this.w) return; const g = this.g, w = this.w; g.setTransform(this.dpr, 0, 0, this.dpr, 0, 0); g.clearRect(0, 0, w, this.h);
+    const ink = css('--ink'), mute = css('--mute'), faint = css('--faint'), cur = eraOf(this.year);
+    g.textBaseline = 'middle';
+    ERAS.forEach((e, i) => { const a = this.X(e.from), b = this.X(e.to), on = cur === e;
+      if (i) { g.fillStyle = faint; g.fillRect(a, 4, 1, 16); }
+      g.font = `${on ? 600 : 400} 11.5px Geist, sans-serif`; g.fillStyle = on ? ink : mute; g.textAlign = 'left'; const label = e.name; if (g.measureText(label).width + 16 < b - a) g.fillText(label, a + 8, 12); });
+    g.fillStyle = faint; g.fillRect(0, 28, w, 1);
+    g.textBaseline = 'top'; g.font = '400 10px "Geist Mono", monospace'; let lastLabel = -1e9;
+    for (let y = -800; y <= 2020; y += 10) { const x = this.X(y), gap = this.X(Math.min(2026, y + 10)) - x, major = y % 100 === 0;
+      if (!major && !(y % 50 === 0 && gap > 2) && gap < 5) continue;
+      g.fillStyle = major ? mute : faint; g.fillRect(x, 28, 1, major ? 7 : 4);
+      const step = gap > 9 ? 10 : gap > 4 ? 50 : 100;
+      if (y % step === 0) { const txt = y < 0 ? `${-y} BCE` : y === 0 ? '1 CE' : String(y), tw = g.measureText(txt).width, x0 = Math.max(0, Math.min(w - tw, x - tw / 2)); if (x0 > lastLabel + 10) { g.fillStyle = mute; g.textAlign = 'left'; g.fillText(txt, x0, 38); lastLabel = x0 + tw; } } }
+    PEOPLE.forEach((p) => { const x = this.X(p.year), on = this.on.includes(p.id); g.beginPath(); g.arc(x, 56, 3.5, 0, 7); g.fillStyle = on ? ink : 'transparent'; g.fill(); g.lineWidth = 1.2; g.strokeStyle = on ? ink : mute; g.stroke(); });
+    const hx = this.X(this.year); g.fillStyle = ink; g.fillRect(hx - 1, 0, 2, 50); g.beginPath(); g.arc(hx, 28, 4.5, 0, 7); g.fill();
+    if (this.fx != null && this.d > .5 && !this.drag) { const yy = this.yearAt(this.fx), right = this.fx > w - 70; g.fillStyle = mute; g.fillRect(this.fx - .5, 2, 1, 46); g.font = '500 11px "Geist Mono", monospace'; g.textAlign = right ? 'right' : 'left'; g.fillStyle = ink; g.textBaseline = 'middle'; g.fillText(yearText(yy), this.fx + (right ? -6 : 6), 56); }
+  }
+}
+
+const SHAPES = {};
+async function load() {
+  const [land, rows, g30, countries] = await Promise.all([fetch(DATA + 'land-110m.json').then((r) => r.json()), fetch(DATA + 'sites.json').then((r) => r.json()), loadGrid(DATA + 'dem30.png', 721, 361), fetch(DATA + 'countries-110m.json').then((r) => r.json()).catch(() => null)]);
+  LAND = topojson.feature(land, land.objects.land); if (countries) BORDERS = topojson.mesh(countries, countries.objects.countries, (a, b) => a !== b); DEM.g30 = g30; const n = rows.length;
+  SITES = { n, lon: new Float32Array(n), lat: new Float32Array(n), year: new Int16Array(n), approx: new Uint8Array(n), kind: new Uint8Array(n), big: new Uint8Array(n), elev: new Int16Array(n), name: [], cc: [] };
+  rows.forEach((r, i) => { SITES.lon[i] = r[0]; SITES.lat[i] = r[1]; SITES.year[i] = r[2]; SITES.approx[i] = r[3]; SITES.kind[i] = r[4]; SITES.name.push(r[5]); SITES.cc.push(r[6]); SITES.big[i] = r[7] >= 40 ? 1 : 0; SITES.elev[i] = Math.max(0, demAt(g30, r[0], r[1])); });
+  for (const p of PEOPLE) SHAPES[p.id] = knownShape(p);
+  for (const sn of SNAPS) { sn.founded = 0; } for (let i = 0; i < n; i++) snapOf(SITES.year[i]).founded++;
+}
+
+// ---------- landing ----------
+const hero = new Lens(document.getElementById('heroMap'), { tilt: .82 });
+document.getElementById('wonders').innerHTML = RECON.map(([n, , , m, id, , sc]) => `<a class="wonder" ${id ? `href="${SITE}/ten-forts.html?fort=${id}" target="_blank" rel="noopener"` : 'href="#map"'}><span class="n">${n}<small>${sc}</small></span><span class="chips">${m.map((x) => `<span class="chip">${x[0]}</span>`).join('')}${id ? '' : '<span class="chip">next build</span>'}</span></a>`).join('');
+const cycle = ['idrisi', 'ashoka', 'ming', 'mughal', 'battuta', 'pilot', 'ptolemy', 'maratha']; let ci = 0, cycTimer = 0;
+function showHero(id) { const p = byId[id]; hero.on = [id]; hero.lookThrough(p); hero.setYear(p.year);
+  applyCulture(p.culture, document.getElementById('seen'));
+  document.getElementById('seenWho').textContent = p.who; document.getElementById('seenScript').textContent = p.script || ''; document.getElementById('seenWhere').textContent = `${p.where} / ${yearText(p.year)}`; }
+function startCycle() { clearInterval(cycTimer); if (reduce) return; cycTimer = setInterval(() => { ci = (ci + 1) % cycle.length; showHero(cycle[ci]); }, 5600); }
+document.getElementById('copyMail').addEventListener('click', (e) => { const t = document.getElementById('mail').textContent, b = e.currentTarget;
+  const done = () => { b.textContent = 'Copied'; setTimeout(() => { b.textContent = 'Copy'; }, 1600); };
+  if (navigator.clipboard) navigator.clipboard.writeText(t).then(done).catch(() => getSelection().selectAllChildren(document.getElementById('mail'))); else getSelection().selectAllChildren(document.getElementById('mail')); });
+
+// ---------- time map ----------
+const big = new Lens(document.getElementById('bigMap'), { interactive: true, tilt: .92 });
+const tip = document.getElementById('tip'), card = document.getElementById('card'), layersEl = document.getElementById('layers');
+const tl = new Timeline(document.getElementById('timeline'), (y) => onYear(y, false));
+let lastTick = null, curEra = null; const auto = new Set();
+const EYE_ON = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 8s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z"/><circle cx="8" cy="8" r="2.2" fill="currentColor"/></svg>';
+const EYE_OFF = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 8s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z"/><path d="M2 14L14 2"/></svg>';
+const swatch = (p) => `background:repeating-linear-gradient(${p.angle + 90}deg, ${p.tint} 0 1px, transparent 1px 4px)`;
+function layerRow(p) {
+  const on = big.on.includes(p.id), foc = big.focus === p;
+  return `<div class="layer${foc ? ' focus' : ''}${on ? '' : ' off'}" data-id="${p.id}">
+    <button class="eye" data-act="eye" aria-pressed="${on}" title="${on ? 'Hide' : 'Show'} this layer" aria-label="${on ? 'Hide' : 'Show'} ${p.who}">${on ? EYE_ON : EYE_OFF}</button>
+    <span class="sw" style="${swatch(p)}"></span>
+    <button class="nm" data-act="look" title="Look through their eyes"><b>${p.who}</b><small>${p.where} / ${yearText(p.year)}${p.route ? ' / route' : ''}</small></button></div>`;
+}
+const G = (d) => `<svg class="glyph" viewBox="0 0 18 14" fill="none" stroke="currentColor" aria-hidden="true">${d}</svg>`;
+const CTLS = [
+  ['forts', 'Forts standing', 'founded by the chosen year', G('<rect x="3" y="5" width="2.4" height="2.4" fill="currentColor" stroke="none"/><rect x="9" y="3" width="2.4" height="2.4" fill="currentColor" stroke="none"/><rect x="12" y="8" width="2.4" height="2.4" fill="currentColor" stroke="none"/>')],
+  ['undated', 'Date unknown', '', G('<rect x="3" y="4" width="1.6" height="1.6" fill="currentColor" stroke="none" opacity=".5"/><rect x="8" y="8" width="1.6" height="1.6" fill="currentColor" stroke="none" opacity=".5"/><rect x="13" y="5" width="1.6" height="1.6" fill="currentColor" stroke="none" opacity=".5"/><rect x="6" y="10" width="1.6" height="1.6" fill="currentColor" stroke="none" opacity=".5"/>')],
+  ['rebuilt', 'Rebuilt in 3D', '12 forts, walkable', G('<circle cx="9" cy="7" r="4" stroke-width="1.6"/>')],
+  ['contours', 'Relief contours', 'ETOPO1, finer as you zoom', G('<path d="M1 11c4-1 5-6 8-6s4 5 8 6M3 12c3-1 4-4 6-4s3 3 6 4" stroke-width="1"/>')],
+  ['borders', 'Present-day borders', 'Natural Earth', G('<path d="M1 9h16" stroke-width="1.2" stroke-dasharray="3 2"/>')],
+  ['empires', 'Empires and influence', 'needs open data; not yet', G('<path d="M2 3h7v8H2zM9 5h7v6H9z" stroke-width="1"/>'), true],
+];
+function ctlRow([key, name, note, glyph, na]) { const on = !na && big.show[key];
+  if (key === 'undated') note = UND ? `${UND.n.toLocaleString('en-US')} sites, shown at every year` : 'loading…';
+  return `<div class="ctl${on ? '' : ' off'}${na ? ' na' : ''}" data-key="${key}"><button class="eye" data-act="ctl" aria-pressed="${on}" ${na ? 'disabled' : ''} aria-label="${on ? 'Hide' : 'Show'} ${name}">${on ? EYE_ON : EYE_OFF}</button>${glyph}<span><b>${name}</b><small>${note}</small></span></div>`; }
+function renderLayers() {
+  const era = eraOf(tl.year), here = inEra(era), rest = PEOPLE.filter((p) => !here.includes(p));
+  const open = layersEl.querySelector('details.others')?.open || rest.some((p) => big.on.includes(p.id));
+  layersEl.innerHTML = `<div class="head"><span class="label">Map</span></div>${CTLS.map(ctlRow).join('')}
+    <div class="head" style="margin-top:12px;border-top:1px solid var(--line);padding-top:12px"><span class="label">Viewpoints / ${era.name}</span><span class="label">${here.length}</span></div>
+    ${here.length ? here.map(layerRow).join('') : '<p class="gap">No viewpoint for this era yet.</p>'}
+    <details class="others"${open ? ' open' : ''}><summary class="label">Other eras / ${rest.length}</summary>${rest.map(layerRow).join('')}</details>
+    <p class="gap">More viewpoints come as we gather sources.</p>`;
+  layersEl.querySelectorAll('[data-act]').forEach((b) => b.addEventListener('click', () => {
+    if (b.dataset.act === 'ctl') { const k = b.closest('.ctl').dataset.key; big.show[k] = !big.show[k]; big.dirty = true; blip(big.show[k] ? 880 : 520, .04); big.request(); renderLayers(); return; }
+    const id = b.closest('.layer').dataset.id;
+    if (b.dataset.act === 'eye') { auto.delete(id); const i = big.on.indexOf(id); if (i >= 0) big.on.splice(i, 1); else big.on.push(id); blip(i >= 0 ? 520 : 880, .04); big.request(); syncUI(); }
+    else { chord(); look(big.focus === byId[id] ? TODAY : byId[id]); } }));
+}
+function look(p) {
+  for (const id of auto) { const i = big.on.indexOf(id); if (i >= 0) big.on.splice(i, 1); } auto.clear();
+  big.lookThrough(p); big.sel = null;
+  if (p !== TODAY) { if (!big.on.includes(p.id)) { big.on.push(p.id); auto.add(p.id); } tl.set(p.year); showPerson(p); } else closeCard();
+  syncUI(); try { history.replaceState(null, '', '#map' + (p === TODAY ? '' : '-' + p.id)); } catch {}
+}
+function syncUI() {
+  const p = big.focus, era = eraOf(tl.year), tb = document.getElementById('titleB');
+  tb.textContent = p === TODAY ? `${era.name} era` : p.who; tb.className = p === TODAY ? '' : 'cult'; if (p === TODAY) tb.style.removeProperty('--chromefont'); else tb.style.setProperty('--chromefont', `"${CULTURES[p.culture].font}"`);
+  document.getElementById('titleS').textContent = p === TODAY ? 'The lens: drag to move, pinch or scroll to zoom' : `Looking through their eyes / ${p.where} / ${yearText(p.year)}`;
+  document.getElementById('rStand').textContent = big.standing().toLocaleString('en-US');
+  document.getElementById('rOn').textContent = big.on.length;
+  document.getElementById('eraLabel').textContent = `${era.name} era`;
+  tl.on = big.on; tl.draw(); renderLayers();
+}
+function onYear(y, quiet) {
+  big.setYear(y); document.getElementById('yearText').textContent = yearText(y);
+  const era = eraOf(y); if (era.id !== curEra) { curEra = era.id; renderLayers(); }
+  document.getElementById('rStand').textContent = big.standing().toLocaleString('en-US'); document.getElementById('eraLabel').textContent = `${era.name} era`;
+  if (big.focus === TODAY) document.getElementById('titleB').textContent = `${era.name} era`;
+  if (!card.hidden && card.dataset.recon) showRecon(+card.dataset.recon); renderEra();
+  const b = Math.floor(y / 50); if (!quiet && b !== lastTick) blip(330 + ((y + 800) / 2826) * 500, .022, .016); lastTick = b;
+}
+const eraWin = document.getElementById('eraWin'); let shownSnap = null, hoverYear = null;
+function standingAt(y) { let n = 0; for (let i = 0; i < SITES.n; i++) if (SITES.year[i] <= y) n++; return n; }
+function renderEra() {
+  if (!SITES) return; const y = hoverYear ?? tl.year, sn = snapOf(y), era = eraOf(y);
+  if (sn !== shownSnap) { shownSnap = sn; applyCulture(sn.cult, eraWin);
+    eraWin.innerHTML = `<span class="when"><span>${yearText(sn.from)} – ${sn.to > 2026 ? 'today' : yearText(sn.to)}</span><span>${era.name}</span></span><h3>${sn.title}</h3>${sn.script ? `<span class="s">${sn.script}</span>` : ''}<p>${sn.text}</p>
+      <div class="nums"><span><b data-k="y"></b></span><span><b data-k="n"></b> standing</span><span><b>+${sn.founded.toLocaleString('en-US')}</b> founded in this stretch</span></div>`; }
+  eraWin.querySelector('[data-k="y"]').textContent = hoverYear != null ? `Pointing at ${yearText(y)}` : yearText(y);
+  eraWin.querySelector('[data-k="n"]').textContent = standingAt(y).toLocaleString('en-US');
+}
+tl.onHover = (y) => { hoverYear = y; renderEra(); };
+// side panels tuck away to a 15% sliver on their own edge; on a phone, opening one tucks the other
+function setTuck(side, on, save = true) { const el = document.getElementById(side === 'left' ? 'leftSide' : 'rightSide'); el.classList.toggle('tucked', on);
+  el.querySelector('.tuck').setAttribute('aria-label', `${on ? 'Show' : 'Hide'} the ${side === 'left' ? 'era' : 'layers'} panel`); if (save) try { localStorage.setItem('fw:tuck-' + side, on ? '1' : '0'); } catch {} }
+document.querySelectorAll('[data-tuck]').forEach((b) => b.addEventListener('click', () => { const side = b.dataset.tuck, el = b.closest('.side'), on = !el.classList.contains('tucked');
+  setTuck(side, on); if (!on && innerWidth < 760) setTuck(side === 'left' ? 'right' : 'left', true, false); blip(on ? 440 : 620, .04); }));
+document.querySelectorAll('.side').forEach((el) => el.addEventListener('click', (e) => { if (el.classList.contains('tucked') && !e.target.closest('.tuck')) { e.stopPropagation(); e.preventDefault(); el.querySelector('.tuck').click(); } }, true));
+for (const side of ['left', 'right']) { let v = null; try { v = localStorage.getItem('fw:tuck-' + side); } catch {} setTuck(side, v ? v === '1' : innerWidth < 760 && side === 'right', false); }
+const playBtn = document.getElementById('playBtn'), PLAY = '<svg viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11l9.5-5.5z"/></svg>', PAUSE = '<svg viewBox="0 0 14 14" fill="currentColor"><path d="M3 2h3v10H3zM8 2h3v10H8z"/></svg>';
+let playing = false, playPos = 0, playLast = 0; playBtn.innerHTML = PLAY;
+function setPlaying(on) { playing = on; playBtn.innerHTML = on ? PAUSE : PLAY; playBtn.setAttribute('aria-label', on ? 'Pause' : 'Play through time'); big.pings = on; big.request();
+  if (on) { if (tl.year >= 2026) tl.set(-800); playPos = tl.base(tl.year); playLast = performance.now(); requestAnimationFrame(playStep); } }
+function playStep(now) { if (!playing) return; const dt = Math.min(64, now - playLast); playLast = now; playPos += dt * tl.w / 60000; const y = tl.baseInv(playPos);
+  if (y >= 2026 || playPos >= tl.w) { tl.set(2026); setPlaying(false); return; } tl.set(y); requestAnimationFrame(playStep); }
+playBtn.addEventListener('click', () => { blip(playing ? 520 : 784, .05); setPlaying(!playing); });
+function showPerson(p) {
+  applyCulture(p.culture, card); delete card.dataset.recon;
+  card.innerHTML = `<button class="x" aria-label="Close">×</button><h4>${p.who}</h4><span class="s">${p.script}</span><span class="meta">${CULTURES[p.culture].name} / ${p.where} / ${yearText(p.year)}</span><p>${p.note}</p><button class="go" type="button">Back to the lens</button>`;
+  card.hidden = false; card.querySelector('.x').onclick = () => look(TODAY); card.querySelector('.go').onclick = () => { chord(); look(TODAY); };
+}
+function revealRight() { if (document.getElementById('rightSide').classList.contains('tucked')) setTuck('right', false); }
+function showRecon(i) { revealRight();
+  const [n, , , moments, id, cult, sc] = RECON[i], y = tl.year, near = moments.reduce((a, b) => Math.abs(b[1] - y) < Math.abs(a[1] - y) ? b : a);
+  applyCulture(cult, card); card.dataset.recon = i;
+  card.innerHTML = `<button class="x" aria-label="Close">×</button><h4>${n}</h4><span class="s">${sc}</span><span class="meta">${CULTURES[cult].name} / rebuilt in 3D / ${moments.length} moments</span>
+    <span class="chips">${moments.map((m) => `<span class="chip${m === near ? ' near' : ''}">${m[0]}</span>`).join('')}</span>
+    <p>Closest to ${yearText(y)}: <b style="color:var(--on)">${near[0]}</b></p>
+    ${id ? `<a class="go" href="${SITE}/ten-forts.html?fort=${id}" target="_blank" rel="noopener">Walk inside</a>` : '<p>Its scenes are in the game build, not yet online.</p>'}`;
+  card.hidden = false; card.querySelector('.x').onclick = closeCard;
+}
+function showSite(i) { revealRight();
+  const when = (SITES.approx[i] ? 'c. ' : '') + yearText(SITES.year[i]), knew = PEOPLE.filter((p) => d3.geoContains(SHAPES[p.id], [SITES.lon[i], SITES.lat[i]]));
+  delete card.dataset.recon; applyCulture(big.focus.culture, card);
+  card.innerHTML = `<button class="x" aria-label="Close">×</button><h4>${SITES.name[i]}</h4><span class="meta">${KIND[SITES.kind[i]]} / founded ${when} / ${SITES.cc[i]}${SITES.elev[i] > 0 ? ` / about ${Math.round(SITES.elev[i] / 10) * 10} m` : ''}</span>
+    <span class="known">${knew.length ? 'Inside the layers of ' + knew.map((p) => p.who).join(', ') : 'Outside every layer so far'}</span><p>Only rebuilt forts open in 3D for now.</p>`;
+  card.hidden = false; card.querySelector('.x').onclick = closeCard;
+}
+function showUndated(i) { revealRight();
+  delete card.dataset.recon; applyCulture(big.focus.culture, card); const ll = [UND.lon[i], UND.lat[i]], knew = PEOPLE.filter((p) => d3.geoContains(SHAPES[p.id], ll));
+  card.innerHTML = `<button class="x" aria-label="Close">×</button><h4>${UND.name[i] || 'Unnamed site'}</h4><span class="meta">${KIND[UND.kind[i]]} / ${UND.cc[i] || '–'}${UND.elev[i] > 0 ? ` / about ${Math.round(UND.elev[i] / 10) * 10} m` : ''}</span>
+    <span class="known">${knew.length ? 'Inside the layers of ' + knew.map((p) => p.who).join(', ') : 'Outside every layer so far'}</span><p>Its founding year is not recorded in Wikidata yet, so it shows at every point on the timeline.</p>`;
+  card.hidden = false; card.querySelector('.x').onclick = closeCard;
+}
+function closeCard() { card.hidden = true; big.sel = null; big.request(); }
+const bigC = document.getElementById('bigMap');
+bigC.addEventListener('pointermove', (e) => {
+  if (!SITES || e.buttons) { tip.hidden = true; return; }
+  const r = bigC.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top, ri = big.pickRecon(mx, my); let html = null;
+  if (ri != null) html = `<b>${RECON[ri][0]}</b><span>Rebuilt in 3D / ${RECON[ri][3].map((m) => m[0]).join(', ')}</span>`;
+  else { const i = big.pick(mx, my); if (i != null) html = `<b>${SITES.name[i]}</b><span>${KIND[SITES.kind[i]]} / ${(SITES.approx[i] ? 'c. ' : '') + yearText(SITES.year[i])}</span>`;
+    else { const u = big.pickU(mx, my); if (u != null) html = `<b>${UND.name[u] || 'Unnamed site'}</b><span>${KIND[UND.kind[u]]} / founding year not recorded</span>`; } }
+  if (!html) { tip.hidden = true; bigC.style.cursor = ''; return; }
+  tip.innerHTML = html; tip.hidden = false; bigC.style.cursor = 'pointer';
+  tip.style.left = Math.min(e.clientX + 14, innerWidth - tip.offsetWidth - 10) + 'px'; tip.style.top = Math.min(e.clientY + 14, innerHeight - tip.offsetHeight - 10) + 'px';
+});
+bigC.addEventListener('pointerleave', () => { tip.hidden = true; });
+big.onClick = (mx, my) => { const ri = big.pickRecon(mx, my);
+  if (ri != null) { blip(660, .05); big.sel = 'r' + ri; showRecon(ri); } else { const i = big.pick(mx, my); if (i != null) { blip(600, .04); big.sel = i; showSite(i); }
+    else { const u = big.pickU(mx, my); if (u == null) { if (!card.hidden && big.focus === TODAY) closeCard(); return; } blip(560, .04); big.sel = 'u' + u; showUndated(u); } }
+  tip.hidden = true; big.request(); };
+const soundBtn = document.getElementById('soundBtn'); soundBtn.setAttribute('aria-pressed', String(soundOn));
+soundBtn.addEventListener('click', () => { soundOn = !soundOn; soundBtn.setAttribute('aria-pressed', String(soundOn)); try { localStorage.setItem('fw:sound', soundOn ? '1' : '0'); } catch {} blip(988, .05); });
+const tiltBtn = document.getElementById('tiltBtn');
+tiltBtn.addEventListener('click', () => { const on = tiltBtn.getAttribute('aria-pressed') !== 'true'; tiltBtn.setAttribute('aria-pressed', String(on)); tiltBtn.textContent = on ? '3D' : '2D'; big.setTilt(on); blip(on ? 700 : 500, .04); });
+const pop = document.getElementById('pop'), infoBtn = document.getElementById('infoBtn');
+infoBtn.addEventListener('click', () => { pop.hidden = !pop.hidden; infoBtn.setAttribute('aria-expanded', String(!pop.hidden)); blip(740, .04);
+  const p = big.focus; document.getElementById('popTitle').textContent = p === TODAY ? 'The lens' : p.who; document.getElementById('popBody').textContent = p === TODAY ? 'Each person is a layer. The eye shows or hides it; layers stack above the ground, so where two worlds overlap you see both planes. Pick a name to look through that person’s eyes.' : p.note; });
+addEventListener('keydown', (e) => { if (e.key === ' ' && !document.getElementById('mapview').hidden && e.target === document.body) { e.preventDefault(); setPlaying(!playing); return; } if (e.key === 'Escape') { if (!pop.hidden) pop.hidden = true; else if (!card.hidden) { big.focus !== TODAY ? look(TODAY) : closeCard(); } } });
+
+// ---------- routing ----------
+let countersRun = false, mapReady = false;
+function goHome(e) { e?.preventDefault(); blip(392, .05); try { history.pushState(null, '', location.pathname + location.search); } catch {} route(); }
+document.getElementById('brand').addEventListener('click', goHome);
+function route() {
+  const h = location.hash.slice(1), mv = document.getElementById('mapview'), m = /^map(?:-([a-z]+))?$/.exec(h);
+  if (m) { mv.hidden = false; document.documentElement.style.overflow = 'hidden'; clearInterval(cycTimer);
+    if (SITES) { big.resize(); tl.resize(); const p = byId[m[1]];
+      if (p && p !== TODAY) { if (big.focus !== p) look(p); } else if (!mapReady) { tl.set(1450); look(TODAY); for (const id of ['battuta', 'ming', 'pilot']) { big.on.push(id); auto.add(id); } syncUI(); big.request(); }
+      mapReady = true; } }
+  else { mv.hidden = true; document.documentElement.style.overflow = ''; if (playing) setPlaying(false); tip.hidden = true; pop.hidden = true; if (SITES) startCycle();
+    if (h && document.getElementById(h)) document.getElementById(h).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }
+  if (!countersRun) { countersRun = true; runCounters(); }
+}
+addEventListener('hashchange', route); addEventListener('popstate', route);
+const redraw = () => { hero.pats = {}; big.pats = {}; hero.request(); big.request(); tl.draw(); };
+new MutationObserver(redraw).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { paintThemeButtons(); redraw(); });
+document.fonts?.ready.then(redraw);
+async function loadUndated() {
+  const u = await fetch(DATA + 'undated.json').then((r) => r.json()), n = u.lon.length;
+  const U = { n, lon: new Float32Array(n), lat: new Float32Array(n), kind: Uint8Array.from(u.kind), elev: new Int16Array(n), name: u.name, cc: u.cc, links: u.links };
+  for (let i = 0; i < n; i++) { U.lon[i] = u.lon[i] / 1000; U.lat[i] = u.lat[i] / 1000; U.elev[i] = Math.max(0, demAt(DEM.g30, U.lon[i], U.lat[i])); }
+  UND = U; big.layout(); big.request(); renderLayers();
+}
+load().then(() => { document.getElementById('loading').remove(); loadUndated().catch((e) => console.error(e)); hero.resize(); showHero(reduce ? 'idrisi' : cycle[0]); startCycle(); onYear(tl.year, true); route(); })
+  .catch((err) => { console.error(err); document.getElementById('loading').textContent = 'The map data could not be loaded. Reload the page to try again.'; });
+route();
+</script>

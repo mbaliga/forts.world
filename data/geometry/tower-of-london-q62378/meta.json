@@ -1,0 +1,10 @@
+{
+ "id": "tower-of-london-q62378",
+ "lat": 51.5082,
+ "lon": -0.0762,
+ "radiusM": 900,
+ "osm": true,
+ "tiles": 16,
+ "fetched": "2026-11-27T10:17:26.117Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}
