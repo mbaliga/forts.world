@@ -10,4 +10,4 @@ export const BUDGET = {
 
 // Time-budget multipliers for scenes whose whole-site extent is several times the usual 1 km window (nav grid and terrain scale with area).
 // Triangle and instance limits are NOT relaxed. Gwalior: 2.9 km extent, ~8.4M nav nodes, measured 14.5 s on a CI runner against the 6 s default.
-export const TIME_SCALE = { gwalior: 3, chittorgarh: 6, gandikota: 3 };
+export const TIME_SCALE = { gwalior: 3, chittorgarh: 6, gandikota: 3, 'bourtange-fortress-q5470838': 2, 'tower-of-london-q62378': 4, 'himeji-castle-q188754': 3, 'conwy-castle-q756830': 6, 'matmata-troglodyte-village': 20, 'masada-q186312': 6 };

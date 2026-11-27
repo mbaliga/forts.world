@@ -1,0 +1,10 @@
+{
+ "id": "masada-q186312",
+ "lat": 31.31556,
+ "lon": 35.35389,
+ "radiusM": 900,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-27T10:46:13.059Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

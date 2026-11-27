@@ -1,0 +1,10 @@
+{
+ "id": "ksar-ouled-soltane-q2670896",
+ "lat": 32.78853,
+ "lon": 10.51457,
+ "radiusM": 500,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-27T10:46:02.877Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

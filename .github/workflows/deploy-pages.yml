@@ -6,6 +6,7 @@
 #              /atlas/      the Forts of the World atlas (web/forts-of-the-world) with its generated data bundle
 #              /ten-forts.html  the hand-built walkable reconstructions
 #              /search/     the fort search page (web/fort-search)
+#              /wiki/       the public wiki (web/wiki) with its generated data (tools/wiki/build-site.mjs)
 # The full game (dist/index.html) is not deployed yet: one file is over the 25 MiB Pages limit because it bundles the
 # 50 MB trace index. Split that index first (see README, "Before launch").
 name: deploy-pages
@@ -34,13 +35,15 @@ jobs:
           node tools/world/build-home.mjs web/home/data
           NODE_OPTIONS=--max-old-space-size=6144 node tools/world/build-atlas.mjs web/forts-of-the-world
           node tools/world/build-reconstructions.mjs web/forts-of-the-world/ten-forts.html
+          NODE_OPTIONS=--max-old-space-size=6144 node tools/wiki/build-site.mjs
       - name: Assemble the site
         run: |
-          rm -rf _site && mkdir -p _site/search _site/atlas
+          rm -rf _site && mkdir -p _site/search _site/atlas _site/wiki
           cp -r web/home/. _site/ && rm -f _site/README.md
           cp -r web/forts-of-the-world/. _site/atlas/ && rm -f _site/atlas/README.md
           mv _site/atlas/ten-forts.html _site/ten-forts.html
           cp -r web/fort-search/. _site/search/ && rm -f _site/search/README.md
+          cp -r web/wiki/. _site/wiki/ && rm -f _site/wiki/README.md
           cp LICENSES.md NOTICE _site/
           printf 'User-agent: *\nAllow: /\n' > _site/robots.txt
           echo "files: $(find _site -type f | wc -l)  size: $(du -sh _site | cut -f1)"

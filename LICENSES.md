@@ -25,6 +25,7 @@ Copyright 2026 Madhav Baliga (A System of Cells).
 | `src/data/dem-janjira.js` | Copernicus DEM GLO-30 around Murud-Janjira | Produced using Copernicus WorldDEM-30 © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018, provided under COPERNICUS by the European Union and ESA. |
 | `src/goa/terrain.json` (land cover) | ESA WorldCover 2021 | © ESA WorldCover project 2021, contains modified Copernicus Sentinel data (2021) processed by the ESA WorldCover consortium; [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). |
 | `data/plans/` | Plans, maps and photographs used as tracing references | Each file's licence, author and source page are in its folder's `manifest.json` (or, where the download was retried, in `data/plans/search/<id>.json`). Most are public domain or CC0; three are CC BY 3.0 and two are CC BY-SA 4.0 (the Chittorgarh and Gwalior fort maps). They are reference material, not textures, and are never shipped in pages. |
+| `web/home/img/people/` | Watercolour portraits of the time map's viewpoints, made for this project by Madhav Baliga with ChatGPT image generation (2026-11-27) | © 2026 Madhav Baliga, all rights reserved; not covered by the Apache licence. Ask before reusing them. |
 | `web/fort-search/vendor/` | Leaflet | BSD-2-Clause, licence file alongside. |
 | npm dependencies (not committed) | three.js (inlined into built pages), MapLibre GL JS (inlined into `south-asia-detail.html`), esbuild | MIT, BSD-3-Clause, MIT. |
 
