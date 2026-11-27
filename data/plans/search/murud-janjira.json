@@ -299,13 +299,13 @@
   "planish": false
  },
  {
-  "title": "File:Blocked gateway, Murud-Janjira.jpg",
-  "url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Blocked_gateway%2C_Murud-Janjira.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-  "w": 1944,
-  "h": 2592,
+  "title": "File:Walls, Murud-Janjira.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Walls%2C_Murud-Janjira.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "w": 2592,
+  "h": 1944,
   "licence": "CC BY-SA 4.0",
   "author": "Damitr",
-  "date": "2007-01-06 23:26:57",
+  "date": "2007-01-06 23:08:42",
   "desc": "Photos of Janjira Fort.",
   "query": "Murud Janjira map",
   "open": true,
@@ -455,19 +455,6 @@
   "planish": false
  },
  {
-  "title": "File:Hall of archways 11, Murud-Janjira.jpg",
-  "url": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Hall_of_archways_11%2C_Murud-Janjira.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-  "w": 1944,
-  "h": 2592,
-  "licence": "CC BY-SA 4.0",
-  "author": "Damitr",
-  "date": "2007-01-06 23:25:49",
-  "desc": "Photos of Janjira Fort.",
-  "query": "Murud Janjira map",
-  "open": true,
-  "planish": false
- },
- {
   "title": "File:Palace details, Murud-Janjira.jpg",
   "url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Palace_details%2C_Murud-Janjira.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "w": 1944,
@@ -481,19 +468,6 @@
   "planish": false
  },
  {
-  "title": "File:Palace details 3, Murud-Janjira.jpg",
-  "url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Palace_details_3%2C_Murud-Janjira.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-  "w": 1944,
-  "h": 2592,
-  "licence": "CC BY-SA 4.0",
-  "author": "Damitr",
-  "date": "2007-01-06 23:37:38",
-  "desc": "Photos of Janjira Fort.",
-  "query": "Murud Janjira map",
-  "open": true,
-  "planish": false
- },
- {
   "title": "File:Palace details 4, Murud-Janjira.jpg",
   "url": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Palace_details_4%2C_Murud-Janjira.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "w": 1944,
@@ -501,6 +475,19 @@
   "licence": "CC BY-SA 4.0",
   "author": "Damitr",
   "date": "2007-01-06 23:13:11",
+  "desc": "Photos of Janjira Fort.",
+  "query": "Murud Janjira map",
+  "open": true,
+  "planish": false
+ },
+ {
+  "title": "File:Blocked gateway, Murud-Janjira.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Blocked_gateway%2C_Murud-Janjira.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "w": 1944,
+  "h": 2592,
+  "licence": "CC BY-SA 4.0",
+  "author": "Damitr",
+  "date": "2007-01-06 23:26:57",
   "desc": "Photos of Janjira Fort.",
   "query": "Murud Janjira map",
   "open": true,
@@ -546,6 +533,32 @@
   "planish": false
  },
  {
+  "title": "File:Palace details 6, Murud-Janjira.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Palace_details_6%2C_Murud-Janjira.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "w": 1944,
+  "h": 2592,
+  "licence": "CC BY-SA 4.0",
+  "author": "Damitr",
+  "date": "2007-01-06 23:35:50",
+  "desc": "Photos of Janjira Fort.",
+  "query": "Murud Janjira map",
+  "open": true,
+  "planish": false
+ },
+ {
+  "title": "File:Palace details 9, Murud-Janjira.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/7/75/Palace_details_9%2C_Murud-Janjira.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "w": 1944,
+  "h": 2592,
+  "licence": "CC BY-SA 4.0",
+  "author": "Damitr",
+  "date": "2007-01-06 23:37:04",
+  "desc": "Photos of Janjira Fort.",
+  "query": "Murud Janjira map",
+  "open": true,
+  "planish": false
+ },
+ {
   "title": "File:Palace details 11, Murud-Janjira.jpg",
   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Palace_details_11%2C_Murud-Janjira.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "w": 2592,
@@ -559,26 +572,13 @@
   "planish": false
  },
  {
-  "title": "File:Walls, Murud-Janjira.jpg",
-  "url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Walls%2C_Murud-Janjira.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-  "w": 2592,
-  "h": 1944,
-  "licence": "CC BY-SA 4.0",
-  "author": "Damitr",
-  "date": "2007-01-06 23:08:42",
-  "desc": "Photos of Janjira Fort.",
-  "query": "Murud Janjira map",
-  "open": true,
-  "planish": false
- },
- {
-  "title": "File:Inscription on the walls 2, Murud-Janjira.jpg",
-  "url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Inscription_on_the_walls_2%2C_Murud-Janjira.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "title": "File:Palace details 12, Murud-Janjira.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/9/99/Palace_details_12%2C_Murud-Janjira.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "w": 1944,
   "h": 2592,
   "licence": "CC BY-SA 4.0",
   "author": "Damitr",
-  "date": "2007-01-06 23:48:51",
+  "date": "2007-01-06 23:43:07",
   "desc": "Photos of Janjira Fort.",
   "query": "Murud Janjira map",
   "open": true,
