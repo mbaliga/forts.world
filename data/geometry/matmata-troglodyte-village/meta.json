@@ -1,0 +1,10 @@
+{
+ "id": "matmata-troglodyte-village",
+ "lat": 33.54368,
+ "lon": 9.96592,
+ "radiusM": 700,
+ "osm": true,
+ "tiles": 4,
+ "fetched": "2026-11-27T10:45:57.597Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}
