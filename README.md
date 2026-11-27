@@ -15,7 +15,8 @@ hand-built or plan-traced scenes.
 | `src/`, `build.mjs` | The game: each fort at dated moments, walkable, with people, animals, guns, farming, battles and campaigns (three.js) |
 | `src/levels/` | Fort scenes: hand-built levels (`*-hand.js` kept beside newer ones), traced levels (`<id>.trace.js` from `tools/trace/curation/<id>.mjs`) |
 | `tools/` | Pipelines and checks: site universe, geometry fetch, auto-T1 traces (`build-t1.mjs`), curation (`trace/`), smoke tests, wiki (`wiki/`), map bundle and reconstructions (`world/`) |
-| `web/forts-of-the-world/` | The world map page: every site, search, filters, records and a 3D viewer (its data bundle is generated) |
+| `web/home/` | The home page and time map: the site's front page (`/`). Viewpoint layers, relief contours, a fisheye timeline. Data built by `tools/world/build-home.mjs` |
+| `web/forts-of-the-world/` | The atlas (`/atlas/`): every site, search, filters, records and a 3D viewer (its data bundle is generated) |
 | `web/fort-search/` | Fort search with a Leaflet map |
 | `data/` | Site tables (`sites.csv`, `world/`), plans and photos with their licences (`plans/`), open geometry (`geometry/`), traces (`traces/`) |
 | `docs/fort-fidelity/` | The programme: `WORKFLOW.md`, `STANDARD.md`, the ledger (`ledger.csv`, one row per site), pipeline design, run notes |
@@ -33,7 +34,8 @@ pnpm i
 node build.mjs --level src/levels/agra-fort.js        # one fort  -> dist/test-agra-fort.html
 node build.mjs --min                                    # the game  -> dist/index.html (+ dist/traces/)
 node tools/world/build-reconstructions.mjs              # the ten hand-built forts -> dist/reconstructions.html
-node tools/world/build-atlas.mjs web/forts-of-the-world # data bundle for the world map page
+node tools/world/build-home.mjs                         # site data for the home page and time map (web/home/data)
+node tools/world/build-atlas.mjs web/forts-of-the-world # data bundle for the atlas page
 node tools/smoke.mjs agra-fort                          # build every period of a fort and check it can be walked
 node --test tests/*.mjs tests/*.cjs
 ```

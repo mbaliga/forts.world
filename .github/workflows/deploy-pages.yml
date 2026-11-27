@@ -2,8 +2,9 @@
 #   main -> production (forts.world once the custom domain is attached), dev -> a preview at dev.<project>.pages.dev.
 # It does nothing until the repository has the secrets CLOUDFLARE_API_TOKEN (Pages: Edit) and CLOUDFLARE_ACCOUNT_ID;
 # the build still runs, so a broken site shows up here before it can ship.
-# Site layout: /            the Forts of the World map (web/forts-of-the-world) with its generated data bundle
-#              /ten-forts.html  the ten hand-built walkable reconstructions
+# Site layout: /            the home page and time map (web/home) with its generated site data
+#              /atlas/      the Forts of the World atlas (web/forts-of-the-world) with its generated data bundle
+#              /ten-forts.html  the hand-built walkable reconstructions
 #              /search/     the fort search page (web/fort-search)
 # The full game (dist/index.html) is not deployed yet: one file is over the 25 MiB Pages limit because it bundles the
 # 50 MB trace index. Split that index first (see README, "Before launch").
@@ -28,14 +29,17 @@ jobs:
       - uses: actions/setup-node@v4
         with: {node-version: 22}
       - run: corepack enable && pnpm i --frozen-lockfile
-      - name: Build the map data bundle and the ten-forts page
+      - name: Build the site data, the atlas bundle and the ten-forts page
         run: |
+          node tools/world/build-home.mjs web/home/data
           NODE_OPTIONS=--max-old-space-size=6144 node tools/world/build-atlas.mjs web/forts-of-the-world
           node tools/world/build-reconstructions.mjs web/forts-of-the-world/ten-forts.html
       - name: Assemble the site
         run: |
-          rm -rf _site && mkdir -p _site/search
-          cp -r web/forts-of-the-world/. _site/ && rm -f _site/README.md
+          rm -rf _site && mkdir -p _site/search _site/atlas
+          cp -r web/home/. _site/ && rm -f _site/README.md
+          cp -r web/forts-of-the-world/. _site/atlas/ && rm -f _site/atlas/README.md
+          mv _site/atlas/ten-forts.html _site/ten-forts.html
           cp -r web/fort-search/. _site/search/ && rm -f _site/search/README.md
           cp LICENSES.md NOTICE _site/
           printf 'User-agent: *\nAllow: /\n' > _site/robots.txt
