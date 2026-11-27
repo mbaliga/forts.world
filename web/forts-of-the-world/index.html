@@ -182,7 +182,7 @@ async function getPacked(u) {
 }
 const FL = { WHS: 1, HER: 2, OSM: 4, PROG: 8, WP: 16, M3D: 32 };
 // the first ten forts also have the hand-built, walkable reconstruction of the Ten Forts of India set (ten-forts.html, by level id)
-const RECON = { 'murud-janjira': 'murud-janjira-hand', sindhudurg: 'sindhudurg-hand', daulatabad: 'daulatabad-hand', golconda: 'golconda', gingee: 'gingee', gwalior: 'gwalior-hand', chittorgarh: 'chittorgarh-hand', kumbhalgarh: 'kumbhalgarh', mehrangarh: 'mehrangarh', jaisalmer: 'jaisalmer-hand' };
+const RECON = { 'murud-janjira': 'janjira-hand', sindhudurg: 'sindhudurg-hand', daulatabad: 'daulatabad-hand', golconda: 'golconda', gingee: 'gingee', gwalior: 'gwalior-hand', chittorgarh: 'chittorgarh-hand', kumbhalgarh: 'kumbhalgarh', mehrangarh: 'mehrangarh', jaisalmer: 'jaisalmer-hand' };
 const reconUrl = (id) => RECON[id] ? `/ten-forts.html?fort=${RECON[id]}` : null;
 
 // ---------------------------------------------------------------- state

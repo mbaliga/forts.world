@@ -17,6 +17,7 @@ hand-built or plan-traced scenes.
 | `tools/` | Pipelines and checks: site universe, geometry fetch, auto-T1 traces (`build-t1.mjs`), curation (`trace/`), smoke tests, wiki (`wiki/`), map bundle and reconstructions (`world/`) |
 | `web/home/` | The home page and time map: the site's front page (`/`). Viewpoint layers, relief contours, a fisheye timeline. Data built by `tools/world/build-home.mjs` |
 | `web/forts-of-the-world/` | The atlas (`/atlas/`): every site, search, filters, records and a 3D viewer (its data bundle is generated) |
+| `web/wiki/` | The public wiki (`/wiki/`): search, country pages and a page for every site, with history only where it can be sourced. Data built by `tools/wiki/build-site.mjs` into `web/wiki/data/` |
 | `web/fort-search/` | Fort search with a Leaflet map |
 | `data/` | Site tables (`sites.csv`, `world/`), plans and photos with their licences (`plans/`), open geometry (`geometry/`), traces (`traces/`) |
 | `docs/fort-fidelity/` | The programme: `WORKFLOW.md`, `STANDARD.md`, the ledger (`ledger.csv`, one row per site), pipeline design, run notes |

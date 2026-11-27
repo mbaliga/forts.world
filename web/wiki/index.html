@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wiki · forts.world</title>
+<meta name="description" content="A wiki of forts and historical sites: what is known about each, what the 3D model contains, and where every fact comes from.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* tokens and chrome copied from web/home/index.html so the two pages read as one site */
+:root {
+  --paper: #f3f3f0; --sea: #e7eae9; --land: #fafaf8; --coast: rgba(22,25,26,.28); --ink: #16191a; --mute: #5d6669; --faint: #9aa2a4;
+  --line: rgba(22,25,26,.12); --glass: rgba(250,250,248,.72); --dot: rgba(22,25,26,.62);
+  --sans: "Geist", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #0b0e10; --sea: #0b0e10; --land: #12171a; --coast: rgba(233,237,238,.3); --ink: #e9edee; --mute: #9aa4a6; --faint: #5f6a6d;
+  --line: rgba(233,237,238,.12); --glass: rgba(11,14,16,.66); --dot: rgba(233,237,238,.7); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --paper: #0b0e10; --sea: #0b0e10; --land: #12171a; --coast: rgba(233,237,238,.3); --ink: #e9edee; --mute: #9aa4a6; --faint: #5f6a6d;
+  --line: rgba(233,237,238,.12); --glass: rgba(11,14,16,.66); --dot: rgba(233,237,238,.7); color-scheme: dark; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.55 var(--sans); -webkit-font-smoothing: antialiased; overflow-wrap: break-word; }
+a { color: inherit; } button, input { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
+.wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); max-width: 1240px; margin-inline: auto; box-sizing: border-box; }
+.label { font: 500 11px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+.wordmark { font: 600 17px/1 var(--sans); letter-spacing: -.01em; text-decoration: none; white-space: nowrap; }
+.wordmark.big { font-size: 24px; letter-spacing: -.025em; }
+.wordmark span { color: var(--faint); }
+.counter { display: flex; flex-wrap: wrap; gap: 2px 10px; font: 400 12px/1.3 var(--mono); font-variant-numeric: tabular-nums; color: var(--mute); }
+.counter span { white-space: nowrap; } .counter b { font-weight: 500; color: var(--ink); } .counter i { font-style: normal; color: var(--faint); }
+.ibtn { height: 34px; min-width: 34px; padding: 0 10px; box-sizing: border-box; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--ink); display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; font: 500 12px var(--mono); text-decoration: none; }
+.ibtn:hover { border-color: var(--faint); } .ibtn svg { width: 16px; height: 16px; flex: none; } .ibtn.icon { padding: 0; }
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 31; background: var(--paper); }
+.nav .wrap { display: flex; align-items: center; gap: 22px; padding-block: 11px; }
+.links { display: flex; gap: 22px; margin-left: auto; align-items: center; }
+.links a.t { text-decoration: none; font-size: 14px; color: var(--mute); white-space: nowrap; } .links a.t:hover, .links a.t.on { color: var(--ink); }
+@media (max-width: 900px) { .links a.hide-m { display: none; } .counter { display: none; } }
+@media (max-width: 480px) { .links { gap: 12px; } .nav .wrap { gap: 10px; } }
+footer.site { margin-top: 80px; border-top: 1px solid var(--line); }
+footer.site .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 28px; padding-block: 40px 28px; }
+footer.site h4 { margin: 0 0 10px; font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+footer.site ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+footer.site li a { text-decoration: none; } footer.site li a:hover { text-decoration: underline; }
+footer.site .credits { padding-block: 0 36px; color: var(--mute); font: 400 12px/1.6 var(--mono); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+/* ---------- wiki ---------- */
+main { padding-block: 36px 0; min-height: 70vh; }
+h1 { margin: 0; font: 600 clamp(30px, 4.6vw, 54px)/1.05 var(--sans); letter-spacing: -.035em; text-wrap: balance; }
+h2 { margin: 44px 0 14px; font: 600 clamp(20px, 2.2vw, 26px)/1.15 var(--sans); letter-spacing: -.02em; }
+h3 { margin: 22px 0 6px; font: 600 15px/1.3 var(--sans); }
+p { margin: 0 0 12px; max-width: 68ch; } .mute { color: var(--mute); } .faint { color: var(--faint); } .mono { font-family: var(--mono); }
+.crumbs { font: 400 12px var(--mono); color: var(--mute); margin-bottom: 14px; display: flex; flex-wrap: wrap; gap: 4px 8px; }
+.crumbs a { text-decoration: none; } .crumbs a:hover { text-decoration: underline; }
+.sub { margin: 10px 0 0; color: var(--mute); max-width: 60ch; font-size: 16px; }
+.native { font: 400 20px/1.3 var(--sans); color: var(--mute); margin-top: 6px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.chip { font: 400 11.5px/1 var(--mono); padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--mute); white-space: nowrap; }
+.chip.k { color: var(--ink); border-color: var(--faint); }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.btn { padding: 9px 16px; border: 1px solid var(--ink); border-radius: 999px; text-decoration: none; font-weight: 500; font-size: 14px; white-space: nowrap; }
+.btn.go { background: var(--ink); color: var(--paper); } .btn.q { border-color: var(--line); } .btn.q:hover { border-color: var(--faint); }
+
+/* search */
+.searchbar { position: relative; max-width: 640px; }
+.searchbar input { width: 100%; box-sizing: border-box; height: 48px; padding: 0 16px 0 44px; border-radius: 999px; border: 1px solid var(--line); background: transparent; font-size: 16px; outline: none; }
+.searchbar input:focus { border-color: var(--ink); }
+.searchbar svg { position: absolute; left: 16px; top: 15px; width: 18px; height: 18px; color: var(--mute); pointer-events: none; }
+.hits { position: absolute; z-index: 20; left: 0; right: 0; top: 54px; max-height: min(70vh, 560px); overflow: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 14px 40px rgba(0,0,0,.18); padding: 6px; }
+.hit { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; padding: 9px 10px; border-radius: 8px; text-decoration: none; }
+.hit:hover, .hit.sel { background: color-mix(in srgb, var(--ink) 7%, transparent); }
+.hit b { font-weight: 500; } .hit small { display: block; font: 400 12px var(--mono); color: var(--mute); }
+.hit .t3 { font: 500 10.5px var(--mono); color: var(--mute); border: 1px solid var(--line); border-radius: 999px; padding: 3px 6px; flex: none; }
+.hits .none { padding: 12px; color: var(--mute); }
+
+/* lists */
+.rows { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0 32px; }
+.row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 11px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+.row:hover b { text-decoration: underline; } .row b { font-weight: 500; } .row span { font: 400 12px var(--mono); color: var(--mute); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.wonder { display: grid; gap: 7px; padding: 14px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+.wonder .n { font: 600 16px/1.2 var(--sans); } .wonder:hover .n { text-decoration: underline; }
+.cols2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px 40px; }
+.cols2 h3 { margin-top: 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th { text-align: left; font: 500 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--mute); padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th button { background: none; border: 0; padding: 0; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; }
+th button:hover, th button[aria-pressed="true"] { color: var(--ink); }
+td { padding: 9px 10px 9px 0; border-bottom: 1px solid var(--line); vertical-align: top; } td.num { font: 400 12px var(--mono); font-variant-numeric: tabular-nums; color: var(--mute); }
+td a { text-decoration: none; font-weight: 500; } td a:hover { text-decoration: underline; }
+td.nm { overflow-wrap: anywhere; } td small { display: block; color: var(--mute); font-weight: 400; }
+.tools { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; margin: 18px 0 8px; }
+.tools input { height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: transparent; min-width: 0; flex: 1 1 220px; max-width: 360px; outline: none; }
+.tools input:focus { border-color: var(--ink); }
+.more { margin: 20px 0 0; }
+
+/* site page */
+dl.facts { display: grid; grid-template-columns: minmax(110px, 170px) 1fr; gap: 0 20px; margin: 0; }
+dl.facts dt { font: 500 11px/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--mute); padding: 10px 0; border-bottom: 1px solid var(--line); }
+dl.facts dd { margin: 0; padding: 8px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+dl.facts dd .mono { font-size: 13px; }
+@media (max-width: 560px) { dl.facts { grid-template-columns: 1fr; } dl.facts dt { padding: 12px 0 0; border: 0; } dl.facts dd { padding-top: 2px; } }
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: 40px; align-items: start; }
+@media (max-width: 860px) { .two { grid-template-columns: 1fr; gap: 0; } }
+svg.map { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 12px; background: var(--sea); }
+svg.map path.land { fill: var(--land); stroke: var(--coast); stroke-width: .05; vector-effect: non-scaling-stroke; }
+svg.map circle.nb { fill: var(--dot); } svg.map a:hover circle.nb { fill: var(--ink); }
+svg.map circle.me { fill: none; stroke: var(--ink); stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+svg.map circle.me2 { fill: var(--ink); }
+.cap { font: 400 12px/1.5 var(--mono); color: var(--mute); margin-top: 8px; }
+.bars { display: grid; gap: 8px; margin: 10px 0 4px; max-width: 520px; }
+.bar { display: grid; grid-template-columns: 92px 1fr 56px; gap: 10px; align-items: center; font: 400 12px var(--mono); color: var(--mute); }
+.bar i { display: block; height: 6px; border-radius: 3px; background: var(--ink); min-width: 1px; } .bar b { color: var(--ink); font-weight: 500; text-align: right; }
+.era { padding: 16px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 110px 1fr; gap: 4px 20px; }
+.era .y { font: 500 12px/1.6 var(--mono); color: var(--mute); } .era h3 { margin: 0 0 4px; }
+.era p { margin-bottom: 8px; font-size: 14px; } .era p small { display: block; font: 500 10.5px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--mute); }
+@media (max-width: 560px) { .era { grid-template-columns: 1fr; } }
+.tag { display: inline-block; font: 500 10.5px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 4px 7px; border-radius: 999px; border: 1px solid var(--line); color: var(--mute); margin-right: 8px; vertical-align: 1px; }
+.tag.doc { color: var(--ink); border-color: var(--ink); } .tag.inf { border-style: dashed; color: var(--ink); } .tag.conf, .tag.gap { color: var(--mute); }
+.hist { padding: 14px 0; border-bottom: 1px solid var(--line); } .hist h3 { margin: 0 0 8px; }
+.hist ul { margin: 0 0 10px; padding-left: 18px; max-width: 74ch; } .hist li { margin-bottom: 5px; } .hist p { font-size: 14.5px; }
+.hist pre { font: 400 12px/1.5 var(--mono); overflow-x: auto; white-space: pre-wrap; word-break: break-word; color: var(--mute); margin: 0 0 10px; }
+.hist code, .note code { font: 400 12.5px var(--mono); overflow-wrap: anywhere; }
+.empty { padding: 18px 0; color: var(--mute); }
+.srcs td:first-child { overflow-wrap: anywhere; }
+.nt { font-size: 13.5px; color: var(--mute); max-width: 74ch; }
+details summary { cursor: pointer; font: 500 12px var(--mono); color: var(--mute); padding: 6px 0; }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <div style="display:grid;gap:5px"><a class="wordmark big" href="/">forts<span>.</span>world</a><div class="counter" id="counter"></div></div>
+    <nav class="links" aria-label="Main">
+      <a class="t" href="/#map">Time map</a>
+      <a class="t hide-m" href="/atlas/">Atlas</a>
+      <a class="t on" href="#/">Wiki</a>
+      <a class="t hide-m" href="https://github.com/mbaliga/forts.world" target="_blank" rel="noopener">GitHub</a>
+      <button class="ibtn icon" data-theme-toggle aria-label="Switch light or dark" title="Light / dark"></button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="app" aria-live="polite"><p class="mute">Loading the wiki…</p></main>
+
+<footer class="site">
+  <div class="wrap cols">
+    <div><h4>Explore</h4><ul><li><a href="/#map">Time map</a></li><li><a href="/ten-forts.html">Walk a fort</a></li><li><a href="/atlas/">Atlas of every site</a></li><li><a href="/search/">Fort search</a></li><li><a href="#/">Wiki</a></li></ul></div>
+    <div><h4>Contribute</h4><ul><li><a href="https://github.com/mbaliga/forts.world/issues/new?title=Wiki%3A%20" target="_blank" rel="noopener">Report or add a fact</a></li><li><a href="https://github.com/mbaliga/forts.world/tree/main/docs/research" target="_blank" rel="noopener">Research passes</a></li></ul></div>
+    <div><h4>Open source</h4><ul><li><a href="https://github.com/mbaliga/forts.world" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://github.com/mbaliga/forts.world/blob/main/LICENSES.md" target="_blank" rel="noopener">Licences</a></li><li><a href="https://github.com/mbaliga/forts.world/blob/main/NOTICE" target="_blank" rel="noopener">Attribution</a></li></ul></div>
+  </div>
+  <div class="wrap credits"><span>Sites: Wikidata (CC0) / © OpenStreetMap contributors (ODbL) / UNESCO World Heritage Centre (ids, years) / Natural Earth</span><span>Our text Apache-2.0; no Wikipedia text is copied</span></div>
+</footer>
+
+<script>
+'use strict';
+// ---------- theme (same toggle and storage key as the home page) ----------
+const isDark = () => (document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark';
+const SUN = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="3.6"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6"/></svg>';
+const MOON = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16.5 12.5A7 7 0 0 1 7.5 3.5a7 7 0 1 0 9 9z"/></svg>';
+const paintTheme = () => document.querySelectorAll('[data-theme-toggle]').forEach((b) => { b.innerHTML = isDark() ? SUN : MOON; });
+try { const t = localStorage.getItem('fw:theme'); if (t) document.documentElement.dataset.theme = t; } catch {}
+document.querySelectorAll('[data-theme-toggle]').forEach((b) => b.addEventListener('click', () => { const t = isDark() ? 'light' : 'dark'; document.documentElement.dataset.theme = t; try { localStorage.setItem('fw:theme', t); } catch {} paintTheme(); }));
+paintTheme();
+
+// ---------- helpers ----------
+const $app = document.getElementById('app'), DATA = 'data/';
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const nf = (n) => Number(n).toLocaleString('en-US');
+const norm = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9Ͱ-￿]+/g, ' ').trim();
+const getJSON = (u) => fetch(u).then((r) => { if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); });
+const TIER_TXT = {
+  'T2 (partial)': 'Part of the model follows a survey plan.',
+  'T2 (partial) + constructed (schematic)': 'Part of the model follows a survey plan; a tinted schematic layer shows what written sources describe, with an assumed height and rule for every element.',
+  'T1 (plan-validated)': 'A mapped outline was checked against a plan.',
+  'T1': 'The outline and walls come from open map data and have been hand-curated; no survey plan has been used yet.',
+  'T1 + constructed (schematic)': 'A curated outline from open maps, plus a tinted schematic layer of what written sources describe, with an assumed height and rule for every element.',
+  'T1 (auto, outline)': 'An automatic outline from OpenStreetMap on terrain tiles, not checked against any plan. No gates, bastions or heights are invented.',
+  'T1 (location-only)': 'Terrain and the mapped surroundings only: no outline of this site is mapped, so none is drawn.',
+  '': 'No model yet.',
+};
+const TIER_RANK = { 'T2 (partial) + constructed (schematic)': 6, 'T2 (partial)': 5, 'T1 (plan-validated)': 4, 'T1 + constructed (schematic)': 3.5, 'T1': 3, 'T1 (auto, outline)': 2, 'T1 (location-only)': 1, '': 0 };
+const KIND_LABEL = { castle: 'Castle', fort: 'Fort', fortification: 'Fortification', ruin: 'Ruin', '': '' };
+const kindName = (k) => KIND_LABEL[k] ?? (k ? k[0].toUpperCase() + k.slice(1) : '');
+const fmtYear = (s) => { if (!/^-?\d+$/.test(s || '')) return s || ''; const n = parseInt(s, 10); return n < 0 ? `${-n} BCE` : String(n); };
+const SVG_SEARCH = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4.5 4.5"/></svg>';
+
+// tiny, safe markdown for our research notes: links, **bold**, `code`, bullets, pipe tables as plain text
+function md(src) {
+  const inline = (t) => esc(t).replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>').replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>').replace(/`([^`]+)`/g, '<code>$1</code>');
+  const out = []; let list = null, para = [], pre = [];
+  const flush = () => { if (list) { out.push('<ul>' + list.map((x) => `<li>${inline(x)}</li>`).join('') + '</ul>'); list = null; } if (para.length) { out.push(`<p>${inline(para.join(' '))}</p>`); para = []; } if (pre.length) { out.push(`<pre>${esc(pre.join('\n'))}</pre>`); pre = []; } };
+  for (const line of String(src).split('\n')) {
+    if (/^\s*\|/.test(line)) { if (list || para.length) flush(); pre.push(line); continue; } if (pre.length) flush();
+    const b = /^\s*(?:[-*]|\d+\.)\s+(.*)$/.exec(line);
+    if (b) { if (para.length) flush(); (list ||= []).push(b[1]); } else if (/^\s+\S/.test(line) && list) list[list.length - 1] += ' ' + line.trim(); else if (!line.trim()) flush(); else { if (list) flush(); para.push(line.trim()); }
+  }
+  flush(); return out.join('');
+}
+
+// ---------- data ----------
+let META = null; const COUNTRY = new Map(); const hint = new Map(); const shardP = new Map();
+const loadMeta = () => META ? Promise.resolve(META) : getJSON(DATA + 'meta.json').then((m) => { META = m; m.bySlug = new Map(m.countries.map((c, i) => [c.slug, { ...c, i }])); renderCounter(); return m; });
+const loadCountry = (slug) => COUNTRY.has(slug) ? Promise.resolve(COUNTRY.get(slug)) : getJSON(DATA + 'c/' + slug + '.json').then((c) => { c.byId = new Map(c.sites.map((s) => [s.id ?? s.i, s])); c.sites.forEach((s) => hint.set(s.i, slug)); COUNTRY.set(slug, c); return c; });
+function loadShard(n) { if (!shardP.has(n)) shardP.set(n, getJSON(DATA + META.shards[n].f).then((rows) => { for (const e of rows) { e.key = norm(e[1] + ' ' + e[2]); e.tok = e.key.split(' '); } return rows; })); return shardP.get(n); }
+function renderCounter() {
+  const m = META; document.getElementById('counter').innerHTML = [[m.total, 'sites'], [m.withModel, 'in 3D'], [m.countries.length, 'countries'], [m.whc, 'World Heritage']].map(([n, l], i) => `${i ? '<i>|</i>' : ''}<span><b>${nf(n)}</b> ${l}</span>`).join('');
+}
+
+// ---------- search: prefix on name tokens first, then fuzzy; shard 0 holds the best-known sites and answers first ----------
+function lev(a, b, max) { if (Math.abs(a.length - b.length) > max) return 9; let prev = Array.from({ length: b.length + 1 }, (_, i) => i); for (let i = 1; i <= a.length; i++) { const cur = [i]; let mn = i; for (let j = 1; j <= b.length; j++) { const v = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); cur.push(v); if (v < mn) mn = v; } if (mn > max) return 9; prev = cur; } return prev[b.length]; }
+function scoreEntry(e, qs, q, fuzzy) {
+  const name = norm(e[1]); let s = 0;
+  if (name === q) s = 1000; else if (name.startsWith(q)) s = 800; else { let all = true; for (const t of qs) { if (!e.tok.some((w) => w.startsWith(t))) { all = false; break; } } if (all) s = 600; else if (e.key.includes(q) && q.length > 2) s = 400; }
+  if (!s && fuzzy) { let tot = 0; for (const t of qs) { const mx = t.length > 7 ? 2 : t.length > 3 ? 1 : 0; if (!mx) { if (!e.tok.some((w) => w.startsWith(t))) return 0; continue; } let best = 9; for (const w of e.tok) { if (w[0] !== t[0] && t.length < 6) continue; const d = lev(t, w.slice(0, t.length + mx), mx); if (d < best) best = d; if (!best) break; } if (best > mx) return 0; tot += best; } s = 200 - tot * 40; }
+  return s ? s + Math.min(e[10], 100) / 10 + (e[9] ? 1 : 0) : 0;
+}
+let searchSeq = 0;
+async function search(raw, cb) {
+  const q = norm(raw); if (!q) return cb([], false, true); const qs = q.split(' '); const seq = ++searchSeq; let all = [];
+  for (let n = 0; n < META.shards.length; n++) {
+    const rows = await loadShard(n); if (seq !== searchSeq) return;
+    for (const e of rows) { const s = scoreEntry(e, qs, q, false); if (s) all.push([s, e]); }
+    all.sort((a, b) => b[0] - a[0]); cb(all.slice(0, 40), n < META.shards.length - 1, false);
+  }
+  if (!all.length && q.length > 3) { all = []; for (let n = 0; n < META.shards.length; n++) { const rows = await loadShard(n); for (const e of rows) { const s = scoreEntry(e, qs, q, true); if (s) all.push([s, e]); } } if (seq !== searchSeq) return; all.sort((a, b) => b[0] - a[0]); cb(all.slice(0, 40), false, false); }
+}
+function hitHTML(e, i) { for (const [k, v] of [[e[0], META.countries[e[3]].slug]]) hint.set(k, v); const sub = [e[2] && e[2] !== e[1] ? e[2] : '', kindName(META.kinds[e[5]]), e[4], META.countries[e[3]].name].filter(Boolean).join(' · ');
+  return `<a class="hit" role="option" data-i="${i}" href="#/site/${encodeURIComponent(e[0])}"><span><b>${esc(e[1])}</b><small>${esc(sub)}</small></span>${e[9] === 2 ? '<span class="t3">walk in 3D</span>' : e[9] ? '<span class="t3">3D</span>' : ''}</a>`; }
+function wireSearch(box, input, hits) {
+  let sel = -1; const items = () => [...hits.querySelectorAll('.hit')];
+  const paint = () => items().forEach((a, i) => a.classList.toggle('sel', i === sel));
+  const run = () => { const v = input.value; if (!v.trim()) { hits.hidden = true; hits.innerHTML = ''; searchSeq++; return; } hits.hidden = false;
+    search(v, (res, more, empty) => { sel = -1; hits.innerHTML = res.length ? res.map(([, e], i) => hitHTML(e, i)).join('') + (more ? '<div class="none faint">Searching the rest…</div>' : '') : `<div class="none">${more ? 'Searching…' : 'No site matches “' + esc(v) + '”.'}</div>`; }); };
+  input.addEventListener('input', run); input.addEventListener('focus', () => { if (input.value.trim()) hits.hidden = false; });
+  input.addEventListener('keydown', (ev) => { const it = items(); if (ev.key === 'ArrowDown') { sel = Math.min(it.length - 1, sel + 1); paint(); ev.preventDefault(); } else if (ev.key === 'ArrowUp') { sel = Math.max(0, sel - 1); paint(); ev.preventDefault(); } else if (ev.key === 'Enter') { const a = it[Math.max(0, sel)]; if (a) location.hash = a.getAttribute('href'); } else if (ev.key === 'Escape') { hits.hidden = true; input.blur(); } });
+  hits.addEventListener('click', () => { hits.hidden = true; });
+  document.addEventListener('click', (ev) => { if (!box.contains(ev.target)) hits.hidden = true; });
+}
+const searchHTML = (v = '') => `<div class="searchbar" id="sb">${SVG_SEARCH}<input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="Search forts and sites, in any script" aria-label="Search sites" value="${esc(v)}"><div class="hits" id="hits" role="listbox" hidden></div></div>`;
+const mountSearch = () => wireSearch(document.getElementById('sb'), document.getElementById('q'), document.getElementById('hits'));
+addEventListener('keydown', (ev) => { if (ev.key === '/' && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) { const q = document.getElementById('q'); if (q) { ev.preventDefault(); q.focus(); } } });
+
+// ---------- views ----------
+async function viewHome() {
+  const m = await loadMeta(); document.title = 'Wiki · forts.world';
+  const feat = m.featured, reb = feat.filter((f) => f.g === 'rebuilt'), top = feat.filter((f) => f.g === 'top20');
+  const fl = (f) => `<a class="wonder" href="#/site/${encodeURIComponent(f.id)}"><span class="n">${esc(f.n)}</span><span class="chips" style="margin:0"><span class="chip">${esc(m.countries.find((c) => c.slug === f.c).name)}</span>${f.h3 ? '<span class="chip k">walk in 3D</span>' : ''}</span></a>`;
+  $app.innerHTML = `<h1>Forts and historical sites, and what we can prove about them</h1>
+  <p class="sub">${nf(m.total)} sites in ${m.countries.length} countries. Each page says what is known, what the 3D model contains, and where every fact comes from. We do not copy Wikipedia; we link it.</p>
+  <div style="margin-top:26px">${searchHTML()}</div>
+  <h2>Featured</h2><p class="mute">The twelve forts rebuilt by hand, and the world's twenty most acclaimed, each with a richer page.</p>
+  <div class="rows">${[...reb, ...top].map(fl).join('')}</div>
+  <h2>Countries</h2>
+  <div class="rows">${m.countries.slice(0, 24).map((c) => `<a class="row" href="#/country/${c.slug}"><b>${esc(c.name)}</b><span>${nf(c.n)}</span></a>`).join('')}</div>
+  <p style="margin-top:14px"><a href="#/countries">All ${m.countries.length} countries</a></p>
+  <h2>How to read a page</h2>
+  <div class="cols2">
+   <div><h3>Evidence tier</h3><p class="mute">T2 means a survey plan was used. T1 means open map data only: curated by hand, or built automatically and unchecked. Where nothing is mapped the model is terrain only.</p></div>
+   <div><h3>Documented or inferred</h3><p class="mute">History is shown only with its source. Our research notes mark what a source states (documented) and what we reasoned (inferred). Where nothing is known the page says so.</p></div>
+   <div><h3>Add what you know</h3><p class="mute">A page with no history is waiting for a sourced fact. <a href="https://github.com/mbaliga/forts.world/issues/new?title=Wiki%3A%20" target="_blank" rel="noopener">Open an issue</a> with the site and a citation.</p></div>
+  </div>`;
+  mountSearch();
+}
+async function viewCountries() {
+  const m = await loadMeta(); document.title = 'Countries · Wiki · forts.world';
+  $app.innerHTML = `<div class="crumbs"><a href="#/">Wiki</a> / <span>Countries</span></div><h1>Countries</h1><p class="sub">${m.countries.length} countries and territories, by number of sites.</p><div style="margin-top:22px">${searchHTML()}</div>
+  <div class="rows" style="margin-top:20px">${m.countries.map((c) => `<a class="row" href="#/country/${c.slug}"><b>${esc(c.name)}</b><span>${nf(c.n)}${c.m !== c.n ? ' · ' + nf(c.m) + ' in 3D' : ''}</span></a>`).join('')}</div>`; mountSearch();
+}
+async function viewCountry(slug) {
+  const m = await loadMeta(); const c = m.bySlug.get(slug); if (!c) return notFound('country');
+  document.title = `${c.name} · Wiki · forts.world`;
+  $app.innerHTML = `<div class="crumbs"><a href="#/">Wiki</a> / <a href="#/countries">Countries</a> / <span>${esc(c.name)}</span></div><h1>${esc(c.name)}</h1>
+  <p class="sub">${nf(c.n)} sites; ${nf(c.m)} with a 3D model${c.m < c.n ? ', ' + nf(c.n - c.m) + ' awaiting one' : ''}.</p><div style="margin-top:22px">${searchHTML()}</div><div id="cl"><p class="mute" style="margin-top:24px">Loading ${nf(c.n)} sites…</p></div>`; mountSearch();
+  const data = await loadCountry(slug); if (location.hash.indexOf('/country/' + slug) < 0) return;
+  const st = { key: 'sl', dir: -1, filter: '', page: 1 }; const PER = 100;
+  const cols = [['n', 'Site', (s) => (s.n || '').toLowerCase(), 1], ['ad', 'Area', (s) => (s.ad || '').toLowerCase(), 1, 'hide-s'], ['k', 'Kind', (s) => kindName(m.kinds[s.k]), 1, 'hide-s'], ['t', 'Evidence', (s) => TIER_RANK[m.tiers[s.t]] ?? 0, -1], ['sl', 'Wikipedia', (s) => s.sl || 0, -1, 'hide-s'], ['m', '3D', (s) => (s.h3 ? 2 : s.m ? 1 : 0), -1]];
+  const style = document.createElement('style'); style.textContent = '@media (max-width:640px){.hide-s{display:none}}'; document.head.appendChild(style);
+  const root = document.getElementById('cl');
+  const draw = () => {
+    const f = norm(st.filter); let rows = f ? data.sites.filter((s) => norm(s.n + ' ' + (s.nat || '') + ' ' + (s.ad || '')).includes(f)) : data.sites.slice();
+    const col = cols.find((x) => x[0] === st.key); rows.sort((a, b) => { const x = col[2](a), y = col[2](b); return (x < y ? -1 : x > y ? 1 : 0) * st.dir || (b.sl || 0) - (a.sl || 0); });
+    const shown = rows.slice(0, st.page * PER);
+    root.innerHTML = `<div class="tools"><input id="flt" type="search" placeholder="Filter this country" aria-label="Filter this country" value="${esc(st.filter)}"><span class="mono mute" style="font-size:12px">${nf(rows.length)} shown</span></div>
+    <table><thead><tr>${cols.map((x) => `<th class="${x[4] || ''}"><button data-k="${x[0]}" aria-pressed="${st.key === x[0]}">${x[1]}${st.key === x[0] ? (st.dir > 0 ? ' ↑' : ' ↓') : ''}</button></th>`).join('')}</tr></thead><tbody>${shown.map((s) => `<tr><td class="nm"><a href="#/site/${encodeURIComponent(s.i)}">${esc(s.n || s.i)}</a>${s.nat && s.nat !== s.n ? `<small>${esc(s.nat)}</small>` : ''}</td><td class="hide-s">${esc(s.ad || '')}</td><td class="hide-s">${esc(kindName(m.kinds[s.k]))}</td><td class="num">${esc(m.tiers[s.t] || 'none yet')}</td><td class="num hide-s">${s.sl || ''}</td><td class="num">${s.h3 ? 'walk' : s.m ? '3D' : ''}</td></tr>`).join('')}</tbody></table>
+    ${shown.length < rows.length ? `<p class="more"><button class="ibtn" id="more">Show ${Math.min(PER, rows.length - shown.length)} more of ${nf(rows.length - shown.length)}</button></p>` : ''}`;
+    root.querySelectorAll('th button').forEach((b) => b.addEventListener('click', () => { const c0 = cols.find((x) => x[0] === b.dataset.k); st.dir = st.key === c0[0] ? -st.dir : c0[3]; st.key = c0[0]; st.page = 1; draw(); }));
+    const inp = document.getElementById('flt'); inp.addEventListener('input', () => { st.filter = inp.value; st.page = 1; const pos = inp.selectionStart; draw(); const n = document.getElementById('flt'); n.focus(); n.setSelectionRange(pos, pos); });
+    document.getElementById('more')?.addEventListener('click', () => { st.page++; draw(); });
+  };
+  draw();
+}
+
+// the inline locator map: land from the home page's Natural Earth data, neighbours from the same country, no tiles
+let LAND = null;
+async function landPolys() {
+  if (LAND) return LAND;
+  let t = null; for (const u of ['/data/land-110m.json', '../home/data/land-110m.json']) { try { t = await getJSON(u); break; } catch {} }
+  if (!t) return (LAND = []);
+  const [kx, ky] = t.transform.scale, [tx, ty] = t.transform.translate; const arcs = t.arcs.map((a) => { let x = 0, y = 0; return a.map(([dx, dy]) => { x += dx; y += dy; return [x * kx + tx, y * ky + ty]; }); });
+  const ring = (idx) => { const pts = []; for (const i of idx) { const a = i < 0 ? arcs[~i].slice().reverse() : arcs[i]; pts.push(...(pts.length ? a.slice(1) : a)); } return pts; };
+  const polys = []; for (const g of t.objects.land.geometries) { const mp = g.type === 'MultiPolygon' ? g.arcs : [g.arcs]; for (const p of mp) polys.push(p.map(ring)); }
+  return (LAND = polys);
+}
+async function mapHTML(s, data) {
+  const lat0 = s.la, lon0 = s.lo, k = Math.cos(lat0 * Math.PI / 180) || 1, H = 7, W = H * 1.6 / k; // degrees: a window about 14 degrees tall
+  const X = (lo) => ((lo - lon0) * k).toFixed(3), Y = (la) => (lat0 - la).toFixed(3); const vw = W * k, vh = H;
+  const polys = await landPolys(); let land = '';
+  for (const p of polys) { const ring = p[0]; let inside = false; for (const [lo, la] of ring) if (Math.abs(lo - lon0) < W + 2 && Math.abs(la - lat0) < H + 2) { inside = true; break; } if (!inside) continue; land += '<path class="land" d="' + p.map((r) => 'M' + r.map(([lo, la]) => X(lo) + ' ' + Y(la)).join('L') + 'Z').join('') + '"/>'; }
+  const nb = data.sites.filter((x) => x.i !== s.i && Math.abs(x.lo - lon0) < W && Math.abs(x.la - lat0) < H).sort((a, b) => (b.sl || 0) - (a.sl || 0)).slice(0, 300);
+  return `<svg class="map" viewBox="${-vw} ${-vh} ${vw * 2} ${vh * 2}" role="img" aria-label="Locator map around ${esc(s.n)}">${land}${nb.map((x) => `<a href="#/site/${encodeURIComponent(x.i)}"><title>${esc(x.n)}</title><circle class="nb" cx="${X(x.lo)}" cy="${Y(x.la)}" r=".11"/></a>`).join('')}<circle class="me" cx="0" cy="0" r=".34"/><circle class="me2" cx="0" cy="0" r=".13"/></svg>
+  <div class="cap">${nb.length ? nf(nb.length) + ' nearby sites in the same country, each a link. ' : ''}Coastlines: Natural Earth. <a href="https://www.openstreetmap.org/#map=14/${s.la}/${s.lo}" target="_blank" rel="noopener">Open in OpenStreetMap</a></div>`;
+}
+
+async function findSite(id) {
+  await loadMeta(); let slug = hint.get(id);
+  if (!slug) for (let n = 0; n < META.shards.length && !slug; n++) { const rows = await loadShard(n); const e = rows.find((r) => r[0] === id); if (e) slug = META.countries[e[3]].slug; }
+  if (!slug) return null; const data = await loadCountry(slug); const s = data.byId.get(id); return s ? { s, data, slug } : null;
+}
+const dd = (k, v) => v ? `<dt>${k}</dt><dd>${v}</dd>` : '';
+const link = (u, t) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a>`;
+function barRow(l, v, mx) { return `<div class="bar"><span>${l}</span><i style="width:${mx ? Math.max(0, v / mx * 100) : 0}%"></i><b>${nf(v)}</b></div>`; }
+const SEC_TAG = { doc: ['Documented', 'The source states this'], inf: ['Inferred', 'Our reasoning, not a source'], conf: ['Conflicts', 'Sources disagree or registration is uncertain'], gap: ['Not established', 'What is still missing'] };
+
+async function viewSite(id) {
+  const found = await findSite(id); if (!found) return notFound('site');
+  const { s, data, slug } = found, m = META, cname = m.bySlug.get(slug).name; const tier = m.tiers[s.t] || '', kind = kindName(m.kinds[s.k]);
+  document.title = `${s.n} · Wiki · forts.world`;
+  const chips = [tier ? `<span class="chip k">${esc(tier)}</span>` : '<span class="chip">no model yet</span>', s.m ? '<span class="chip">3D model</span>' : '', s.whc ? '<span class="chip k">World Heritage</span>' : '', s.ft === 'rebuilt' ? '<span class="chip k">rebuilt by hand</span>' : s.ft ? '<span class="chip">world top 20</span>' : '', kind ? `<span class="chip">${esc(kind)}</span>` : ''].join('');
+  const atlasId = s.w ? '#' + String(s.w).replace(/^wd:/, '').replace(/^osm:/, 'osm-').replace(/^prog:/, '').replace(/[^A-Za-z0-9-]/g, '-').toLowerCase() : (s.q ? '#' + s.q.toLowerCase() : '');
+  const actions = [s.h3 ? `<a class="btn go" href="/ten-forts.html?fort=${encodeURIComponent(s.h3)}" target="_blank" rel="noopener">Walk it in 3D</a>` : '', s.m && atlasId ? `<a class="btn ${s.h3 ? 'q' : 'go'}" href="/atlas/${atlasId}" target="_blank" rel="noopener">View the model in the atlas</a>` : '', '<a class="btn q" href="/#map" target="_blank" rel="noopener">Time map</a>', s.q ? `<a class="btn q" href="https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/${s.q}" target="_blank" rel="noopener">Wikipedia</a>` : ''].join('');
+  const des = (s.des || []).map(esc); if (s.whc) des.unshift(`UNESCO World Heritage Site, id ${link('https://whc.unesco.org/en/list/' + s.whc, s.whc)}${s.wy ? `, inscribed ${esc(s.wy)}` : ''}`);
+  const facts = dd('Site id', `<span class="mono">${esc(s.i)}</span>`) + dd('Native name', esc(s.nat)) + dd('Kind', esc(kind)) + dd('Class (Wikidata)', esc((s.cls || []).join(', '))) + dd('Area', esc(s.ad)) + dd('Country', `<a href="#/country/${slug}">${esc(cname)}</a>`)
+    + dd('Inception', s.inc ? `${esc(fmtYear(s.inc))} <span class="faint">(Wikidata)</span>` : '') + dd('Coordinates', `<span class="mono">${s.la}, ${s.lo}</span>`) + dd('Wikipedia editions', s.sl ? nf(s.sl) : '')
+    + dd('Wikidata', s.q ? link('https://www.wikidata.org/wiki/' + s.q, s.q) + ' <span class="faint">CC0</span>' : '') + dd('OpenStreetMap', s.o ? link('https://www.openstreetmap.org/' + s.o, s.o) + ' <span class="faint">ODbL</span>' : '');
+  // evidence and model
+  let model = '';
+  if (s.m) {
+    const K = ['outline', 'wall', 'building', 'road', 'waterway', 'water', 'zone', 'cliff', 'marker'], el = s.el || [], tot = el.reduce((a, b) => a + b, 0), ev = s.ev;
+    model = `<p>${esc(TIER_TXT[tier] ?? '')} ${tot ? `The model has ${nf(tot)} elements: ${K.map((k, i) => el[i] ? `${nf(el[i])} ${k}` : '').filter(Boolean).join(', ')}.` : ''}</p>`
+      + (ev ? `<div class="bars">${barRow('documented', ev[0], tot)}${barRow('mapped', ev[1], tot)}${barRow('inferred', ev[2], tot)}${barRow('derived', ev[3], tot)}</div><p class="cap">Heights: ${nf(ev[4])} documented, ${nf(ev[5])} inferred, ${nf(ev[6])} unknown. Documented means a plan or survey; mapped means drawn from OpenStreetMap; inferred carries its rule in the model.</p>` : '')
+      + (s.ft && s.bn ? `<details><summary>Build notes</summary><ul class="nt">${s.bn.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></details>` : '');
+  } else model = `<p class="mute">No 3D model exists for this site yet (status <span class="mono">${esc(s.s)}</span>). ${s.s === 'needs-coords' ? 'Its coordinates need checking first.' : 'It is queued for an automatic outline from open map data.'}</p>`;
+  // eras of the reconstruction
+  const eras = s.er ? `<h2>The reconstruction, era by era</h2><p class="mute">${s.h3 ? 'Each era is a scene you can walk. ' : ''}“Basis” is what the scene rests on; “Assumed” is what it does not.</p>${s.er.map((e) => `<div class="era"><div class="y">${esc(e.y || '')}</div><div><h3>${esc(e.l || '')}</h3>${e.s ? `<p>${esc(e.s)}</p>` : ''}${e.b ? `<p><small>Basis</small>${esc(e.b)}</p>` : ''}${e.c ? `<p><small>Assumed</small>${esc(e.c)}</p>` : ''}${e.r?.length ? `<details><summary>${e.r.length} sources</summary><ul class="nt">${e.r.map(([t, c, d, l, u]) => `<li>${u ? link(u, t) : esc(t)}${c ? ', ' + esc(c) : ''}${d ? ', ' + esc(d) : ''} <span class="faint">(${esc(l)})</span></li>`).join('')}</ul></details>` : ''}</div></div>`).join('')}` : '';
+  // history, from attributable facts only
+  const wd = []; if (s.inc) wd.push(`Inception ${esc(fmtYear(s.inc))}, as recorded in Wikidata.`); if (s.des?.length) wd.push(`Designations in Wikidata: ${s.des.map(esc).join('; ')}.`);
+  if (s.whc) wd.push(`On the UNESCO World Heritage List${s.wy ? ' since ' + esc(s.wy) : ''} (id ${esc(s.whc)}).`); if (s.ot?.heritage) wd.push(`OpenStreetMap heritage tag: ${esc(s.ot.heritage)}.`);
+  let hist = '';
+  if (wd.length) hist += `<div class="hist"><h3><span class="tag doc">Recorded</span>Dates and designations</h3><ul>${wd.map((x) => `<li>${x}</li>`).join('')}</ul></div>`;
+  for (const p of s.ra || []) {
+    hist += `<div class="hist"><h3>Research: ${esc(p.t)}</h3>${p.secs.map((x) => `<div><p><span class="tag ${x.k}" title="${esc(SEC_TAG[x.k][1])}">${SEC_TAG[x.k][0]}</span><b>${esc(x.h)}</b></p>${md(x.b)}</div>`).join('')}<p class="cap"><a href="https://github.com/mbaliga/forts.world/blob/main/docs/research/${encodeURIComponent(p.f)}" target="_blank" rel="noopener">Full research pass, with citations</a></p></div>`;
+  }
+  if (s.nt) hist += `<div class="hist"><h3>Programme notes</h3><p class="nt">${esc(s.nt)}</p></div>`;
+  const researched = (s.ra && s.ra.length) || s.er;
+  if (!researched) hist += `<div class="empty"><b>Not researched yet.</b> ${wd.length ? 'Above are the only dated facts we hold. ' : 'We hold no dated facts for this site. '}Do you know its history, with a source? ${link('https://github.com/mbaliga/forts.world/issues/new?title=' + encodeURIComponent('Wiki: ' + s.n + ' (' + s.i + ')'), 'Add it here')}.${s.q ? ` The full story is on ${link('https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/' + s.q, 'Wikipedia')} where an article exists.` : ''}</div>`;
+  else if (s.q) hist += `<p class="cap">For the full story read ${link('https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/' + s.q, 'Wikipedia')} (where an article exists) or ${link('https://www.wikidata.org/wiki/' + s.q, 'Wikidata')}.</p>`;
+  // sources
+  const srows = []; if (s.q) srows.push(['Wikidata: name, class, inception, designations, sitelinks', 'CC0', 'https://www.wikidata.org/wiki/' + s.q]);
+  if (s.whc) srows.push(['UNESCO World Heritage Centre: id' + (s.wy ? ' and inscription year' : ''), 'ids and years only', 'https://whc.unesco.org/en/list/' + s.whc]);
+  for (const i of s.sr || []) { const [t, l, u] = m.srcs[i]; srows.push([t, l, u || (/OpenStreetMap/.test(t) ? `https://www.openstreetmap.org/#map=17/${s.la}/${s.lo}` : '')]); }
+  for (const p of s.ra || []) srows.push(['Research pass: ' + p.t, 'Apache-2.0', 'https://github.com/mbaliga/forts.world/blob/main/docs/research/' + p.f]);
+  const sources = `<table class="srcs"><thead><tr><th>Source</th><th>Licence</th><th>Link</th></tr></thead><tbody>${srows.map(([t, l, u]) => `<tr><td>${esc(t)}</td><td class="num">${esc(l)}</td><td>${u ? `<a href="${esc(u)}" target="_blank" rel="noopener">link</a>` : ''}</td></tr>`).join('')}</tbody></table>`;
+  const otags = s.ot ? Object.entries(s.ot).map(([k, v]) => `<tr><td class="num">${esc(k)}</td><td>${esc(v)}</td></tr>`).join('') : '';
+  $app.innerHTML = `<div class="crumbs"><a href="#/">Wiki</a> / <a href="#/country/${slug}">${esc(cname)}</a>${s.ad ? ' / <span>' + esc(s.ad) + '</span>' : ''}</div>
+  <h1>${esc(s.n)}</h1>${s.nat && s.nat !== s.n ? `<div class="native">${esc(s.nat)}</div>` : ''}<div class="chips">${chips}</div><div class="actions">${actions}</div>
+  <div class="two"><div><h2>Identity</h2><dl class="facts">${facts}</dl>${des.length ? `<h2>Designations</h2><ul style="margin:0;padding-left:18px">${des.map((x) => `<li>${x}</li>`).join('')}</ul>` : ''}</div>
+  <div><h2>Location</h2><div id="mp"></div></div></div>
+  <h2>Evidence and the 3D model</h2>${model}${eras}
+  <h2>History</h2>${hist}
+  <h2>Sources and licences</h2>${sources}${otags ? `<details><summary>OpenStreetMap tags of the mapped object</summary><table>${otags}</table></details>` : ''}
+  <p class="cap" style="margin-top:14px">Sources are listed because every fact on this page is copied from one of them. Map data © OpenStreetMap contributors (ODbL); Wikidata is CC0; our text is Apache-2.0.</p>`;
+  mapHTML(s, data).then((h) => { const el = document.getElementById('mp'); if (el) el.innerHTML = h; });
+}
+function notFound(what) { $app.innerHTML = `<div class="crumbs"><a href="#/">Wiki</a></div><h1>Not found</h1><p class="sub">No ${what} by that name. Try the search.</p><div style="margin-top:22px">${searchHTML()}</div>`; mountSearch(); }
+
+// ---------- router ----------
+async function route() {
+  const h = decodeURIComponent(location.hash.replace(/^#\/?/, '')); const [a, ...rest] = h.split('/'); const arg = rest.join('/');
+  try { if (a === 'country' && arg) await viewCountry(arg); else if (a === 'site' && arg) await viewSite(arg); else if (a === 'countries') await viewCountries(); else await viewHome(); }
+  catch (e) { console.error(e); $app.innerHTML = `<h1>Could not load the wiki</h1><p class="sub">${esc(e.message)}. The data is built by <span class="mono">tools/wiki/build-site.mjs</span>.</p>`; }
+  if (!route.first) { route.first = 1; } scrollTo(0, 0);
+}
+addEventListener('hashchange', route);
+loadMeta().then(route).catch((e) => { $app.innerHTML = `<h1>Could not load the wiki</h1><p class="sub">${esc(e.message)}</p>`; });
+</script>
+</body>
+</html>
