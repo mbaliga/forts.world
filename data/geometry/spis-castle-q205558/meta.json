@@ -1,0 +1,10 @@
+{
+ "id": "spis-castle-q205558",
+ "lat": 49.00056,
+ "lon": 20.76833,
+ "radiusM": 900,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-27T10:18:04.247Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

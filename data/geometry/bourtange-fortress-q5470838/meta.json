@@ -1,0 +1,10 @@
+{
+ "id": "bourtange-fortress-q5470838",
+ "lat": 53.00667,
+ "lon": 7.19252,
+ "radiusM": 1000,
+ "osm": true,
+ "tiles": 16,
+ "fetched": "2026-11-27T10:17:58.959Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}
