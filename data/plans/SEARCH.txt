@@ -65,3 +65,20 @@ bhir-mound-q854989|Bhir Mound plan|Bhir Mound Taxila plan
 mohra-muradu-q938223|Mohra Muradu plan|Mohra Muradu Taxila
 giri-complex-of-monuments-q66134819|Giri Taxila plan|Giri complex Taxila
 convocation-hall-university-of-mumbai-q97149899|Convocation Hall Mumbai plan|University of Mumbai Fort campus
+rumeli-hisar-q90801|Rumeli Hisarı plan|Rumelihisarı map|Rumeli Fortress plan
+alcazar-of-toledo-q1326589|Alcázar of Toledo plan|Alcázar de Toledo plano|Alcazar Toledo floor plan
+tower-of-london-q62378|Tower of London plan|Tower of London map|Tower of London ground plan
+fort-douaumont-q186536|Fort de Douaumont plan|Fort Douaumont map|Douaumont plan
+citadel-of-aleppo-q206231|Citadel of Aleppo plan|Aleppo citadel map|Citadelle d'Alep plan
+spis-castle-q205558|Spiš Castle plan|Spišský hrad pôdorys|Spis castle map
+prague-castle-q193369|Prague Castle plan|Pražský hrad plán|Prague Castle map
+bourtange-fortress-q5470838|Bourtange plan|Bourtange kaart|Vesting Bourtange plattegrond
+malbork-castle-q71279|Malbork Castle plan|Marienburg plan|Zamek w Malborku plan
+krak-des-chevaliers-q177549|Krak des Chevaliers plan|Crac des Chevaliers plan|Krak des Chevaliers map
+conwy-castle-q756830|Conwy Castle plan|Conwy castle map|Conwy town walls plan
+himeji-castle-q188754|Himeji Castle plan|姫路城 縄張図|Himeji castle map
+edinburgh-castle-q212065|Edinburgh Castle plan|Edinburgh Castle map|Edinburgh Castle ground plan
+dover-castle-q950970|Dover Castle plan|Dover Castle map|Dover Castle ground plan
+fortifications-of-kotor-q12907852|Kotor fortifications plan|Kotor walls map|Kotor fortress plan
+potala-palace-q71229|Potala Palace plan|布达拉宫 平面图|Potala palace map
+buda-castle-q46313|Buda Castle plan|Budai Vár alaprajz|Buda castle map
