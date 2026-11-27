@@ -67,10 +67,12 @@ a { color: var(--accent); }
 #topbar button { border: 0; background: transparent; padding: 8px 10px; cursor: pointer; font-size: 13.5px; font-weight: 500; letter-spacing: .01em;
   text-shadow: 0 0 6px var(--halo), 0 0 12px var(--halo); }
 #topbar button:hover { background: var(--panel); text-shadow: none; }
-#viewmode { display: flex; align-items: center; margin-left: 8px; padding: 2px; border-radius: 999px; background: var(--panel); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 1px 3px rgba(0, 0, 0, .12); }
-#topbar #viewmode button { padding: 5px 11px; border-radius: 999px; font: 500 10.5px/1.2 var(--font-data); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-shadow: none; transition: background .25s ease, color .25s ease; }
-#topbar #viewmode button:hover { background: transparent; color: var(--ink); }
-#topbar #viewmode button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+#tools { justify-items: end; }
+#tools #viewmode { display: flex; align-items: center; gap: 0; margin-bottom: 4px; padding: 3px; border-radius: 999px; background: var(--panel); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 1px 3px rgba(0, 0, 0, .12); }
+#tools #viewmode button { width: auto; height: 28px; padding: 0 11px; border-radius: 999px; background: transparent; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none;
+  font: 500 10.5px/1 var(--font-data); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); transition: background .25s ease, color .25s ease; }
+#tools #viewmode button:hover { color: var(--ink); }
+#tools #viewmode button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 #view.vm-model { filter: none !important; }
 #lens.vm-off { opacity: 0 !important; }
 
@@ -193,7 +195,7 @@ a { color: var(--accent); }
   #cartouche { left: 14px; max-width: calc(100vw - 120px); }
   #cartouche h1 { font-size: 25px; } #cartouche .native { font-size: 16px; } #cartouche .meta { display: none; } #era-note p { font-size: 13.5px; }
   #topbar { flex-direction: column; align-items: flex-end; gap: 0; } #topbar button { padding: 6px 8px; font-size: 13px; }
-  #viewmode { margin: 4px 0 0; }
+  #tools #viewmode button { height: 26px; padding: 0 9px; }
   #minimap { width: 138px; left: 12px; bottom: calc(env(safe-area-inset-bottom, 0px) + 72px); } #status { padding: 6px 2px 0; } #s-progress .dots { display: none; }
   #botfade { height: 210px; }
   #timeline { left: 10px; right: 10px; transform: none; bottom: calc(env(safe-area-inset-bottom, 0px) + 10px); }
@@ -257,6 +259,7 @@ body[data-chrome="engraving"] #timeline button[aria-pressed="true"] { border-bot
 body[data-chrome="engraving"] #cartouche { padding: 10px 14px 12px; background: radial-gradient(ellipse at 30% 40%, var(--scrim), transparent 75%); }
 body[data-chrome="engraving"] #cartouche h1 { letter-spacing: .06em; }
 body[data-chrome="engraving"] #tools button { border-radius: 0; box-shadow: 0 0 0 1px var(--ink); }
+body[data-chrome="engraving"] #tools #viewmode, body[data-chrome="engraving"] #tools #viewmode button { border-radius: 0; } body[data-chrome="engraving"] #tools #viewmode { box-shadow: 0 0 0 1px var(--ink); } body[data-chrome="engraving"] #tools #viewmode button { font-family: var(--font-serif); font-size: 12px; letter-spacing: .04em; }
 body[data-chrome="engraving"] #toast, body[data-chrome="engraving"] #hud-mode { border-radius: 0; font-family: var(--font-serif); }
 body[data-chrome="engraving"] #hud-play span { border-radius: 0; box-shadow: 0 0 0 1px var(--ink); font-family: var(--font-serif); }
 body[data-chrome="engraving"] .gchip { border-radius: 0 !important; font-family: var(--font-serif) !important; background: #6b2a14 !important; }
@@ -268,6 +271,7 @@ body[data-chrome="albumen"] #ctx button { border-color: rgba(160, 124, 52, .5); 
 body[data-chrome="albumen"] #ctx:after { border-top-color: var(--paper); }
 body[data-chrome="albumen"] #timeline button[aria-pressed="true"] { border-bottom-color: var(--gold); }
 body[data-chrome="albumen"] #tools button { box-shadow: inset 0 0 0 1px var(--gold), 0 1px 3px rgba(0, 0, 0, .2); }
+body[data-chrome="albumen"] #tools #viewmode { box-shadow: inset 0 0 0 1px var(--gold), 0 1px 3px rgba(0, 0, 0, .2); }
 body[data-chrome="albumen"] .gchip { background: #5a4422 !important; }
 
 /* ---------------- sky & weather panel */
@@ -341,7 +345,6 @@ body[data-chrome="engraving"] :is(#ctx, #card, #drawer, #help, #climate, #mini-k
   <button type="button" id="btn-places">Places</button>
   <button type="button" id="btn-sources">Sources</button>
   <button type="button" id="btn-help" aria-label="Controls">Controls</button>
-  <div id="viewmode" role="group" aria-label="View (V)"><button type="button" data-view="model" aria-pressed="false" title="Model: monotone massing and contours (V)">Model</button><button type="button" data-view="real" aria-pressed="true" title="Real: lit, textured and graded (V)">Real</button></div>
 </nav>
 
 <nav id="timeline" aria-label="Moments in the fort's history"></nav>
@@ -361,6 +364,7 @@ body[data-chrome="engraving"] :is(#ctx, #card, #drawer, #help, #climate, #mini-k
 </aside>
 
 <div id="tools">
+  <div id="viewmode" role="group" aria-label="View (V)"><button type="button" data-view="model" aria-pressed="false" title="Model: monotone massing and contours (V)">Model</button><button type="button" data-view="real" aria-pressed="true" title="Real: lit, textured and graded (V)">Real</button></div>
   <div id="compass" title="North"><svg id="compass-needle" viewBox="-12 -12 24 24" aria-hidden="true"><path d="M0 -10 L4 4 L0 1.5 L-4 4Z"/></svg></div>
   <button type="button" id="btn-rot-l" aria-label="Rotate view left (Q)"><svg viewBox="0 0 24 24"><path d="M4 9a8 8 0 1 1 1.5 9"/><path d="M4 4v5h5"/></svg></button>
   <button type="button" id="btn-rot-r" aria-label="Rotate view right (E)"><svg viewBox="0 0 24 24"><path d="M20 9a8 8 0 1 0-1.5 9"/><path d="M20 4v5h-5"/></svg></button>
