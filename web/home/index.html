@@ -86,7 +86,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .menu a { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 13px 2px; text-decoration: none; font: 500 15px/1 var(--sans); border-bottom: 1px solid var(--line); }
 .menu a.go { padding: 13px 18px; border: 0; border-radius: 999px; background: var(--ink); color: var(--paper); margin-bottom: 6px; }
 .menu svg { width: 14px; height: 14px; flex: none; }
-.seen { position: absolute; z-index: 2; right: max(16px, env(safe-area-inset-right, 0px)); bottom: 22px; padding: 10px 16px 12px; display: grid; gap: 3px; min-width: 220px; }
+.seen { position: absolute; z-index: 2; right: max(16px, env(safe-area-inset-right, 0px)); bottom: 22px; padding: 10px 16px 12px; display: grid; grid-template-columns: 84px 1fr; column-gap: 14px; row-gap: 3px; align-items: start; min-width: 300px; }
+.seen > img { grid-row: 1 / 5; width: 84px; height: 105px; object-fit: cover; border-radius: 4px; background: #efe6d2; }
 .seen b { font: 700 16px/1.2 var(--display); }
 .seen .s2 { font: 400 15px/1.3 var(--script); color: var(--trim2); }
 .seen .m { font: 400 12px var(--mono); color: var(--onmute); }
@@ -157,7 +158,12 @@ footer.site .credits { padding-block: 0 36px; color: var(--mute); font: 400 12px
 .layers { flex: 0 1 auto; min-height: 0; overflow: auto; padding: 12px 10px 10px; display: grid; gap: 1px; align-content: start;
   background: var(--glass); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid var(--line); border-radius: 12px; scrollbar-width: thin; }
 .layers .head { display: flex; justify-content: space-between; align-items: baseline; padding: 0 6px 8px; }
-.layer { display: grid; grid-template-columns: 30px 18px 1fr; align-items: center; gap: 8px; padding: 5px 6px 5px 2px; border-radius: 8px; }
+.layer { display: grid; grid-template-columns: 30px 40px 1fr; align-items: center; gap: 8px; padding: 5px 6px 5px 2px; border-radius: 8px; }
+.layer .face { width: 40px; height: 50px; border-radius: 6px; overflow: hidden; position: relative; border: 0; padding: 0; cursor: pointer; background: #efe6d2; }
+.layer .face img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.layer .face i { position: absolute; right: 3px; bottom: 3px; width: 8px; height: 8px; border-radius: 50%; box-shadow: 0 0 0 1.5px #f4ecdc; }
+.layer.off .face img { filter: grayscale(.6) opacity(.75); }
+.portrait { width: 100%; height: 210px; object-fit: cover; object-position: 50% 12%; border-radius: 4px; display: block; background: #efe6d2; }
 .layer:hover { background: color-mix(in srgb, var(--ink) 5%, transparent); }
 .layer.focus { background: color-mix(in srgb, var(--ink) 9%, transparent); }
 .layer .eye, .ctl .eye { width: 30px; height: 30px; border-radius: 50%; border: 0; background: none; cursor: pointer; display: grid; place-items: center; color: var(--faint); }
@@ -251,7 +257,7 @@ footer.site .credits { padding-block: 0 36px; color: var(--mute); font: 400 12px
         <a href="#museums">Bring it to your site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3l5 5-5 5"/></svg></a>
       </nav>
     </div>
-    <div class="seen plate frieze" id="seen"><span class="label" style="color:var(--onmute)">Seen by</span><b id="seenWho">You, today</b><span class="s2" id="seenScript"></span><span class="m" id="seenWhere">2026</span></div>
+    <div class="seen plate frieze" id="seen"><img id="seenImg" alt="" src="img/people/today.webp"><span class="label" style="color:var(--onmute)">Seen by</span><b id="seenWho">You, today</b><span class="s2" id="seenScript"></span><span class="m" id="seenWhere">2026</span></div>
   </section>
 
   <section class="wrap section" id="mission">
@@ -603,9 +609,11 @@ class Lens {
     // relief: each contour lifted to its height, so mountains stand up when the lens tilts
     if (this.show.borders && BORDERS) { path = this.path(0); g.beginPath(); path(BORDERS); g.setLineDash([4, 3]); g.strokeStyle = C.ink; g.globalAlpha = .4; g.lineWidth = .8; g.stroke(); g.setLineDash([]); g.globalAlpha = 1; }
     const cs = this.show.contours ? this.contourSet() : { step: 1, sets: [] }, idx = cs.step * 5;
-    for (const set of cs.sets) { const v = set.value; path = this.path(this.hEl(v)); g.beginPath(); path(set.geo);
-      g.strokeStyle = C.ink; g.globalAlpha = v < 0 ? .07 : v % idx === 0 ? .34 : .15; g.lineWidth = v % idx === 0 ? .9 : .6; g.stroke(); }
-    g.globalAlpha = 1;
+    this.ccv ||= document.createElement('canvas'); if (this.ccv.width !== this.c.width || this.ccv.height !== this.c.height) { this.ccv.width = this.c.width; this.ccv.height = this.c.height; }
+    const CC = this.ccv.getContext('2d'); CC.setTransform(1, 0, 0, 1, 0, 0); CC.clearRect(0, 0, this.ccv.width, this.ccv.height); CC.setTransform(dpr, 0, 0, dpr, 0, 0); CC.lineJoin = 'round'; CC.strokeStyle = C.ink;
+    for (const set of cs.sets) { const v = set.value; if (v < 0) { path = this.path(0); g.beginPath(); path(set.geo); g.strokeStyle = C.ink; g.globalAlpha = .07; g.lineWidth = .6; g.stroke(); continue; }
+      this._h = this.hEl(v); CC.beginPath(); d3.geoPath(this.proj, CC)(set.geo); CC.globalAlpha = v % idx === 0 ? 1 : .5; CC.lineWidth = v % idx === 0 ? 1 : .7; CC.stroke(); }
+    CC.globalAlpha = 1; g.globalAlpha = .32; g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(this.ccv, 0, 0); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.globalAlpha = 1;
     if (p.climes) { path = this.path(0); g.setLineDash([2, 5]); for (const lat of CLIMES) { g.beginPath(); path({ type: 'LineString', coordinates: d3.range(-180, 181, 5).map((lo) => [lo, lat]) }); g.strokeStyle = C.ink; g.globalAlpha = .18; g.lineWidth = .8; g.stroke(); } g.setLineDash([]); g.globalAlpha = 1; }
     // forts standing in the chosen year, sat on the relief
     const y = this.year, r = Math.max(1, Math.min(2.4, .9 + this.k * .18)); g.fillStyle = C.dot;
@@ -636,18 +644,21 @@ class Lens {
       f.fillStyle = C.fog; f.fillRect(0, 0, this.fog.width, this.fog.height); f.globalCompositeOperation = 'destination-out'; f.setTransform(dpr, 0, 0, dpr, 0, 0);
       if ('filter' in f) f.filter = `blur(${Math.round(14 * dpr)}px)`; this._h = 0; f.beginPath(); d3.geoPath(this.proj, f)(SHAPES[p.id]); f.fillStyle = '#000'; f.fill(); if ('filter' in f) f.filter = 'none';
       g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(this.fog, 0, 0); g.setTransform(dpr, 0, 0, dpr, 0, 0); }
-    // layers: each person's world is painted onto the land itself: a wash of their colour, their hatch, and the relief
-    // contours inside it redrawn in that colour. Where two worlds overlap the hatches cross.
+    // layers: a person's world shows only as the land itself taking their colour: the relief contours inside it are
+    // redrawn in their tint over a faint wash, both fading out softly at the edge. No outline, no hatching.
     this.labels = [];
     const order = PEOPLE.filter((q) => this.on.includes(q.id));
-    order.forEach((q) => { const shape = SHAPES[q.id], focus = q === p, tint = focus ? q.tint : d3.interpolateRgb(q.tint, C.ink)(.3);
-      path = this.path(0); g.save(); g.beginPath(); path(shape); g.clip();
-      g.fillStyle = tint; g.globalAlpha = focus ? .16 : .1; g.fillRect(0, 0, W, H);
-      g.fillStyle = this.hatch(q, tint); g.globalAlpha = focus ? .42 : .28; g.fillRect(0, 0, W, H);
-      g.strokeStyle = tint; g.globalAlpha = focus ? .75 : .55;
-      for (const set of cs.sets) { if (set.value < 0) continue; const pth = this.path(this.hEl(set.value)); g.beginPath(); pth(set.geo); g.lineWidth = set.value % idx === 0 ? 1.1 : .7; g.stroke(); }
-      g.restore(); g.globalAlpha = 1;
-      path = this.path(0); g.beginPath(); path(shape); g.strokeStyle = tint; g.lineWidth = focus ? 1.6 : 1.1; g.globalAlpha = .9; g.stroke(); g.globalAlpha = 1;
+    this.lcv ||= document.createElement('canvas'); this.mcv ||= document.createElement('canvas');
+    order.forEach((q) => { const shape = SHAPES[q.id], focus = q === p, tint = focus ? q.tint : d3.interpolateRgb(q.tint, C.ink)(.25), cw = this.c.width, ch = this.c.height;
+      if (this.lcv.width !== cw || this.lcv.height !== ch) { this.lcv.width = cw; this.lcv.height = ch; }
+      // the mask is drawn at an eighth of the size and stretched back up: the stretch itself feathers the edge, cheaply
+      const S = 8, mw = Math.ceil(cw / S), mh = Math.ceil(ch / S); if (this.mcv.width !== mw || this.mcv.height !== mh) { this.mcv.width = mw; this.mcv.height = mh; }
+      const M = this.mcv.getContext('2d'); M.setTransform(1, 0, 0, 1, 0, 0); M.clearRect(0, 0, mw, mh); M.setTransform(dpr / S, 0, 0, dpr / S, 0, 0); this._h = 0; M.beginPath(); d3.geoPath(this.proj, M)(shape); M.fillStyle = '#000'; M.fill();
+      const L = this.lcv.getContext('2d'); L.setTransform(1, 0, 0, 1, 0, 0); L.globalCompositeOperation = 'source-over'; L.clearRect(0, 0, cw, ch);
+      L.drawImage(this.ccv, 0, 0); L.globalCompositeOperation = 'source-in'; L.fillStyle = tint; L.fillRect(0, 0, cw, ch);
+      L.globalCompositeOperation = 'destination-over'; L.globalAlpha = focus ? .14 : .1; L.fillRect(0, 0, cw, ch); L.globalAlpha = 1;
+      L.globalCompositeOperation = 'destination-in'; L.imageSmoothingEnabled = true; L.imageSmoothingQuality = 'high'; L.drawImage(this.mcv, 0, 0, mw * S, mh * S); L.globalCompositeOperation = 'source-over';
+      g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = .95; g.drawImage(this.lcv, 0, 0); g.globalAlpha = 1; g.setTransform(dpr, 0, 0, dpr, 0, 0);
       if (q.route) { g.strokeStyle = tint; g.lineWidth = focus ? 2 : 1.5; g.beginPath();
         for (let rr = 1; rr < q.route.length; rr++) { const A = q.anchors[q.route[rr - 1]], B = q.anchors[q.route[rr]], ip = d3.geoInterpolate([A[0], A[1]], [B[0], B[1]]), dist = d3.geoDistance([A[0], A[1]], [B[0], B[1]]), lift = Math.min(H * .12, dist * H * .07) * Math.min(1, this.th * 1.4), n = 28; let pen = false;
           for (let t = 0; t <= n; t++) { const ll = ip(t / n), pt = this.pr(ll); if (!pt) { pen = false; continue; } const s = this.cam(pt[0], pt[1], Math.sin(Math.PI * t / n) * lift); if (pen) g.lineTo(s[0], s[1]); else g.moveTo(s[0], s[1]); pen = true; } }
@@ -743,6 +754,7 @@ document.getElementById('wonders').innerHTML = RECON.map(([n, , , m, id, , sc]) 
 const cycle = ['idrisi', 'ashoka', 'ming', 'mughal', 'battuta', 'pilot', 'ptolemy', 'maratha']; let ci = 0, cycTimer = 0;
 function showHero(id) { const p = byId[id]; hero.on = [id]; hero.lookThrough(p); hero.setYear(p.year);
   applyCulture(p.culture, document.getElementById('seen'));
+  document.getElementById('seenImg').src = `img/people/${p.id}.webp`; document.getElementById('seenImg').alt = `Watercolour portrait: ${p.who}`;
   document.getElementById('seenWho').textContent = p.who; document.getElementById('seenScript').textContent = p.script || ''; document.getElementById('seenWhere').textContent = `${p.where} / ${yearText(p.year)}`; }
 function startCycle() { clearInterval(cycTimer); if (reduce) return; cycTimer = setInterval(() => { ci = (ci + 1) % cycle.length; showHero(cycle[ci]); }, 5600); }
 document.querySelectorAll('[data-copy]').forEach((b) => b.addEventListener('click', () => { const t = b.dataset.copy;
@@ -761,7 +773,7 @@ function layerRow(p) {
   const on = big.on.includes(p.id), foc = big.focus === p;
   return `<div class="layer${foc ? ' focus' : ''}${on ? '' : ' off'}" data-id="${p.id}">
     <button class="eye" data-act="eye" aria-pressed="${on}" title="${on ? 'Hide' : 'Show'} this layer" aria-label="${on ? 'Hide' : 'Show'} ${p.who}">${on ? EYE_ON : EYE_OFF}</button>
-    <span class="sw" style="${swatch(p)}"></span>
+    <button class="face" data-act="look" title="Look through their eyes" tabindex="-1"><img src="img/people/${p.id}-face.webp" alt="" loading="lazy"><i style="background:${p.tint}"></i></button>
     <button class="nm" data-act="look" title="Look through their eyes"><b>${p.who}</b><small>${p.where} / ${yearText(p.year)}${p.route ? ' / route' : ''}</small></button></div>`;
 }
 const G = (d) => `<svg class="glyph" viewBox="0 0 18 14" fill="none" stroke="currentColor" aria-hidden="true">${d}</svg>`;
@@ -840,7 +852,7 @@ function playStep(now) { if (!playing) return; const dt = Math.min(64, now - pla
 playBtn.addEventListener('click', () => { blip(playing ? 520 : 784, .05); setPlaying(!playing); });
 function showPerson(p) {
   applyCulture(p.culture, card); delete card.dataset.recon;
-  card.innerHTML = `<button class="x" aria-label="Close">×</button><h4>${p.who}</h4><span class="s">${p.script}</span><span class="meta">${CULTURES[p.culture].name} / ${p.where} / ${yearText(p.year)}</span><p>${p.note}</p><button class="go" type="button">Back to the lens</button>`;
+  card.innerHTML = `<button class="x" aria-label="Close">×</button><img class="portrait" src="img/people/${p.id}.webp" alt="Watercolour portrait: ${p.who}"><h4>${p.who}</h4><span class="s">${p.script}</span><span class="meta">${CULTURES[p.culture].name} / ${p.where} / ${yearText(p.year)}</span><p>${p.note}</p><button class="go" type="button">Back to the lens</button>`;
   card.hidden = false; card.querySelector('.x').onclick = () => look(TODAY); card.querySelector('.go').onclick = () => { chord(); look(TODAY); };
 }
 function revealRight() { if (document.getElementById('rightSide').classList.contains('tucked')) setTuck('right', false); }
