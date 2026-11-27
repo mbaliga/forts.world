@@ -636,23 +636,23 @@ class Lens {
       f.fillStyle = C.fog; f.fillRect(0, 0, this.fog.width, this.fog.height); f.globalCompositeOperation = 'destination-out'; f.setTransform(dpr, 0, 0, dpr, 0, 0);
       if ('filter' in f) f.filter = `blur(${Math.round(14 * dpr)}px)`; this._h = 0; f.beginPath(); d3.geoPath(this.proj, f)(SHAPES[p.id]); f.fillStyle = '#000'; f.fill(); if ('filter' in f) f.filter = 'none';
       g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(this.fog, 0, 0); g.setTransform(dpr, 0, 0, dpr, 0, 0); }
-    // layers: each person's world as a plane standing above the ground, stacked in the order they are listed
+    // layers: each person's world is painted onto the land itself: a wash of their colour, their hatch, and the relief
+    // contours inside it redrawn in that colour. Where two worlds overlap the hatches cross.
     this.labels = [];
     const order = PEOPLE.filter((q) => this.on.includes(q.id));
-    order.forEach((q, li) => { const h = this.hLayer(li), shape = SHAPES[q.id], focus = q === p, tint = focus ? q.tint : d3.interpolateRgb(q.tint, C.ink)(.45);
-      path = this.path(0); g.beginPath(); path(shape); g.setLineDash([3, 4]); g.strokeStyle = C.ink; g.globalAlpha = .22; g.lineWidth = .8; g.stroke(); g.setLineDash([]); g.globalAlpha = 1;
-      g.strokeStyle = C.ink; g.globalAlpha = .16; g.lineWidth = .7; g.beginPath();
-      for (const a of q.anchors) { const pt = this.pr([a[0], a[1]]); if (!pt) continue; const b0 = this.cam(pt[0], pt[1], this.hEl(demAt(DEM.g30, a[0], a[1]))), b1 = this.cam(pt[0], pt[1], h); g.moveTo(b0[0], b0[1]); g.lineTo(b1[0], b1[1]); }
-      g.stroke(); g.globalAlpha = 1;
-      path = this.path(h); g.beginPath(); path(shape);
-      g.fillStyle = C.sea; g.globalAlpha = (dark ? .42 : .5) * Math.min(1, 2.5 / this.k); g.fill(); g.globalAlpha = 1;
-      g.save(); g.clip(); g.fillStyle = this.hatch(q, tint); g.globalAlpha = (focus ? .5 : .32) * Math.min(1, 2.5 / this.k); g.fillRect(0, 0, W, H); g.restore(); g.globalAlpha = 1;
-      g.strokeStyle = tint; g.lineWidth = focus ? 1.6 : 1.1; g.stroke();
+    order.forEach((q) => { const shape = SHAPES[q.id], focus = q === p, tint = focus ? q.tint : d3.interpolateRgb(q.tint, C.ink)(.3);
+      path = this.path(0); g.save(); g.beginPath(); path(shape); g.clip();
+      g.fillStyle = tint; g.globalAlpha = focus ? .16 : .1; g.fillRect(0, 0, W, H);
+      g.fillStyle = this.hatch(q, tint); g.globalAlpha = focus ? .42 : .28; g.fillRect(0, 0, W, H);
+      g.strokeStyle = tint; g.globalAlpha = focus ? .75 : .55;
+      for (const set of cs.sets) { if (set.value < 0) continue; const pth = this.path(this.hEl(set.value)); g.beginPath(); pth(set.geo); g.lineWidth = set.value % idx === 0 ? 1.1 : .7; g.stroke(); }
+      g.restore(); g.globalAlpha = 1;
+      path = this.path(0); g.beginPath(); path(shape); g.strokeStyle = tint; g.lineWidth = focus ? 1.6 : 1.1; g.globalAlpha = .9; g.stroke(); g.globalAlpha = 1;
       if (q.route) { g.strokeStyle = tint; g.lineWidth = focus ? 2 : 1.5; g.beginPath();
-        for (let rr = 1; rr < q.route.length; rr++) { const A = q.anchors[q.route[rr - 1]], B = q.anchors[q.route[rr]], ip = d3.geoInterpolate([A[0], A[1]], [B[0], B[1]]), dist = d3.geoDistance([A[0], A[1]], [B[0], B[1]]), lift = Math.min(H * .16, dist * H * .09), n = 28; let pen = false;
-          for (let t = 0; t <= n; t++) { const ll = ip(t / n), pt = this.pr(ll); if (!pt) { pen = false; continue; } const s = this.cam(pt[0], pt[1], h + Math.sin(Math.PI * t / n) * lift); if (pen) g.lineTo(s[0], s[1]); else g.moveTo(s[0], s[1]); pen = true; } }
+        for (let rr = 1; rr < q.route.length; rr++) { const A = q.anchors[q.route[rr - 1]], B = q.anchors[q.route[rr]], ip = d3.geoInterpolate([A[0], A[1]], [B[0], B[1]]), dist = d3.geoDistance([A[0], A[1]], [B[0], B[1]]), lift = Math.min(H * .12, dist * H * .07) * Math.min(1, this.th * 1.4), n = 28; let pen = false;
+          for (let t = 0; t <= n; t++) { const ll = ip(t / n), pt = this.pr(ll); if (!pt) { pen = false; continue; } const s = this.cam(pt[0], pt[1], Math.sin(Math.PI * t / n) * lift); if (pen) g.lineTo(s[0], s[1]); else g.moveTo(s[0], s[1]); pen = true; } }
         g.stroke(); }
-      q.anchors.forEach((a, i) => { const pt = this.pr([a[0], a[1]]); if (pt) this.labels.push({ q, a, i, s: this.cam(pt[0], pt[1], h), focus }); }); });
+      q.anchors.forEach((a, i) => { const pt = this.pr([a[0], a[1]]); if (pt) this.labels.push({ q, a, i, s: this.cam(pt[0], pt[1], this.hEl(demAt(DEM.g30, a[0], a[1]))), focus }); }); });
     // forts rebuilt in 3D
     this.rs = this.rp.map((q, i) => { if (!q || !this.show.rebuilt) return null; const s = this.cam(q[0], q[1], this.hEl(demAt(DEM.g30, RECON[i][1], RECON[i][2]))), sel = this.sel === 'r' + i;
       g.beginPath(); g.arc(s[0], s[1], sel ? 6.5 : 4.5, 0, 7); g.fillStyle = C.sea; g.fill(); g.lineWidth = sel ? 2.4 : 1.6; g.strokeStyle = C.ink; g.stroke();
