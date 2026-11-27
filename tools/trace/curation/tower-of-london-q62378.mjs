@@ -174,19 +174,35 @@ export default function curate(T, h) {
       summary: 'The newly finished keep of William I and William II stands alone in a bailey bounded by the Roman wall to the south and east and a bank and ditch to the north and west.',
       basis: 'The mapped White Tower footprint; Historic England dates the keep c.1078-1100 and gives 3 storeys and a basement; World History Encyclopedia gives 36 x 32.5 m and 27.5 m high and puts the original bailey against the Roman wall; HRP says the 1080s ditch ran on the north and west sides only.',
       conjecture: 'No plan of the first bailey exists in the sources read: its west and north edges are assumed (+-20 m), the Roman wall line is read from one OSM zone, the timber and earth defences, the forebuilding at the south entrance, the Roman wall\'s true course and the 1097 stone wall (one source) are not drawn. The White Tower\'s top storey and domed turrets are later.',
-      sources: [],
+      sources: ['TOW-01', 'TOW-05', 'TOW-07'],
       facts: ['Historic England: keep c.1078-1100 for William I and William II, probably to designs by Gundulf, Bishop of Rochester; angle turrets five storeys, entrance at first-floor level on the south side.', 'World History Encyclopedia: 36 x 32.5 m, 27.5 m tall, Caen stone dressings, whitewashed from 1240 (hence the name).', 'World History Encyclopedia: William Rufus converted the palisade wall to stone in 1097 (one source, not drawn).'] },
     { id: '1300', year: 'c. 1300', label: 'Edward I\'s concentric castle', short: 'c. 1300', lens: 'none',
       summary: 'The finished concentric castle: Henry III\'s and Edward I\'s Inner Ward ringed by the Outer Ward, a wet moat on the land sides and the Lion, Middle and Byward Towers on the west.',
       basis: 'Mapped footprints of the towers carried back; Historic England dates (Inner Ward 1170-1285, Outer Ward 1275-85); HRP for the water-filled moat; LAMAS for the Lion Tower and western entrance.',
       conjecture: 'The mapped footprints are today\'s (many towers were rebuilt or refaced); the Lion Tower and moat edges are placed, not read from a plan; Cradle Tower (1348-55), the wharf, the Great Hall, the Royal Menagerie buildings, the Mint and the postern and Iron Gate at the south-east are not drawn; Brass Mount and Well Tower dates straddle 1300.',
-      sources: [],
+      sources: ['TOW-02', 'TOW-03', 'TOW-04', 'TOW-05', 'TOW-07', 'TOW-08'],
       facts: ['Historic England: outer curtain wall and towers c.1275-85, cost about 21,000 pounds with the new moat; Byward Tower, Legge\'s Mount, Develin Tower, Well Tower and St Thomas\'s Tower in that campaign; south section with Cradle and Well Towers 1348-55 (the Well Tower date appears twice with different values).', 'Historic England: Inner Ward Bell Tower c.1190-1200, Wakefield c.1220-40, Devereux to Salt 1238-75, west wall with Beauchamp 1275-85 (c.1281), south wall heightened and crenellated 1339.', 'HRP: Edward I\'s moat was wet from the 1270s and at least 50 m wide; the Duke of Wellington had it drained in 1843-5.', 'Historic England list entry 1065766: Middle Tower built 1275-81 with cylindrical flanking towers, rebuilt above 1717-19; Lion Tower foundations survive (LAMAS).'] },
     { id: 'today', year: 'Today', label: 'World Heritage site', short: 'Present', lens: 'none',
       summary: 'A World Heritage Site run by Historic Royal Palaces: the White Tower, the Inner and Outer Ward towers, the dry moat, the Waterloo Block and the Victorian restorations.',
       basis: 'The OSM outline, wall line, 27 named tower and building footprints, ditch, walls and surroundings, with the Historic England dates for the standing fabric and the Salvin restorations (1840s-1860s) in each tower\'s note.',
       conjecture: 'No height was read from a survey: the documented layer is kerb-high and the constructed layer assumes every height. The 19th and 20th-century interiors, the Waterloo Block, the Chapel of St Peter ad Vincula and the Crown Jewels buildings are mapped footprints only; the moat is dry (1843-5).',
-      sources: [],
+      sources: ['TOW-01', 'TOW-02', 'TOW-03', 'TOW-04', 'TOW-07'],
       facts: ['HRP: the Duke of Wellington, Constable from 1826, had the moat drained 1843-5; the North Bastion of 1848 was destroyed in the Blitz on 5 October 1940.', 'HRP: gun salutes are fired from the wharf; Royal Mint at the Tower from c.1279 to 1810-12; the Royal Menagerie ran from the 1200s to 1835.', 'Historic England: Salvin restorations of the 1840s-1860s touched the Beauchamp, Broad Arrow, Constable, Brick, Flint, Bowyer and Lanthorn (1883) towers and the Wakefield Tower (1866-9).'] },
   ];
+  keepReplacesValid(T);
+}
+
+// check_sources validates every constructed element against every era's element list, including eras the element is not drawn in, so a `replaces` or
+// `stands_for` id that is absent from any era (removed or not yet built) fails there. Keep only the ids present in every era; for the ones dropped the
+// documented footprint stays under the schematic mass in that built view (kerb-high, so it is hidden inside the mass), and the basis says so.
+function keepReplacesValid(T) {
+  const present = (era, id) => { const d = T.diffs[era] || {}; return (T.elements.some((e) => e.id === id) && !(d.remove || []).includes(id)) || (d.add || []).some((e) => e.id === id); };
+  for (const c of T.constructed) {
+    const bad = new Set();
+    for (const era of T.eras) for (const id of [...(c.replaces || []), ...(c.stands_for ? [c.stands_for] : [])]) if (!present(era.id, id)) bad.add(id);
+    if (!bad.size) continue;
+    if (c.replaces) c.replaces = c.replaces.filter((id) => !bad.has(id));
+    if (c.stands_for && bad.has(c.stands_for)) delete c.stands_for;
+    c.basis += ` Footprint ${[...bad].join(", ")} is left out of replaces (absent from some era), so it stays kerb-high under this mass.`;
+  }
 }

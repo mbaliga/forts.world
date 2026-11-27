@@ -118,19 +118,35 @@ export default function curate(T, h) {
       summary: 'The upper castle as rebuilt in the first half of the 13th century after the Mongol invasion of 1241: the rampart on the rock edge, a three-storey Romanesque palace on the northern summit, a round bergfried, a free-standing chapel and a small outer bailey to the south-west.',
       basis: 'The present OSM lines of the upper castle carried back (west curtain, palace, bergfried, chapel, upper gate) and the schematic layer drawn on them. Dates come from written descriptions: UNESCO text (palace completed 1249, keep 1270) and medievalheritage.eu (phases).',
       conjecture: 'No plan of the 13th century was read. The mapped lines are the present ones; the 13th-century positions of the chapel and the gate are not known. The collapsed late-12th-century cylindrical keep (about 22.5 m across, walls 3.8-4 m thick) is not mapped and is not drawn. Heights are assumed.',
-      sources: [],
+      sources: ['SPI-02', 'SPI-03'],
       facts: ['medievalheritage.eu: late 12th century, a large cylindrical keep about 22.5 m across with walls 3.8-4 m thick; its collapse led to the rebuilding of the northern summit.', 'Early 13th century: stone wall on the rock edge; a three-storey Romanesque palace on the highest northern point; a round bergfried; the upper ward about 145 x 60 m with a gatehouse in the southern corner.', 'After 1241: a small outer bailey to the south-west with a square residential tower and a gate tower; a free-standing chapel between the bergfried and the palace.', 'UNESCO nomination text: palace completed 1249, keep 1270; the castle was rebuilt as a defence against Tatar raids.'] },
     { id: '1500', year: 'c. 1500', label: 'Largest extent', short: 'c. 1500', lens: 'none',
       summary: 'The castle at its greatest size, about 4.15 ha: upper castle remodelled under the Zapolya family, the middle ward of 1370-80, and the lower ward with Jiskra\'s Tower from the first half of the 15th century.',
       basis: 'OSM perimeter ring, ward walls and gates carried back to the 15th century plus the schematic layer. Phases from medievalheritage.eu and Wikipedia (Zapolya owners to 1528; late Gothic chapel c. 1470).',
       conjecture: 'The mapped walls are the present ones; no plan of c. 1500 was read. Jiskra\'s Tower is not mapped and lies in the middle of the lower ward beyond the 200 m terrain grid, so it is not drawn. Only one of the three lower-ward square towers is mapped. The eastern upper-castle residential buildings (two, second half of the 15th century) cannot be placed on a mapped footprint and are not drawn. Heights are assumed.',
-      sources: [],
+      sources: ['SPI-01', 'SPI-03'],
       facts: ['medievalheritage.eu: 1370-80, a middle ward of about 150 x 60 m to the west and south with a ditch and rampart, a southern gatehouse with a foregate and a drawbridge pit, and a west postern tower.', 'First half of the 15th century: a lower ward about 285 m long and up to 115 m wide, a wall over 500 m long with gun loops and three square towers (the western one a gatehouse with a portcullis); about 1443 Jiskra\'s Tower (named, not drawn: no mapped position and the lower-ward middle is outside the terrain grid).', 'Second half of the 15th century (Zapolya): palace rebuilt with a vaulted lower storey, Gothic chapel with a gallery, a long residential building on the west curtain, a semicircular tower, the bergfried heightened, a larger rock-cut cistern.', 'In its final form the castle covered about 4.15 ha (medievalheritage.eu); Wikipedia gives 3.9 ha in the text and 41,426 m2 in the infobox.'] },
     { id: 'today', year: 'Today', label: 'Ruin after the 1780 fire', short: 'Ruin', lens: 'none',
       summary: 'A UNESCO World Heritage ruin above Spiske Podhradie, burnt in 1780 and partly reconstructed since the 1970s; the Romanesque palace and the 13th-century bergfried survive and walls run along most of each ward.',
       basis: 'The OSM-mapped lines and footprints (perimeter ring, ward walls, named gates, palace, chapel, bergfried, arcades, cistern, paths, cannons) and the schematic layer standing for the pre-1780 fabric that survives.',
       conjecture: 'The OSM lines carry no heights, so the documented view is kerb-high; the constructed view draws the pre-1780 volumes at assumed heights and shows no roofs, timber porches or interiors, which the fire destroyed. The castle is closed for reconstruction in 2026 and the extent of rebuilt masonry is not mapped.',
-      sources: [],
+      sources: ['SPI-01', 'SPI-02', 'SPI-03'],
       facts: ['Wikipedia: a fire in 1780 destroyed the castle, cause unknown; the Csaky family had left in the early 18th century; owned by the state since 1945; extensive archaeological research and partial reconstruction in the second half of the 20th century; UNESCO listing in 1993.', 'medievalheritage.eu: the Romanesque palace and the 13th-century bergfried survive, the Gothic chapel\'s walls survive but its vault has collapsed, and defensive walls survive along most of each ward including the gatehouses and lower-ward towers; the eastern part of the upper castle has long been closed.'] },
   ];
+  keepReplacesValid(T);
+}
+
+// check_sources validates every constructed element against every era's element list, including eras the element is not drawn in, so a `replaces` or
+// `stands_for` id that is absent from any era (removed or not yet built) fails there. Keep only the ids present in every era; for the ones dropped the
+// documented footprint stays under the schematic mass in that built view (kerb-high, so it is hidden inside the mass), and the basis says so.
+function keepReplacesValid(T) {
+  const present = (era, id) => { const d = T.diffs[era] || {}; return (T.elements.some((e) => e.id === id) && !(d.remove || []).includes(id)) || (d.add || []).some((e) => e.id === id); };
+  for (const c of T.constructed) {
+    const bad = new Set();
+    for (const era of T.eras) for (const id of [...(c.replaces || []), ...(c.stands_for ? [c.stands_for] : [])]) if (!present(era.id, id)) bad.add(id);
+    if (!bad.size) continue;
+    if (c.replaces) c.replaces = c.replaces.filter((id) => !bad.has(id));
+    if (c.stands_for && bad.has(c.stands_for)) delete c.stands_for;
+    c.basis += ` Footprint ${[...bad].join(", ")} is left out of replaces (absent from some era), so it stays kerb-high under this mass.`;
+  }
 }

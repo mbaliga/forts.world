@@ -1,7 +1,9 @@
 // Curation for Fort Bourtange (Vesting Bourtange, Groningen, Netherlands). Evidence and conflicts: docs/research/bourtange-fortress-q5470838-pass.md.
-// No plan image or survey was read (Commons plan search had not arrived; the Rijksmuseum, Atlas van Loon and Merian images were only listed by WebSearch, never opened),
-// and the raw OSM geometry (data/geometry/bourtange-fortress-q5470838/) had not arrived either, so the auto trace holds only the outline (OSM way 222272320),
-// grass areas, buildings, roads and markers. The five-bastion pentagon is fitted to the tips of the mapped grass area way/103148857 (three tips measured, two by symmetry).
+// No plan image or survey was read (Commons plan search had not arrived; the Rijksmuseum, Atlas van Loon and Merian images were only listed by WebSearch, never opened).
+// The raw OSM dump (data/geometry/bourtange-fortress-q5470838/osm.json) arrived after the first pass and was re-checked on 2026-11-27: it maps no wall, bastion or moat feature, but
+// its 3dShapes grass areas trace the earthworks (way/103148857 west half, way/103149304 east half) and two of them carry defensive_works=ravelin (way/103148537, way/103149336).
+// All five bastion tips are now mapped vertices (NE and SE were symmetry guesses), the west rampart (SW, W and NW bastions and the faces between) follows the mapped outline, and two of the
+// four ravelins are the mapped polygons. Everything else on the constructed layer (NE and SE bastions, curtains, moats, bridges, raised buildings) is schematic with assumed heights.
 // Everything else on the constructed layer (rampart, ravelins, moats, bridges, raised buildings) is schematic: drawn from the written descriptions with assumed heights.
 import { carryOver, levelInlandWaters, rectAt } from './_common.mjs';
 
@@ -10,18 +12,20 @@ export const STATUS = 'needs-plan';
 export const HEADER = [
   'Fort Bourtange (Vesting Bourtange), Westerwolde, Groningen, Netherlands. Hand-curated trace, tier T1 (OSM outline, buildings, markers, DEM) plus a schematic constructed layer.',
   'Base: data/traces/bourtange-fortress-q5470838.trace.json (OSM ODbL; Terrarium z15 every 10 m, ~30 m source: the fort stands 5-6 m above datum and its earthworks are not resolved).',
-  'Documented layer: the mapped outline (way 222272320), the named mapped buildings and markers, and five bastion-tip markers fitted to the mapped grass area way/103148857. No wall, bastion, ravelin or moat is mapped in the base trace.',
-  'Constructed (schematic) layer, shown only in the `<era>~built` eras: earth rampart with five angular bastions on the fitted pentagon, four ravelins from the outline spikes, wet moats, two gates with bridges, raised mapped buildings. Heights are assumptions with their rule; documented heights: none.',
+  'Documented layer: the mapped outline (way 222272320), the named mapped buildings and markers, five bastion-tip markers read from mapped grass-area vertices (ways 103148857 and 103149304), and two mapped ravelin grass areas (ways 103148537 and 103149336, defensive_works=ravelin). No wall, bastion or moat feature is mapped.',
+  'Constructed (schematic) layer, shown only in the `<era>~built` eras: earth rampart with five bastions (the SW, W and NW stretch of 1742 and today follows the mapped grass outline; the 1593 pentagon and the NE and SE bastions are drawn on the mapped tips), four ravelins (two are the mapped polygons, two from outline spikes), wet moats, two gates, raised mapped buildings. Heights are assumptions with their rule; documented heights: none.',
 ];
 
 // ---- the pentagon -----------------------------------------------------------------------------------------------------------
 // Tips of the mapped grass area way/103148857 (zone-136): the three that stand out as bastion points. They are consecutive corners of a regular pentagon
 // (circumcentre -19.5,-23.8; radius 167.7 m; angular steps 72.5 and 71.2 degrees), which gives the other two by symmetry.
-const TIP_A = [-63.88, 137.99], TIP_B = [-187.11, -17.45], TIP_C = [-79.71, -180.34];
-const O = [-19.48, -23.78], R = 167.75, A0 = Math.atan2(TIP_A[1] - O[1], TIP_A[0] - O[0]);
-const V = [0, 1, 2, 3, 4].map((i) => { const a = A0 - i * 2 * Math.PI / 5; return [+(O[0] + R * Math.cos(a)).toFixed(1), +(O[1] + R * Math.sin(a)).toFixed(1)]; }); // clockwise: A (NW), E (NE), D (SE), C (SW), B (W)
+// NE and SE tips are now vertices of the mapped grass area way/103149304 (they were symmetry guesses of (121, 68) and (112, -129), 4 m and 5 m away).
+const TIP_A = [-63.88, 137.99], TIP_B = [-187.11, -17.45], TIP_C = [-79.71, -180.34], TIP_E = [116.88, 67.07], TIP_D = [107.8, -128.41];
+const O = [-19.48, -23.78];                                  // centre of the earlier fitted pentagon; kept as the "inside" reference for normals
+const V = [TIP_A, TIP_E, TIP_D, TIP_C, TIP_B];               // clockwise: A (NW), E (NE), D (SE), C (SW), B (W)
+const TIPWAY = ['103148857', '103149304', '103149304', '103148857', '103148857'];
 const VNAME = ['NW bastion (miller\'s bastion, carries the mill)', 'NE bastion', 'SE bastion', 'SW bastion', 'W bastion'];
-const FIT = ['way/103148857 tip, measured', 'symmetry, not measured', 'symmetry, not measured', 'way/103148857 tip, measured', 'way/103148857 tip, measured'];
+const FIT = ['way/103148857 vertex 78, measured', 'way/103149304 vertex 45, measured', 'way/103149304 vertex 52, measured', 'way/103148857 vertex 59, measured', 'way/103148857 vertex 68, measured'];
 const dist = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1]);
 const add = (p, q, k = 1) => [p[0] + q[0] * k, p[1] + q[1] * k];
 const unit = (p, q) => { const l = dist(p, q) || 1; return [(q[0] - p[0]) / l, (q[1] - p[1]) / l]; };
@@ -60,7 +64,8 @@ const band = (chain, d0, d1) => [...offsetChain(chain, d0), ...offsetChain(chain
 // ---- ravelins -----------------------------------------------------------------------------------------------------------------
 // Apex of each ravelin: the outline vertex furthest along the curtain's outward normal, within 50 m of the normal line, pulled back 28 m
 // (24 m outer moat + half the 8 m earth bank). The outline is the 1742 restored outer line (counterscarp).
-function ravelin(i, outline) {
+function ravelin(i, outline, mapped) {
+  if (mapped) { const chain = mapped.slice(); const c = chain.reduce((q, p) => [q[0] + p[0] / chain.length, q[1] + p[1] / chain.length], [0, 0]); return { i, mapped: true, path: chain, apexMid: r1(c), gorgeMid: r1(c), tip: r1(c) }; }
   const [a, b] = curtainPath(i), m = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], n = outward(i), lat = [-n[1], n[0]];
   let best = null;
   for (const p of outline) { const v = [p[0] - m[0], p[1] - m[1]], s = v[0] * n[0] + v[1] * n[1], l = v[0] * lat[0] + v[1] * lat[1]; if (Math.abs(l) < 50 && s > 60 && (!best || s > best.s)) best = { s, l, p }; }
@@ -72,7 +77,7 @@ function ravelin(i, outline) {
   return { i, m, n, lat, sa, sg, tip: best.p, path, apexMid: at(sa, 0), gorgeMid: at(sg, 0) };
 }
 
-const NOTE_FIT = 'Bastion tips are fitted to the mapped grass area way/103148857 (OSM): the NW, W and SW tips are measured corners (they are consecutive corners of a regular pentagon of side about 197 m, circumradius 167.7 m); the NE and SE tips follow from the symmetry and agree with corners of the mapped area way/103149304 to within about 10 m.';
+const NOTE_FIT = 'Bastion tips are vertices of the mapped grass areas (OSM, 3dShapes import): NW, W and SW from way/103148857, NE and SE from way/103149304 (re-checked against the raw dump on 2026-11-27; the NE and SE tips had been placed by symmetry). The shoulders and flanks between tips are an assumed angular form, except the SW, W and NW stretch of the 1742 and present rampart, which follows the mapped grass outline.';
 
 export default function curate(T, h) {
   T.name = 'Bourtange';
@@ -100,16 +105,26 @@ export default function curate(T, h) {
     const measured = /measured/.test(FIT[i]);
     h.add({ id: `tip-${i + 1}`, kind: 'marker', at: v, title: `${VNAME[i]} · fitted tip (${measured ? 'mapped' : 'inferred'})`,
       text: `Bastion tip of the five-bastion pentagon (DBNL monument text: radial plan with five bastions, 1593, designed by Adriaen Antonisz. van Alkmaar). Position ${FIT[i]}. ${NOTE_FIT} Nothing about the bastion's form is placed on the documented layer.`,
-      src: measured ? 'osm:way/103148857' : 'derived:pentagon-symmetry', ev: measured ? 'mapped' : 'inferred', conf: measured ? 0.55 : 0.4, unreachableOk: true, unreachableNote: 'the fitted tip stands inside the schematic bastion bank in the constructed eras.', name: `${VNAME[i]} tip · ${measured ? 'mapped tip' : 'inferred by symmetry'}` });
+      src: `osm:way/${TIPWAY[i]}`, ev: 'mapped', conf: 0.55, unreachableOk: true, unreachableNote: 'the fitted tip stands inside the schematic bastion bank in the constructed eras.', name: `${VNAME[i]} tip · ${measured ? 'mapped tip' : 'inferred by symmetry'}` });
     tipIds.push(`tip-${i + 1}`);
   });
 
+  // mapped earthwork grass areas (OSM 3dShapes import): the rampart ring halves and the two ravelins. Named for what OSM tags them; the rampart reading is this pass's.
+  const EARTH = { 'zone-136': ['Earthwork grass area, west half · mapped (OSM way 103148857)', 'OSM landuse=grass (source 3dShapes). Its outer edge runs round the SW, W and NW bastion tips and the faces between them, so the constructed rampart of 1742 and today follows it; the edge is the grass line, not a surveyed toe or crest. No height is mapped.'],
+    'zone-146': ['Earthwork grass area, east half · mapped (OSM way 103149304)', 'OSM landuse=grass (source 3dShapes). Two of its vertices are the NE and SE bastion tips. Its east edge is indented about 30 m behind the line between those tips (the gap holds paths, and the grass area way/103148877 lies outside it), so the east curtain is not drawn on this edge. No height is mapped.'],
+    'zone-127': ['Ravelin, west · mapped (OSM way 103148537, defensive_works=ravelin)', 'OSM tags this grass area defensive_works=ravelin (source 3dShapes). It lies outside the W-NW curtain. Which of the four ravelins it is, and its date (c. 1607 or 1738-42), is not stated in any source read.'],
+    'zone-148': ['Ravelin, east · mapped (OSM way 103149336, defensive_works=ravelin)', 'OSM tags this grass area defensive_works=ravelin (source 3dShapes). It lies outside the east curtain, about 110 m from it. Which of the four ravelins it is, and its date (c. 1607 or 1738-42), is not stated in any source read.'] };
+  for (const [id, [nm, nt]] of Object.entries(EARTH)) { const e = h.byId(id); e.name = nm; e.note = nt; }
+  const WCHAIN = h.byId('zone-136').poly.slice(59, 79);          // SW tip ... W tip ... NW tip, clockwise
+  if (dist(WCHAIN[0], TIP_C) > 0.1 || dist(WCHAIN[19], TIP_A) > 0.1 || dist(WCHAIN[9], TIP_B) > 0.1) throw new Error('west chain does not run tip to tip');
+  const RAVPOLY = { 1: h.byId('zone-148').poly, 4: h.byId('zone-127').poly };   // ravelin index (curtain it stands before) -> mapped polygon
+
   // ---- eras of the documented layer
   const inside = T.elements.filter((e) => ['building', 'road', 'zone'].includes(e.kind) && dist(((e.poly || e.path).reduce((a, q) => [a[0] + q[0] / (e.poly || e.path).length, a[1] + q[1] / (e.poly || e.path).length], [0, 0])), O) < 260).map((e) => e.id);
-  const keep1742 = ['outline', ...T.elements.filter((e) => e.kind === 'building' && inside.includes(e.id)).map((e) => e.id), ...T.elements.filter((e) => e.kind === 'water').map((e) => e.id), ...T.elements.filter((e) => e.kind === 'waterway').map((e) => e.id), ...T.elements.filter((e) => e.kind === 'road' && inside.includes(e.id)).map((e) => e.id), ...tipIds];
+  const keep1742 = ['outline', ...T.elements.filter((e) => e.kind === 'building' && inside.includes(e.id)).map((e) => e.id), ...T.elements.filter((e) => e.kind === 'water').map((e) => e.id), ...T.elements.filter((e) => e.kind === 'waterway').map((e) => e.id), ...T.elements.filter((e) => e.kind === 'road' && inside.includes(e.id)).map((e) => e.id), ...tipIds, 'zone-127', 'zone-148', 'zone-136', 'zone-146'];
   // four small mapped buildings and three guardhouse nodes stand where the constructed layer puts the west ravelin or the north moat edge; that ravelin has no drawn gate, so they cannot be walked to there
   for (const id of ['marker-12', 'marker-13', 'marker-19']) { const m = h.byId(id); m.unreachableOk = true; m.unreachableNote = 'it stands on or beside a ravelin or moat bank of the constructed layer that has no drawn gate or causeway.'; }
-  const NOPOI = Object.fromEntries(['building-422', 'building-430', 'building-432', 'building-433'].map((id) => [id, { name: undefined }]));
+  const NOPOI = Object.fromEntries(['building-422', 'building-430', 'building-432', 'building-433'].map((id) => [id, { name: undefined, note: 'untagged footprint carried back from the present map, inferred to stand in 1742; no label' }]));
   carryOver(T, '1742', keep1742, { modify: NOPOI, note: 'the fort was restored to its 1742 state (sources: 1967-1992, "reconstruction to 1742" in the DBNL monument text); the mapped outline, village footprints and streets inside the fort are taken as the 1742 layout, but no plan was read to check any one of them' });
   carryOver(T, '1593', tipIds, { note: 'the pentagon of five bastions is the original 1593 plan (DBNL); the tips are the same fitted points' });
   // the tips are measured/mapped today; in 1742 and 1593 they carry the fitted position and say so
@@ -117,7 +132,7 @@ export default function curate(T, h) {
 
   // ---- constructed layer -------------------------------------------------------------------------------------------------------
   const out = outlineEl.poly;
-  const RAV = [0, 1, 2, 3, 4].map((i) => ravelin(i, out)).filter(Boolean);
+  const RAV = [0, 1, 2, 3, 4].map((i) => ravelin(i, out, RAVPOLY[i])).filter(Boolean);
   const gnd = (p) => h.ground(p[0], p[1]);
   const lvl = (poly) => { const g = poly.map(gnd).filter(Number.isFinite); return +(Math.min(...g) - 0.5).toFixed(1); };
   const C = [];
@@ -128,10 +143,16 @@ export default function curate(T, h) {
     { suf: '', eras: E3, hh: 4.5, th: 10, hnote: 'assumed: rampart widened and raised in 1619 (burgenwelt page); no height read, 4.5 m is an illustration', tag: '1742' },
   ];
   for (const es of eraSet) {
-    bastions.forEach((b, i) => C.push({ id: `c-bastion-${i + 1}${es.suf}`, kind: 'wall', path: bastionPath(b), closed: false, thick: es.th, src: 'derived:pentagon-fit', ev: 'schematic', conf: 0.2, eras: es.eras,
-      name: `${VNAME[i]} · schematic, ${es.hh} m assumed (${es.tag})`, basis: `${B_RAMP} ${NOTE_FIT}`, h: { v: es.hh, src: 'inferred', note: es.hnote }, unreachableOk: true, unreachableNote: 'an earth bank with no stair drawn; walk round it or use the gate causeways.' }));
+    const useChain = es.eras === E3;                                    // 1742 and today: the SW-W-NW stretch follows the mapped grass outline
+    if (useChain) C.push({ id: 'c-rampart-west', kind: 'wall', path: WCHAIN, closed: false, thick: es.th, src: 'osm:way/103148857', ev: 'schematic', conf: 0.3, eras: es.eras,
+      name: `West rampart (SW, W and NW bastions and the faces between) · schematic, ${es.hh} m assumed`,
+      basis: `Drawn on the outer edge of the mapped grass area way/103148857 (OSM, 3dShapes): vertices 59 to 78, from the SW tip through the W tip to the NW tip, +-2 m. ${B_RAMP.split(' The bastion shape')[0]} The mapped edge is a grass boundary, not a surveyed toe or crest; the height and the 10 m width are assumed.`,
+      h: { v: es.hh, src: 'inferred', note: es.hnote }, unreachableOk: true, unreachableNote: 'an earth bank with no stair drawn; walk round it or use the gate causeways.' });
+    bastions.forEach((b, i) => { if (useChain && i === 4) return; const full = bastionPath(b), path = useChain && i === 0 ? full.slice(2) : useChain && i === 3 ? full.slice(0, 3) : full; C.push({ id: `c-bastion-${i + 1}${es.suf}`, kind: 'wall', path, closed: false, thick: es.th, src: 'derived:pentagon-fit', ev: 'schematic', conf: 0.2, eras: es.eras,
+      name: `${VNAME[i]} · schematic, ${es.hh} m assumed (${es.tag})`, basis: `${B_RAMP} ${NOTE_FIT}${path !== full ? ' The other half of this bastion is the mapped west rampart.' : ''}`, h: { v: es.hh, src: 'inferred', note: es.hnote }, unreachableOk: true, unreachableNote: 'an earth bank with no stair drawn; walk round it or use the gate causeways.' }); });
     for (let i = 0; i < 5; i++) {
       const gate = GATE[i];
+      if (useChain && (i === 3 || i === 4)) continue;                    // the SW-W and W-NW curtains are part of c-rampart-west
       C.push({ id: `c-curtain-${i + 1}${es.suf}`, kind: 'wall', path: curtainPath(i), closed: false, thick: es.th, src: 'derived:pentagon-fit', ev: 'schematic', conf: 0.2, eras: es.eras,
         name: `${CNAME[i]} · schematic, ${es.hh} m assumed (${es.tag})`, basis: `${B_RAMP} ${gate ? `A mapped guardhouse node stands on this curtain (${gate}, ${GSRC[i]}).` : ''}`, h: { v: es.hh, src: 'inferred', note: es.hnote }, unreachableOk: true, unreachableNote: 'an earth bank with no stair drawn; walk round it or use the gate causeways.' });
       if (gate) C.push({ id: `c-gate-${i}${es.suf}`, kind: 'gate', wall: `c-curtain-${i + 1}${es.suf}`, at: cmid(i), w: 5, src: 'derived:pentagon-fit', ev: 'schematic', conf: 0.2, eras: es.eras,
@@ -156,10 +177,11 @@ export default function curate(T, h) {
     const rid = `c-ravelin-${r.i + 1}`;
     const gated = GATE[r.i];
     // direction clockwise around the fort: the path was built left-to-right looking outward, which is clockwise around the fort
-    C.push({ id: rid, kind: 'wall', path: r.path, closed: false, thick: 8, src: 'osm:way/222272320', ev: 'schematic', conf: 0.2, eras: E3,
-      name: `Ravelin before the ${CNAME[r.i].split(' (')[0].toLowerCase()} · schematic, 3.5 m assumed`, basis: `DBNL monument text: two ravelins c. 1607 and two more in 1738-42 (which are which is not stated; all four are drawn in the 1742 era only). Apex placed on the spike of the mapped outline (OSM way 222272320) that lies on this curtain's axis, pulled back 28 m for the outer moat and bank; the arrowhead shape and 76 m width are assumed.`,
+    const mw = r.mapped ? { 1: '103149336', 4: '103148537' }[r.i] : null;
+    C.push({ id: rid, kind: 'wall', path: r.path, closed: !!r.mapped, thick: 8, src: mw ? `osm:way/${mw}` : 'osm:way/222272320', ev: 'schematic', conf: mw ? 0.3 : 0.2, eras: E3,
+      name: `Ravelin before the ${CNAME[r.i].split(' (')[0].toLowerCase()} · schematic, 3.5 m assumed`, basis: mw ? `Drawn on the mapped ravelin polygon (OSM way ${mw}, tagged defensive_works=ravelin; vertices read to +-2 m). DBNL monument text: two ravelins c. 1607 and two more in 1738-42 (which are which is not stated; all four are drawn in the 1742 era only). The height is assumed and the polygon is a grass-area edge, not a surveyed toe. No moat is drawn round it: the moat edges are not mapped.` : `DBNL monument text: two ravelins c. 1607 and two more in 1738-42 (which are which is not stated; all four are drawn in the 1742 era only). Apex placed on the spike of the mapped outline (OSM way 222272320) that lies on this curtain's axis, pulled back 28 m for the outer moat and bank; the arrowhead shape and 76 m width are assumed.`,
       h: { v: 3.5, src: 'inferred', note: 'assumed: one metre lower than the 4.5 m main rampart; no ravelin height read' }, unreachableOk: !gated, unreachableNote: 'an earth bank with no stair drawn; its interior is reached by the gate causeways on the north and south axes only.' });
-    const halves = gated ? [r.path.slice(0, 3), r.path.slice(3)] : [r.path];
+    const halves = r.mapped ? [] : gated ? [r.path.slice(0, 3), r.path.slice(3)] : [r.path];
     halves.forEach((chain, hi) => {
       const poly = band(chain, 4, 28);
       C.push({ id: `c-ravelin-moat-${r.i + 1}${gated ? '-' + 'ab'[hi] : ''}`, kind: 'water', poly, level: lvl(poly), src: 'osm:way/222272320', ev: 'schematic', conf: 0.15, eras: E3, name: `Moat round ravelin ${r.i + 1}${gated ? ' (' + ['left', 'right'][hi] + ' half)' : ''} · schematic, 24 m wide assumed`,
@@ -185,21 +207,37 @@ export default function curate(T, h) {
   T.eras = [
     { id: '1593', year: '1593', label: 'Founding star fort', short: '1593', lens: 'none',
       summary: 'The new earth fort of Willem Lodewijk of Nassau: a low rampart and ditch round a pentagon of five bastions in the Bourtanger Moor, on the road from Germany to Groningen.',
-      basis: 'DBNL (Stenvert et al., Monumenten in Nederland, Groningen): redoubt begun 1580 on Diederik Sonoy\'s orders, completed 1593 on a radial plan with five bastions, designed by Adriaen Antonisz. van Alkmaar. The pentagon here is fitted to the tips of the mapped grass area way/103148857.',
-      conjecture: 'No plan of 1593 was read. Bastion shapes, rampart height (2.5 m), ditch width (24 m) and the entrance position are assumptions on the constructed layer. The village, streets, church (1607) and every outwork are later and are not drawn. The documented layer holds only the five tip markers. The tan star painted on the ground is the 1742 mapped outline: the shared T1 builder paints the outline in every era, so it is not a 1593 feature.',
-      sources: [],
+      basis: 'DBNL (Stenvert et al., Monumenten in Nederland, Groningen): redoubt begun 1580 on Diederik Sonoy\'s orders, completed 1593 on a radial plan with five bastions, designed by Adriaen Antonisz. van Alkmaar. The five bastion tips are vertices of the mapped grass areas ways 103148857 and 103149304 (OSM); the straight-sided bastions between them are assumed, because the mapped outline is the 1742 restored form and is not used for 1593.',
+      conjecture: 'No plan of 1593 was read. Bastion shapes between the mapped tips, rampart height (2.5 m), ditch width (24 m) and the entrance position are assumptions on the constructed layer. The village, streets, church (1607) and every outwork are later and are not drawn. The documented layer holds only the five tip markers. The tan star painted on the ground is the 1742 mapped outline: the shared T1 builder paints the outline in every era, so it is not a 1593 feature.',
+      sources: ['BOU-01', 'BOU-02', 'BOU-03'],
       facts: ['DBNL: 1580 redoubt begun on Sonoy\'s orders; 1593 completed on a radial plan with five bastions (Adriaen Antonisz. van Alkmaar).', 'Burgenwelt page: in 1580 Sonoy marked out a pentagon but nothing was built for lack of money; in 1593 Willem Lodewijk had a low earth rampart with a ditch made; the garrison church followed in 1607.', 'Wikipedia: Spanish forces from Groningen attacked soon after completion and failed.'] },
     { id: '1742', year: 'c. 1742', label: 'Largest extent', short: '1742', lens: 'none',
       summary: 'The fort at its largest, after the 1738-42 enlargement by Pieter de la Rive: five bastions, four ravelins, the crownwork and hornworks, a new eastern counterscarp and a glacis running into the wet horizon.',
       basis: 'DBNL: c. 1607 two ravelins, a crownwork and a counterscarp; c. 1645 two hornworks facing east; 1665-66 and 1672 sieges withstood; 1738-42 expansion to the largest extent designed by Pieter de la Rive, two more ravelins, a new eastern counterscarp. The restoration of 1967-1992 rebuilt this state, so the OSM outline and the village footprints are carried back, marked inferred.',
-      conjecture: 'No plan of 1742 was read (the Rijksmuseum, Atlas van Loon 1649 and Merian images were found by search, not opened). The east hornworks, the crownwork "Schuitendiep" (1606) and the eastern counterscarp lie inside or on the mapped outline but cannot be told apart in the base trace, so they are not drawn separately. The church (1607, replaced 1869), the Commandeurslogement and the other houses on the Marktplein cannot be matched to mapped footprints. Heights, moat width and bridges are assumptions.',
-      sources: [],
+      conjecture: 'No plan of 1742 was read (the Rijksmuseum, Atlas van Loon 1649 and Merian images were found by search, not opened). Two of the four ravelins are the mapped polygons (ways 103148537 and 103149336, defensive_works=ravelin); the other two are drawn on outline spikes. The SW, W and NW rampart follows the mapped grass outline of way 103148857; the NE and SE bastions and all curtains are schematic. The east hornworks, the crownwork "Schuitendiep" (1606) and the eastern counterscarp lie inside or on the mapped outline but cannot be told apart in the base trace, so they are not drawn separately. The church (1607, replaced 1869), the Commandeurslogement and the other houses on the Marktplein cannot be matched to mapped footprints. Heights, moat width and bridges are assumptions.',
+      sources: ['BOU-01', 'BOU-02'],
       facts: ['DBNL: expansion to the largest extent in 1738-42 designed by Pieter de la Rive; two more ravelins and a new eastern counterscarp; the glacis runs into a "natte horizon".', 'DBNL: the pentagonal market square and radial street pattern probably date from about 1645.', 'Burgenwelt page: the main rampart was widened and raised in 1619; the crownwork Schuitendiep was added in 1606.', 'Grokipedia (AI-generated, low weight): a wet horizon of 24 ha, 31 cm below summer water level; about 300 soldiers and families in the 17th century.'] },
     { id: 'today', year: 'Today', label: 'Restored fortress village', short: 'Restored', lens: 'none',
       summary: 'The fortress village, restored to its 1742 state: ramparts, moats, a mill, barracks and houses, a museum and a restaurant, with the Natte Horizon wetland south of it.',
-      basis: 'The OSM outline, named buildings, markers, paths, water and the Terrarium DEM, plus the five fitted bastion tips.',
-      conjecture: 'The base trace holds no mapped rampart, bastion, ravelin or moat; this era draws what it does hold. Heights are unknown (kerb-high); see the constructed layer. The mapped footprints include modern additions (car park, restaurant) that are not separated.',
-      sources: [],
+      basis: 'The OSM outline, named buildings, markers, paths, water, the mapped earthwork grass areas (ways 103148857 and 103149304), the two mapped ravelins (ways 103148537 and 103149336) and the Terrarium DEM, plus the five bastion-tip markers read from mapped vertices.',
+      conjecture: 'OSM maps no wall, bastion or moat feature: the earthworks appear only as grass areas, and the moats are the unmapped gaps between them (the Natte Horizon wetland is the one mapped moat-tagged water, outside the star). This era draws what is mapped. Heights are unknown (kerb-high); see the constructed layer. The mapped footprints include modern additions (car park, restaurant) that are not separated.',
+      sources: ['BOU-01', 'BOU-03', 'BOU-04', 'BOU-05'],
       facts: ['DBNL: officially decommissioned 1851; by 1966 only a remnant of the outer moat and one bastion were visible; reconstructed to the 1742 state mainly in 1972-82 (1967-92 in other sources).', 'Wikipedia: in 1960 the local government decided to restore the fort to its 1740-50 appearance as a historical museum.', 'trek.zone: the present mill (1980) is a replica of the Ter Haar mill, standing on the miller\'s bastion beside a small horse mill.'] },
   ];
+  keepReplacesValid(T);
+}
+
+// check_sources validates every constructed element against every era's element list, including eras the element is not drawn in, so a `replaces` or
+// `stands_for` id that is absent from any era (removed or not yet built) fails there. Keep only the ids present in every era; for the ones dropped the
+// documented footprint stays under the schematic mass in that built view (kerb-high, so it is hidden inside the mass), and the basis says so.
+function keepReplacesValid(T) {
+  const present = (era, id) => { const d = T.diffs[era] || {}; return (T.elements.some((e) => e.id === id) && !(d.remove || []).includes(id)) || (d.add || []).some((e) => e.id === id); };
+  for (const c of T.constructed) {
+    const bad = new Set();
+    for (const era of T.eras) for (const id of [...(c.replaces || []), ...(c.stands_for ? [c.stands_for] : [])]) if (!present(era.id, id)) bad.add(id);
+    if (!bad.size) continue;
+    if (c.replaces) c.replaces = c.replaces.filter((id) => !bad.has(id));
+    if (c.stands_for && bad.has(c.stands_for)) delete c.stands_for;
+    c.basis += ` Footprint ${[...bad].join(", ")} is left out of replaces (absent from some era), so it stays kerb-high under this mass.`;
+  }
 }

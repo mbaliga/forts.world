@@ -5,7 +5,7 @@ Ledger id `bourtange-fortress-q5470838` (Wikidata Q5470838). Pass of 2026-11-27.
 ## What was and was not available
 
 - Auto T1 trace (`data/traces/bourtange-fortress-q5470838.trace.json`): OSM outline way 222272320 (62 vertices, castle/fortress, wikidata Q5470838), 120 buildings (9 named), 78 grass areas, 150 paths, 23 markers (cannons, guardhouses, "Nieuwe Kruithuis" powder house, "Het houten paard"), canal and ditch water, the "Natte Horizon" moat-tagged water (way 183840649), and a 10 m DEM grid (5-6 m above datum at the fort).
-- Raw geometry `data/geometry/bourtange-fortress-q5470838/` had not arrived when this pass ran. The base trace carries no wall, bastion, ravelin or moat polygon (the task brief says OSM maps them; the trace builder did not keep them). When the raw geometry arrives, the fitted pentagon, ravelins and moats below should be replaced by the mapped ones.
+- Raw geometry `data/geometry/bourtange-fortress-q5470838/osm.json` had not arrived when this pass first ran; it arrived the same day and was re-checked (section "Re-check against the raw OSM dump" below).
 - No plan image was read. WebSearch listed a Rijksmuseum print (RP-P-2019-2471), a Covens and Mortier map, Atlas van Loon 1649 and a Merian engraving; none was opened, and no pixels are shipped.
 
 ## Documented (written sources read)
@@ -27,7 +27,28 @@ Village houses (DBNL, Marktplein): Commandeurslogement no. 4, Majoorslogement no
 
 Conflicts: start date 1580 vs 1593; "ravelins on the east side 1739-42" (burgenwelt, via a low-weight AI-written page) vs "two ravelins c. 1607 and two in 1738-42" (DBNL): which ravelin is which is not stated anywhere read. The 1672 troop numbers differ between sections of the AI-written page and are not used. No dimension of the fort, a wall or a bastion height was found in any source.
 
-## Fitted geometry (derived from mapped data, not from a plan)
+## Re-check against the raw OSM dump (2026-11-27)
+
+Dump: 1145 elements within 1000 m. What it maps, and what it does not:
+- **No wall, rampart, bastion, moat polygon or ditch of the fort is mapped as such.** The only fortification tags are `historic=castle` on the outline (way 222272320), `historic=archaeological_site` "Redoute Bakoven" (way 491934754, outside the window), and `defensive_works=ravelin` on two grass areas.
+- **The earthworks appear as grass areas** (`landuse=grass`, source 3dShapes): way 103148857 (west half of the inner star, 106 vertices, 16,161 m2) and way 103149304 (east half, 59 vertices, 10,307 m2), cut by the north and south gate axes; further grass areas (ways 103149332, 103148791, 103148877, 103148577 ...) fill the outer works between the star and the outline. All of these were already in the base trace as `zone` elements; the trace builder had not kept the `defensive_works` tag.
+- **Two ravelins are tagged**: way 103148537 (west, outside the W-NW curtain, 3,409 m2) and way 103149336 (east, outside the east curtain, about 110 m from it, 2,469 m2). The other two ravelins (and any crownwork or hornwork) are not tagged.
+- **Moats are not mapped as water.** They are the unmapped gaps between the grass areas. Water in the dump is the Natte Horizon (way 183840649, `water=moat`, outside the star), canals and ditches outside the star.
+
+What changed in the curation:
+| Item | Before | Now |
+|---|---|---|
+| NE and SE bastion tips | placed by pentagon symmetry, marked inferred | mapped vertices of way 103149304 (116.88, 67.07) and (107.8, -128.41), 4 m and 5 m from the symmetry guesses; tip markers are now `mapped` |
+| NW, W, SW tips | measured vertices of way 103148857 | unchanged (vertices 78, 68, 59) |
+| West rampart (SW, W and NW bastions and the faces between) | schematic angular bastions and curtains on the fitted pentagon | `c-rampart-west` is drawn on vertices 59 to 78 of way 103148857 (1742 and today only; 1593 keeps the straight-sided pentagon because the mapped outline is the restored 1742 form) |
+| NE, SE bastions, the north, east and south curtains | schematic on the pentagon | unchanged (schematic, now on the mapped tips) |
+| West and east ravelins | arrowheads from outline spikes | the mapped polygons of ways 103148537 and 103149336, closed schematic banks 3.5 m high; no moat drawn round them (edges not mapped); the north, south and SW-W ravelins stay schematic on outline spikes |
+| Documented layer | no earthwork | the four grass areas above are named and carried into 1742 (inferred); the two ravelin polygons are named "Ravelin ... mapped" |
+| Moats, gates, bridges, buildings | schematic | unchanged |
+
+Findings that limit the change: (1) the east grass area's edge is indented about 30 m behind the line between the NE and SE tips, with another grass area (way 103148877) outside it, so the east curtain is not drawn on a mapped edge; (2) the grass edge is a boundary of mown grass, not a surveyed toe or crest, so the mapped rampart line is good to a few metres but its height, width and slope are assumed; (3) which of the four ravelins the two tagged polygons are, and their dates, are not stated anywhere read.
+
+## Fitted geometry (derived from mapped data, not from a plan; superseded where the re-check above says so)
 
 The mapped grass area way/103148857 has three obvious bastion points: NW (-63.9, 138.0), W (-187.1, -17.5), SW (-79.7, -180.3). They are consecutive corners of a regular pentagon: circumcentre (-19.5, -23.8) m, radius 167.7 m, side about 197 m (angular steps 72.5 and 71.2 degrees). The NE and SE corners (121, 68) and (112, -129) follow from the symmetry. Supporting checks: the pentagon's curtain midpoints sit 6 to 10 m from the mapped guardhouse nodes (26, 97) north (Friesche Poort axis) and (7.5, -142) south (Munsterse Poort axis); the mapped mill (-50, 80) lies on the NW bastion, which agrees with the "miller's bastion". The regularity is a fit, not a measurement of NE and SE.
 

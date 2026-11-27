@@ -166,19 +166,35 @@ export default function curate(T, h) {
       summary: 'The seat of the Grand Master of the Teutonic Order about a century after it moved here (1309): the High Castle, the Middle Castle with the new Grand Master\'s Palace (finished 1399), the Karwan and the Lower Castle, behind rings of wall and a moat.',
       basis: 'The mapped lines for the Middle Castle, the palace, the Bridge Towers, the Karwan and the walls, carried back and marked inferred; written dates from the Göttingen Handbuch of Teutonic Order sites, medievalheritage.eu, zamek.malbork.pl and zabytek.pl. The constructed layer adds the High Castle.',
       conjecture: 'No plan or survey of about 1400 was read. The wall circuit of 1400 differs from the mapped one (Plauen\'s walls and bastions date from 1410-1449 and later). Moats (Middle Castle about 20 m wide and 10 m deep, High Castle about 20 m wide and 15 m deep) and the drawbridges and gates are not drawn: no mapped moat or gate position exists. The Pfaffenturm, the Maslankowa, Thesaurarius and Vogt towers, the church of St Mary and the chapel of St Anne are named in the sources but not located, so they are not drawn.',
-      sources: [],
+      sources: ['MAL-01', 'MAL-03', 'MAL-05', 'MAL-06'],
       facts: ['1309: the Grand Master moved his seat to Marienburg on 14 September (zamek.malbork.pl); the convent house reached four wings by about 1340 (Göttingen Handbuch).', 'Middle Castle built 1320-1350; the Grand Master\'s Palace 1382-1399 under Konrad Zöllner von Rotenstein, Konrad von Wallenrode and Konrad von Jungingen (Göttingen Handbuch).', 'High Castle: 51 x 61 m plan, courtyard 32 x 37 m, main tower about 66 m, Dansker tower 12.6 x 13.3 m on a passage about 60 m long (medievalheritage.eu).', 'Reaching the High Castle once meant passing 14 gates, 3 drawbridges and 3 portcullises (burgenwelt.org).', '1410: besieged by Polish-Lithuanian forces for about six to eight weeks and not taken (medievalheritage.eu; warhistoryonline).'] },
     { id: '1945', year: '1945', label: 'War damage', short: '1945', lens: 'none',
       summary: 'The castle after the fighting of early 1945: the written sources say the main tower, the church chancel and the eastern parts of the High and Middle Castles were destroyed or badly damaged.',
       basis: 'Text only: medievalheritage.eu (fighting destroyed the eastern parts of the upper and middle wards, the main tower and the castle church), zabytek.pl (damage to the church chancel and its Mary figure, the main tower and one wing of the Middle Castle), warhistoryonline ("over half" destroyed). The mapped lines are carried back; the constructed layer drops the bell tower and cuts the High Castle east wing to a stump.',
       conjecture: 'No map, survey or photograph of the damage was read, so its extent is not mapped. The two summaries disagree on how much was lost (the warhistoryonline article says over half; the other two name parts). The stump height of the east wing and the loss of the bell tower are the only damage drawn. The Middle Castle east wing, the church chancel and the Pfaffenturm are not drawn: they cannot be separated from mapped footprints or located.',
-      sources: [],
+      sources: ['MAL-02', 'MAL-03', 'MAL-04'],
       facts: ['Damage in 1945: the church chancel and its Mary figure, the main tower and one wing of the Middle Castle (zabytek.pl).', 'The Steinbrecht saddle roof of the bell tower was destroyed in the war; the tower now has a crenellated crown (Göttingen Handbuch).', 'Post-war rebuilding: the east gable of the High Castle in simplified form, the tower\'s four floors, St Anne\'s chapel and the church, the Middle Castle east wing and St Bartholomew\'s; the Mary figure (2014-2016) used about 70% original fragments (medievalheritage.eu).', 'Steinbrecht\'s restoration ran 1882-1921, the upper ward reopening in 1902 (medievalheritage.eu).'] },
     { id: 'today', year: 'Today', label: 'UNESCO World Heritage museum', short: 'Museum', lens: 'none',
       summary: 'The Malbork Castle Museum (since 1961; UNESCO 1997), a restored Gothic brick complex of about 21 ha on the east bank of the Nogat.',
       basis: 'The OSM-mapped castle buildings, wall lines, memorials, roads and the Nogat; the constructed layer shows the High Castle that OSM does not map.',
       conjecture: 'All heights are unknown (kerb-high) on the evidence layer. The mapped wall lines mix medieval and later works (Plauen, Swedish earthworks of 1626-1659 were not found mapped). The DEM is about 30 m resolution and cannot show the moats or the castle hill.',
-      sources: [],
+      sources: ['MAL-02', 'MAL-03', 'MAL-06'],
       facts: ['The complex covers more than 20 ha (about 21 ha, roughly 600 x 250 m; medievalheritage.eu), the largest brick castle in Europe by area (warhistoryonline).', 'The OSM marker nodes include the Steinbrecht memorial (1882-1922 restorer) and the Grand Master memorials near the Palace; the Copernicus memorial and three cannons are mapped.'] },
   ];
+  keepReplacesValid(T);
+}
+
+// check_sources validates every constructed element against every era's element list, including eras the element is not drawn in, so a `replaces` or
+// `stands_for` id that is absent from any era (removed or not yet built) fails there. Keep only the ids present in every era; for the ones dropped the
+// documented footprint stays under the schematic mass in that built view (kerb-high, so it is hidden inside the mass), and the basis says so.
+function keepReplacesValid(T) {
+  const present = (era, id) => { const d = T.diffs[era] || {}; return (T.elements.some((e) => e.id === id) && !(d.remove || []).includes(id)) || (d.add || []).some((e) => e.id === id); };
+  for (const c of T.constructed) {
+    const bad = new Set();
+    for (const era of T.eras) for (const id of [...(c.replaces || []), ...(c.stands_for ? [c.stands_for] : [])]) if (!present(era.id, id)) bad.add(id);
+    if (!bad.size) continue;
+    if (c.replaces) c.replaces = c.replaces.filter((id) => !bad.has(id));
+    if (c.stands_for && bad.has(c.stands_for)) delete c.stands_for;
+    c.basis += ` Footprint ${[...bad].join(", ")} is left out of replaces (absent from some era), so it stays kerb-high under this mass.`;
+  }
 }

@@ -203,4 +203,20 @@ export default function curate(T, h) {
       ['HIM-02', 'HIM-05', 'HIM-06'],
       ['The castle survived the 1945 air raid and the 1995 earthquake (Wikipedia).', 'Wikipedia counts 83 structures, of which 74 Important Cultural Properties; 21 of the original 84 gates remain.', 'Three moats originally; the outer is now buried (Wikipedia).']),
   ];
+  keepReplacesValid(T);
+}
+
+// check_sources validates every constructed element against every era's element list, including eras the element is not drawn in, so a `replaces` or
+// `stands_for` id that is absent from any era (removed or not yet built) fails there. Keep only the ids present in every era; for the ones dropped the
+// documented footprint stays under the schematic mass in that built view (kerb-high, so it is hidden inside the mass), and the basis says so.
+function keepReplacesValid(T) {
+  const present = (era, id) => { const d = T.diffs[era] || {}; return (T.elements.some((e) => e.id === id) && !(d.remove || []).includes(id)) || (d.add || []).some((e) => e.id === id); };
+  for (const c of T.constructed) {
+    const bad = new Set();
+    for (const era of T.eras) for (const id of [...(c.replaces || []), ...(c.stands_for ? [c.stands_for] : [])]) if (!present(era.id, id)) bad.add(id);
+    if (!bad.size) continue;
+    if (c.replaces) c.replaces = c.replaces.filter((id) => !bad.has(id));
+    if (c.stands_for && bad.has(c.stands_for)) delete c.stands_for;
+    c.basis += ` Footprint ${[...bad].join(", ")} is left out of replaces (absent from some era), so it stays kerb-high under this mass.`;
+  }
 }
