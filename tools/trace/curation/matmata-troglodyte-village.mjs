@@ -1,6 +1,8 @@
 // Curation for the Matmata troglodyte village (pit dwellings), Tunisia. Evidence and conflicts: docs/research/matmata-troglodyte-village-pass.md.
 // This is not a walled fort: each house is a sunken courtyard (a pit) with rooms cut into its walls and a sloping entrance tunnel.
 // The 26 pit rims are mapped in OSM; no plan or survey of any pit was found, and no source read gives a depth for a named pit.
+import fs from 'node:fs';
+import path from 'node:path';
 import { carryOver } from './_common.mjs';
 
 export const TIER = 'T1';
@@ -8,7 +10,7 @@ export const STATUS = 'needs-plan';
 export const HEADER = [
   'Matmata troglodyte village (Matmata el Qadima), Gabes, Tunisia. Hand-curated trace, tier T1 (26 OSM pit rims, one published coordinate for Hotel Sidi Driss pit 2; no plan or survey) plus a schematic constructed layer.',
   'Base: data/traces/matmata-troglodyte-village.trace.json (OSM ODbL; Terrarium z15, ~30 m SRTM-derived). Local origin 33.54368 N, 9.96592 E; x east, y north, metres.',
-  'Documented layer: the 26 pit rims are drawn as sunken courtyards 8 m deep. The footprint is the OSM rim; the 8 m depth is NOT measured: it is the middle of the 7-9 m range in published descriptions, and is flagged inferred on every pit.',
+  'Documented layer: the 22 pit rims in the raw window are drawn as sunken courtyards 8 m deep. The footprint is the OSM rim; the 8 m depth is NOT measured: it is the middle of the 7-9 m range in published descriptions, and is flagged inferred on every pit.',
   'Constructed layer (eras `<era>~built`): per pit a schematic lining wall at the courtyard edge and an open-cut entrance ramp standing in for the vaulted tunnel, plus the lateral tunnels of Hotel Sidi Driss (1976, today). Rooms in the pit walls are not drawn: the renderer cannot carve them.',
 ];
 
@@ -30,6 +32,16 @@ export default function curate(T, h) {
   h.source({ id: 'MAT-08', kind: 'reference', title: 'Lonely Planet, Hotel Sidi Driss (several pit courtyards linked by tunnels)', url: 'https://www.lonelyplanet.com/tunisia/matmata/attractions/hotel-sidi-driss/a/poi-sig/1595750/355680', licence: 'cited for facts only (nothing copied)', fetched: '2026-11-27' });
   h.source({ id: 'MAT-09', kind: 'reference', title: 'Journal of Architecture and Urbanism (VGTU), thermal study of Tunisian troglodyte dwellings (Old Matmata, Oued El Khil)', url: 'https://bme.vgtu.lt/index.php/JAU/article/download/17923/11773', licence: 'cited for facts only (nothing copied)', fetched: '2026-11-27' });
 
+  // ---- clip to the raw OSM window: the auto trace covered ~1.7 km but data/geometry/<id>/osm.json holds only the 700 m fetch ----------
+  // Elements citing an OSM id that is not in the raw dump cannot be checked against it (tools/check_sources.mjs), so they are dropped.
+  // All lie 700-2600 m from the origin: roads and wadis crossing the window edge, the outer houses, and four pit rims at 709-749 m. Pits and the hotel in the window are kept.
+  {
+    const root = path.resolve(new URL('../../..', import.meta.url).pathname);
+    const raw = new Set(JSON.parse(fs.readFileSync(path.join(root, 'data/geometry', T.id, 'osm.json'), 'utf8')).elements.map((e) => `${e.type}/${e.id}`));
+    const outside = T.elements.filter((e) => [e.src, e.h?.src, ...(e.from || [])].some((s) => s && s.startsWith('osm:') && !raw.has(s.slice(4)))).map((e) => e.id);
+    h.remove(...outside);
+  }
+
   // Budget (250 KB, 400 elements): roads and wadis are simplified to 3 m and building outlines to 0.7 m (Douglas-Peucker), which moves no vertex by more than that.
   const dp = (pts, t) => { if (pts.length < 3) return pts; const a = pts[0], b = pts[pts.length - 1], dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1; let m = 0, k = 0; for (let i = 1; i < pts.length - 1; i++) { const d = Math.abs((pts[i][0] - a[0]) * dy - (pts[i][1] - a[1]) * dx) / l; if (d > m) { m = d; k = i; } } return m > t ? [...dp(pts.slice(0, k + 1), t).slice(0, -1), ...dp(pts.slice(k), t)] : [a, b]; };
   for (const e of [...h.all('road'), ...h.all('waterway')]) e.path = dp(e.path.map(([x, y]) => [Math.round(x * 10) / 10, Math.round(y * 10) / 10]), 3);
@@ -37,7 +49,7 @@ export default function curate(T, h) {
   for (const e of h.all('building')) if (e.poly.length > 6) { const q = dp([...e.poly, e.poly[0]], 0.7); q.pop(); if (q.length >= 4) e.poly = q; }
   const r1 = (a) => (typeof a === 'number' ? Math.round(a * 10) / 10 : a.map(r1));
   for (const e of T.elements) { if (e.poly) e.poly = r1(e.poly); if (e.path && e.kind !== 'pit') e.path = r1(e.path); }
-  // ---- documented layer: the 26 mapped pit rims -> sunken courtyards -------------------------------------------------
+  // ---- documented layer: the 22 mapped pit rims in the raw window -> sunken courtyards -------------------------------------------------
   const pits = h.all('pit');
   const hotelIds = new Set(); // candidates for the five Sidi Driss pits: mapped rims within 100 m of the published pit 2 coordinate (assumed)
   for (const p of pits) if (Math.hypot(centroid(p.poly)[0] - SD[0], centroid(p.poly)[1] - SD[1]) < 100) hotelIds.add(p.id);
@@ -110,7 +122,12 @@ export default function curate(T, h) {
   carryOver(T, '1948', keep, { note: 'carried back from the present map; no dated plan found (see era)' });
   carryOver(T, '1976', [...keep, 'marker-sidi-driss'], { note: 'carried back from the present map; no dated plan found (see era)', modify: { 'marker-sidi-driss': { ev: 'documented', conf: 0.4, name: 'Hotel Sidi Driss, pit 2 · published coordinate, +-25 m', note: 'the pit-2 dining room was filmed here on 1 April 1976 (MAT-04); the hotel opened in 1968' } } });
 
-  for (const d of Object.values(T.diffs)) for (const m of Object.values(d.modify)) if (m.ev === 'inferred' && /carried back/.test(m.name || '')) { delete m.name; m.note = 'carried back from the present map, inferred (see era)'; }
+  for (const d of Object.values(T.diffs)) for (const [id, m] of Object.entries(d.modify)) if (m.ev === 'inferred' && /carried back/.test(m.name || '')) {
+    delete m.name; m.note = 'carried back from the present map, inferred (see era)';
+    const base = T.elements.find((e) => e.id === id);
+    // the validator reads a name before a note, so an element that keeps its own mapped name must say "inferred" in it
+    if (base?.name && !/inferred|approx|assumed/i.test(base.name)) m.name = `${base.name} · carried back, inferred`;
+  }
   T.eras = [
     { id: '1948', year: 1948, label: 'Before the 1969 floods', short: '1948', lens: 'none',
       summary: 'Matmata as a Berber pit-dwelling village before the floods of 1969 and the move to the new surface town: courtyard houses dug into the hillsides, rooms on two levels around each pit.',
