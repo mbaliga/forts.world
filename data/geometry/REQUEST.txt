@@ -1,3 +1,4 @@
+tower-of-london-q62378:900,conwy-castle-q756830:900,malbork-castle-q71279:1000,krak-des-chevaliers-q177549:800,himeji-castle-q188754:1000,edinburgh-castle-q212065:800,bourtange-fortress-q5470838:1000,spis-castle-q205558:900
 pavagadh:1800,rohtas-pk:1500,amer:900,takht-i-bahi-q117623:400,bhadra-fort-q3544561:300,gagron:600,sirkap-q1340954:700,dharmarajika-stupa-q5269314:500,shalamar-gardens-q499527:500,jantar-mantar-q508634:350
 sigiriya:1500
 nanded-fort-q96394830:800,phillaur-fort-q56236008:600,rajgad:1500,salher:1200,tipagad-q60787172:600,vijaygarh-fort-q97692160:800,anchuthengu-fort-q4752774:500,gawilghur-fort-q932562:1500,kothaligad-q6433988:700,lakhpat-fort-q98871090:600
