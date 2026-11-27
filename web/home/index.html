@@ -123,14 +123,17 @@ footer.site .credits { padding-block: 0 36px; color: var(--mute); font: 400 12px
 .shade.top { top: 0; height: calc(env(safe-area-inset-top, 0px) + 150px); background: linear-gradient(180deg, var(--paper) 0%, var(--paper) 30%, color-mix(in srgb, var(--paper) 0%, transparent) 100%); }
 .shade.bottom { bottom: 0; height: calc(env(safe-area-inset-bottom, 0px) + 200px); background: linear-gradient(0deg, var(--paper) 0%, var(--paper) 45%, color-mix(in srgb, var(--paper) 0%, transparent) 100%); }
 .hud { position: absolute; z-index: 3; box-sizing: border-box; }
-.mtop { top: env(safe-area-inset-top, 0px); left: 0; right: 0; display: flex; align-items: center; gap: 10px 20px; padding: 14px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px)); }
+.mtop { top: env(safe-area-inset-top, 0px); left: 0; right: 0; display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; gap: 10px 20px; padding: 14px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px)); }
 .mtop .homeline { display: flex; align-items: center; gap: 14px; }
-.mtop .titleline { flex: 1; text-align: center; display: grid; gap: 3px; min-width: 0; }
+.mtop .titleline { text-align: center; display: grid; gap: 3px; min-width: 0; justify-items: center; }
+.mtop .titleline .stats { display: flex; gap: 14px; justify-content: center; margin-top: 3px; }
+.mtop .tools { justify-self: end; }
+.wordmark.big { font-size: 24px; letter-spacing: -.025em; }
 .mtop .titleline b { font: 600 15px/1.2 var(--sans); letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mtop .titleline b.cult { font-family: var(--display); font-size: 17px; }
 .mtop .titleline span { font: 400 12px var(--mono); color: var(--mute); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mtop .tools { display: flex; gap: 6px; align-items: center; }
-.stat { font: 400 12px var(--mono); color: var(--mute); display: inline-flex; gap: 6px; align-items: center; margin-right: 8px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.stat { font: 400 12px var(--mono); color: var(--mute); display: inline-flex; gap: 6px; align-items: center; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .stat b { color: var(--ink); font-weight: 500; }
 
 .side.left { top: calc(env(safe-area-inset-top, 0px) + 92px); left: max(16px, env(safe-area-inset-left, 0px)); width: 300px; }
@@ -203,7 +206,7 @@ footer.site .credits { padding-block: 0 36px; color: var(--mute); font: 400 12px
 .pop p { margin: 0; color: var(--mute); }
 .loading { position: absolute; inset: 0; display: grid; place-items: center; font: 400 13px var(--mono); color: var(--mute); z-index: 1; }
 
-@media (max-width: 900px) { .stat.hide-s, .mtop .counter { display: none; } }
+@media (max-width: 900px) { .mtop .counter { display: none; } }
 @media (max-width: 760px) {
   .hero { height: auto; display: grid; }
   .hero canvas { position: relative; height: 300px; order: 1; }
@@ -211,9 +214,9 @@ footer.site .credits { padding-block: 0 36px; color: var(--mute); font: 400 12px
   .hero .counter { position: relative; top: auto; left: auto; order: 0; padding: 14px max(16px, env(safe-area-inset-left, 0px)) 6px; }
   .title { position: relative; padding-block: 24px 8px; order: 2; }
   .seen { position: relative; right: auto; bottom: auto; order: 3; margin: 8px 16px 0; }
-  .mtop { flex-wrap: wrap; } .mtop .titleline { order: 3; flex-basis: 100%; text-align: left; } .stat { display: none; }
+  .mtop { grid-template-columns: 1fr auto; } .mtop .titleline { grid-column: 1 / -1; grid-row: 2; justify-items: start; text-align: left; } .wordmark.big { font-size: 20px; }
   .rightcol { top: auto; width: min(290px, 78vw); bottom: calc(env(safe-area-inset-bottom, 0px) + 128px); max-height: 42vh; }
-  .side.left { top: calc(env(safe-area-inset-top, 0px) + 100px); width: min(300px, 74vw); } .era { padding: 10px 14px 12px; gap: 4px; }
+  .side.left { top: calc(env(safe-area-inset-top, 0px) + 136px); width: min(300px, 74vw); } .era { padding: 10px 14px 12px; gap: 4px; }
   .era p, .era .nums, .era .s { display: none; } .era h3 { font-size: 16px; }
   .year { font-size: 26px; }
 }
@@ -221,7 +224,7 @@ footer.site .credits { padding-block: 0 36px; color: var(--mute); font: 400 12px
 
 <header class="nav">
   <div class="wrap">
-    <a class="wordmark" href="#">forts<span>.</span>world</a>
+    <div style="display:grid;gap:5px"><a class="wordmark big" href="#">forts<span>.</span>world</a><div class="counter" data-counter></div></div>
     <nav class="links" aria-label="Main">
       <a class="t" href="#map">Time map</a>
       <a class="t hide-m" href="#mission">Mission</a>
@@ -237,7 +240,6 @@ footer.site .credits { padding-block: 0 36px; color: var(--mute); font: 400 12px
 <main id="home">
   <section class="hero" aria-label="forts.world">
     <canvas id="heroMap" aria-hidden="true"></canvas>
-    <div class="counter" data-counter></div>
     <div class="title wrap">
       <h1 class="word">forts<span>.</span>world</h1>
       <p class="thesis">Every fort on Earth, seen through the eyes of the people who knew it.</p>
@@ -302,13 +304,11 @@ footer.site .credits { padding-block: 0 36px; color: var(--mute); font: 400 12px
   <div class="shade top"></div><div class="shade bottom"></div>
   <div class="hud mtop">
     <div class="homeline">
-      <a class="ibtn" href="#" id="homeBtn" title="Back to the home page"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 3L5 8l5 5"/></svg>Home</a>
-      <div style="display:grid;gap:4px"><a class="wordmark" href="#" id="brand" style="font-size:15px">forts<span>.</span>world</a><div class="counter" data-counter></div></div>
+      <div style="display:grid;gap:5px"><a class="wordmark big" href="#" id="brand" title="Home">forts<span>.</span>world</a><div class="counter" data-counter></div></div>
     </div>
-    <div class="titleline"><b id="titleB">Medieval era</b><span id="titleS"></span></div>
+    <div class="titleline"><b id="titleB">Medieval era</b><span id="titleS"></span>
+      <div class="stats"><span class="stat" title="Forts with a recorded founding year standing in this year"><b id="rStand">0</b> standing</span><span class="stat" title="Viewpoint layers shown"><b id="rOn">0</b> layers</span></div></div>
     <div class="tools">
-      <span class="stat" title="Dated forts standing in this year"><b id="rStand">0</b> standing</span>
-      <span class="stat hide-s" title="Layers shown"><b id="rOn">0</b> layers</span>
       <button class="ibtn" id="tiltBtn" aria-pressed="true" title="Tilt the lens">3D</button>
       <button class="ibtn icon" data-theme-toggle aria-label="Switch light or dark" title="Light / dark"></button>
       <button class="ibtn icon" id="soundBtn" aria-pressed="true" aria-label="Sound effects" title="Sound effects"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8v4h3l4 3V5L6 8H3z"/><path d="M13 7.5c1 .8 1 4.2 0 5M15.5 5.5c2.2 2 2.2 7 0 9"/></svg></button>
@@ -881,7 +881,7 @@ addEventListener('keydown', (e) => { if (e.key === ' ' && !document.getElementBy
 // ---------- routing ----------
 let countersRun = false, mapReady = false;
 function goHome(e) { e?.preventDefault(); blip(392, .05); try { history.pushState(null, '', location.pathname + location.search); } catch {} route(); }
-document.getElementById('homeBtn').addEventListener('click', goHome); document.getElementById('brand').addEventListener('click', goHome);
+document.getElementById('brand').addEventListener('click', goHome);
 function route() {
   const h = location.hash.slice(1), mv = document.getElementById('mapview'), m = /^map(?:-([a-z]+))?$/.exec(h);
   if (m) { mv.hidden = false; document.documentElement.style.overflow = 'hidden'; clearInterval(cycTimer);
