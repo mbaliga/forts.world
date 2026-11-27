@@ -58,3 +58,7 @@ Inferred / assumed (constructed layer, every element named "schematic" with a ba
 ## What is needed for T2
 
 A registered Yadin (1966 / Masada I-VI) or Netzer plan of the plateau and a survey of the casemate wall (tower and gate positions), the Northern Palace terrace levels, and the Western Palace plan.
+
+## Source catalogue and era check (2026-11-27)
+
+MAS-UNESCO, MAS-NEAEHL, MAS-WIKI, MAS-ENCY, MAS-JVL, MAS-JOS, MAS-SYN, MAS-LIB, MAS-TRI, MAS-CAM and MAS-BAS are now in `src/data/source-catalogue.js` (URLs as recorded in the curation file). The era-4bce check requires every `replaces` id to exist in that era, but the Byzantine church, camps E-G and the two siege-wall stretches exist only in the 73 and today eras, so the schematic church, camps and siege walls no longer declare `replaces`; their mapped lines are drawn beside the schematic walls in the `~built` eras, and the mapped church footprint is marked `unreachableOk`.

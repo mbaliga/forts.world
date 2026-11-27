@@ -74,3 +74,8 @@ No reference photographs were looked at (the fetch tool returns text); the scree
 4. Carved rooms: a `cave-room` primitive, a box or vault cut into a pit wall with a door opening in the wall and a collision volume behind it, on one or two levels.
 5. Under-ground navigation: the nav grid must allow walkable surfaces below the heightfield (rooms under the rim soil, about 7 m of cover).
 6. A low rim parapet and spoil mound primitive, and wall texture for clay-gypsum.
+
+## Clipped to the raw OSM window (2026-11-27)
+
+The auto trace covered about 1.7 km but the raw fetch (`data/geometry/matmata-troglodyte-village/osm.json`, radius 700 m) holds only the inner part, so 47 elements cited OSM ways that cannot be checked against it. The curation now drops them: 12 roads and 3 waterways crossing or beyond the window edge, 25 outer buildings, 3 walls, 1 zone, and 4 pit rims (ways 1236957017, 1237775968, 1237775969, 1237775972, at 709-749 m from the origin). Every pit rim inside the raw window (22) and the Hotel Sidi Driss marker are kept; the four pits dropped are not among the candidate hotel pits. The pit count is therefore 22, not 26, in the drawn scene. The unclipped auto trace (`data/traces/`) still lists the dropped elements; re-fetching the geometry with a larger radius would restore them with checkable ids.
+Catalogue: MAT-03 to MAT-09 added to `src/data/source-catalogue.js` from the URLs recorded in the curation file.
