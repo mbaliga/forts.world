@@ -67,6 +67,12 @@ a { color: var(--accent); }
 #topbar button { border: 0; background: transparent; padding: 8px 10px; cursor: pointer; font-size: 13.5px; font-weight: 500; letter-spacing: .01em;
   text-shadow: 0 0 6px var(--halo), 0 0 12px var(--halo); }
 #topbar button:hover { background: var(--panel); text-shadow: none; }
+#viewmode { display: flex; align-items: center; margin-left: 8px; padding: 2px; border-radius: 999px; background: var(--panel); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 1px 3px rgba(0, 0, 0, .12); }
+#topbar #viewmode button { padding: 5px 11px; border-radius: 999px; font: 500 10.5px/1.2 var(--font-data); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-shadow: none; transition: background .25s ease, color .25s ease; }
+#topbar #viewmode button:hover { background: transparent; color: var(--ink); }
+#topbar #viewmode button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+#view.vm-model { filter: none !important; }
+#lens.vm-off { opacity: 0 !important; }
 
 /* timeline */
 #timeline { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 14px); }
@@ -187,6 +193,7 @@ a { color: var(--accent); }
   #cartouche { left: 14px; max-width: calc(100vw - 120px); }
   #cartouche h1 { font-size: 25px; } #cartouche .native { font-size: 16px; } #cartouche .meta { display: none; } #era-note p { font-size: 13.5px; }
   #topbar { flex-direction: column; align-items: flex-end; gap: 0; } #topbar button { padding: 6px 8px; font-size: 13px; }
+  #viewmode { margin: 4px 0 0; }
   #minimap { width: 138px; left: 12px; bottom: calc(env(safe-area-inset-bottom, 0px) + 72px); } #status { padding: 6px 2px 0; } #s-progress .dots { display: none; }
   #botfade { height: 210px; }
   #timeline { left: 10px; right: 10px; transform: none; bottom: calc(env(safe-area-inset-bottom, 0px) + 10px); }
@@ -334,6 +341,7 @@ body[data-chrome="engraving"] :is(#ctx, #card, #drawer, #help, #climate, #mini-k
   <button type="button" id="btn-places">Places</button>
   <button type="button" id="btn-sources">Sources</button>
   <button type="button" id="btn-help" aria-label="Controls">Controls</button>
+  <div id="viewmode" role="group" aria-label="View (V)"><button type="button" data-view="model" aria-pressed="false" title="Model: monotone massing and contours (V)">Model</button><button type="button" data-view="real" aria-pressed="true" title="Real: lit, textured and graded (V)">Real</button></div>
 </nav>
 
 <nav id="timeline" aria-label="Moments in the fort's history"></nav>
@@ -396,6 +404,7 @@ body[data-chrome="engraving"] :is(#ctx, #card, #drawer, #help, #climate, #mini-k
     <dt>Q / E</dt><dd>Turn the view by a quarter</dd>
     <dt>Space</dt><dd>Find the traveller</dd>
     <dt>1 2 3 4</dt><dd>Jump between the moments on the timeline</dd>
+    <dt>V</dt><dd>Switch between the Model view (monotone massing on contoured ground) and the Real view; the colour spreads from the pointer</dd>
     <dt>Esc</dt><dd>Close a menu, or leave aiming or moving a gun</dd>
   </dl>
   <p>Stairs and ramps lead up to ramparts, bastions and summits. The plan in the corner is the fort's own plan: click it to look somewhere, double-click to walk there.</p>

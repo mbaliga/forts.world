@@ -23,6 +23,7 @@ import { Audio } from './audio.js';
 import { FortMap } from './fortmap.js';
 import { Campaign } from './campaign.js';
 import { Atlas } from './atlas.js';
+import { ViewModes } from './viewmodes.js';
 import { markerStyle, markerGeometry } from './markers.js';
 import { clamp, DEG } from '../core/geom.js';
 
@@ -47,6 +48,7 @@ export class App {
     r.shadowMap.enabled = true; r.shadowMap.type = THREE.PCFSoftShadowMap; r.shadowMap.autoUpdate = false;
     r.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer = r;
+    this.viewModes = new ViewModes(this);   // Model and Real views and the ink-drop switch between them
     this.scene = new THREE.Scene();
     this.cam = new IsoCamera();
     this.hemi = new THREE.HemisphereLight(0xdfe9ee, 0x9a8a6a, 1.25);
@@ -77,6 +79,7 @@ export class App {
     this.fortmap = new FortMap(this);
     this.campaign = new Campaign(this);
     this.atlas = new Atlas(this);
+    this.viewModes.bindUI(root || document);
     // browsers start sound only after a gesture
     const go = () => { this.audio.start(); window.removeEventListener('pointerdown', go); window.removeEventListener('keydown', go); };
     window.addEventListener('pointerdown', go); window.addEventListener('keydown', go);
@@ -176,6 +179,7 @@ export class App {
     // minimap plan
     this.plan = renderPlan(W, { mode: 'mini', hachures: true, trees: false });
     this.state.lastFort = def.id; this.state.lastEra = era; this._save();
+    this.viewModes.onLoad();
     this.ui.levelReady(def, W, this.plan);
     this.ui.updateProgress();
     console.info(`[forts] ${def.id}/${era} built in ${Math.round(performance.now() - t0)} ms; tris: ${(this.view.group.children.reduce((a, m) => a + (m.geometry?.attributes?.position?.count || 0) / 3 * (m.isInstancedMesh ? m.count : 1), 0) / 1000).toFixed(0)}k`);
@@ -408,7 +412,7 @@ export class App {
       }
     }
     this.ui.frame(dt, tag);
-    this.renderer.render(this.scene, this.cam.cam);
+    this.viewModes.render();
     this.chrome.renderPortrait(this.renderer, this.scene);
   }
   zoneName() {
