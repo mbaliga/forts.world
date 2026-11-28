@@ -2,9 +2,9 @@
  "id": "sirkap-q1340954",
  "lat": 33.756111,
  "lon": 72.829167,
- "radiusM": 700,
+ "radiusM": 1200,
  "osm": true,
- "tiles": 6,
- "fetched": "2026-11-18T22:29:45.819Z",
+ "tiles": 12,
+ "fetched": "2026-11-28T01:14:31.422Z",
  "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
 }

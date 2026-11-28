@@ -1,0 +1,10 @@
+{
+ "id": "mankulam-range-forest-q97361413",
+ "lat": 10.083333,
+ "lon": 76.916667,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:20:55.698Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

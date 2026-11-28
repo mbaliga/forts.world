@@ -2,9 +2,9 @@
  "id": "royal-palace-of-kandy-q3273212",
  "lat": 7.29474,
  "lon": 80.64114,
- "radiusM": 900,
+ "radiusM": 1200,
  "osm": true,
- "tiles": 4,
- "fetched": "2026-11-14T18:33:03.730Z",
+ "tiles": 9,
+ "fetched": "2026-11-28T01:09:19.332Z",
  "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
 }

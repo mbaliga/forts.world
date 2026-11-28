@@ -1,0 +1,10 @@
+{
+ "id": "radhanagari-wildlife-sanctuary-q2125633",
+ "lat": 16.384,
+ "lon": 73.956,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:18:03.563Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

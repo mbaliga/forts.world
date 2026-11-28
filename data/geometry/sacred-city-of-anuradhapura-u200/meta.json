@@ -1,0 +1,10 @@
+{
+ "id": "sacred-city-of-anuradhapura-u200",
+ "lat": 8.333333,
+ "lon": 80.383333,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:23:25.161Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

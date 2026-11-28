@@ -1,0 +1,10 @@
+{
+ "id": "shendurney-wildlife-sanctuary-q7494223",
+ "lat": 8.812,
+ "lon": 77.15,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:18:35.358Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

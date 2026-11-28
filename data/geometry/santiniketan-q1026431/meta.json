@@ -1,0 +1,10 @@
+{
+ "id": "santiniketan-q1026431",
+ "lat": 23.6776,
+ "lon": 87.6852,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:12:09.900Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

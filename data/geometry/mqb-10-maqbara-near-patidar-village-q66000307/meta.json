@@ -1,0 +1,10 @@
+{
+ "id": "mqb-10-maqbara-near-patidar-village-q66000307",
+ "lat": 22.4951,
+ "lon": 73.5502,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:21:18.136Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

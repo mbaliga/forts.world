@@ -1,0 +1,10 @@
+{
+ "id": "kathmandu-valley-q970717",
+ "lat": 27.703944,
+ "lon": 85.308583,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 16,
+ "fetched": "2026-11-28T01:09:43.341Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

@@ -1,0 +1,10 @@
+{
+ "id": "tomb-of-safdar-jang-q375624",
+ "lat": 28.58929,
+ "lon": 77.21061,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:25:03.127Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

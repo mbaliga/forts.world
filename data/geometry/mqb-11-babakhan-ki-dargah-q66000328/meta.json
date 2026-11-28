@@ -1,0 +1,10 @@
+{
+ "id": "mqb-11-babakhan-ki-dargah-q66000328",
+ "lat": 22.4987,
+ "lon": 73.4735,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:21:22.928Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

@@ -1,0 +1,10 @@
+{
+ "id": "lothal-q9443",
+ "lat": 22.521389,
+ "lon": 72.249444,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:24:07.501Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

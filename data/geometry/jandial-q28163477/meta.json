@@ -1,0 +1,10 @@
+{
+ "id": "jandial-q28163477",
+ "lat": 33.764444,
+ "lon": 72.828889,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-28T01:15:36.530Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

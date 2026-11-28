@@ -1,0 +1,10 @@
+{
+ "id": "jls-10-sindh-mata-q66000320",
+ "lat": 22.5015,
+ "lon": 73.4856,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:20:05.555Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

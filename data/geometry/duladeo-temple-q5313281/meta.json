@@ -1,0 +1,10 @@
+{
+ "id": "duladeo-temple-q5313281",
+ "lat": 24.83905,
+ "lon": 79.93175,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:12:54.797Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

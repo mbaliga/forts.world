@@ -1,0 +1,10 @@
+{
+ "id": "great-himalayan-national-park-q1544213",
+ "lat": 31.804288,
+ "lon": 77.951021,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-28T01:12:59.975Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

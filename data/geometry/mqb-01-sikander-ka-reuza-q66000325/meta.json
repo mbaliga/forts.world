@@ -1,0 +1,10 @@
+{
+ "id": "mqb-01-sikander-ka-reuza-q66000325",
+ "lat": 22.5052,
+ "lon": 73.474,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:21:05.312Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

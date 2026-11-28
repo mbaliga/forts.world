@@ -1,0 +1,10 @@
+{
+ "id": "saraikala-q66134815",
+ "lat": 33.7341,
+ "lon": 72.8002,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-28T01:21:57.769Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

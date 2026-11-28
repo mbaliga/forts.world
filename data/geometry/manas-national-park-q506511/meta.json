@@ -1,0 +1,10 @@
+{
+ "id": "manas-national-park-q506511",
+ "lat": 26.716667,
+ "lon": 90.933333,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 16,
+ "fetched": "2026-11-28T01:11:12.247Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

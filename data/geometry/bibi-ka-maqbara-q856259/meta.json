@@ -1,0 +1,10 @@
+{
+ "id": "bibi-ka-maqbara-q856259",
+ "lat": 19.901389,
+ "lon": 75.320833,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-28T01:24:51.145Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

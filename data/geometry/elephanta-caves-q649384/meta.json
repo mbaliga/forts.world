@@ -1,0 +1,10 @@
+{
+ "id": "elephanta-caves-q649384",
+ "lat": 18.963333,
+ "lon": 72.931389,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:08:16.601Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

@@ -1,0 +1,10 @@
+{
+ "id": "historic-mosque-city-of-bagerhat-u321",
+ "lat": 22.66667,
+ "lon": 89.8,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:22:52.317Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

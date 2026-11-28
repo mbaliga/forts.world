@@ -1,0 +1,10 @@
+{
+ "id": "aralam-wildlife-sanctuary-q4783879",
+ "lat": 11.8788,
+ "lon": 75.8886,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:17:19.909Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

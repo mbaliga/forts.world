@@ -1,0 +1,10 @@
+{
+ "id": "prahadisvarar-temple-q916943",
+ "lat": 10.783056,
+ "lon": 79.1325,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:10:56.497Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

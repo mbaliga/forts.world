@@ -1,0 +1,10 @@
+{
+ "id": "neyyar-wildlife-sanctuary-q6807544",
+ "lat": 8.4,
+ "lon": 77.16,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:17:04.199Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

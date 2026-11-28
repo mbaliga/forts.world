@@ -1,0 +1,10 @@
+{
+ "id": "qoul-i-akram-caves-q65953826",
+ "lat": 34.8237,
+ "lon": 67.7983,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 16,
+ "fetched": "2026-11-28T01:21:51.626Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

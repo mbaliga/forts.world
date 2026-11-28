@@ -1,0 +1,10 @@
+{
+ "id": "horton-plains-national-park-q1630245",
+ "lat": 6.8,
+ "lon": 80.8,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:15:11.224Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

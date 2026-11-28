@@ -1,0 +1,10 @@
+{
+ "id": "khajuraho-group-of-monuments-q167298",
+ "lat": 24.85222,
+ "lon": 79.92222,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:10:33.275Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

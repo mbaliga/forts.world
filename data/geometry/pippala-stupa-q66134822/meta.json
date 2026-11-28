@@ -1,0 +1,10 @@
+{
+ "id": "pippala-stupa-q66134822",
+ "lat": 33.7658,
+ "lon": 72.866,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:21:40.957Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

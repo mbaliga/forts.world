@@ -1,0 +1,10 @@
+{
+ "id": "mukurthi-national-park-q2985390",
+ "lat": 11.266667,
+ "lon": 76.475,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:16:18.818Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

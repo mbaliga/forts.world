@@ -1,0 +1,10 @@
+{
+ "id": "taxila-q156093",
+ "lat": 33.745833,
+ "lon": 72.7875,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:10:10.200Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

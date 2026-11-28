@@ -1,0 +1,10 @@
+{
+ "id": "hill-forts-of-rajasthan-u247",
+ "lat": 24.626389,
+ "lon": 76.187222,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-28T01:22:46.564Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

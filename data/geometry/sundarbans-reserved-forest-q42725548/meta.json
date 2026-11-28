@@ -1,0 +1,10 @@
+{
+ "id": "sundarbans-reserved-forest-q42725548",
+ "lat": 22.033333,
+ "lon": 89.516667,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-28T01:19:03.123Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

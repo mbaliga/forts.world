@@ -1,0 +1,10 @@
+{
+ "id": "parambikulam-tiger-reserve-q3635169",
+ "lat": 10.383333,
+ "lon": 76.708333,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:16:39.211Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

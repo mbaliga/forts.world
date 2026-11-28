@@ -1,0 +1,10 @@
+{
+ "id": "khangchendzonga-national-park-q2605019",
+ "lat": 27.6563,
+ "lon": 88.3123,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:12:26.232Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

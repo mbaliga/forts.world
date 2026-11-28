@@ -1,0 +1,10 @@
+{
+ "id": "valley-of-flowers-national-park-q605897",
+ "lat": 30.73,
+ "lon": 79.6175,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-28T01:11:47.405Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

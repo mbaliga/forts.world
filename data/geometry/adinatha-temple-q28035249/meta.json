@@ -1,0 +1,10 @@
+{
+ "id": "adinatha-temple-q28035249",
+ "lat": 24.845111,
+ "lon": 79.936607,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-28T01:13:40.324Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

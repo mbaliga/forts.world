@@ -1,0 +1,10 @@
+{
+ "id": "churches-and-convents-of-goa-q15726428",
+ "lat": 15.5024,
+ "lon": 73.9117,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:14:36.783Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

@@ -1,0 +1,10 @@
+{
+ "id": "lotus-temple-q940843",
+ "lat": 28.553325,
+ "lon": 77.2586,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:24:39.655Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

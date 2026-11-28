@@ -1,0 +1,10 @@
+{
+ "id": "kerti-reserved-forest-q66004175",
+ "lat": 12.5464,
+ "lon": 75.7078,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:20:35.387Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

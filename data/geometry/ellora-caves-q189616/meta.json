@@ -1,0 +1,10 @@
+{
+ "id": "ellora-caves-q189616",
+ "lat": 20.026389,
+ "lon": 75.179167,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-28T01:07:49.264Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

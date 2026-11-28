@@ -1,0 +1,10 @@
+{
+ "id": "ghantai-temple-q28171838",
+ "lat": 24.84615,
+ "lon": 79.9333,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-28T01:13:10.835Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

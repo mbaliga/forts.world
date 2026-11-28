@@ -1,0 +1,10 @@
+{
+ "id": "chitwan-national-park-q1075023",
+ "lat": 27.5,
+ "lon": 84.333333,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:09:35.310Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

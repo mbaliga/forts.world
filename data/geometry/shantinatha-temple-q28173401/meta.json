@@ -1,0 +1,10 @@
+{
+ "id": "shantinatha-temple-q28173401",
+ "lat": 24.84462,
+ "lon": 79.9363,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-28T01:14:02.759Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

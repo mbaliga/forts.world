@@ -1,0 +1,10 @@
+{
+ "id": "pidari-ratha-valian-kuttai-ratha-q65998811",
+ "lat": 12.6206,
+ "lon": 80.1885,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:21:36.597Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

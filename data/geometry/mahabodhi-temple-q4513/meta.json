@@ -1,0 +1,10 @@
+{
+ "id": "mahabodhi-temple-q4513",
+ "lat": 24.696004,
+ "lon": 84.991358,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:08:44.841Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

@@ -1,0 +1,10 @@
+{
+ "id": "tomb-of-i-timad-ud-daulah-q1318766",
+ "lat": 27.1925,
+ "lon": 78.031389,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:25:31.642Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

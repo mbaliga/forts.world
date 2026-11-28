@@ -1,0 +1,10 @@
+{
+ "id": "sirsukh-q938289",
+ "lat": 33.773056,
+ "lon": 72.849444,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-28T01:17:14.826Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

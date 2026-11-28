@@ -1,0 +1,10 @@
+{
+ "id": "maratha-military-landscapes-of-india-u1739",
+ "lat": 12.250556,
+ "lon": 79.401389,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 9,
+ "fetched": "2026-11-28T01:23:09.344Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}

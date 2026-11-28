@@ -1,0 +1,10 @@
+{
+ "id": "giri-complex-of-monuments-q66134819",
+ "lat": 33.7288,
+ "lon": 72.8833,
+ "radiusM": 1200,
+ "osm": true,
+ "tiles": 12,
+ "fetched": "2026-11-28T01:16:08.589Z",
+ "licence": "OSM ODbL; Terrarium per AWS Open Data docs"
+}
