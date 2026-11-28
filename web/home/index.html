@@ -146,11 +146,16 @@ footer.site .credits { padding-block: 0 36px; color: var(--mute); font: 400 12px
 .tuck svg { width: 14px; height: 14px; transition: transform .45s ease; }
 .side.left .tuck { right: -36px; } .side.right .tuck { left: -36px; }
 .side.tucked .tuck svg { transform: rotate(180deg); }
-.era { padding: 14px 18px 16px; display: grid; gap: 8px; }
+.era { padding: 14px 18px 16px; display: grid; grid-template-rows: auto auto auto auto 1fr auto; gap: 8px; height: 360px; box-sizing: border-box; overflow: hidden; }
+.era .tabs { display: flex; gap: 4px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -4px; }
+.era .tabs button { flex: none; padding: 5px 10px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--trim) 55%, transparent); background: none; color: var(--onmute); font: 500 11.5px/1 var(--sans); cursor: pointer; }
+.era .tabs button[aria-selected="true"] { background: var(--trim); border-color: var(--trim); color: var(--panel); }
+.era .tabs:empty { display: none; }
+.era .body { display: grid; gap: 6px; align-content: start; min-height: 0; overflow: auto; scrollbar-width: thin; }
 .era .when { font: 500 11px/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--onmute); display: flex; justify-content: space-between; gap: 8px; }
 .era h3 { margin: 0; font: 700 21px/1.15 var(--display); letter-spacing: .005em; text-wrap: balance; }
 .era p { margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--onmute); }
-.era .nums { display: flex; flex-wrap: wrap; gap: 4px 16px; font: 400 12px var(--mono); color: var(--onmute); font-variant-numeric: tabular-nums; border-top: 1px solid color-mix(in srgb, var(--trim) 45%, transparent); padding-top: 8px; }
+.era .nums { display: flex; flex-wrap: wrap; align-content: flex-start; align-self: end; gap: 4px 16px; font: 400 12px var(--mono); color: var(--onmute); font-variant-numeric: tabular-nums; border-top: 1px solid color-mix(in srgb, var(--trim) 45%, transparent); padding-top: 8px; }
 .era .nums b { color: var(--on); font-weight: 500; }
 .era .s { font: 400 16px/1.2 var(--script); color: var(--trim2); }
 .rightcol { top: calc(env(safe-area-inset-top, 0px) + 92px); right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(env(safe-area-inset-bottom, 0px) + 150px); width: 280px; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
@@ -223,7 +228,7 @@ footer.site .credits { padding-block: 0 36px; color: var(--mute); font: 400 12px
   .mtop { grid-template-columns: 1fr auto; } .mtop .titleline { grid-column: 1 / -1; grid-row: 2; justify-items: start; text-align: left; } .wordmark.big { font-size: 20px; }
   .rightcol { top: auto; width: min(290px, 78vw); bottom: calc(env(safe-area-inset-bottom, 0px) + 128px); max-height: 42vh; }
   .side.left { top: calc(env(safe-area-inset-top, 0px) + 136px); width: min(300px, 74vw); } .era { padding: 10px 14px 12px; gap: 4px; }
-  .era p, .era .nums, .era .s { display: none; } .era h3 { font-size: 16px; }
+  .era p, .era .nums, .era .s { display: none; } .era h3 { font-size: 16px; } .era { height: auto; grid-template-rows: none; }
   .year { font-size: 26px; }
 }
 </style>
@@ -329,6 +334,7 @@ footer.site .credits { padding-block: 0 36px; color: var(--mute); font: 400 12px
     <div class="titleline"><b id="titleB">Medieval era</b><span id="titleS"></span>
       <div class="stats"><span class="stat" title="Forts with a recorded founding year standing in this year"><b id="rStand">0</b> standing</span><span class="stat" title="Viewpoint layers shown"><b id="rOn">0</b> layers</span></div></div>
     <div class="tools">
+      <button class="ibtn icon" id="compassBtn" title="North up (drag with the right button, or Ctrl/Shift-drag, to turn and tilt; on touch, twist and drag two fingers)" aria-label="Reset the view to north up"><svg viewBox="0 0 20 20" id="compassIco"><path d="M10 2.5l3 7.5h-6z" fill="#d0463b"/><path d="M10 17.5l-3-7.5h6z" fill="currentColor" opacity=".55"/></svg></button>
       <button class="ibtn" id="tiltBtn" aria-pressed="true" title="Tilt the lens">3D</button>
       <button class="ibtn icon" data-theme-toggle aria-label="Switch light or dark" title="Light / dark"></button>
       <button class="ibtn icon" id="soundBtn" aria-pressed="true" aria-label="Sound effects" title="Sound effects"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8v4h3l4 3V5L6 8H3z"/><path d="M13 7.5c1 .8 1 4.2 0 5M15.5 5.5c2.2 2 2.2 7 0 9"/></svg></button>
@@ -440,22 +446,56 @@ const DATA = 'data/';
 const SITE = /(^|\.)forts\.world$|pages\.dev$|^localhost$|^127\./.test(location.hostname) ? '' : 'https://forts-world.pages.dev';
 let LAND = null, SITES = null, BORDERS = null, UND = null;
 // What the left window says as the timeline passes: each stretch of time has its own text and its own chrome
+// What the left window says as the timeline passes. Where several powers held sway at once, each gets a tab with its
+// own text and its own chrome.
 const SNAPS = [
-  { from: -800, to: -500, cult: 'mauryan', title: 'Ramparts of the Ganges plain', text: 'Cities of the sixteen great realms raise earth ramparts and moats. Rajgir’s dry-stone wall runs along its ring of hills.' },
-  { from: -500, to: -320, cult: 'greek', title: 'Walled cities and Persia', script: 'πόλις', text: 'Greek cities wall themselves in stone. Achaemenid Persia rules from the Aegean to the Indus, with forts along its royal roads.' },
-  { from: -320, to: -180, cult: 'mauryan', title: 'Mauryan India', script: '𑀧𑀸𑀝𑀮𑀺𑀧𑀼𑀢', text: 'Megasthenes describes Pataliputra’s timber wall, with 570 towers and 64 gates. Ashoka’s edicts mark the empire’s reach.' },
-  { from: -180, to: 300, cult: 'greek', title: 'Rome and Han', text: 'Rome fortifies its frontiers; Hadrian’s Wall is begun in 122. Han China extends its long walls west along the Silk Road.' },
-  { from: 300, to: 600, cult: 'greek', title: 'Late antique walls', text: 'Constantinople builds the Theodosian Walls in 413; they hold for a thousand years. Cities everywhere shrink behind new circuits.' },
-  { from: 600, to: 1000, cult: 'islamic', title: 'Citadels of the caliphates', script: 'مدينة السلام', text: 'From al-Andalus to Sindh, ribats and citadels guard the frontiers. Baghdad is founded in 762 as a round, walled city.' },
-  { from: 1000, to: 1200, cult: 'rajput', title: 'Rajput hill forts', script: 'दुर्ग', text: 'Rajput clans hold hill forts such as Chittor and Gwalior. In Europe, timber mottes give way to stone keeps.' },
-  { from: 1200, to: 1400, cult: 'islamic', title: 'Sultanates and castles', script: 'دولت آباد', text: 'The Delhi Sultanate reaches the Deccan; in 1327 Muhammad bin Tughluq moves his capital to Daulatabad. Castle building in Europe peaks.' },
-  { from: 1400, to: 1500, cult: 'ming', title: 'Brick walls and gunpowder', script: '长城', text: 'The Ming rebuild the Great Wall in brick and stone. Cannon breach Constantinople in 1453; Rana Kumbha raises Kumbhalgarh.' },
-  { from: 1500, to: 1556, cult: 'portuguese', title: 'Bastions reach the coasts', script: 'Estado da Índia', text: 'Portuguese forts with angled bastions rise from Mozambique to Malacca. Goa is taken in 1510.' },
-  { from: 1556, to: 1640, cult: 'mughal', title: 'Mughal red sandstone', script: 'قلعهٔ آگره', text: 'Akbar rebuilds Agra Fort in red sandstone (1565–73) and founds Allahabad Fort in 1583. The Portuguese finish Fort Jesus, Mombasa, in 1593.' },
-  { from: 1640, to: 1750, cult: 'maratha', title: 'Sea forts and hill forts', script: 'स्वराज्य', text: 'Shah Jahan’s Red Fort rises in Delhi (1639–48). Shivaji builds Sindhudurg (1664–67) and is crowned at Raigad in 1674.' },
-  { from: 1750, to: 1858, cult: 'modern', title: 'Company forts and sieges', text: 'Trading companies build star forts; Fort William in Calcutta is rebuilt from 1758. Artillery decides the sieges of Seringapatam (1799) and Delhi (1857).' },
-  { from: 1858, to: 1947, cult: 'modern', title: 'From strongholds to monuments', text: 'Many forts become barracks, prisons or ruins. The Archaeological Survey of India is founded in 1861 to record them.' },
-  { from: 1947, to: 2027, cult: 'modern', title: 'Heritage', text: 'Six Hill Forts of Rajasthan become World Heritage in 2013, and twelve forts of the Maratha Military Landscapes in 2025.' },
+  { from: -800, to: -500, tabs: [
+    { label: 'Ganges realms', cult: 'mauryan', title: 'Ramparts of the Ganges plain', text: 'Cities of the sixteen great realms raise earth ramparts and moats. Rajgir’s dry-stone wall runs along its ring of hills.' },
+    { label: 'Babylon', cult: 'greek', title: 'The walls of Babylon', text: 'Nebuchadnezzar II (605–562 BCE) rebuilds Babylon inside double walls and a moat fed by the Euphrates.' } ] },
+  { from: -500, to: -320, tabs: [
+    { label: 'Greece', cult: 'greek', title: 'Walled cities', script: 'πόλις', text: 'Greek cities wall themselves in stone; Athens joins the city to its port with the Long Walls.' },
+    { label: 'Persia', cult: 'mughal', title: 'Achaemenid Persia', text: 'Persia rules from the Aegean to the Indus, with forts along its royal roads; Persepolis rises from about 518 BCE.' } ] },
+  { from: -320, to: -180, tabs: [
+    { label: 'Mauryas', cult: 'mauryan', title: 'Mauryan India', script: '𑀧𑀸𑀝𑀮𑀺𑀧𑀼𑀢', text: 'Megasthenes describes Pataliputra’s timber wall, with 570 towers and 64 gates. Ashoka’s edicts mark the empire’s reach.' },
+    { label: 'Hellenistic', cult: 'greek', title: 'Alexander’s successors', text: 'The successor kings rule from Egypt to Bactria and found walled cities; Seleucus founds Antioch in 300 BCE.' } ] },
+  { from: -180, to: 300, tabs: [
+    { label: 'Rome', cult: 'greek', title: 'Rome’s frontiers', text: 'Rome fortifies its frontiers with forts, roads and walls; Hadrian’s Wall is begun in 122.' },
+    { label: 'Han', cult: 'ming', title: 'Han China', script: '漢', text: 'Han China extends its long walls west along the Silk Road to the Yumen Pass near Dunhuang.' } ] },
+  { from: 300, to: 600, tabs: [
+    { label: 'Byzantium', cult: 'greek', title: 'Late antique walls', text: 'Constantinople builds the Theodosian Walls in 413; they hold for a thousand years. Cities everywhere shrink behind new circuits.' },
+    { label: 'Guptas', cult: 'mauryan', title: 'Gupta India', text: 'The Guptas rule north India from about 320 to 550, from Pataliputra and Ujjain.' } ] },
+  { from: 600, to: 1000, tabs: [
+    { label: 'Caliphates', cult: 'islamic', title: 'Citadels of the caliphates', script: 'مدينة السلام', text: 'From al-Andalus to Sindh, ribats and citadels guard the frontiers. Baghdad is founded in 762 as a round, walled city.' },
+    { label: 'Tang', cult: 'ming', title: 'Tang China', script: '長安', text: 'Tang Chang’an is a walled grid about 9.7 by 8.6 km, the largest city of its age.' } ] },
+  { from: 1000, to: 1200, tabs: [
+    { label: 'Rajputs', cult: 'rajput', title: 'Rajput hill forts', script: 'दुर्ग', text: 'Rajput clans hold hill forts such as Chittor and Gwalior.' },
+    { label: 'Cholas', cult: 'dravida', title: 'The Chola sea power', script: 'சோழர்', text: 'The Chola navy raids Srivijaya across the Bay of Bengal in 1025.' },
+    { label: 'Normans', cult: 'modern', title: 'Norman castles', text: 'After 1066 the Normans raise castles across England, among them the White Tower in London; timber mottes give way to stone keeps.' } ] },
+  { from: 1200, to: 1400, tabs: [
+    { label: 'Delhi Sultanate', cult: 'islamic', title: 'Sultanates and castles', script: 'دولت آباد', text: 'The Delhi Sultanate reaches the Deccan; in 1327 Muhammad bin Tughluq moves his capital to Daulatabad.' },
+    { label: 'Mongols', cult: 'ming', title: 'The Mongol conquests', text: 'Mongol armies take Baghdad in 1258 and rule from China to the Black Sea.' },
+    { label: 'Vijayanagara', cult: 'dravida', title: 'Vijayanagara', text: 'Vijayanagara is founded in 1336 at Hampi, behind rings of granite walls among the boulder hills.' } ] },
+  { from: 1400, to: 1500, tabs: [
+    { label: 'Ming', cult: 'ming', title: 'Brick walls', script: '长城', text: 'The Ming rebuild the Great Wall in brick and stone.' },
+    { label: 'Ottomans', cult: 'islamic', title: 'Gunpowder and walls', text: 'Ottoman cannon breach Constantinople’s land walls in 1453; Rumeli Hisarı is built the year before.' },
+    { label: 'Mewar', cult: 'rajput', title: 'Rana Kumbha’s forts', script: 'कुम्भलगढ़', text: 'Rana Kumbha of Mewar raises Kumbhalgarh, finished in 1458, with one of the longest walls in India.' } ] },
+  { from: 1500, to: 1556, tabs: [
+    { label: 'Portuguese', cult: 'portuguese', title: 'Bastions reach the coasts', script: 'Estado da Índia', text: 'Portuguese forts with angled bastions rise from Mozambique to Malacca. Goa is taken in 1510.' },
+    { label: 'Ottomans', cult: 'islamic', title: 'Suleiman’s campaigns', text: 'Suleiman takes Belgrade in 1521 and Rhodes, the Hospitallers’ island fortress, in 1522.' },
+    { label: 'Vijayanagara', cult: 'dravida', title: 'Vijayanagara at its height', text: 'Krishnadevaraya (1509–1529) rules the south from Hampi.' } ] },
+  { from: 1556, to: 1640, tabs: [
+    { label: 'Mughals', cult: 'mughal', title: 'Mughal red sandstone', script: 'قلعهٔ آگره', text: 'Akbar rebuilds Agra Fort in red sandstone (1565–73) and founds Allahabad Fort in 1583.' },
+    { label: 'Portuguese', cult: 'portuguese', title: 'Fort Jesus', text: 'The Portuguese finish Fort Jesus at Mombasa in 1593 to hold the Swahili coast.' } ] },
+  { from: 1640, to: 1750, tabs: [
+    { label: 'Marathas', cult: 'maratha', title: 'Sea forts and hill forts', script: 'स्वराज्य', text: 'Shivaji builds Sindhudurg (1664–67) and is crowned at Raigad in 1674.' },
+    { label: 'Mughals', cult: 'mughal', title: 'The Red Fort', script: 'لال قلعہ', text: 'Shah Jahan’s Red Fort rises in Delhi (1639–48), the seat of the empire at its largest.' } ] },
+  { from: 1750, to: 1858, tabs: [
+    { label: 'Companies', cult: 'modern', title: 'Company forts and sieges', text: 'Trading companies build star forts; Fort William in Calcutta is rebuilt from 1758. Artillery decides the sieges of Seringapatam (1799) and Delhi (1857).' },
+    { label: 'Marathas', cult: 'maratha', title: 'The last Maratha wars', script: 'मराठा', text: 'Maratha power ends with the Third Anglo-Maratha War, in 1818.' } ] },
+  { from: 1858, to: 1947, tabs: [
+    { label: 'Monuments', cult: 'modern', title: 'From strongholds to monuments', text: 'Many forts become barracks, prisons or ruins. The Archaeological Survey of India is founded in 1861 to record them.' } ] },
+  { from: 1947, to: 2027, tabs: [
+    { label: 'Heritage', cult: 'modern', title: 'Heritage', text: 'Six Hill Forts of Rajasthan become World Heritage in 2013, and twelve forts of the Maratha Military Landscapes in 2025.' } ] },
 ];
 const snapOf = (y) => SNAPS.find((s) => y < s.to) || SNAPS[SNAPS.length - 1];
 const DEM = { g30: null, g10: null, g10p: null };
@@ -561,11 +601,13 @@ class Lens {
   }
   // planar (x, y) plus height h in px -> screen
   cam(x, y, h) {
-    const u = (x - this.mx) * this.k, v = (y - this.my) * this.k, c = Math.cos(this.th), s = Math.sin(this.th), D = this.h * 1.5;
+    const dx = (x - this.mx) * this.k, dy = (y - this.my) * this.k, cb = Math.cos(this.br || 0), sb = Math.sin(this.br || 0);
+    const u = dx * cb - dy * sb, v = dx * sb + dy * cb, c = Math.cos(this.th), s = Math.sin(this.th), D = this.h * 1.5;
     const Y = v * c - h * s, Z = -v * s - h * c, p = D / Math.max(D * .08, D + Z); return [this.cx + u * p, this.cy + Y * p];
   }
   ground(sx, sy) { const c = Math.cos(this.th), s = Math.sin(this.th), D = this.h * 1.5, xp = sx - this.cx, yp = sy - this.cy;
-    const v = yp * D / Math.max(1e-3, D * c + yp * s), p = D / (D - v * s); return [xp / p, v]; }
+    const v = yp * D / Math.max(1e-3, D * c + yp * s), p = D / (D - v * s), u = xp / p, cb = Math.cos(this.br || 0), sb = Math.sin(this.br || 0);
+    return [u * cb + v * sb, -u * sb + v * cb]; } // back into map space, undoing the bearing
   hEl(m) { return m <= 0 ? 0 : m * this.h * 0.0000075 * Math.pow(this.k, .55) * Math.min(1, this.th * 1.6); }
   hLayer(i) { return this.h * (.07 + i * .045) * Math.min(1, this.th * 1.4); }
   path(h) { this._h = h; return d3.geoPath(this.proj, this.ctx); }
@@ -681,14 +723,29 @@ class Lens {
   pickRecon(mx, my) { let best = null, bd = 12; (this.rs || []).forEach((s, i) => { if (!s) return; const d = Math.hypot(s[0] - mx, s[1] - my); if (d < bd) { bd = d; best = i; } }); return best; }
   pick(mx, my) { if (!this.qt) { const ids = []; for (let i = 0; i < SITES.n; i++) if (this.sx[i] === this.sx[i]) ids.push(i); this.qt = d3.quadtree(ids, (i) => this.sx[i], (i) => this.sy[i]); } return this.qt.find(mx, my, 9); }
   pickU(mx, my) { if (!UND || !this.usx) return null; if (!this.uqt) { const ids = []; for (let i = 0; i < UND.n; i++) if (this.usx[i] === this.usx[i] && this.usx[i] > -5 && this.usx[i] < this.w + 5 && this.usy[i] > -5 && this.usy[i] < this.h + 5) ids.push(i); this.uqt = d3.quadtree(ids, (i) => this.usx[i], (i) => this.usy[i]); } return this.uqt.find(mx, my, 7); }
+  rotateBy(d) { this.br = ((this.br || 0) + d) % (Math.PI * 2); this.dirty = true; this.onView?.(); this.request(); }
+  tiltBy(d) { this.th = Math.max(0, Math.min(1.25, this.th + d)); this.thT = this.th; if (this.th > .05) this.tiltOn = this.th; this.dirty = true; this.onView?.(); this.request(); }
+  resetView() { const b0 = this.br || 0, t0 = this.th, tT = this.tiltOn > .05 ? .92 : 0, s0 = performance.now(); this.tiltOn = .92;
+    const target = Math.abs(b0) > Math.PI ? Math.sign(b0) * Math.PI * 2 : 0;
+    const step = (now) => { const k = Math.min(1, (now - s0) / 500), e = 1 - Math.pow(1 - k, 3); this.br = b0 + (target - b0) * e; this.th = t0 + (tT - t0) * e; this.thT = this.th; this.dirty = true; this.onView?.(); this.draw(); if (k < 1) requestAnimationFrame(step); else this.br = 0; };
+    requestAnimationFrame(step); }
   zoomAt(sx, sy, k2) { k2 = Math.max(.6, Math.min(48, k2)); const [u, v] = this.ground(sx, sy), X = this.mx + u / this.k, Y = this.my + v / this.k; this.k = k2; this.mx = X - u / k2; this.my = Y - v / k2; this.request(); }
   bind() {
     const c = this.c, pts = new Map(); let moved = 0, last = null;
     const loc = (e) => { const r = c.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
-    c.addEventListener('pointerdown', (e) => { c.setPointerCapture(e.pointerId); pts.set(e.pointerId, loc(e)); moved = 0; c.classList.add('dragging'); });
+    let orbit = false;
+    c.addEventListener('contextmenu', (e) => e.preventDefault());
+    c.addEventListener('pointerdown', (e) => { c.setPointerCapture(e.pointerId); pts.set(e.pointerId, loc(e)); moved = 0; orbit = e.button === 2 || e.ctrlKey || e.shiftKey || e.altKey; c.classList.add('dragging'); });
     c.addEventListener('pointermove', (e) => { if (!pts.has(e.pointerId)) return; const now = loc(e), prev = pts.get(e.pointerId);
-      if (pts.size === 1) { const [u0, v0] = this.ground(...prev), [u1, v1] = this.ground(...now); this.mx -= (u1 - u0) / this.k; this.my -= (v1 - v0) / this.k; moved += Math.hypot(now[0] - prev[0], now[1] - prev[1]); this.request(); }
-      else if (pts.size === 2) { const [a, b] = [...pts.values()], d0 = Math.hypot(a[0] - b[0], a[1] - b[1]); pts.set(e.pointerId, now); const [a2, b2] = [...pts.values()], d1 = Math.hypot(a2[0] - b2[0], a2[1] - b2[1]); if (d0 > 0) this.zoomAt((a2[0] + b2[0]) / 2, (a2[1] + b2[1]) / 2, this.k * d1 / d0); moved += 10; }
+      if (pts.size === 1 && orbit) { this.rotateBy((now[0] - prev[0]) * .006); this.tiltBy(-(now[1] - prev[1]) * .005); moved += 10; }
+      else if (pts.size === 2) { const [a, b] = [...pts.values()]; pts.set(e.pointerId, now); const [a2, b2] = [...pts.values()];
+        const d0 = Math.hypot(a[0] - b[0], a[1] - b[1]), d1 = Math.hypot(a2[0] - b2[0], a2[1] - b2[1]), mx = (a2[0] + b2[0]) / 2, my = (a2[1] + b2[1]) / 2;
+        const ang = Math.atan2(a2[1] - b2[1], a2[0] - b2[0]) - Math.atan2(a[1] - b[1], a[0] - b[0]), dyMid = my - (a[1] + b[1]) / 2;
+        if (d0 > 0) this.zoomAt(mx, my, this.k * d1 / d0);
+        if (Math.abs(ang) < .5) this.rotateBy(ang);
+        if (Math.abs(d1 - d0) < 2 && Math.abs(a2[1] - a[1] - (b2[1] - b[1])) < 4) this.tiltBy(-dyMid * .005);
+        moved += 10; }
+      else if (pts.size === 1) { const [u0, v0] = this.ground(...prev), [u1, v1] = this.ground(...now); this.mx -= (u1 - u0) / this.k; this.my -= (v1 - v0) / this.k; moved += Math.hypot(now[0] - prev[0], now[1] - prev[1]); this.request(); }
       pts.set(e.pointerId, now); });
     const up = (e) => { pts.delete(e.pointerId); if (!pts.size) c.classList.remove('dragging'); if (e.type === 'pointerup' && moved < 5) this.onClick?.(...loc(e)); };
     c.addEventListener('pointerup', up); c.addEventListener('pointercancel', up);
@@ -811,7 +868,7 @@ function look(p) {
 function syncUI() {
   const p = big.focus, era = eraOf(tl.year), tb = document.getElementById('titleB');
   tb.textContent = p === TODAY ? `${era.name} era` : p.who; tb.className = p === TODAY ? '' : 'cult'; if (p === TODAY) tb.style.removeProperty('--chromefont'); else tb.style.setProperty('--chromefont', `"${CULTURES[p.culture].font}"`);
-  document.getElementById('titleS').textContent = p === TODAY ? 'The lens: drag to move, pinch or scroll to zoom' : `Looking through their eyes / ${p.where} / ${yearText(p.year)}`;
+  document.getElementById('titleS').textContent = p === TODAY ? 'Drag to move, scroll or pinch to zoom, right-drag or twist to turn and tilt' : `Looking through their eyes / ${p.where} / ${yearText(p.year)}`;
   document.getElementById('rStand').textContent = big.standing().toLocaleString('en-US');
   document.getElementById('rOn').textContent = big.on.length;
   document.getElementById('eraLabel').textContent = `${era.name} era`;
@@ -827,14 +884,23 @@ function onYear(y, quiet) {
 }
 const eraWin = document.getElementById('eraWin'); let shownSnap = null, hoverYear = null;
 function standingAt(y) { let n = 0; for (let i = 0; i < SITES.n; i++) if (SITES.year[i] <= y) n++; return n; }
+let shownTab = 0;
 function renderEra() {
   if (!SITES) return; const y = hoverYear ?? tl.year, sn = snapOf(y), era = eraOf(y);
-  if (sn !== shownSnap) { shownSnap = sn; applyCulture(sn.cult, eraWin);
-    eraWin.innerHTML = `<span class="when"><span>${yearText(sn.from)} – ${sn.to > 2026 ? 'today' : yearText(sn.to)}</span><span>${era.name}</span></span><h3>${sn.title}</h3>${sn.script ? `<span class="s">${sn.script}</span>` : ''}<p>${sn.text}</p>
-      <div class="nums"><span><b data-k="y"></b></span><span><b data-k="n"></b> standing</span><span><b>+${sn.founded.toLocaleString('en-US')}</b> founded in this stretch</span></div>`; }
+  if (sn !== shownSnap) { shownSnap = sn; shownTab = 0;
+    eraWin.innerHTML = `<span class="when"><span>${yearText(sn.from)} – ${sn.to > 2026 ? 'today' : yearText(sn.to)}</span><span>${era.name}</span></span>
+      <div class="tabs" role="tablist">${sn.tabs.length > 1 ? sn.tabs.map((t, i) => `<button role="tab" data-tab="${i}">${t.label}</button>`).join('') : ''}</div>
+      <h3></h3><span class="s"></span><div class="body"><p></p></div>
+      <div class="nums"><span><b data-k="y"></b></span><span><b data-k="n"></b> standing</span><span><b>+${sn.founded.toLocaleString('en-US')}</b> founded in this stretch</span></div>`;
+    eraWin.querySelectorAll('[data-tab]').forEach((b) => b.addEventListener('click', () => { shownTab = +b.dataset.tab; blip(600 + shownTab * 80, .04); showTab(); }));
+    showTab(); }
   eraWin.querySelector('[data-k="y"]').textContent = hoverYear != null ? `Pointing at ${yearText(y)}` : yearText(y);
   eraWin.querySelector('[data-k="n"]').textContent = standingAt(y).toLocaleString('en-US');
 }
+function showTab() { const t = shownSnap.tabs[shownTab] || shownSnap.tabs[0]; applyCulture(t.cult, eraWin);
+  eraWin.querySelectorAll('[data-tab]').forEach((b) => b.setAttribute('aria-selected', String(+b.dataset.tab === shownTab)));
+  eraWin.querySelector('h3').textContent = t.title; const sc = eraWin.querySelector('.s'); sc.textContent = t.script || ''; sc.hidden = !t.script;
+  eraWin.querySelector('.body p').textContent = t.text; }
 tl.onHover = (y) => { hoverYear = y; renderEra(); };
 // side panels tuck away to a 15% sliver on their own edge; on a phone, opening one tucks the other
 function setTuck(side, on, save = true) { const el = document.getElementById(side === 'left' ? 'leftSide' : 'rightSide'); el.classList.toggle('tucked', on);
@@ -897,7 +963,12 @@ big.onClick = (mx, my) => { const ri = big.pickRecon(mx, my);
   tip.hidden = true; big.request(); };
 const soundBtn = document.getElementById('soundBtn'); soundBtn.setAttribute('aria-pressed', String(soundOn));
 soundBtn.addEventListener('click', () => { soundOn = !soundOn; soundBtn.setAttribute('aria-pressed', String(soundOn)); try { localStorage.setItem('fw:sound', soundOn ? '1' : '0'); } catch {} blip(988, .05); });
-const tiltBtn = document.getElementById('tiltBtn');
+const tiltBtn = document.getElementById('tiltBtn'), compassIco = document.getElementById('compassIco');
+big.onView = () => { compassIco.style.transform = `rotate(${(big.br || 0) * 180 / Math.PI}deg)`; const on = big.th > .05; tiltBtn.setAttribute('aria-pressed', String(on)); tiltBtn.textContent = on ? '3D' : '2D'; };
+compassIco.style.transition = 'none'; compassIco.style.transformOrigin = '50% 50%';
+document.getElementById('compassBtn').addEventListener('click', () => { blip(660, .05); big.resetView(); });
+addEventListener('keydown', (e) => { if (document.getElementById('mapview').hidden || e.target.closest?.('input, textarea')) return;
+  const m = { q: [-.12, 0], e: [.12, 0], r: [0, .08], f: [0, -.08] }[e.key.toLowerCase()]; if (m) { big.rotateBy(m[0]); big.tiltBy(m[1]); } });
 tiltBtn.addEventListener('click', () => { const on = tiltBtn.getAttribute('aria-pressed') !== 'true'; tiltBtn.setAttribute('aria-pressed', String(on)); tiltBtn.textContent = on ? '3D' : '2D'; big.setTilt(on); blip(on ? 700 : 500, .04); });
 const pop = document.getElementById('pop'), infoBtn = document.getElementById('infoBtn');
 infoBtn.addEventListener('click', () => { pop.hidden = !pop.hidden; infoBtn.setAttribute('aria-expanded', String(!pop.hidden)); blip(740, .04);
