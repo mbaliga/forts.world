@@ -5,7 +5,7 @@
 // originals were kept as <id>-hand and are used here unchanged, apart from their display names.
 // This repository ships neither the 0 A.D. animal and character models (CC BY-SA 3.0) nor the Janjira ground colours
 // resampled from a drone photograph whose licence is not recorded, so animals and people use the built-in figures.
-// Open a fort directly with ?fort=<level id>.
+// Open a fort directly with ?fort=<level id or file name>; the drop-in parameters (mode, at, heading, era, view) are in docs/game/drop-in.md.
 import * as esbuild from 'esbuild';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -38,7 +38,9 @@ fs.writeFileSync(entry, [
   `import { bootWith } from ${rel(path.join(here, 'src/boot.js'))};`,
   ...RECONSTRUCTIONS.map(([f], i) => `import L${i} from ${rel(path.join(here, 'src/levels', f + '.js'))};`),
   `const NAMES = ${JSON.stringify(RECONSTRUCTIONS.map(([, n]) => n))};`,
-  `bootWith([${RECONSTRUCTIONS.map((_, i) => `L${i}`).join(', ')}].map((L, i) => ({ ...L, name: NAMES[i] })), { lazy: false });`,
+  // the file name travels with each level so ?fort=janjira-hand finds murud-janjira-hand (docs/game/drop-in.md)
+  `const FILES = ${JSON.stringify(RECONSTRUCTIONS.map(([f]) => f))};`,
+  `bootWith([${RECONSTRUCTIONS.map((_, i) => `L${i}`).join(', ')}].map((L, i) => ({ ...L, name: NAMES[i], file: FILES[i] })), { lazy: false });`,
 ].join('\n') + '\n');
 
 const plugins = [

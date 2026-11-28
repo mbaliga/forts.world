@@ -145,7 +145,7 @@ function realPatch(kind) {
 const POST_VERT = 'varying vec2 vUv; void main() { vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }';
 const POST_FRAG = `
 uniform sampler2D tReal, tRealD, tModel, tModelD;
-uniform vec2 uRes; uniform vec2 uHalf; uniform float uNear, uFar, uPx, uDpr, uTarget;
+uniform vec2 uRes; uniform vec2 uHalf; uniform float uNear, uFar, uPx, uDpr, uTarget, uPersp;
 uniform mat4 uCamW;
 uniform float uR, uRmax, uSeed, uTime; uniform vec2 uOrigin;
 uniform vec3 uGround, uInk, uEdge, uSky, uSeaHaze; uniform float uExposure, uHaze, uSea, uAoReal, uAoModel, uDark;
@@ -155,9 +155,15 @@ float h2(vec2 p) { p = fract(p * vec2(233.34, 851.73)); p += dot(p, p + 23.45); 
 float n2(vec2 p) { vec2 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f);
   return mix(mix(h2(i), h2(i + vec2(1, 0)), f.x), mix(h2(i + vec2(0, 1)), h2(i + vec2(1, 1)), f.x), f.y); }
 float fbm(vec2 p) { float s = 0.0, a = 0.5; for (int i = 0; i < 4; i++) { s += n2(p) * a; p = p * 2.07 + 11.3; a *= 0.5; } return s / 0.9375; }
-float viewZ(float d) { return uNear + d * (uFar - uNear); }
-vec3 vpos(vec2 uv, float d) { return vec3((uv * 2.0 - 1.0) * uHalf, -viewZ(d)); }
-// ambient occlusion from the depth buffer (orthographic: depth is linear), radius in metres
+// view distance from window depth: linear for the iso (orthographic) camera, hyperbolic for walk and fly (perspective)
+float viewZ(float d) {
+  if (uPersp > 0.5) return 2.0 * uNear * uFar / (uFar + uNear - (d * 2.0 - 1.0) * (uFar - uNear));
+  return uNear + d * (uFar - uNear);
+}
+vec3 vpos(vec2 uv, float d) { float z = viewZ(d); vec2 xy = (uv * 2.0 - 1.0) * uHalf; if (uPersp > 0.5) xy *= z; return vec3(xy, -z); }
+// metres per pixel at view distance z (uPx is metres per pixel at 1 m for a perspective camera)
+float pxAt(float z) { return uPersp > 0.5 ? uPx * z : uPx; }
+// ambient occlusion from the depth buffer, radius in metres
 float ssao(sampler2D tD, vec2 uv, float R, float strength) {
   float d0 = texture2D(tD, uv).x; if (d0 >= 0.99999) return 1.0;
   vec2 e = 1.0 / uRes;
@@ -167,7 +173,7 @@ float ssao(sampler2D tD, vec2 uv, float R, float strength) {
   vec3 dx = abs(pr.z - P.z) < abs(P.z - pl.z) ? pr - P : P - pl;
   vec3 dy = abs(pu.z - P.z) < abs(P.z - pd.z) ? pu - P : P - pd;
   vec3 N = normalize(cross(dx, dy)); if (N.z < 0.0) N = -N;
-  float rpx = clamp(R / uPx, 3.0 * uDpr, 40.0 * uDpr);
+  float rpx = clamp(R / pxAt(-P.z), 3.0 * uDpr, 40.0 * uDpr);
   float ang = ign(gl_FragCoord.xy) * 6.2831853, occ = 0.0;
   const int NS = AO_SAMPLES;
   for (int i = 0; i < NS; i++) {
@@ -224,9 +230,19 @@ vec3 modelAt(vec2 uv) {
   float zd = viewZ(texture2D(tModelD, uv - vec2(0.0, e.y)).x), zu = viewZ(texture2D(tModelD, uv + vec2(0.0, e.y)).x);
   float al = texture2D(tModel, uv - vec2(e.x, 0.0)).a, ar = texture2D(tModel, uv + vec2(e.x, 0.0)).a;
   float ad = texture2D(tModel, uv - vec2(0.0, e.y)).a, au = texture2D(tModel, uv + vec2(0.0, e.y)).a;
-  float px = uPx * k;
-  float lap = max(abs(zl + zr - 2.0 * zc), abs(zu + zd - 2.0 * zc)) / px;
-  float jump = max(max(abs(zl - zc), abs(zr - zc)), max(abs(zu - zc), abs(zd - zc))) / px;
+  float px = pxAt(zc) * k;
+  float lap, jump;
+  if (uPersp > 0.5) {
+    // perspective: 1/z, not z, is linear across a flat face, so creases and steps are read from 1/z (scaled back to
+    // metres by z^2). A face seen edge-on has large one-sided steps but no second difference, so the step test uses the
+    // second difference too, or every distant wall seen at a glancing angle would be inked solid.
+    float wc = 1.0 / zc, wl = 1.0 / zl, wr = 1.0 / zr, wd = 1.0 / zd, wu = 1.0 / zu;
+    lap = max(abs(wl + wr - 2.0 * wc), abs(wu + wd - 2.0 * wc)) * zc * zc / px;
+    jump = lap * 0.6;
+  } else {
+    lap = max(abs(zl + zr - 2.0 * zc), abs(zu + zd - 2.0 * zc)) / px;
+    jump = max(max(abs(zl - zc), abs(zr - zc)), max(abs(zu - zc), abs(zd - zc))) / px;
+  }
   float bc = step(0.9, s.a), bn = max(max(step(0.9, al), step(0.9, ar)), max(step(0.9, ad), step(0.9, au)));
   float tc = step(0.5, s.a) * (1.0 - bc), tn = max(max(step(0.5, al), step(0.5, ar)), max(step(0.5, ad), step(0.5, au)));
   float crease = bc * smoothstep(0.45, 1.1, lap);
@@ -286,7 +302,7 @@ export class ViewModes {
     // quality levers: pbr (standard-material twins and sky light), detail (procedural bump and mottling)
     this.opts = { pbr: true, detail: true };
     // the Real view's light balance: exposure into ACES, sky-light strength, and how much of the hemisphere light stays
-    this.look = { exposure: 0.66, env: 0.32, hemi: 0.85 };
+    this.look = { exposure: 0.66, env: 0.32, hemi: 0.85, sky: 0.55 };
     // dynamic resolution: the views render at `scale` of the drawing buffer, lowered when frames run long (iPad)
     this.scale = 1; this.adaptive = true; this._ema = 1 / 60; this._slow = 0; this._fast = 0; this._last = 0;
     this.twins = new WeakMap();
@@ -302,7 +318,7 @@ export class ViewModes {
       uRes: { value: new THREE.Vector2(1, 1) }, uHalf: { value: new THREE.Vector2(1, 1) }, uNear: { value: 1 }, uFar: { value: 6000 }, uPx: { value: 0.1 }, uDpr: { value: 1 }, uTarget: { value: 2500 },
       uCamW: { value: new THREE.Matrix4() }, uR: { value: 0 }, uRmax: { value: 1 }, uSeed: { value: 0 }, uTime: { value: 0 }, uOrigin: { value: new THREE.Vector2(0.5, 0.5) },
       uGround: { value: new THREE.Vector3() }, uInk: { value: new THREE.Vector3() }, uEdge: { value: new THREE.Vector3() }, uSky: { value: new THREE.Color() }, uSeaHaze: { value: new THREE.Color() },
-      uExposure: { value: 0.92 }, uHaze: { value: 1 / 2600 }, uSea: { value: -1e4 }, uAoReal: { value: 1.25 }, uAoModel: { value: 1.0 }, uDark: { value: 0 },
+      uPersp: { value: 0 }, uExposure: { value: 0.92 }, uHaze: { value: 1 / 2600 }, uSea: { value: -1e4 }, uAoReal: { value: 1.25 }, uAoModel: { value: 1.0 }, uDark: { value: 0 },
     };
     this.U = U;
     const mk = (defs) => new THREE.ShaderMaterial({ uniforms: U, vertexShader: POST_VERT, fragmentShader: POST_FRAG, defines: Object.assign({ AO_SAMPLES: this.aoSamples }, defs), depthTest: false, depthWrite: false });
@@ -350,9 +366,11 @@ export class ViewModes {
     // V drops the ink where the pointer is
     window.addEventListener('keydown', (e) => {
       if (e.target && /input|textarea|select/i.test(e.target.tagName)) return;
-      if (e.key.toLowerCase() === 'v' && !e.metaKey && !e.ctrlKey) this.toggle(this._pointer);
+      // with the mouse locked (walk, fly) the ink lands at the crosshair
+      if (e.key.toLowerCase() === 'v' && !e.metaKey && !e.ctrlKey) this.toggle(document.pointerLockElement ? null : this._pointer);
     });
     this.app.canvas.addEventListener('pointermove', (e) => { this._pointer = { x: e.clientX, y: e.clientY }; });
+    this.app.canvas.addEventListener('pointerdown', (e) => { this._pointer = { x: e.clientX, y: e.clientY }; });
     this._ui();
   }
   onLoad() { this.list = null; this.scanT = 0; this._lens(); if (this.enabled) this._precompile(); }
@@ -360,6 +378,7 @@ export class ViewModes {
   // ---------------------------------------------------------------- frame
   render() {
     const app = this.app, r = app.renderer, scene = app.scene, cam = app.cam.cam;
+    if (r.xr.isPresenting) { this.renderXR(); return; }
     if (!this.enabled) { this._renderFallback(); return; }
     const now = performance.now();
     if (!this.list || now - this.scanT > 1500) this._scan();
@@ -370,12 +389,14 @@ export class ViewModes {
     this._targets();
     if (showReal) {
       this._env(now);
-      const hemi = app.hemi.intensity, envWas = scene.environment;
+      const hemi = app.hemi.intensity, envWas = scene.environment, bgWas = scene.background;
       app.hemi.intensity = hemi * this.look.hemi; scene.environment = this.env;
+      // walk and fly see the horizon: the same sky that lights the scene is drawn behind it
+      if (cam.isPerspectiveCamera) { scene.background = this.env; scene.backgroundIntensity = this.look.sky; }
       this._swap('real');
       r.setRenderTarget(this.rtReal); r.render(scene, cam);
       this._restore();
-      app.hemi.intensity = hemi; scene.environment = envWas;
+      app.hemi.intensity = hemi; scene.environment = envWas; scene.background = bgWas;
     }
     if (showModel) {
       // model frames skip the shadow map (the model view has no cast shadows); a pending update waits for the Real view
@@ -390,6 +411,28 @@ export class ViewModes {
     this._uniforms(p, now);
     this.quad.material = both ? this.postMats.mix : showReal ? this.postMats.real : this.postMats.model;
     r.render(this.post, this.postCam);
+  }
+  // WebXR: the post chain is bypassed (the headset needs its own stereo framebuffer and frame budget). The scene is
+  // drawn directly: Real keeps its physically based twins and sky light, tone-mapped by the renderer; Model keeps its
+  // massing and contours but has no screen-space edges or occlusion.
+  renderXR() {
+    const app = this.app, r = app.renderer, scene = app.scene, cam = app.cam.cam, now = performance.now();
+    if (!this.list || now - this.scanT > 1500) this._scan();
+    if (this.anim) { this.anim = null; this._lens(); }
+    if (this.mode === 'real' && this.enabled) {
+      this._env(now);
+      const hemi = app.hemi.intensity, envWas = scene.environment, bgWas = scene.background;
+      app.hemi.intensity = hemi * this.look.hemi; scene.environment = this.env; scene.background = this.env; scene.backgroundIntensity = this.look.sky;
+      r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = this.look.exposure / 0.6;
+      this._swap('real'); r.render(scene, cam); this._restore();
+      app.hemi.intensity = hemi; scene.environment = envWas; scene.background = bgWas;
+    } else {
+      const fog = scene.fog, bgWas = scene.background, th = this._theme();
+      scene.fog = null; r.toneMapping = THREE.NoToneMapping;
+      scene.background = (this._xrPaper ||= new THREE.Color()).setRGB(th.groundV.x, th.groundV.y, th.groundV.z, THREE.SRGBColorSpace);
+      this._swap('model'); r.render(scene, cam); this._restore();
+      scene.fog = fog; scene.background = bgWas;
+    }
   }
   _renderFallback() {
     // WebGL 1: no depth textures or multisampled targets, so no edges, occlusion or ink; the materials still switch
@@ -408,9 +451,18 @@ export class ViewModes {
     const U = this.U, app = this.app, c = app.cam, r = app.renderer;
     const th = this._theme();
     U.uRes.value.copy(this.size);
-    U.uHalf.value.set((c.cam.right - c.cam.left) / 2, (c.cam.top - c.cam.bottom) / 2);
-    U.uNear.value = c.cam.near; U.uFar.value = c.cam.far; U.uTarget.value = c.dist;
-    U.uPx.value = (c.cam.top - c.cam.bottom) / this.size.y; U.uDpr.value = r.getPixelRatio() * this.scale;
+    if (c.cam.isPerspectiveCamera) {
+      const t = Math.tan(c.cam.fov * Math.PI / 360);
+      U.uPersp.value = 1; U.uHalf.value.set(t * c.cam.aspect, t);
+      U.uNear.value = c.cam.near; U.uFar.value = c.cam.far; U.uTarget.value = 60;
+      U.uPx.value = 2 * t / this.size.y;
+    } else {
+      U.uPersp.value = 0;
+      U.uHalf.value.set((c.cam.right - c.cam.left) / 2, (c.cam.top - c.cam.bottom) / 2);
+      U.uNear.value = c.cam.near; U.uFar.value = c.cam.far; U.uTarget.value = c.dist;
+      U.uPx.value = (c.cam.top - c.cam.bottom) / this.size.y;
+    }
+    U.uDpr.value = r.getPixelRatio() * this.scale;
     U.uCamW.value.copy(c.cam.matrixWorld);
     U.uGround.value.copy(th.groundV); U.uInk.value.copy(th.inkV); U.uEdge.value.copy(th.dark ? th.groundV : th.inkV); U.uDark.value = th.dark ? 1 : 0;
     r.getClearColor(U.uSky.value);

@@ -68,11 +68,25 @@ a { color: var(--accent); }
   text-shadow: 0 0 6px var(--halo), 0 0 12px var(--halo); }
 #topbar button:hover { background: var(--panel); text-shadow: none; }
 #tools { justify-items: end; }
-#tools #viewmode { display: flex; align-items: center; gap: 0; margin-bottom: 4px; padding: 3px; border-radius: 999px; background: var(--panel); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 1px 3px rgba(0, 0, 0, .12); }
-#tools #viewmode button { width: auto; height: 28px; padding: 0 11px; border-radius: 999px; background: transparent; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none;
+#tools #viewmode, #tools #travelmode { display: flex; align-items: center; gap: 0; margin-bottom: 4px; padding: 3px; border-radius: 999px; background: var(--panel); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 1px 3px rgba(0, 0, 0, .12); }
+#tools #viewmode button, #tools #travelmode button { width: auto; height: 28px; padding: 0 11px; border-radius: 999px; background: transparent; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none;
   font: 500 10.5px/1 var(--font-data); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); transition: background .25s ease, color .25s ease; }
-#tools #viewmode button:hover { color: var(--ink); }
-#tools #viewmode button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+#tools #viewmode button:hover, #tools #travelmode button:hover { color: var(--ink); }
+#tools #viewmode button[aria-pressed="true"], #tools #travelmode button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+#tools #travelmode button[data-travel="vr"] { color: var(--accent); }
+#tools #travelmode button[data-travel="land"] { color: var(--accent); }
+/* walk and fly: touch stick, fly slider, crosshair, drop-in hint */
+.fp-stick { position: fixed; width: 112px; height: 112px; margin: -56px 0 0 -56px; border-radius: 50%; background: var(--scrim-mid); box-shadow: inset 0 0 0 1px var(--rule); pointer-events: none; z-index: 30; }
+.fp-stick i { position: absolute; left: 50%; top: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: var(--panel); box-shadow: 0 1px 4px rgba(0, 0, 0, .25); }
+#fp-alt { position: fixed; right: calc(env(safe-area-inset-right, 0px) + 74px); top: 50%; height: 190px; width: 44px; margin-top: -95px; border-radius: 22px; background: var(--scrim-mid); box-shadow: inset 0 0 0 1px var(--rule); touch-action: none; z-index: 30; }
+#fp-alt i { position: absolute; left: 4px; right: 4px; height: 36px; top: 77px; border-radius: 18px; background: var(--panel); box-shadow: 0 1px 4px rgba(0, 0, 0, .25); }
+#fp-alt span { position: absolute; left: 0; right: 0; text-align: center; font: 500 9.5px/1 var(--font-data); letter-spacing: .08em; color: var(--muted); }
+#fp-cross { position: fixed; left: 50%; top: 50%; width: 14px; height: 14px; margin: -7px 0 0 -7px; pointer-events: none; z-index: 20; }
+#fp-cross::before, #fp-cross::after { content: ''; position: absolute; background: var(--halo); box-shadow: 0 0 0 1px rgba(0, 0, 0, .25); }
+#fp-cross::before { left: 6px; top: 0; width: 2px; height: 14px; } #fp-cross::after { top: 6px; left: 0; height: 2px; width: 14px; }
+body[data-travel="walk"] #view, body[data-travel="fly"] #view { cursor: grab; }
+body[data-travel="walk"] #btn-rot-l, body[data-travel="walk"] #btn-rot-r, body[data-travel="walk"] #btn-zoom-in, body[data-travel="walk"] #btn-zoom-out,
+body[data-travel="fly"] #btn-rot-l, body[data-travel="fly"] #btn-rot-r, body[data-travel="fly"] #btn-zoom-in, body[data-travel="fly"] #btn-zoom-out { display: none; }
 #view.vm-model { filter: none !important; }
 #lens.vm-off { opacity: 0 !important; }
 
@@ -195,7 +209,8 @@ a { color: var(--accent); }
   #cartouche { left: 14px; max-width: calc(100vw - 120px); }
   #cartouche h1 { font-size: 25px; } #cartouche .native { font-size: 16px; } #cartouche .meta { display: none; } #era-note p { font-size: 13.5px; }
   #topbar { flex-direction: column; align-items: flex-end; gap: 0; } #topbar button { padding: 6px 8px; font-size: 13px; }
-  #tools #viewmode button { height: 26px; padding: 0 9px; }
+  #tools #viewmode button, #tools #travelmode button { height: 26px; padding: 0 9px; }
+  #fp-alt { right: calc(env(safe-area-inset-right, 0px) + 64px); }
   #minimap { width: 138px; left: 12px; bottom: calc(env(safe-area-inset-bottom, 0px) + 72px); } #status { padding: 6px 2px 0; } #s-progress .dots { display: none; }
   #botfade { height: 210px; }
   #timeline { left: 10px; right: 10px; transform: none; bottom: calc(env(safe-area-inset-bottom, 0px) + 10px); }
@@ -259,7 +274,7 @@ body[data-chrome="engraving"] #timeline button[aria-pressed="true"] { border-bot
 body[data-chrome="engraving"] #cartouche { padding: 10px 14px 12px; background: radial-gradient(ellipse at 30% 40%, var(--scrim), transparent 75%); }
 body[data-chrome="engraving"] #cartouche h1 { letter-spacing: .06em; }
 body[data-chrome="engraving"] #tools button { border-radius: 0; box-shadow: 0 0 0 1px var(--ink); }
-body[data-chrome="engraving"] #tools #viewmode, body[data-chrome="engraving"] #tools #viewmode button { border-radius: 0; } body[data-chrome="engraving"] #tools #viewmode { box-shadow: 0 0 0 1px var(--ink); } body[data-chrome="engraving"] #tools #viewmode button { font-family: var(--font-serif); font-size: 12px; letter-spacing: .04em; }
+body[data-chrome="engraving"] #tools #viewmode, body[data-chrome="engraving"] #tools #viewmode button, body[data-chrome="engraving"] #tools #travelmode, body[data-chrome="engraving"] #tools #travelmode button { border-radius: 0; } body[data-chrome="engraving"] #tools #viewmode, body[data-chrome="engraving"] #tools #travelmode { box-shadow: 0 0 0 1px var(--ink); } body[data-chrome="engraving"] #tools #viewmode button, body[data-chrome="engraving"] #tools #travelmode button { font-family: var(--font-serif); font-size: 12px; letter-spacing: .04em; }
 body[data-chrome="engraving"] #toast, body[data-chrome="engraving"] #hud-mode { border-radius: 0; font-family: var(--font-serif); }
 body[data-chrome="engraving"] #hud-play span { border-radius: 0; box-shadow: 0 0 0 1px var(--ink); font-family: var(--font-serif); }
 body[data-chrome="engraving"] .gchip { border-radius: 0 !important; font-family: var(--font-serif) !important; background: #6b2a14 !important; }
@@ -271,7 +286,7 @@ body[data-chrome="albumen"] #ctx button { border-color: rgba(160, 124, 52, .5); 
 body[data-chrome="albumen"] #ctx:after { border-top-color: var(--paper); }
 body[data-chrome="albumen"] #timeline button[aria-pressed="true"] { border-bottom-color: var(--gold); }
 body[data-chrome="albumen"] #tools button { box-shadow: inset 0 0 0 1px var(--gold), 0 1px 3px rgba(0, 0, 0, .2); }
-body[data-chrome="albumen"] #tools #viewmode { box-shadow: inset 0 0 0 1px var(--gold), 0 1px 3px rgba(0, 0, 0, .2); }
+body[data-chrome="albumen"] #tools #viewmode, body[data-chrome="albumen"] #tools #travelmode { box-shadow: inset 0 0 0 1px var(--gold), 0 1px 3px rgba(0, 0, 0, .2); }
 body[data-chrome="albumen"] .gchip { background: #5a4422 !important; }
 
 /* ---------------- sky & weather panel */
@@ -365,6 +380,7 @@ body[data-chrome="engraving"] :is(#ctx, #card, #drawer, #help, #climate, #mini-k
 
 <div id="tools">
   <div id="viewmode" role="group" aria-label="View (V)"><button type="button" data-view="model" aria-pressed="false" title="Model: monotone massing and contours (V)">Model</button><button type="button" data-view="real" aria-pressed="true" title="Real: lit, textured and graded (V)">Real</button></div>
+  <div id="travelmode" role="group" aria-label="Travel"><button type="button" data-travel="iso" aria-pressed="true" title="Iso: the map view from above (I)">Iso</button><button type="button" data-travel="walk" aria-pressed="false" title="Walk at eye height (P)">Walk</button><button type="button" data-travel="fly" aria-pressed="false" title="Fly like a bird (B)">Fly</button></div>
   <div id="compass" title="North"><svg id="compass-needle" viewBox="-12 -12 24 24" aria-hidden="true"><path d="M0 -10 L4 4 L0 1.5 L-4 4Z"/></svg></div>
   <button type="button" id="btn-rot-l" aria-label="Rotate view left (Q)"><svg viewBox="0 0 24 24"><path d="M4 9a8 8 0 1 1 1.5 9"/><path d="M4 4v5h5"/></svg></button>
   <button type="button" id="btn-rot-r" aria-label="Rotate view right (E)"><svg viewBox="0 0 24 24"><path d="M20 9a8 8 0 1 0-1.5 9"/><path d="M20 4v5h-5"/></svg></button>

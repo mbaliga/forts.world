@@ -298,7 +298,14 @@ export class UI {
     const px = x - x0, py = y1 - y;
     const s = Math.max(W.bounds[2] - W.bounds[0], W.bounds[3] - W.bounds[1]) / 60;
     const cam = app.cam.cam, t = app.cam.target, fwd = cam.getWorldDirection(new THREE.Vector3());
-    const foot = [[-1, -1], [1, -1], [1, 1], [-1, 1]].map(([u, v]) => {
+    let foot;
+    if (cam.isPerspectiveCamera) {
+      // walk and fly: a wedge from the eye along the view, as wide as the field of view
+      const e = cam.getWorldPosition(new THREE.Vector3()), a = Math.atan2(fwd.x, -fwd.z), half = Math.atan(Math.tan(cam.fov * Math.PI / 360) * cam.aspect);
+      const L = Math.max(W.bounds[2] - W.bounds[0], W.bounds[3] - W.bounds[1]) * 0.22;
+      const pt = (ang, r) => `${(e.x + Math.sin(ang) * r - x0).toFixed(1)},${(y1 + e.z - Math.cos(ang) * r).toFixed(1)}`;
+      foot = [pt(0, 0), pt(a - half, L), pt(a, L * 1.05), pt(a + half, L)].join(' ');
+    } else foot = [[-1, -1], [1, -1], [1, 1], [-1, 1]].map(([u, v]) => {
       const o = new THREE.Vector3(u, v, -1).unproject(cam), k = (t.y - o.y) / (fwd.y || -1e-6);
       const gx = o.x + fwd.x * k, gz = o.z + fwd.z * k; return `${(gx - x0).toFixed(1)},${(y1 + gz).toFixed(1)}`;
     }).join(' ');
