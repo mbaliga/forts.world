@@ -4,7 +4,8 @@ import { clamp, DEG } from '../core/geom.js';
 
 export class IsoCamera {
   constructor() {
-    this.cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 1, 8000);
+    this.ortho = new THREE.OrthographicCamera(-1, 1, 1, -1, 1, 8000);
+    this.override = null;   // a perspective camera (walk, fly, XR) that draws in place of the orthographic one
     this.target = new THREE.Vector3();   // render coords
     this.goal = new THREE.Vector3();
     this.az = -45; this.goalAz = -45;     // plan angle (deg, CCW from east) of the camera as seen from the target
@@ -15,6 +16,8 @@ export class IsoCamera {
     this.bounds = null; // plan bounds
     this.dist = 2500;
   }
+  // the camera that draws the scene: the orthographic one, or the walk/fly camera while it is in charge
+  get cam() { return this.override || this.ortho; }
   setAspect(a) { this.aspect = a; }
   setBounds(b) { this.bounds = b; }
   jumpTo(x, y, h) { this.goal.set(x, h, -y); this.target.copy(this.goal); }
@@ -48,7 +51,7 @@ export class IsoCamera {
     this.az += (this.goalAz - this.az) * (1 - Math.exp(-dt * 8));
     this.viewH += (this.goalViewH - this.viewH) * (1 - Math.exp(-dt * 9));
     const a = this.az * DEG, e = this.el * DEG;
-    const c = this.cam;
+    const c = this.ortho;
     c.position.set(this.target.x + Math.cos(a) * Math.cos(e) * this.dist, this.target.y + Math.sin(e) * this.dist, this.target.z - Math.sin(a) * Math.cos(e) * this.dist);
     c.up.set(0, 1, 0);
     c.lookAt(this.target);

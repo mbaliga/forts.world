@@ -3,7 +3,8 @@
 The fort scenes can be seen two ways. The switch is the **Model · Real** pill at the top of the tool column, bottom right (key **V**).
 The choice is remembered per browser (`localStorage` key `fw:view`) and can be forced with `?view=model` or `?view=real`.
 Code: `src/game/viewmodes.js`. `App` builds it beside the renderer, calls `viewModes.onLoad()` once a fort is built and
-`viewModes.render()` in place of `renderer.render()` every frame.
+`viewModes.render()` in place of `renderer.render()` every frame. Both views also work in the walk and fly
+perspective views and, without the post chain, in WebXR: see `drop-in.md`.
 
 ## Model
 

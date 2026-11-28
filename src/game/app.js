@@ -24,6 +24,9 @@ import { FortMap } from './fortmap.js';
 import { Campaign } from './campaign.js';
 import { Atlas } from './atlas.js';
 import { ViewModes } from './viewmodes.js';
+import { Explorer } from './explorer.js';
+import { XRSupport } from './xr.js';
+import { toLocal, headingToAz } from './dropin.js';
 import { markerStyle, markerGeometry } from './markers.js';
 import { clamp, DEG } from '../core/geom.js';
 
@@ -57,6 +60,7 @@ export class App {
     this.sun.shadow.mapSize.set(2048, 2048);
     this.sun.shadow.bias = -0.0004; this.sun.shadow.normalBias = 0.6;
     this.scene.add(this.hemi, this.sun, this.sun.target);
+    this.explorer = new Explorer(this);   // walk and fly (perspective), beside the iso camera
     this.traveller = new Traveller({});
     this.scene.add(this.traveller.root);
     this.marker = new ClickMarker('#0e7a77');
@@ -80,6 +84,7 @@ export class App {
     this.campaign = new Campaign(this);
     this.atlas = new Atlas(this);
     this.viewModes.bindUI(root || document);
+    this.xr = new XRSupport(this, this.explorer);   // immersive-vr when the browser offers it
     // browsers start sound only after a gesture
     const go = () => { this.audio.start(); window.removeEventListener('pointerdown', go); window.removeEventListener('keydown', go); };
     window.addEventListener('pointerdown', go); window.addEventListener('keydown', go);
@@ -87,8 +92,8 @@ export class App {
     this._resize(); window.addEventListener('resize', () => this._resize());
     this._themeWatch();
     this.clock = new THREE.Clock();
-    const loop = () => { this._frame(); this.raf = requestAnimationFrame(loop); };
-    this.raf = requestAnimationFrame(loop);
+    // the renderer's loop: window frames normally, the headset's frames during an XR session
+    r.setAnimationLoop(() => this._frame());
   }
 
   // ------------------------------------------------------------ theme / sky
@@ -113,6 +118,7 @@ export class App {
     const fogC = new THREE.Color(sky);
     if (!this.scene.fog) this.scene.fog = new THREE.Fog(fogC, 2500, 3900);
     this.scene.fog.color.copy(fogC); this.scene.fog.near = 2480 + (L.fogNear ?? 120); this.scene.fog.far = 2480 + (L.fogFar ?? 1500);
+    this._isoFog = { near: this.scene.fog.near, far: this.scene.fog.far };   // walk and fly set their own distances each frame
     this.hemi.color.set(dusk ? '#9fb2c4' : (L.hemiSky || '#e3ecef'));
     this.hemi.groundColor.set(dusk ? '#4a4038' : (L.hemiGround || '#9a8a6a'));
     this.hemi.intensity = dusk ? 0.95 : (L.hemi ?? 1.25);
@@ -180,9 +186,36 @@ export class App {
     this.plan = renderPlan(W, { mode: 'mini', hachures: true, trees: false });
     this.state.lastFort = def.id; this.state.lastEra = era; this._save();
     this.viewModes.onLoad();
+    // walking or flying into another fort: drop in again at its spawn point (a change of period keeps the place)
+    if (this.explorer.active && !prevPos) this.explorer.set(this.explorer.mode, { quiet: true, instant: this.renderer.xr.isPresenting });
     this.ui.levelReady(def, W, this.plan);
     this.ui.updateProgress();
     console.info(`[forts] ${def.id}/${era} built in ${Math.round(performance.now() - t0)} ms; tris: ${(this.view.group.children.reduce((a, m) => a + (m.geometry?.attributes?.position?.count || 0) / 3 * (m.isInstancedMesh ? m.count : 1), 0) / 1000).toFixed(0)}k`);
+  }
+  // Arrive as a drop-in link asks (docs/game/drop-in.md): d from parseDropIn(location.search)
+  applyDropIn(d) {
+    if (!this.world || !d) return;
+    let at = null;
+    if (d.at) { const p = toLocal(this.levelDef, d.at[0], d.at[1]); if (p) at = { x: p.x, y: p.y }; }
+    const heading = d.heading;
+    const mode = d.mode || 'iso';
+    if (mode === 'iso') {
+      if (at) { this.explorer._placeTraveller(at.x, at.y, null, false); const [x, y, h] = this.traveller.pos; this.cam.jumpTo(x, y, h); this.cam.viewH = this.cam.goalViewH; }
+      if (heading != null) this.cam.az = this.cam.goalAz = headingToAz(heading);
+      return;
+    }
+    this.explorer.set(mode, { at, heading });
+  }
+  // move the traveller one step along plan direction (mx, my) on walkable ground, sliding along walls
+  stepTraveller(mx, my, step) {
+    const nav = this.world.nav, T = this.traveller;
+    const [x, y, h] = T.pos;
+    let nh = nav.probe(x + mx * step, y + my * step, h);
+    if (nh != null) T.place(x + mx * step, y + my * step, nh);
+    else if ((nh = nav.probe(x + mx * step, y, h)) != null) T.place(x + mx * step, y, nh);
+    else if ((nh = nav.probe(x, y + my * step, h)) != null) T.place(x, y + my * step, nh);
+    else return false;
+    return true;
   }
   setEra(eraId) { if (this.levelDef && eraId !== this.era) this.load(this.levelDef.id, eraId, { keepPos: true }).catch(error => this.ui.toast(`Could not change period: ${error.message}`)); }
 
@@ -220,13 +253,16 @@ export class App {
     const pointers = new Map();
     let down = null, pinch = null;
     el.addEventListener('contextmenu', (e) => e.preventDefault());
+    const ex = this.explorer;
     el.addEventListener('pointerdown', (e) => {
       el.setPointerCapture(e.pointerId);
+      if (ex.pointer('down', e)) { pointers.clear(); down = null; pinch = null; return; }
       pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
       if (pointers.size === 1) down = { x: e.clientX, y: e.clientY, t: performance.now(), moved: false, btn: e.button };
       if (pointers.size === 2) { const [a, b] = [...pointers.values()]; pinch = { d: Math.hypot(a.x - b.x, a.y - b.y), vh: this.cam.goalViewH }; down = null; }
     });
     el.addEventListener('pointermove', (e) => {
+      if (ex.pointer('move', e)) return;
       const p = pointers.get(e.pointerId); if (!p) return;
       const dx = e.clientX - p.x, dy = e.clientY - p.y;
       p.x = e.clientX; p.y = e.clientY;
@@ -243,14 +279,15 @@ export class App {
       }
     });
     const up = (e) => {
+      if (ex.pointer('up', e)) return;
       pointers.delete(e.pointerId);
       if (pointers.size < 2) pinch = null;
       if (down && !down.moved && down.btn === 0) this._clickAt(e.clientX, e.clientY, e.shiftKey);
       if (pointers.size === 0) down = null;
     };
     el.addEventListener('pointerup', up);
-    el.addEventListener('pointercancel', (e) => { pointers.delete(e.pointerId); down = null; pinch = null; });
-    el.addEventListener('wheel', (e) => { e.preventDefault(); this.cam.zoom(Math.exp(e.deltaY * 0.0012)); }, { passive: false });
+    el.addEventListener('pointercancel', (e) => { if (ex.pointer('cancel', e)) return; pointers.delete(e.pointerId); down = null; pinch = null; });
+    el.addEventListener('wheel', (e) => { e.preventDefault(); if (ex.pointer('wheel', e)) return; this.cam.zoom(Math.exp(e.deltaY * 0.0012)); }, { passive: false });
     window.addEventListener('keydown', (e) => {
       if (e.target && /input|textarea|select/i.test(e.target.tagName)) return;
       const k = e.key.toLowerCase();
@@ -258,7 +295,7 @@ export class App {
       if (k === 'shift') this.run = true;
       if (k === 'q') this.cam.rotate(-1);
       if (k === 'e') this.cam.rotate(1);
-      if (k === ' ' || k === 'f') { this.recenter(); e.preventDefault(); }
+      if ((k === ' ' && !ex.active) || k === 'f') { this.recenter(); e.preventDefault(); }
       if (k === '+' || k === '=') this.cam.zoom(0.8);
       if (k === '-' || k === '_') this.cam.zoom(1.25);
       if (k === 'escape') { if (!this.play.cancel()) this.ui.closeAll(); }
@@ -282,6 +319,7 @@ export class App {
     let best = null, bd = 26;
     for (const m of this.markers) {
       const v = m.position.clone().project(this.cam.cam);
+      if (v.z > 1 || v.z < -1) continue;   // behind a perspective camera
       const sx = (v.x * 0.5 + 0.5) * rect.width + rect.left, sy = (-v.y * 0.5 + 0.5) * rect.height + rect.top;
       const d = Math.hypot(sx - cx, sy - cy);
       if (d < bd) { bd = d; best = m.userData.poi; }
@@ -325,23 +363,23 @@ export class App {
     if (!this.world) { this.renderer.render(this.scene, this.cam.cam); return; }
     const nav = this.world.nav, T = this.traveller;
     let speed = 0;
-    // keyboard movement (camera-relative)
-    if (this.keys.size) {
+    // keyboard movement (camera-relative), and the touch stick in walk mode; the bird moves itself (explorer.js)
+    const stick = this.explorer.mode === 'walk' && !this.explorer.anim ? this.explorer.stick : null;
+    if ((this.keys.size || stick) && !this.explorer.flying && !this.renderer.xr.isPresenting) {
       const { fx, fy, rx, ry } = this.cam.axes();
       let mx = 0, my = 0;
+      if (stick) { mx += fx * stick.y + rx * stick.x; my += fy * stick.y + ry * stick.x; }
       if (this.keys.has('w') || this.keys.has('arrowup')) { mx += fx; my += fy; }
       if (this.keys.has('s') || this.keys.has('arrowdown')) { mx -= fx; my -= fy; }
       if (this.keys.has('d') || this.keys.has('arrowright')) { mx += rx; my += ry; }
       if (this.keys.has('a') || this.keys.has('arrowleft')) { mx -= rx; my -= ry; }
       const l = Math.hypot(mx, my);
-      if (l > 0) {
+      if (l > 0.08) {
+        const amt = this.keys.size ? 1 : Math.min(1, l);
         mx /= l; my /= l;
-        const sp = (this.run ? 9 : 5.5) * this.play.speedMul(), step = sp * dt;
-        const [x, y, h] = T.pos;
-        let nh = nav.probe(x + mx * step, y + my * step, h);
-        if (nh != null) T.place(x + mx * step, y + my * step, nh);
-        else if ((nh = nav.probe(x + mx * step, y, h)) != null) T.place(x + mx * step, y, nh);
-        else if ((nh = nav.probe(x, y + my * step, h)) != null) T.place(x, y + my * step, nh);
+        const sp = (this.run ? 9 : 5.5) * this.play.speedMul() * amt, step = sp * dt;
+        this.stepTraveller(mx, my, step);
+        this.path = null; this.pathLine.visible = false;
         T.face(mx, my, dt); speed = sp;
         if (this.freeCam > 0) { this.freeCam = 0; this.ui.showRecenter(false); }
       }
@@ -365,10 +403,13 @@ export class App {
     // tunnel / interior darkness hint
     const tag = nav.tagAt(T.pos[0], T.pos[1], T.pos[2]);
     this.ui.setDark(tag === TAG.tunnel);
-    // camera follow
-    if (this.freeCam > 0) this.freeCam -= dt * 0.15;
-    if (this.freeCam <= 0) this.cam.lookAt(T.pos[0], T.pos[1], T.pos[2]);
-    this.cam.update(dt);
+    // camera follow (iso), or the walk / fly / XR camera
+    if (this.explorer.active) this.explorer.update(dt);
+    else {
+      if (this.freeCam > 0) this.freeCam -= dt * 0.15;
+      if (this.freeCam <= 0) this.cam.lookAt(T.pos[0], T.pos[1], T.pos[2]);
+      this.cam.update(dt);
+    }
     this.climate.update(dt);
     this.ui.updateClimate?.();
     // shadows follow the view
@@ -389,7 +430,7 @@ export class App {
     const pxH = this.renderer.domElement.height || 800;
     this.view?.update(this.t, dt, { px: pxH / Math.max(1, this.cam.viewH), light: this.climate.light ?? 1, viewH: this.cam.viewH, sunDir: this.sunDir, climate: true, camTarget: this.cam.target, night: Math.max(this.climate.state?.night ?? 0, (this.climate.state?.twilight ?? 0) * 0.7, (this.climate.state?.solar ?? 0)) });
     // figures are true scale close up; enlarged when zoomed out so troops stay readable (switchable)
-    { const v = this.cam.viewH, k = this.state.trueScale ? 0 : Math.min(1, Math.max(0, (v - 70) / 250)); const vis = 1 + 0.75 * k * k * (3 - 2 * k);
+    { const v = this.cam.viewH, k = this.state.trueScale || this.explorer.active ? 0 : Math.min(1, Math.max(0, (v - 70) / 250)); const vis = 1 + 0.75 * k * k * (3 - 2 * k);
       if (this.people) this.people.vis = vis; if (this.people) this.people.night = this.climate?.state?.night ?? 0; this.traveller.body.scale.setScalar(0.82 * vis); }
     this.people?.update(dt, this.t);
     this.battle.update(dt);
@@ -413,7 +454,7 @@ export class App {
     }
     this.ui.frame(dt, tag);
     this.viewModes.render();
-    this.chrome.renderPortrait(this.renderer, this.scene);
+    if (!this.renderer.xr.isPresenting) this.chrome.renderPortrait(this.renderer, this.scene);
   }
   zoneName() {
     const [x, y, h] = this.traveller.pos;
