@@ -194,6 +194,15 @@ footer.site .credits { padding-block: 0 36px; color: var(--mute); font: 400 12px
 .play { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--ink); color: var(--paper); display: grid; place-items: center; cursor: pointer; flex: none; }
 .play svg { width: 14px; height: 14px; }
 .timehead .yl { display: flex; align-items: center; gap: 12px; }
+.dock { display: flex; align-items: center; gap: 8px; }
+.dock .dockhint { font: 500 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--mute); margin-left: 10px; }
+.drop { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: #f2c14e; color: #1a1406; display: grid; place-items: center; cursor: grab; touch-action: none; padding: 0; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+.drop svg { width: 22px; height: 22px; }
+.drop[aria-pressed="true"] { outline: 2px solid var(--ink); outline-offset: 2px; }
+.ghost { position: fixed; z-index: 60; width: 44px; height: 44px; margin: -40px 0 0 -22px; border-radius: 50%; background: #f2c14e; color: #1a1406; display: grid; place-items: center; pointer-events: none; box-shadow: 0 6px 18px rgba(0,0,0,.35); transition: transform .12s ease; }
+.ghost svg { width: 24px; height: 24px; }
+.ghost.over { transform: scale(1.12) translateY(-4px); }
+@media (max-width: 760px) { .dock .dockhint, .dock .label { display: none; } }
 .card h4 { margin: 0; font: 700 20px/1.15 var(--display); padding-right: 26px; }
 .card .s { font: 400 18px/1.25 var(--script); color: var(--trim2); }
 .card .meta { font: 400 12px/1.5 var(--mono); color: var(--onmute); }
@@ -344,7 +353,7 @@ footer.site .credits { padding-block: 0 36px; color: var(--mute); font: 400 12px
   <div class="hud side left" id="leftSide"><button class="tuck" data-tuck="left" aria-label="Hide the era panel" title="Hide or show"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3L5 8l5 5"/></svg></button><div class="era plate frieze" id="eraWin" aria-live="polite"></div></div>
   <div class="hud rightcol side right" id="rightSide"><button class="tuck" data-tuck="right" aria-label="Hide the layers panel" title="Hide or show"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3l5 5-5 5"/></svg></button><div class="card plate frieze" id="card" hidden></div><div class="layers" id="layers"></div></div>
   <div class="hud mbottom">
-    <div class="timehead"><div class="yl"><button class="play" id="playBtn" aria-label="Play through time" title="Play through time"></button><div class="year" id="yearText">2026</div></div><span class="label" id="eraLabel"></span></div>
+    <div class="timehead"><div class="yl"><button class="play" id="playBtn" aria-label="Play through time" title="Play through time"></button><div class="year" id="yearText">2026</div></div><div class="dock"><span class="label" id="eraLabel"></span><span class="dockhint">Drop in</span><button class="drop" data-drop="walk" title="Drag the walker onto the map to drop in on foot (or tap, then tap the map)" aria-label="Drop in on foot"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="3" fill="currentColor"/><path d="M8.5 10.5h7l-1 6.5h-1.5l-.6 5h-1.8l-.6-5H9.5z" fill="currentColor"/></svg></button><button class="drop" data-drop="fly" title="Drag the bird onto the map to fly over it (or tap, then tap the map)" aria-label="Drop in as a bird"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 11c3-3 6-3 8 0l2-3 2 3c2-3 5-3 8 0-3-.5-5 .5-6.5 2.5L12 17l-3.5-3.5C7 11.5 5 10.5 2 11z" fill="currentColor"/></svg></button></div></div>
     <canvas id="timeline" aria-label="Timeline: drag, or use the arrow keys" tabindex="0"></canvas>
   </div>
   <div class="tip" id="tip" hidden></div>
@@ -713,6 +722,8 @@ class Lens {
       return s; });
     if (typeof this.sel === 'string' && this.sel[0] === 'u') { const i = +this.sel.slice(1); if (this.usx[i] === this.usx[i]) { g.beginPath(); g.arc(this.usx[i], this.usy[i], 6, 0, 7); g.lineWidth = 1.6; g.strokeStyle = C.ink; g.stroke(); } }
     if (typeof this.sel === 'number' && this.sx[this.sel] === this.sx[this.sel]) { g.beginPath(); g.arc(this.sx[this.sel], this.sy[this.sel], 6, 0, 7); g.lineWidth = 1.6; g.strokeStyle = C.ink; g.stroke(); }
+    // the drop target while a walker or bird is dragged over the map
+    if (this.dropAt) { const [X, Y] = this.dropAt; g.save(); g.translate(X, Y); g.scale(1, .45); g.beginPath(); g.arc(0, 0, 18, 0, 7); g.fillStyle = 'rgba(242,193,78,.25)'; g.fill(); g.lineWidth = 2; g.strokeStyle = '#f2c14e'; g.stroke(); g.restore(); }
     // names, front layers first
     g.textAlign = 'center'; g.textBaseline = 'middle'; const placed = [];
     for (const L of this.labels.sort((a, b) => b.focus - a.focus)) { const [X, Y] = L.s; if (X < -40 || Y < 60 || X > W + 40 || Y > H - 40) continue; if (placed.some(([px, py]) => Math.abs(px - X) < 64 && Math.abs(py - Y) < 15)) continue; placed.push([X, Y]);
@@ -723,6 +734,14 @@ class Lens {
   pickRecon(mx, my) { let best = null, bd = 12; (this.rs || []).forEach((s, i) => { if (!s) return; const d = Math.hypot(s[0] - mx, s[1] - my); if (d < bd) { bd = d; best = i; } }); return best; }
   pick(mx, my) { if (!this.qt) { const ids = []; for (let i = 0; i < SITES.n; i++) if (this.sx[i] === this.sx[i]) ids.push(i); this.qt = d3.quadtree(ids, (i) => this.sx[i], (i) => this.sy[i]); } return this.qt.find(mx, my, 9); }
   pickU(mx, my) { if (!UND || !this.usx) return null; if (!this.uqt) { const ids = []; for (let i = 0; i < UND.n; i++) if (this.usx[i] === this.usx[i] && this.usx[i] > -5 && this.usx[i] < this.w + 5 && this.usy[i] > -5 && this.usy[i] < this.h + 5) ids.push(i); this.uqt = d3.quadtree(ids, (i) => this.usx[i], (i) => this.usy[i]); } return this.uqt.find(mx, my, 7); }
+  // ease the camera onto a place: centre it, zoom in and tilt towards the horizon, as a map does before Street View
+  flyTo(lon, lat, k2, th2, dur, done) { const q = this.pr([lon, lat]); if (!q) { done?.(); return; }
+    const m0 = [this.mx, this.my], k0 = this.k, t0 = this.th, s0 = performance.now();
+    const step = (now) => { const a = Math.min(1, (now - s0) / dur), e = a < .5 ? 4 * a * a * a : 1 - Math.pow(-2 * a + 2, 3) / 2;
+      this.mx = m0[0] + (q[0] - m0[0]) * e; this.my = m0[1] + (q[1] - m0[1]) * e; this.k = Math.exp(Math.log(k0) + (Math.log(k2) - Math.log(k0)) * e); this.th = t0 + (th2 - t0) * e; this.thT = this.th;
+      this.dirty = true; this.onView?.(); this.draw(); if (a < 1) requestAnimationFrame(step); else done?.(); };
+    requestAnimationFrame(reduce ? (n) => step(s0 + dur) : step); }
+  lonLatAt(sx, sy) { const [u, v] = this.ground(sx, sy), q = this.pr.invert([this.mx + u / this.k, this.my + v / this.k]); return q && isFinite(q[0]) ? q : null; }
   rotateBy(d) { this.br = ((this.br || 0) + d) % (Math.PI * 2); this.dirty = true; this.onView?.(); this.request(); }
   tiltBy(d) { this.th = Math.max(0, Math.min(1.25, this.th + d)); this.thT = this.th; if (this.th > .05) this.tiltOn = this.th; this.dirty = true; this.onView?.(); this.request(); }
   resetView() { const b0 = this.br || 0, t0 = this.th, tT = this.tiltOn > .05 ? .92 : 0, s0 = performance.now(); this.tiltOn = .92;
@@ -961,6 +980,45 @@ big.onClick = (mx, my) => { const ri = big.pickRecon(mx, my);
   if (ri != null) { blip(660, .05); big.sel = 'r' + ri; showRecon(ri); } else { const i = big.pick(mx, my); if (i != null) { blip(600, .04); big.sel = i; showSite(i); }
     else { const u = big.pickU(mx, my); if (u == null) { if (!card.hidden && big.focus === TODAY) closeCard(); return; } blip(560, .04); big.sel = 'u' + u; showUndated(u); } }
   tip.hidden = true; big.request(); };
+// ---------- drop in: drag the walker or the bird onto the map (or tap it, then tap the map) ----------
+// Near a fort rebuilt in 3D it opens that fort's walkable scene at the spot, in the chosen year; elsewhere the lens
+// settles low over the relief and says what is nearest.
+const ICONS = { walk: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="3" fill="currentColor"/><path d="M8.5 10.5h7l-1 6.5h-1.5l-.6 5h-1.8l-.6-5H9.5z" fill="currentColor"/></svg>', fly: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 11c3-3 6-3 8 0l2-3 2 3c2-3 5-3 8 0-3-.5-5 .5-6.5 2.5L12 17l-3.5-3.5C7 11.5 5 10.5 2 11z" fill="currentColor"/></svg>' };
+let armed = null;
+function nearestRecon(ll) { let best = null, bd = Infinity; RECON.forEach((r, i) => { const d = d3.geoDistance(ll, [r[1], r[2]]) * 6371; if (d < bd) { bd = d; best = i; } }); return { i: best, km: bd }; }
+function dropIn(mode, sx, sy) {
+  const ll = big.lonLatAt(sx, sy); big.dropAt = null; if (!ll) { big.request(); return; }
+  chord(); closeCard(); const near = nearestRecon(ll), r = RECON[near.i];
+  if (near.km < 4 && r[4]) {
+    big.flyTo(ll[0], ll[1], 40, 1.2, 1500, () => {
+      const url = `${SITE}/ten-forts.html?fort=${r[4]}&mode=${mode}&at=${ll[1].toFixed(5)},${ll[0].toFixed(5)}&era=${tl.year}&heading=${Math.round(((big.br || 0) * 180 / Math.PI + 360) % 360)}`;
+      location.href = url; });
+    return; }
+  big.flyTo(ll[0], ll[1], mode === 'fly' ? 18 : 30, mode === 'fly' ? 1.05 : 1.2, 1500, () => {
+    const el = demAt(DEM.g30, ll[0], ll[1]);
+    applyCulture(big.focus.culture, card); delete card.dataset.recon; revealRight();
+    card.innerHTML = `<button class="x" aria-label="Close">×</button><h4>${mode === 'fly' ? 'Flying over' : 'Standing at'} ${Math.abs(ll[1]).toFixed(3)}°${ll[1] >= 0 ? 'N' : 'S'}, ${Math.abs(ll[0]).toFixed(3)}°${ll[0] >= 0 ? 'E' : 'W'}</h4>
+      <span class="meta">${el > 5 ? `About ${Math.round(el / 10) * 10} m above the sea` : 'At sea level'} / ${yearText(tl.year)}</span>
+      <p>No one has rebuilt this place in 3D yet. The nearest walkable fort is ${r[0]}, ${Math.round(near.km).toLocaleString('en-US')} km away.</p>
+      ${r[4] ? `<button class="go" type="button">Drop in at ${r[0]}</button>` : ''}`;
+    card.hidden = false; card.querySelector('.x').onclick = closeCard;
+    const go = card.querySelector('.go'); if (go) go.onclick = () => { const q = big.pr([r[1], r[2]]), s2 = big.cam(q[0], q[1], 0); dropIn(mode, s2[0], s2[1]); };
+  });
+}
+document.querySelectorAll('[data-drop]').forEach((btn) => {
+  const mode = btn.dataset.drop; let ghost = null, start = null;
+  btn.addEventListener('pointerdown', (e) => { e.preventDefault(); btn.setPointerCapture(e.pointerId); start = [e.clientX, e.clientY]; });
+  btn.addEventListener('pointermove', (e) => { if (!start) return; if (!ghost && Math.hypot(e.clientX - start[0], e.clientY - start[1]) > 6) { ghost = document.createElement('div'); ghost.className = 'ghost'; ghost.innerHTML = ICONS[mode]; document.body.appendChild(ghost); blip(520, .03); }
+    if (!ghost) return; ghost.style.left = e.clientX + 'px'; ghost.style.top = e.clientY + 'px';
+    const r = bigC.getBoundingClientRect(), over = document.elementsFromPoint(e.clientX, e.clientY).includes(bigC); ghost.classList.toggle('over', over);
+    big.dropAt = over ? [e.clientX - r.left, e.clientY - r.top] : null; big.request(); });
+  btn.addEventListener('pointerup', (e) => { const g = ghost; ghost = null; const st = start; start = null; if (!st) return;
+    if (g) { g.remove(); const r = bigC.getBoundingClientRect(); if (big.dropAt) dropIn(mode, e.clientX - r.left, e.clientY - r.top); else { big.dropAt = null; big.request(); } return; }
+    armed = armed === mode ? null : mode; document.querySelectorAll('[data-drop]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.drop === armed))); blip(armed ? 700 : 480, .04);
+    bigC.style.cursor = armed ? 'crosshair' : ''; });
+  btn.addEventListener('pointercancel', () => { ghost?.remove(); ghost = null; start = null; big.dropAt = null; big.request(); });
+});
+const _click = big.onClick; big.onClick = (mx, my) => { if (armed) { const m = armed; armed = null; document.querySelectorAll('[data-drop]').forEach((b) => b.setAttribute('aria-pressed', 'false')); bigC.style.cursor = ''; dropIn(m, mx, my); return; } _click(mx, my); };
 const soundBtn = document.getElementById('soundBtn'); soundBtn.setAttribute('aria-pressed', String(soundOn));
 soundBtn.addEventListener('click', () => { soundOn = !soundOn; soundBtn.setAttribute('aria-pressed', String(soundOn)); try { localStorage.setItem('fw:sound', soundOn ? '1' : '0'); } catch {} blip(988, .05); });
 const tiltBtn = document.getElementById('tiltBtn'), compassIco = document.getElementById('compassIco');
